@@ -1,0 +1,10 @@
+{"timestamp": "2026-09-16T23:57:40.355310+00:00", "island_id": 0, "generation": 0, "pop_size": 8, "mean_pairwise_hamming": 13.607142857142858}
+{"timestamp": "2026-09-16T23:57:52.731875+00:00", "island_id": 0, "generation": 1, "pop_size": 8, "mean_pairwise_hamming": 8.392857142857142}
+{"timestamp": "2026-09-16T23:58:04.412657+00:00", "island_id": 0, "generation": 2, "pop_size": 8, "mean_pairwise_hamming": 6.678571428571429}
+{"timestamp": "2026-09-16T23:58:18.406153+00:00", "island_id": 0, "generation": 3, "pop_size": 8, "mean_pairwise_hamming": 4.821428571428571}
+{"timestamp": "2026-09-16T23:58:30.933991+00:00", "island_id": 0, "generation": 4, "pop_size": 8, "mean_pairwise_hamming": 3.4642857142857144}
+{"timestamp": "2026-09-16T23:58:44.553806+00:00", "island_id": 0, "generation": 5, "pop_size": 8, "mean_pairwise_hamming": 3.9285714285714284}
+{"timestamp": "2026-09-16T23:58:57.502078+00:00", "island_id": 0, "generation": 6, "pop_size": 8, "mean_pairwise_hamming": 3.642857142857143}
+{"timestamp": "2026-09-16T23:59:11.126125+00:00", "island_id": 0, "generation": 7, "pop_size": 8, "mean_pairwise_hamming": 2.25}
+{"timestamp": "2026-09-16T23:59:24.794631+00:00", "island_id": 0, "generation": 8, "pop_size": 8, "mean_pairwise_hamming": 1.7857142857142858}
+{"timestamp": "2026-09-16T23:59:35.696944+00:00", "island_id": 0, "generation": 9, "pop_size": 8, "mean_pairwise_hamming": 2.0714285714285716}

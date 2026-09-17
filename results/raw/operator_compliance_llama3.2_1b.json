@@ -1,0 +1,111 @@
+[
+  {
+    "op": "mutate",
+    "style": "full",
+    "model": "llama3.2:1b",
+    "n_calls": 20,
+    "stats": {
+      "n_llm_calls": 20,
+      "n_llm_requests": 60,
+      "n_retries": 60,
+      "n_failures": 20,
+      "n_skipped_no_op": 0,
+      "total_latency_s": 23.162861800403334,
+      "total_tokens_in": 12760,
+      "total_tokens_out": 1016,
+      "mean_latency_s": 0.3860476966733889,
+      "max_latency_s": 2.7184439999982715,
+      "min_latency_s": 0.07500259997323155
+    },
+    "fallback_rate": 1.0,
+    "requests_per_call": 3.0,
+    "zero_diff_outputs": 14,
+    "position_counts": {
+      "0": 1,
+      "1": 2,
+      "3": 1,
+      "7": 1,
+      "8": 1,
+      "16": 2
+    },
+    "n_positions_touched": 6
+  },
+  {
+    "op": "mutate",
+    "style": "position",
+    "model": "llama3.2:1b",
+    "n_calls": 20,
+    "stats": {
+      "n_llm_calls": 20,
+      "n_llm_requests": 60,
+      "n_retries": 60,
+      "n_failures": 20,
+      "n_skipped_no_op": 0,
+      "total_latency_s": 28.535575699526817,
+      "total_tokens_in": 14980,
+      "total_tokens_out": 1440,
+      "mean_latency_s": 0.4755929283254469,
+      "max_latency_s": 0.6266389000229537,
+      "min_latency_s": 0.3444203999824822
+    },
+    "fallback_rate": 1.0,
+    "requests_per_call": 3.0,
+    "zero_diff_outputs": 10,
+    "position_counts": {
+      "3": 1,
+      "6": 2,
+      "7": 1,
+      "8": 2,
+      "10": 1,
+      "11": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1
+    },
+    "n_positions_touched": 9
+  },
+  {
+    "op": "crossover",
+    "style": "full",
+    "model": "llama3.2:1b",
+    "n_calls": 20,
+    "stats": {
+      "n_llm_calls": 19,
+      "n_llm_requests": 57,
+      "n_retries": 57,
+      "n_failures": 19,
+      "n_skipped_no_op": 1,
+      "total_latency_s": 43.799603200284764,
+      "total_tokens_in": 15675,
+      "total_tokens_out": 2419,
+      "mean_latency_s": 0.768414091233066,
+      "max_latency_s": 1.163687700056471,
+      "min_latency_s": 0.38785999990068376
+    },
+    "fallback_rate": 0.95,
+    "requests_per_call": 2.85,
+    "echo_outputs": 4
+  },
+  {
+    "op": "crossover",
+    "style": "segment",
+    "model": "llama3.2:1b",
+    "n_calls": 20,
+    "stats": {
+      "n_llm_calls": 18,
+      "n_llm_requests": 38,
+      "n_retries": 24,
+      "n_failures": 4,
+      "n_skipped_no_op": 2,
+      "total_latency_s": 35.53701039950829,
+      "total_tokens_in": 13268,
+      "total_tokens_out": 1792,
+      "mean_latency_s": 0.9351844841975866,
+      "max_latency_s": 1.9361811999697238,
+      "min_latency_s": 0.32653910003136843
+    },
+    "fallback_rate": 0.2,
+    "requests_per_call": 1.9,
+    "echo_outputs": 4
+  }
+]

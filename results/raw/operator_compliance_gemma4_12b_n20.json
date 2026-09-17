@@ -1,0 +1,53 @@
+[
+  {
+    "op": "mutate",
+    "style": "position",
+    "model": "gemma4:12b",
+    "n_calls": 20,
+    "stats": {
+      "n_llm_calls": 20,
+      "n_llm_requests": 20,
+      "n_retries": 0,
+      "n_failures": 0,
+      "n_skipped_no_op": 0,
+      "total_latency_s": 185.30603779980447,
+      "total_tokens_in": 4480,
+      "total_tokens_out": 181,
+      "mean_latency_s": 9.265301889990223,
+      "max_latency_s": 33.12575960007962,
+      "min_latency_s": 7.379852599930018
+    },
+    "fallback_rate": 0.0,
+    "requests_per_call": 1.0,
+    "zero_diff_outputs": 0,
+    "position_counts": {
+      "0": 3,
+      "1": 15,
+      "4": 1,
+      "17": 1
+    },
+    "n_positions_touched": 4
+  },
+  {
+    "op": "crossover",
+    "style": "segment",
+    "model": "gemma4:12b",
+    "n_calls": 20,
+    "stats": {
+      "n_llm_calls": 19,
+      "n_llm_requests": 19,
+      "n_retries": 0,
+      "n_failures": 0,
+      "n_skipped_no_op": 1,
+      "total_latency_s": 277.9220674003009,
+      "total_tokens_in": 5852,
+      "total_tokens_out": 342,
+      "mean_latency_s": 14.627477231594783,
+      "max_latency_s": 22.55064739997033,
+      "min_latency_s": 12.203159400029108
+    },
+    "fallback_rate": 0.0,
+    "requests_per_call": 0.95,
+    "echo_outputs": 1
+  }
+]

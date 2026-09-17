@@ -1,0 +1,84 @@
+{
+  "results": {
+    "off": {
+      "run_id": "agents3_off_1788814924",
+      "wall_s": 1188.2654729001224,
+      "best_fitness_by_gen": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "operator_stats": {
+        "n_llm_calls": 36,
+        "n_llm_requests": 100,
+        "n_retries": 93,
+        "n_failures": 29,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 1186.625673800474,
+        "total_tokens_in": 25108,
+        "total_tokens_out": 2240,
+        "mean_latency_s": 11.86625673800474,
+        "max_latency_s": 43.10434349998832,
+        "min_latency_s": 5.937001199927181
+      }
+    },
+    "nocomm": {
+      "run_id": "agents3_nocomm_1788814924",
+      "wall_s": 1498.8077185999136,
+      "best_fitness_by_gen": [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "operator_stats": {
+        "n_llm_calls": 47,
+        "n_llm_requests": 113,
+        "n_retries": 97,
+        "n_failures": 31,
+        "n_skipped_no_op": 1,
+        "total_latency_s": 1495.304290799424,
+        "total_tokens_in": 28231,
+        "total_tokens_out": 2292,
+        "mean_latency_s": 13.232781334508177,
+        "max_latency_s": 44.651003199862316,
+        "min_latency_s": 5.751093500060961
+      }
+    },
+    "comm": {
+      "run_id": "agents3_comm_1788814924",
+      "wall_s": 1535.5142303998582,
+      "best_fitness_by_gen": [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "operator_stats": {
+        "n_llm_calls": 47,
+        "n_llm_requests": 112,
+        "n_retries": 96,
+        "n_failures": 31,
+        "n_skipped_no_op": 1,
+        "total_latency_s": 1531.2196254993323,
+        "total_tokens_in": 28134,
+        "total_tokens_out": 2239,
+        "mean_latency_s": 13.671603799101181,
+        "max_latency_s": 36.151231800206006,
+        "min_latency_s": 6.224710599984974
+      }
+    }
+  },
+  "ids": {
+    "off": "agents3_off_1788814924",
+    "nocomm": "agents3_nocomm_1788814924",
+    "comm": "agents3_comm_1788814924"
+  }
+}

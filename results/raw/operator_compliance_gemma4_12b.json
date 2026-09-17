@@ -1,0 +1,98 @@
+[
+  {
+    "op": "mutate",
+    "style": "full",
+    "model": "gemma4:12b",
+    "n_calls": 3,
+    "stats": {
+      "n_llm_calls": 3,
+      "n_llm_requests": 7,
+      "n_retries": 6,
+      "n_failures": 2,
+      "n_skipped_no_op": 0,
+      "total_latency_s": 115.77592080004979,
+      "total_tokens_in": 1612,
+      "total_tokens_out": 154,
+      "mean_latency_s": 16.53941725714997,
+      "max_latency_s": 52.80245299998205,
+      "min_latency_s": 7.806640300084837
+    },
+    "fallback_rate": 0.6666666666666666,
+    "requests_per_call": 2.3333333333333335,
+    "zero_diff_outputs": 2,
+    "position_counts": {
+      "17": 1
+    },
+    "n_positions_touched": 1
+  },
+  {
+    "op": "mutate",
+    "style": "position",
+    "model": "gemma4:12b",
+    "n_calls": 3,
+    "stats": {
+      "n_llm_calls": 3,
+      "n_llm_requests": 3,
+      "n_retries": 0,
+      "n_failures": 0,
+      "n_skipped_no_op": 0,
+      "total_latency_s": 23.507049100007862,
+      "total_tokens_in": 672,
+      "total_tokens_out": 27,
+      "mean_latency_s": 7.835683033335954,
+      "max_latency_s": 8.526677699992433,
+      "min_latency_s": 7.422422399977222
+    },
+    "fallback_rate": 0.0,
+    "requests_per_call": 1.0,
+    "zero_diff_outputs": 0,
+    "position_counts": {
+      "1": 3
+    },
+    "n_positions_touched": 1
+  },
+  {
+    "op": "crossover",
+    "style": "full",
+    "model": "gemma4:12b",
+    "n_calls": 3,
+    "stats": {
+      "n_llm_calls": 2,
+      "n_llm_requests": 6,
+      "n_retries": 6,
+      "n_failures": 2,
+      "n_skipped_no_op": 1,
+      "total_latency_s": 153.90920029988047,
+      "total_tokens_in": 1826,
+      "total_tokens_out": 364,
+      "mean_latency_s": 25.65153338331341,
+      "max_latency_s": 52.77472299989313,
+      "min_latency_s": 15.300018699956127
+    },
+    "fallback_rate": 0.6666666666666666,
+    "requests_per_call": 2.0,
+    "echo_outputs": 2
+  },
+  {
+    "op": "crossover",
+    "style": "segment",
+    "model": "gemma4:12b",
+    "n_calls": 3,
+    "stats": {
+      "n_llm_calls": 2,
+      "n_llm_requests": 2,
+      "n_retries": 0,
+      "n_failures": 0,
+      "n_skipped_no_op": 1,
+      "total_latency_s": 29.131042199907824,
+      "total_tokens_in": 616,
+      "total_tokens_out": 36,
+      "mean_latency_s": 14.565521099953912,
+      "max_latency_s": 15.705006400006823,
+      "min_latency_s": 13.426035799901001
+    },
+    "fallback_rate": 0.0,
+    "requests_per_call": 0.6666666666666666,
+    "echo_outputs": 1
+  }
+]

@@ -1,0 +1,5 @@
+{"timestamp": "2026-09-05T18:43:07.263899+00:00", "island_id": 0, "generation": 0, "pop_size": 5, "mean_pairwise_hamming": 6.5}
+{"timestamp": "2026-09-05T18:45:33.644905+00:00", "island_id": 0, "generation": 1, "pop_size": 5, "mean_pairwise_hamming": 0.4}
+{"timestamp": "2026-09-05T18:47:11.528931+00:00", "island_id": 0, "generation": 2, "pop_size": 5, "mean_pairwise_hamming": 0.4}
+{"timestamp": "2026-09-05T18:48:50.395361+00:00", "island_id": 0, "generation": 3, "pop_size": 5, "mean_pairwise_hamming": 0.6}
+{"timestamp": "2026-09-05T18:50:29.207996+00:00", "island_id": 0, "generation": 4, "pop_size": 5, "mean_pairwise_hamming": 0.4}

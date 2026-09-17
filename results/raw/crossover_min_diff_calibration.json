@@ -1,0 +1,32 @@
+{
+  "genome_length": 18,
+  "n_trials": 5000,
+  "seed": 0,
+  "percentiles": {
+    "0": 0,
+    "1": 0,
+    "5": 1,
+    "10": 1,
+    "25": 2,
+    "50": 4,
+    "75": 5,
+    "90": 7,
+    "99": 8,
+    "100": 9
+  },
+  "mean_all_four": 7.1888,
+  "pass_rate_by_threshold": {
+    "0": 1.0,
+    "1": 0.9724,
+    "2": 0.824,
+    "3": 0.6814,
+    "4": 0.5354,
+    "5": 0.3784,
+    "6": 0.2338,
+    "7": 0.1078,
+    "8": 0.0222,
+    "9": 0.0006
+  },
+  "chosen_crossover_min_diff": 1,
+  "chosen_rationale": "5th percentile of the measured min-of-four-diffs distribution"
+}

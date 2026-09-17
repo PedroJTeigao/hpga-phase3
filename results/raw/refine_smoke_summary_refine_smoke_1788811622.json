@@ -1,0 +1,28 @@
+{
+  "run_id": "refine_smoke_1788811622",
+  "n_calls": 8,
+  "no_op_count": 0,
+  "n_changed_list": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "stats": {
+    "n_llm_calls": 8,
+    "n_llm_requests": 8,
+    "n_retries": 0,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 78.09168010018766,
+    "total_tokens_in": 2256,
+    "total_tokens_out": 76,
+    "mean_latency_s": 9.761460012523457,
+    "max_latency_s": 12.035395400132984,
+    "min_latency_s": 9.044593299971893
+  }
+}

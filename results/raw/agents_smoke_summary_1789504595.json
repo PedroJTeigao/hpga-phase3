@@ -1,0 +1,321 @@
+{
+  "off": {
+    "arm": "off",
+    "run_id": "agents_smoke_off_1789504595",
+    "wall_s": 102.36003606114537,
+    "best_fitness_by_gen": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "operator_stats": {
+      "n_llm_calls": 30,
+      "n_llm_requests": 50,
+      "n_retries": 30,
+      "n_failures": 10,
+      "n_skipped_no_op": 0,
+      "total_latency_s": 101.30706601962447,
+      "total_tokens_in": 12020,
+      "total_tokens_out": 960,
+      "mean_latency_s": 2.0261413203924894,
+      "max_latency_s": 32.458300155587494,
+      "min_latency_s": 0.7112447554245591
+    }
+  },
+  "on": {
+    "arm": "on",
+    "run_id": "agents_smoke_on_1789504595",
+    "wall_s": 83.16998873371631,
+    "best_fitness_by_gen": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "operator_stats": {
+      "n_llm_calls": 39,
+      "n_llm_requests": 56,
+      "n_retries": 25,
+      "n_failures": 8,
+      "n_skipped_no_op": 1,
+      "total_latency_s": 83.09531985130161,
+      "total_tokens_in": 13438,
+      "total_tokens_out": 964,
+      "mean_latency_s": 1.4838449973446717,
+      "max_latency_s": 2.1205308828502893,
+      "min_latency_s": 0.7774976911023259
+    }
+  },
+  "off_diversity": [
+    {
+      "timestamp": "2026-09-15T20:36:35.891961+00:00",
+      "island_id": 0,
+      "generation": 0,
+      "pop_size": 5,
+      "mean_pairwise_hamming": 6.5
+    },
+    {
+      "timestamp": "2026-09-15T20:37:21.019866+00:00",
+      "island_id": 0,
+      "generation": 1,
+      "pop_size": 5,
+      "mean_pairwise_hamming": 1.0
+    },
+    {
+      "timestamp": "2026-09-15T20:37:34.891548+00:00",
+      "island_id": 0,
+      "generation": 2,
+      "pop_size": 5,
+      "mean_pairwise_hamming": 1.0
+    },
+    {
+      "timestamp": "2026-09-15T20:37:49.323408+00:00",
+      "island_id": 0,
+      "generation": 3,
+      "pop_size": 5,
+      "mean_pairwise_hamming": 0.8
+    },
+    {
+      "timestamp": "2026-09-15T20:38:04.213412+00:00",
+      "island_id": 0,
+      "generation": 4,
+      "pop_size": 5,
+      "mean_pairwise_hamming": 0.6
+    }
+  ],
+  "on_diversity": [
+    {
+      "timestamp": "2026-09-15T20:38:18.255817+00:00",
+      "island_id": 0,
+      "generation": 0,
+      "pop_size": 5,
+      "mean_pairwise_hamming": 6.5
+    },
+    {
+      "timestamp": "2026-09-15T20:38:34.630569+00:00",
+      "island_id": 0,
+      "generation": 1,
+      "pop_size": 7,
+      "mean_pairwise_hamming": 3.619047619047619
+    },
+    {
+      "timestamp": "2026-09-15T20:38:52.420003+00:00",
+      "island_id": 0,
+      "generation": 2,
+      "pop_size": 7,
+      "mean_pairwise_hamming": 4.619047619047619
+    },
+    {
+      "timestamp": "2026-09-15T20:39:11.131642+00:00",
+      "island_id": 0,
+      "generation": 3,
+      "pop_size": 7,
+      "mean_pairwise_hamming": 3.4761904761904763
+    },
+    {
+      "timestamp": "2026-09-15T20:39:29.885977+00:00",
+      "island_id": 0,
+      "generation": 4,
+      "pop_size": 7,
+      "mean_pairwise_hamming": 4.142857142857143
+    }
+  ],
+  "n_agent_messages": 10,
+  "comm_gen_agent_calls": [
+    {
+      "timestamp": "2026-09-15T20:39:09.813652+00:00",
+      "op": "agent_explore",
+      "prompt_style": "full",
+      "attempt": 0,
+      "seed": 1706353948,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold: D R L U S D L S\n\nOther agents' current folds, for context only -- you are not required to match or avoid them:\n  Peer 1: D L D R L S D U\n\nPropose a substantially different fold of length 8, using only the\nletters S, L, R, U, D. It should differ from your current fold in many\npositions, not a small tweak.\n\nRespond with EXACTLY one line and nothing else:\nFOLD: <8 letters from {S,L,R,U,D} separated by single spaces>\n",
+      "response": "FOLD: U L S R D U R L",
+      "latency_s": 1.3311903923749924,
+      "tokens_in": 245,
+      "tokens_out": 11,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 0,
+      "role": "explore",
+      "generation": 2
+    },
+    {
+      "timestamp": "2026-09-15T20:39:11.128928+00:00",
+      "op": "agent_refine",
+      "prompt_style": "position",
+      "attempt": 0,
+      "seed": 366106816,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold (0-indexed positions 0-7): D L D R L S D U\n\nOther agents' current folds, for context only -- you are not required to match or avoid them:\n  Peer 1: D R L U S D L S\n\nImprove this fold with small, targeted changes: name only the position(s)\nyou want to change and the new letter for each -- most positions should\nstay the same as your current fold. Change at least 1\nposition(s), but only as many as you judge actually improve the fold. The\nnew letter at each named position MUST differ from the letter currently\nthere (copying it back is not a change). Do not restate the whole fold.\n\nRespond with one line per change and nothing else (at least 1\nline(s)):\nPOSITION: <0-7>, NEW: <S, L, R, U, or D>\n",
+      "response": "POSITION: 1, NEW: R",
+      "latency_s": 1.3138688523322344,
+      "tokens_in": 311,
+      "tokens_out": 9,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 1,
+      "role": "refine",
+      "generation": 2
+    },
+    {
+      "timestamp": "2026-09-15T20:39:40.076230+00:00",
+      "op": "agent_explore",
+      "prompt_style": "full",
+      "attempt": 0,
+      "seed": 387229746,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold: D R S U L D S R\n\nOther agents' current folds, for context only -- you are not required to match or avoid them:\n  Peer 1: D R D R L S D D\n\nPropose a substantially different fold of length 8, using only the\nletters S, L, R, U, D. It should differ from your current fold in many\npositions, not a small tweak.\n\nRespond with EXACTLY one line and nothing else:\nFOLD: <8 letters from {S,L,R,U,D} separated by single spaces>\n",
+      "response": "FOLD: U D L R S D L R",
+      "latency_s": 1.2702034590765834,
+      "tokens_in": 245,
+      "tokens_out": 11,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 0,
+      "role": "explore",
+      "generation": 4
+    },
+    {
+      "timestamp": "2026-09-15T20:39:41.411261+00:00",
+      "op": "agent_refine",
+      "prompt_style": "position",
+      "attempt": 0,
+      "seed": 131087647,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold (0-indexed positions 0-7): D R D R L S D D\n\nOther agents' current folds, for context only -- you are not required to match or avoid them:\n  Peer 1: D R S U L D S R\n\nImprove this fold with small, targeted changes: name only the position(s)\nyou want to change and the new letter for each -- most positions should\nstay the same as your current fold. Change at least 1\nposition(s), but only as many as you judge actually improve the fold. The\nnew letter at each named position MUST differ from the letter currently\nthere (copying it back is not a change). Do not restate the whole fold.\n\nRespond with one line per change and nothing else (at least 1\nline(s)):\nPOSITION: <0-7>, NEW: <S, L, R, U, or D>\n",
+      "response": "POSITION: 6, NEW: U",
+      "latency_s": 1.3339742282405496,
+      "tokens_in": 311,
+      "tokens_out": 9,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 1,
+      "role": "refine",
+      "generation": 4
+    }
+  ],
+  "noncomm_gen_agent_calls": [
+    {
+      "timestamp": "2026-09-15T20:38:33.513967+00:00",
+      "op": "agent_explore",
+      "prompt_style": "full",
+      "attempt": 0,
+      "seed": 680852926,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold: R D R S D R D L\n\nPropose a substantially different fold of length 8, using only the\nletters S, L, R, U, D. It should differ from your current fold in many\npositions, not a small tweak.\n\nRespond with EXACTLY one line and nothing else:\nFOLD: <8 letters from {S,L,R,U,D} separated by single spaces>\n",
+      "response": "FOLD: U L S D R U S R",
+      "latency_s": 1.1417427733540535,
+      "tokens_in": 210,
+      "tokens_out": 11,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 0,
+      "role": "explore",
+      "generation": 0
+    },
+    {
+      "timestamp": "2026-09-15T20:38:34.627806+00:00",
+      "op": "agent_refine",
+      "prompt_style": "position",
+      "attempt": 0,
+      "seed": 1236201145,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold (0-indexed positions 0-7): D D D R U S D U\n\nImprove this fold with small, targeted changes: name only the position(s)\nyou want to change and the new letter for each -- most positions should\nstay the same as your current fold. Change at least 1\nposition(s), but only as many as you judge actually improve the fold. The\nnew letter at each named position MUST differ from the letter currently\nthere (copying it back is not a change). Do not restate the whole fold.\n\nRespond with one line per change and nothing else (at least 1\nline(s)):\nPOSITION: <0-7>, NEW: <S, L, R, U, or D>\n",
+      "response": "POSITION: 1, NEW: L",
+      "latency_s": 1.1130449119955301,
+      "tokens_in": 276,
+      "tokens_out": 9,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 1,
+      "role": "refine",
+      "generation": 0
+    },
+    {
+      "timestamp": "2026-09-15T20:38:51.187825+00:00",
+      "op": "agent_explore",
+      "prompt_style": "full",
+      "attempt": 0,
+      "seed": 1459160067,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold: U L S D R U S R\n\nPropose a substantially different fold of length 8, using only the\nletters S, L, R, U, D. It should differ from your current fold in many\npositions, not a small tweak.\n\nRespond with EXACTLY one line and nothing else:\nFOLD: <8 letters from {S,L,R,U,D} separated by single spaces>\n",
+      "response": "FOLD: D R L U S D L S",
+      "latency_s": 1.3528470993041992,
+      "tokens_in": 210,
+      "tokens_out": 11,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 0,
+      "role": "explore",
+      "generation": 1
+    },
+    {
+      "timestamp": "2026-09-15T20:38:52.417149+00:00",
+      "op": "agent_refine",
+      "prompt_style": "position",
+      "attempt": 0,
+      "seed": 1266588392,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold (0-indexed positions 0-7): D L D R U S D U\n\nImprove this fold with small, targeted changes: name only the position(s)\nyou want to change and the new letter for each -- most positions should\nstay the same as your current fold. Change at least 1\nposition(s), but only as many as you judge actually improve the fold. The\nnew letter at each named position MUST differ from the letter currently\nthere (copying it back is not a change). Do not restate the whole fold.\n\nRespond with one line per change and nothing else (at least 1\nline(s)):\nPOSITION: <0-7>, NEW: <S, L, R, U, or D>\n",
+      "response": "POSITION: 4, NEW: L",
+      "latency_s": 1.227939074859023,
+      "tokens_in": 276,
+      "tokens_out": 9,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 1,
+      "role": "refine",
+      "generation": 1
+    },
+    {
+      "timestamp": "2026-09-15T20:39:28.631477+00:00",
+      "op": "agent_explore",
+      "prompt_style": "full",
+      "attempt": 0,
+      "seed": 46464059,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold: U L S R D U R L\n\nPropose a substantially different fold of length 8, using only the\nletters S, L, R, U, D. It should differ from your current fold in many\npositions, not a small tweak.\n\nRespond with EXACTLY one line and nothing else:\nFOLD: <8 letters from {S,L,R,U,D} separated by single spaces>\n",
+      "response": "FOLD: D R S U L D S R",
+      "latency_s": 1.2913866499438882,
+      "tokens_in": 210,
+      "tokens_out": 11,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 0,
+      "role": "explore",
+      "generation": 3
+    },
+    {
+      "timestamp": "2026-09-15T20:39:29.883150+00:00",
+      "op": "agent_refine",
+      "prompt_style": "position",
+      "attempt": 0,
+      "seed": 417880882,
+      "temperature": 0.7,
+      "model": "gemma4:12b",
+      "prompt": "Your current fold (0-indexed positions 0-7): D R D R L S D U\n\nImprove this fold with small, targeted changes: name only the position(s)\nyou want to change and the new letter for each -- most positions should\nstay the same as your current fold. Change at least 1\nposition(s), but only as many as you judge actually improve the fold. The\nnew letter at each named position MUST differ from the letter currently\nthere (copying it back is not a change). Do not restate the whole fold.\n\nRespond with one line per change and nothing else (at least 1\nline(s)):\nPOSITION: <0-7>, NEW: <S, L, R, U, or D>\n",
+      "response": "POSITION: 7, NEW: D",
+      "latency_s": 1.2503667743876576,
+      "tokens_in": 276,
+      "tokens_out": 9,
+      "valid": true,
+      "island_id": 0,
+      "agent_id": 1,
+      "role": "refine",
+      "generation": 3
+    }
+  ]
+}

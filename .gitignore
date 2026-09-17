@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# model weights / large binaries -- Ollama models themselves live outside
+# this tree (~/ollama-models), this is a guard against accidental copies
+*.bin
+*.gguf
+*.safetensors
+*.pt
+*.pth
+models/
+
+# OS/editor cruft
+.DS_Store

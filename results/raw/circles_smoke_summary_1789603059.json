@@ -1,0 +1,683 @@
+{
+  "gpu_before": {
+    "usage": "8177 MiB, 15360 MiB, 85 %",
+    "compute_apps": "3187554, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "gpu_after": {
+    "usage": "8177 MiB, 15360 MiB, 100 %",
+    "compute_apps": "3187554, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "warm_up_s": 1.114874986000359,
+  "off": {
+    "arm": "off",
+    "run_id": "circles_smoke_off_1789603059",
+    "wall_s": 128.4728916399181,
+    "best_fitness_by_gen": [
+      1.0,
+      2.0,
+      2.0,
+      2.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0
+    ],
+    "operator_stats": {
+      "n_llm_calls": 115,
+      "n_llm_requests": 116,
+      "n_retries": 1,
+      "n_failures": 0,
+      "n_skipped_no_op": 5,
+      "total_latency_s": 128.35867744218558,
+      "total_tokens_in": 28984,
+      "total_tokens_out": 1365,
+      "mean_latency_s": 1.106540322777462,
+      "max_latency_s": 1.9547548135742545,
+      "min_latency_s": 0.6240255516022444
+    }
+  },
+  "on": {
+    "arm": "on",
+    "run_id": "circles_smoke_on_1789603059",
+    "wall_s": 905.1521207019687,
+    "best_fitness_by_gen": [
+      1.0,
+      2.0,
+      2.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0
+    ],
+    "operator_stats": {
+      "n_llm_calls": 210,
+      "n_llm_requests": 216,
+      "n_retries": 7,
+      "n_failures": 1,
+      "n_skipped_no_op": 7,
+      "total_latency_s": 904.9320616107434,
+      "total_tokens_in": 58557,
+      "total_tokens_out": 5525,
+      "mean_latency_s": 4.1895002852349235,
+      "max_latency_s": 51.884636303409934,
+      "min_latency_s": 0.9074983410537243
+    }
+  },
+  "off_diversity": [
+    {
+      "timestamp": "2026-09-16T23:57:40.355310+00:00",
+      "island_id": 0,
+      "generation": 0,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 13.607142857142858
+    },
+    {
+      "timestamp": "2026-09-16T23:57:52.731875+00:00",
+      "island_id": 0,
+      "generation": 1,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 8.392857142857142
+    },
+    {
+      "timestamp": "2026-09-16T23:58:04.412657+00:00",
+      "island_id": 0,
+      "generation": 2,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 6.678571428571429
+    },
+    {
+      "timestamp": "2026-09-16T23:58:18.406153+00:00",
+      "island_id": 0,
+      "generation": 3,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 4.821428571428571
+    },
+    {
+      "timestamp": "2026-09-16T23:58:30.933991+00:00",
+      "island_id": 0,
+      "generation": 4,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 3.4642857142857144
+    },
+    {
+      "timestamp": "2026-09-16T23:58:44.553806+00:00",
+      "island_id": 0,
+      "generation": 5,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 3.9285714285714284
+    },
+    {
+      "timestamp": "2026-09-16T23:58:57.502078+00:00",
+      "island_id": 0,
+      "generation": 6,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 3.642857142857143
+    },
+    {
+      "timestamp": "2026-09-16T23:59:11.126125+00:00",
+      "island_id": 0,
+      "generation": 7,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 2.25
+    },
+    {
+      "timestamp": "2026-09-16T23:59:24.794631+00:00",
+      "island_id": 0,
+      "generation": 8,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 1.7857142857142858
+    },
+    {
+      "timestamp": "2026-09-16T23:59:35.696944+00:00",
+      "island_id": 0,
+      "generation": 9,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 2.0714285714285716
+    }
+  ],
+  "on_diversity": [
+    {
+      "timestamp": "2026-09-16T23:59:48.828671+00:00",
+      "island_id": 0,
+      "generation": 0,
+      "pop_size": 8,
+      "mean_pairwise_hamming": 13.607142857142858
+    },
+    {
+      "timestamp": "2026-09-17T00:00:34.614369+00:00",
+      "island_id": 0,
+      "generation": 1,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 11.924242424242424
+    },
+    {
+      "timestamp": "2026-09-17T00:01:16.734275+00:00",
+      "island_id": 0,
+      "generation": 2,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 13.212121212121213
+    },
+    {
+      "timestamp": "2026-09-17T00:02:22.453197+00:00",
+      "island_id": 0,
+      "generation": 3,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 12.272727272727273
+    },
+    {
+      "timestamp": "2026-09-17T00:04:19.925999+00:00",
+      "island_id": 0,
+      "generation": 4,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 11.363636363636363
+    },
+    {
+      "timestamp": "2026-09-17T00:05:55.822586+00:00",
+      "island_id": 0,
+      "generation": 5,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 11.363636363636363
+    },
+    {
+      "timestamp": "2026-09-17T00:07:26.741204+00:00",
+      "island_id": 0,
+      "generation": 6,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 11.378787878787879
+    },
+    {
+      "timestamp": "2026-09-17T00:09:32.950406+00:00",
+      "island_id": 0,
+      "generation": 7,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 10.272727272727273
+    },
+    {
+      "timestamp": "2026-09-17T00:10:58.282984+00:00",
+      "island_id": 0,
+      "generation": 8,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 9.045454545454545
+    },
+    {
+      "timestamp": "2026-09-17T00:12:30.554392+00:00",
+      "island_id": 0,
+      "generation": 9,
+      "pop_size": 12,
+      "mean_pairwise_hamming": 8.409090909090908
+    }
+  ],
+  "coordination_ratio": {
+    "n_useful_calls": 40,
+    "n_coordination_calls": 57,
+    "coordination_per_useful": 1.425
+  },
+  "tokens_reflected_floor": {
+    "n_calls_with_entries_shown": 24,
+    "n_with_keyword_overlap": 21,
+    "overlap_floor_fraction": 0.875,
+    "total_blackboard_tokens_shown": 2048,
+    "mean_blackboard_tokens_shown_per_call": 85.33333333333333
+  },
+  "board_growth": [
+    {
+      "generation": 0,
+      "live_entries": 1,
+      "live_tokens": 12
+    },
+    {
+      "generation": 2,
+      "live_entries": 2,
+      "live_tokens": 37
+    },
+    {
+      "generation": 2,
+      "live_entries": 3,
+      "live_tokens": 60
+    },
+    {
+      "generation": 2,
+      "live_entries": 4,
+      "live_tokens": 81
+    },
+    {
+      "generation": 2,
+      "live_entries": 5,
+      "live_tokens": 97
+    },
+    {
+      "generation": 3,
+      "live_entries": 6,
+      "live_tokens": 119
+    },
+    {
+      "generation": 3,
+      "live_entries": 7,
+      "live_tokens": 136
+    },
+    {
+      "generation": 3,
+      "live_entries": 8,
+      "live_tokens": 157
+    },
+    {
+      "generation": 3,
+      "live_entries": 9,
+      "live_tokens": 180
+    },
+    {
+      "generation": 3,
+      "live_entries": 8,
+      "live_tokens": 164
+    },
+    {
+      "generation": 3,
+      "live_entries": 7,
+      "live_tokens": 139
+    },
+    {
+      "generation": 3,
+      "live_entries": 6,
+      "live_tokens": 118
+    },
+    {
+      "generation": 3,
+      "live_entries": 5,
+      "live_tokens": 95
+    },
+    {
+      "generation": 3,
+      "live_entries": 6,
+      "live_tokens": 112
+    },
+    {
+      "generation": 3,
+      "live_entries": 5,
+      "live_tokens": 91
+    },
+    {
+      "generation": 3,
+      "live_entries": 4,
+      "live_tokens": 68
+    },
+    {
+      "generation": 3,
+      "live_entries": 3,
+      "live_tokens": 46
+    },
+    {
+      "generation": 3,
+      "live_entries": 2,
+      "live_tokens": 29
+    },
+    {
+      "generation": 4,
+      "live_entries": 3,
+      "live_tokens": 41
+    },
+    {
+      "generation": 4,
+      "live_entries": 4,
+      "live_tokens": 60
+    },
+    {
+      "generation": 4,
+      "live_entries": 5,
+      "live_tokens": 84
+    },
+    {
+      "generation": 4,
+      "live_entries": 6,
+      "live_tokens": 107
+    },
+    {
+      "generation": 5,
+      "live_entries": 7,
+      "live_tokens": 122
+    },
+    {
+      "generation": 5,
+      "live_entries": 8,
+      "live_tokens": 141
+    },
+    {
+      "generation": 5,
+      "live_entries": 9,
+      "live_tokens": 158
+    },
+    {
+      "generation": 5,
+      "live_entries": 10,
+      "live_tokens": 175
+    },
+    {
+      "generation": 5,
+      "live_entries": 11,
+      "live_tokens": 194
+    },
+    {
+      "generation": 6,
+      "live_entries": 12,
+      "live_tokens": 211
+    },
+    {
+      "generation": 6,
+      "live_entries": 13,
+      "live_tokens": 228
+    },
+    {
+      "generation": 6,
+      "live_entries": 14,
+      "live_tokens": 246
+    },
+    {
+      "generation": 6,
+      "live_entries": 15,
+      "live_tokens": 258
+    },
+    {
+      "generation": 6,
+      "live_entries": 14,
+      "live_tokens": 241
+    },
+    {
+      "generation": 6,
+      "live_entries": 13,
+      "live_tokens": 224
+    },
+    {
+      "generation": 6,
+      "live_entries": 12,
+      "live_tokens": 206
+    },
+    {
+      "generation": 6,
+      "live_entries": 11,
+      "live_tokens": 194
+    },
+    {
+      "generation": 6,
+      "live_entries": 10,
+      "live_tokens": 177
+    },
+    {
+      "generation": 6,
+      "live_entries": 9,
+      "live_tokens": 153
+    },
+    {
+      "generation": 6,
+      "live_entries": 8,
+      "live_tokens": 138
+    },
+    {
+      "generation": 6,
+      "live_entries": 7,
+      "live_tokens": 126
+    },
+    {
+      "generation": 6,
+      "live_entries": 6,
+      "live_tokens": 107
+    },
+    {
+      "generation": 6,
+      "live_entries": 5,
+      "live_tokens": 90
+    },
+    {
+      "generation": 6,
+      "live_entries": 4,
+      "live_tokens": 71
+    },
+    {
+      "generation": 7,
+      "live_entries": 5,
+      "live_tokens": 92
+    },
+    {
+      "generation": 7,
+      "live_entries": 6,
+      "live_tokens": 109
+    },
+    {
+      "generation": 7,
+      "live_entries": 7,
+      "live_tokens": 126
+    },
+    {
+      "generation": 7,
+      "live_entries": 8,
+      "live_tokens": 147
+    },
+    {
+      "generation": 8,
+      "live_entries": 9,
+      "live_tokens": 165
+    },
+    {
+      "generation": 8,
+      "live_entries": 10,
+      "live_tokens": 184
+    },
+    {
+      "generation": 8,
+      "live_entries": 11,
+      "live_tokens": 207
+    },
+    {
+      "generation": 8,
+      "live_entries": 12,
+      "live_tokens": 221
+    },
+    {
+      "generation": 9,
+      "live_entries": 13,
+      "live_tokens": 243
+    },
+    {
+      "generation": 9,
+      "live_entries": 14,
+      "live_tokens": 260
+    },
+    {
+      "generation": 9,
+      "live_entries": 15,
+      "live_tokens": 278
+    },
+    {
+      "generation": 9,
+      "live_entries": 16,
+      "live_tokens": 298
+    },
+    {
+      "generation": 9,
+      "live_entries": 15,
+      "live_tokens": 275
+    },
+    {
+      "generation": 9,
+      "live_entries": 16,
+      "live_tokens": 295
+    },
+    {
+      "generation": 9,
+      "live_entries": 15,
+      "live_tokens": 275
+    },
+    {
+      "generation": 9,
+      "live_entries": 14,
+      "live_tokens": 257
+    },
+    {
+      "generation": 9,
+      "live_entries": 13,
+      "live_tokens": 235
+    },
+    {
+      "generation": 9,
+      "live_entries": 12,
+      "live_tokens": 212
+    },
+    {
+      "generation": 9,
+      "live_entries": 11,
+      "live_tokens": 195
+    },
+    {
+      "generation": 9,
+      "live_entries": 10,
+      "live_tokens": 176
+    },
+    {
+      "generation": 9,
+      "live_entries": 9,
+      "live_tokens": 155
+    },
+    {
+      "generation": 9,
+      "live_entries": 8,
+      "live_tokens": 141
+    },
+    {
+      "generation": 9,
+      "live_entries": 7,
+      "live_tokens": 124
+    },
+    {
+      "generation": 9,
+      "live_entries": 6,
+      "live_tokens": 103
+    },
+    {
+      "generation": 9,
+      "live_entries": 5,
+      "live_tokens": 85
+    },
+    {
+      "generation": 9,
+      "live_entries": 4,
+      "live_tokens": 68
+    }
+  ],
+  "off_fitness_per_token": {
+    "fitness_gain": 2.0,
+    "total_tokens": 30349,
+    "fitness_gain_per_1k_tokens": 0.06590002965501333
+  },
+  "on_fitness_per_token": {
+    "fitness_gain": 2.0,
+    "total_tokens": 64082,
+    "fitness_gain_per_1k_tokens": 0.031210012171904746
+  },
+  "off_identical_parent_rate": [
+    {
+      "generation": 0,
+      "n_calls": 4,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 1,
+      "n_calls": 3,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 2,
+      "n_calls": 4,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 3,
+      "n_calls": 4,
+      "identical_rate": 1.0
+    },
+    {
+      "generation": 4,
+      "n_calls": 3,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 5,
+      "n_calls": 4,
+      "identical_rate": 0.25
+    },
+    {
+      "generation": 6,
+      "n_calls": 4,
+      "identical_rate": 0.5
+    },
+    {
+      "generation": 7,
+      "n_calls": 4,
+      "identical_rate": 0.25
+    },
+    {
+      "generation": 8,
+      "n_calls": 2,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 9,
+      "n_calls": 3,
+      "identical_rate": 0.0
+    }
+  ],
+  "on_identical_parent_rate": [
+    {
+      "generation": 0,
+      "n_calls": 4,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 1,
+      "n_calls": 4,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 2,
+      "n_calls": 3,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 3,
+      "n_calls": 3,
+      "identical_rate": 0.3333333333333333
+    },
+    {
+      "generation": 4,
+      "n_calls": 4,
+      "identical_rate": 0.25
+    },
+    {
+      "generation": 5,
+      "n_calls": 3,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 6,
+      "n_calls": 2,
+      "identical_rate": 0.5
+    },
+    {
+      "generation": 7,
+      "n_calls": 3,
+      "identical_rate": 0.3333333333333333
+    },
+    {
+      "generation": 8,
+      "n_calls": 3,
+      "identical_rate": 0.0
+    },
+    {
+      "generation": 9,
+      "n_calls": 4,
+      "identical_rate": 0.25
+    }
+  ]
+}

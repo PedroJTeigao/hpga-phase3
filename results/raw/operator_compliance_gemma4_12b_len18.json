@@ -1,0 +1,73 @@
+{
+  "gpu_before": {
+    "usage": "8171 MiB, 15360 MiB, 0 %",
+    "compute_apps": "3187554, 8168 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "gpu_after": {
+    "usage": "8175 MiB, 15360 MiB, 99 %",
+    "compute_apps": "3187554, 8172 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "conditions": [
+    {
+      "op": "mutate",
+      "style": "full",
+      "model": "gemma4:12b",
+      "n_calls": 20,
+      "genome_len": 18,
+      "stats": {
+        "n_llm_calls": 20,
+        "n_llm_requests": 48,
+        "n_retries": 40,
+        "n_failures": 12,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 81.0964234424755,
+        "total_tokens_in": 11092,
+        "total_tokens_out": 1056,
+        "mean_latency_s": 1.6895088217182395,
+        "max_latency_s": 1.95635730586946,
+        "min_latency_s": 1.3299118671566248
+      },
+      "fallback_rate": 0.6,
+      "requests_per_call": 2.4,
+      "zero_diff_outputs": 9,
+      "position_counts": {
+        "1": 1,
+        "4": 1,
+        "7": 2,
+        "16": 3,
+        "17": 6
+      },
+      "n_positions_touched": 5
+    },
+    {
+      "op": "mutate",
+      "style": "position",
+      "model": "gemma4:12b",
+      "n_calls": 20,
+      "genome_len": 18,
+      "stats": {
+        "n_llm_calls": 20,
+        "n_llm_requests": 20,
+        "n_retries": 0,
+        "n_failures": 0,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 22.488631091080606,
+        "total_tokens_in": 4480,
+        "total_tokens_out": 181,
+        "mean_latency_s": 1.1244315545540302,
+        "max_latency_s": 1.1974402936175466,
+        "min_latency_s": 1.0636038342490792
+      },
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "zero_diff_outputs": 0,
+      "position_counts": {
+        "1": 15,
+        "2": 3,
+        "3": 1,
+        "17": 1
+      },
+      "n_positions_touched": 4
+    }
+  ]
+}

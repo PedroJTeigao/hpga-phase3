@@ -1,0 +1,39 @@
+genome_length=18  pop_size=8  n_generations=3  seed=0  N_values=[1, 2, 4, 8]
+
+=== deterministic sweep (reference/contrast) ===
+  [deterministic] N=1 ...
+    wall=0.1486s  ga_total=0.0002s  dis_total=0.1484s  (took 0.22s)
+  [deterministic] N=2 ...
+    wall=0.1423s  ga_total=0.0001s  dis_total=0.1421s  (took 0.17s)
+  [deterministic] N=4 ...
+    wall=0.1470s  ga_total=0.0002s  dis_total=0.1468s  (took 0.20s)
+  [deterministic] N=8 ...
+    wall=0.1784s  ga_total=0.0002s  dis_total=0.1782s  (took 0.31s)
+
+=== deterministic: predicted vs. observed overall speedup (paired against N=1) ===
+  N=1 baseline: wall=0.1486s  ga_total=0.0002s  dis_total=0.1484s  serial_fraction=0.0013
+
+     N    observed wall (s)   observed speedup   predicted wall (s)  predicted speedup
+     1               0.1486             1.0000               0.1486             1.0002
+     2               0.1423             1.0441               0.0744             1.9977
+     4               0.1470             1.0108               0.0373             3.9847
+     8               0.1784             0.8327               0.0187             7.9273
+
+=== llm sweep ===
+  [llm] N=1 ...
+    wall=305.4178s  ga_total=305.2565s  dis_total=0.1612s  (took 305.44s)
+  [llm] N=2 ...
+    wall=290.6164s  ga_total=290.4204s  dis_total=0.1957s  (took 290.68s)
+  [llm] N=4 ...
+    wall=284.1218s  ga_total=283.9271s  dis_total=0.1947s  (took 284.20s)
+  [llm] N=8 ...
+    wall=283.3765s  ga_total=283.1811s  dis_total=0.1954s  (took 283.51s)
+
+=== llm: predicted vs. observed overall speedup (paired against N=1) ===
+  N=1 baseline: wall=305.4178s  ga_total=305.2565s  dis_total=0.1612s  serial_fraction=0.9995
+
+     N    observed wall (s)   observed speedup   predicted wall (s)  predicted speedup
+     1             305.4178             1.0000             305.4177             1.0000
+     2             290.6164             1.0509             305.3371             1.0003
+     4             284.1218             1.0750             305.2968             1.0004
+     8             283.3765             1.0778             305.2766             1.0005
