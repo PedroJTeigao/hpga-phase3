@@ -569,11 +569,34 @@ more predictably than the real, less reliable one it's standing in for,
 and the gap between them is only knowable by actually running the
 less-reliable path.
 
-Next:
+Next, in priority order — the first item is the critical path implied by
+§8's own conclusion; the rest are correct but deliberately not it:
+
+- **Change the representation.** If the binding constraint on this
+  substrate is that the genome carries no semantic content for an LLM to
+  reason about, the direct test is a representation where it does — amino
+  acid sequences with an ESMFold-predicted structure as the fitness
+  oracle, currently being set up as a separate track. This is the test
+  the circles/blackboard architecture hasn't had: everything in §1-7 ran
+  on a move-string with no meaning beyond its own geometry, so no result
+  here has yet distinguished "diversity doesn't help this architecture"
+  from "diversity doesn't help on a representation with nothing to reason
+  about." That's the open question §8 actually turns on, and nothing
+  below resolves it.
+
+Deferred, not overlooked, now that the critical path has moved off this
+representation — each of the following is correct and worth doing, just
+not load-bearing for §8's conclusion:
+
 - **Apply the position/segment-style affordance fix to propose/observe.**
   §7.1 traced `on`'s non-reproducibility to exactly the failure mode this
-  fix already solved twice (§4.3). This is no longer speculative future
-  work, it's a known fix with an identified, unpatched third call site.
+  fix already solved twice (§4.3), and the fix is known, not speculative.
+  Deliberately not prioritized above: it would make `on` reproducible and
+  remove the retry-driven RNG drift, both real improvements, but it would
+  not change §7.2's finding — circles would still maintain diversity
+  without converting it into fitness, because the reason isn't call
+  reliability, it's what §8 concludes the representation itself is
+  bounding.
 - **Repeat the anchor configuration itself (genome_length=18) at more
   seeds.** §3's 1.2x identical-parent point and §5's original four
   fitness comparisons still rest on that single run; the multi-seed
@@ -583,9 +606,10 @@ Next:
   retire those styles.** §4's redesign only fixed `segment`; the old
   17.6%-false-rejection threshold is still the fallback gate for the two
   styles that still restate letters independently.
+
+Not deferred — applies regardless of representation:
 - **Keep the raw-log discipline the retention-gap fix (§5) doesn't
-  automate.** Followed twice now (§6.6, this section) — every raw file
-  these sections' numbers depend on is committed. Version control and
-  backups only help if every run that produces a real number keeps doing
-  that, not just these two.
-  once.
+  automate.** Followed twice now (§6.6, §7) — every raw file these
+  sections' numbers depend on is committed. Version control and backups
+  only help if every run that produces a real number keeps doing that,
+  including whatever comes out of the representation change above.
