@@ -63,7 +63,7 @@ SEQUENCE = make_timing_sequence(length=26, seed=1)  # genome_length=24, per swee
 POP_SIZE = 8
 ELITISM = 1
 N_WORKERS = 2
-N_GENERATIONS = 10
+N_GENERATIONS = int(os.environ.get("HPGA_DIVFIT_N_GENERATIONS", "10"))
 N_CIRCLES = 2
 AGENTS_PER_CIRCLE = 2
 CENTRAL_MODE = "llm"
@@ -87,6 +87,37 @@ def gpu_snapshot() -> dict:
         "compute_apps": _run(["nvidia-smi", "--query-compute-apps=pid,used_memory,process_name",
                                "--format=csv,noheader"]) or "(none)",
     }
+
+
+def _known_pids(compute_apps: str) -> set[str]:
+    """First field (pid) of each nvidia-smi compute-apps line, '' if none."""
+    pids = set()
+    for line in compute_apps.splitlines():
+        line = line.strip()
+        if not line or line == "(none)":
+            continue
+        pid = line.split(",")[0].strip()
+        if pid:
+            pids.add(pid)
+    return pids
+
+
+def check_contamination(baseline_pids: set[str], snap: dict, label: str) -> str | None:
+    """Flags (doesn't block) any compute-apps pid not present in the
+    baseline snapshot taken before this script's own model warm-up --
+    i.e. a second GPU consumer appeared after this run started. Returns a
+    warning string if so, else None."""
+    current = _known_pids(snap["compute_apps"])
+    unexpected = current - baseline_pids
+    if unexpected:
+        msg = (f"!!! GPU CONTAMINATION WARNING at {label}: pid(s) {unexpected} "
+               f"not present in the pre-run baseline -- another process is now "
+               f"using this GPU. compute_apps={snap['compute_apps']!r}. "
+               f"Fitness/diversity data is unaffected; wall-clock timing from "
+               f"here on is suspect.")
+        print(msg, flush=True)
+        return msg
+    return None
 
 
 def warm_up_model() -> float:
@@ -165,7 +196,20 @@ def main() -> None:
     warm_s = warm_up_model()
     print(f"model warm-up: {warm_s:.1f}s (excluded from measured latency)\n", flush=True)
 
+    # Baseline for contamination checks is taken AFTER warm-up, not before:
+    # warm_up_model() is what spawns/loads this run's own Ollama llama-server
+    # process, so a pre-warm-up baseline would flag that pid as "unexpected"
+    # against itself at every subsequent checkpoint -- caught in testing when
+    # it fired on the very first check.
+    gpu_after_warmup = gpu_snapshot()
+    baseline_pids = _known_pids(gpu_after_warmup["compute_apps"])
+    print(f"gpu after warm-up (contamination baseline): {gpu_after_warmup['usage']}  "
+          f"compute_apps: {gpu_after_warmup['compute_apps']}\n", flush=True)
+
     all_results = {"off": [], "on": []}
+    gpu_snapshots: list[dict] = [{"label": "before", **gpu_before},
+                                 {"label": "after_warmup_baseline", **gpu_after_warmup}]
+    contamination_warnings: list[str] = []
     t_start = time.perf_counter()
 
     for seed in SEEDS:
@@ -173,18 +217,42 @@ def main() -> None:
             arm = "on" if circles_enabled else "off"
             run_id = f"circles_divfit_{arm}_s{seed}_{ts}"
             print(f"--- seed={seed} arm={arm} run_id={run_id} ---", flush=True)
+
+            pre = gpu_snapshot()
+            w = check_contamination(baseline_pids, pre, f"before seed={seed} arm={arm}")
+            if w:
+                contamination_warnings.append(w)
+            gpu_snapshots.append({"label": f"before_seed{seed}_{arm}", **pre})
+
             r = run_arm(circles_enabled=circles_enabled, seed=seed, run_id=run_id)
             all_results[arm].append(r)
             print(f"    wall_s={r['wall_s']:.1f}  best_fitness_by_gen={r['best_fitness_by_gen']}  "
                   f"fitness_gain_per_1k_tokens={r['fitness_gain_per_1k_tokens']}", flush=True)
+
+            post = gpu_snapshot()
+            w = check_contamination(baseline_pids, post, f"after seed={seed} arm={arm}")
+            if w:
+                contamination_warnings.append(w)
+            gpu_snapshots.append({"label": f"after_seed{seed}_{arm}", **post})
+
             elapsed = time.perf_counter() - t_start
             print(f"    cumulative elapsed: {elapsed/60:.1f} min\n", flush=True)
 
     gpu_after = gpu_snapshot()
     print(f"gpu after: {gpu_after['usage']}  compute_apps: {gpu_after['compute_apps']}", flush=True)
+    w = check_contamination(baseline_pids, gpu_after, "final")
+    if w:
+        contamination_warnings.append(w)
 
     total_wall = time.perf_counter() - t_start
     print(f"\ntotal wall time (both arms, all seeds): {total_wall/60:.1f} min", flush=True)
+    if contamination_warnings:
+        print(f"\n!!! {len(contamination_warnings)} GPU contamination warning(s) during this run -- "
+              f"see gpu_snapshots/contamination_warnings in the summary JSON. Wall-clock timing "
+              f"numbers from the affected windows should be treated as suspect. !!!\n", flush=True)
+    else:
+        print("\nNo GPU contamination detected at any checkpoint -- this run's own Ollama "
+              "process was the only compute-apps entry throughout.\n", flush=True)
 
     # --- aggregate summary --------------------------------------------
     summary = {
@@ -196,6 +264,8 @@ def main() -> None:
         },
         "gpu_before": gpu_before,
         "gpu_after": gpu_after,
+        "gpu_snapshots": gpu_snapshots,
+        "contamination_warnings": contamination_warnings,
         "warm_up_s": warm_s,
         "total_wall_s": total_wall,
         "off": all_results["off"],

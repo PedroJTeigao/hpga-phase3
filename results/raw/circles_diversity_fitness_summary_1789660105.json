@@ -1,0 +1,446 @@
+{
+  "ts": 1789660105,
+  "config": {
+    "sequence": "HHPHPPPPHHPHPPHPPHHPHHHHPH",
+    "genome_length": 24,
+    "pop_size": 8,
+    "n_generations": 15,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "n_circles": 2,
+    "agents_per_circle": 2,
+    "prompt_style": "best"
+  },
+  "gpu_before": {
+    "usage": "8177 MiB, 15360 MiB, 0 %",
+    "compute_apps": "3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "gpu_after": {
+    "usage": "8179 MiB, 15360 MiB, 100 %",
+    "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "gpu_snapshots": [
+    {
+      "label": "before",
+      "usage": "8177 MiB, 15360 MiB, 0 %",
+      "compute_apps": "3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_warmup_baseline",
+      "usage": "8177 MiB, 15360 MiB, 69 %",
+      "compute_apps": "3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "before_seed0_off",
+      "usage": "8177 MiB, 15360 MiB, 49 %",
+      "compute_apps": "3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_seed0_off",
+      "usage": "8177 MiB, 15360 MiB, 99 %",
+      "compute_apps": "3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "before_seed0_on",
+      "usage": "8177 MiB, 15360 MiB, 38 %",
+      "compute_apps": "3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_seed0_on",
+      "usage": "8179 MiB, 15360 MiB, 99 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "before_seed1_off",
+      "usage": "8179 MiB, 15360 MiB, 14 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_seed1_off",
+      "usage": "8179 MiB, 15360 MiB, 99 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "before_seed1_on",
+      "usage": "8179 MiB, 15360 MiB, 99 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_seed1_on",
+      "usage": "8179 MiB, 15360 MiB, 100 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "before_seed2_off",
+      "usage": "8179 MiB, 15360 MiB, 67 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_seed2_off",
+      "usage": "8179 MiB, 15360 MiB, 99 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "before_seed2_on",
+      "usage": "8179 MiB, 15360 MiB, 42 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    },
+    {
+      "label": "after_seed2_on",
+      "usage": "8179 MiB, 15360 MiB, 100 %",
+      "compute_apps": "3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+    }
+  ],
+  "contamination_warnings": [],
+  "warm_up_s": 1.1414507487788796,
+  "total_wall_s": 6645.290824611671,
+  "off": [
+    {
+      "arm": "off",
+      "seed": 0,
+      "run_id": "circles_divfit_off_s0_1789660105",
+      "wall_s": 218.82200177572668,
+      "best_fitness_by_gen": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "diversity_by_gen": [
+        19.178571428571427,
+        13.964285714285714,
+        10.857142857142858,
+        6.607142857142857,
+        3.142857142857143,
+        1.6428571428571428,
+        2.0,
+        2.5714285714285716,
+        3.107142857142857,
+        2.392857142857143,
+        2.607142857142857,
+        3.1785714285714284,
+        2.25,
+        2.0,
+        2.5357142857142856
+      ],
+      "operator_stats": {
+        "n_llm_calls": 170,
+        "n_llm_requests": 177,
+        "n_retries": 7,
+        "n_failures": 0,
+        "n_skipped_no_op": 10,
+        "total_latency_s": 218.6600534170866,
+        "total_tokens_in": 45630,
+        "total_tokens_out": 2192,
+        "mean_latency_s": 1.2353675334298677,
+        "max_latency_s": 2.377160320058465,
+        "min_latency_s": 0.592641863040626
+      },
+      "fitness_gain": 1.0,
+      "total_tokens": 47822,
+      "fitness_gain_per_1k_tokens": 0.020910877838651663
+    },
+    {
+      "arm": "off",
+      "seed": 1,
+      "run_id": "circles_divfit_off_s1_1789660105",
+      "wall_s": 457.90221528708935,
+      "best_fitness_by_gen": [
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "diversity_by_gen": [
+        18.571428571428573,
+        12.785714285714286,
+        3.8214285714285716,
+        1.6785714285714286,
+        1.4642857142857142,
+        2.2142857142857144,
+        2.5,
+        2.607142857142857,
+        2.75,
+        2.642857142857143,
+        2.4642857142857144,
+        2.392857142857143,
+        2.857142857142857,
+        3.1785714285714284,
+        3.2857142857142856
+      ],
+      "operator_stats": {
+        "n_llm_calls": 172,
+        "n_llm_requests": 175,
+        "n_retries": 3,
+        "n_failures": 0,
+        "n_skipped_no_op": 8,
+        "total_latency_s": 457.765661499463,
+        "total_tokens_in": 45204,
+        "total_tokens_out": 2139,
+        "mean_latency_s": 2.6158037799969316,
+        "max_latency_s": 5.415887476876378,
+        "min_latency_s": 1.3718318920582533
+      },
+      "fitness_gain": 2.0,
+      "total_tokens": 47343,
+      "fitness_gain_per_1k_tokens": 0.04224489364848024
+    },
+    {
+      "arm": "off",
+      "seed": 2,
+      "run_id": "circles_divfit_off_s2_1789660105",
+      "wall_s": 441.1383546907455,
+      "best_fitness_by_gen": [
+        2.0,
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        3.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "diversity_by_gen": [
+        19.0,
+        14.178571428571429,
+        3.857142857142857,
+        1.7142857142857142,
+        1.6428571428571428,
+        1.9285714285714286,
+        1.4642857142857142,
+        1.5714285714285714,
+        1.4642857142857142,
+        1.5,
+        1.6428571428571428,
+        1.3571428571428572,
+        1.5357142857142858,
+        1.1071428571428572,
+        1.0357142857142858
+      ],
+      "operator_stats": {
+        "n_llm_calls": 174,
+        "n_llm_requests": 174,
+        "n_retries": 0,
+        "n_failures": 0,
+        "n_skipped_no_op": 6,
+        "total_latency_s": 440.99851728230715,
+        "total_tokens_in": 44880,
+        "total_tokens_out": 2166,
+        "mean_latency_s": 2.534474237254639,
+        "max_latency_s": 5.63416888192296,
+        "min_latency_s": 1.3024467341601849
+      },
+      "fitness_gain": 2.0,
+      "total_tokens": 47046,
+      "fitness_gain_per_1k_tokens": 0.04251158440675084
+    }
+  ],
+  "on": [
+    {
+      "arm": "on",
+      "seed": 0,
+      "run_id": "circles_divfit_on_s0_1789660105",
+      "wall_s": 1888.4073279974982,
+      "best_fitness_by_gen": [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0
+      ],
+      "diversity_by_gen": [
+        19.178571428571427,
+        16.863636363636363,
+        15.924242424242424,
+        13.166666666666666,
+        13.318181818181818,
+        12.287878787878787,
+        12.833333333333334,
+        13.409090909090908,
+        13.712121212121213,
+        13.969696969696969,
+        12.666666666666666,
+        11.863636363636363,
+        10.621212121212121,
+        10.621212121212121,
+        11.909090909090908
+      ],
+      "operator_stats": {
+        "n_llm_calls": 325,
+        "n_llm_requests": 368,
+        "n_retries": 60,
+        "n_failures": 17,
+        "n_skipped_no_op": 4,
+        "total_latency_s": 1888.0674197059125,
+        "total_tokens_in": 108731,
+        "total_tokens_out": 10339,
+        "mean_latency_s": 5.1306179883312835,
+        "max_latency_s": 58.345608594827354,
+        "min_latency_s": 1.0059504238888621
+      },
+      "fitness_gain": 2.0,
+      "total_tokens": 119070,
+      "fitness_gain_per_1k_tokens": 0.01679684219366759
+    },
+    {
+      "arm": "on",
+      "seed": 1,
+      "run_id": "circles_divfit_on_s1_1789660105",
+      "wall_s": 1925.0594635661691,
+      "best_fitness_by_gen": [
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        4.0,
+        4.0
+      ],
+      "diversity_by_gen": [
+        18.571428571428573,
+        16.545454545454547,
+        15.712121212121213,
+        12.5,
+        12.484848484848484,
+        12.090909090909092,
+        12.045454545454545,
+        12.136363636363637,
+        12.272727272727273,
+        12.848484848484848,
+        12.121212121212121,
+        12.287878787878787,
+        12.348484848484848,
+        12.469696969696969,
+        12.151515151515152
+      ],
+      "operator_stats": {
+        "n_llm_calls": 321,
+        "n_llm_requests": 354,
+        "n_retries": 49,
+        "n_failures": 16,
+        "n_skipped_no_op": 8,
+        "total_latency_s": 1924.7389771528542,
+        "total_tokens_in": 104698,
+        "total_tokens_out": 10277,
+        "mean_latency_s": 5.43711575466908,
+        "max_latency_s": 62.527456568554044,
+        "min_latency_s": 1.3560241190716624
+      },
+      "fitness_gain": 1.0,
+      "total_tokens": 114975,
+      "fitness_gain_per_1k_tokens": 0.008697542944118288
+    },
+    {
+      "arm": "on",
+      "seed": 2,
+      "run_id": "circles_divfit_on_s2_1789660105",
+      "wall_s": 1712.8288639448583,
+      "best_fitness_by_gen": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        3.0,
+        3.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "diversity_by_gen": [
+        19.0,
+        16.863636363636363,
+        12.606060606060606,
+        14.393939393939394,
+        13.075757575757576,
+        13.0,
+        14.424242424242424,
+        15.333333333333334,
+        12.43939393939394,
+        12.818181818181818,
+        11.848484848484848,
+        9.909090909090908,
+        11.151515151515152,
+        10.424242424242424,
+        10.0
+      ],
+      "operator_stats": {
+        "n_llm_calls": 322,
+        "n_llm_requests": 338,
+        "n_retries": 21,
+        "n_failures": 5,
+        "n_skipped_no_op": 7,
+        "total_latency_s": 1712.5248449770734,
+        "total_tokens_in": 97415,
+        "total_tokens_out": 9076,
+        "mean_latency_s": 5.066641553186607,
+        "max_latency_s": 66.25310948956758,
+        "min_latency_s": 1.3673575362190604
+      },
+      "fitness_gain": 3.0,
+      "total_tokens": 106491,
+      "fitness_gain_per_1k_tokens": 0.028171394765754854
+    }
+  ],
+  "off_final_fitness_mean": 3.6666666666666665,
+  "off_final_diversity_mean": 2.2857142857142856,
+  "off_fitness_gain_per_1k_tokens_mean": 0.03522245196462758,
+  "on_final_fitness_mean": 4.0,
+  "on_final_diversity_mean": 11.353535353535355,
+  "on_fitness_gain_per_1k_tokens_mean": 0.017888593301180245
+}

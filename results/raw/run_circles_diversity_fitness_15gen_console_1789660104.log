@@ -1,0 +1,48 @@
+=== run_circles_diversity_fitness  ts=1789660105  genome_length=24  pop_size=8  n_generations=15  seeds=[0, 1, 2] ===
+gpu before: 8177 MiB, 15360 MiB, 0 %  compute_apps: 3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+model warm-up: 1.1s (excluded from measured latency)
+
+gpu after warm-up (contamination baseline): 8177 MiB, 15360 MiB, 69 %  compute_apps: 3557984, 8174 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+--- seed=0 arm=off run_id=circles_divfit_off_s0_1789660105 ---
+    wall_s=218.8  best_fitness_by_gen=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]  fitness_gain_per_1k_tokens=0.020910877838651663
+    cumulative elapsed: 3.6 min
+
+--- seed=0 arm=on run_id=circles_divfit_on_s0_1789660105 ---
+    wall_s=1888.4  best_fitness_by_gen=[1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0]  fitness_gain_per_1k_tokens=0.01679684219366759
+    cumulative elapsed: 35.1 min
+
+--- seed=1 arm=off run_id=circles_divfit_off_s1_1789660105 ---
+    wall_s=457.9  best_fitness_by_gen=[3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0, 4.0, 5.0, 5.0, 5.0]  fitness_gain_per_1k_tokens=0.04224489364848024
+    cumulative elapsed: 42.8 min
+
+--- seed=1 arm=on run_id=circles_divfit_on_s1_1789660105 ---
+    wall_s=1925.1  best_fitness_by_gen=[3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0]  fitness_gain_per_1k_tokens=0.008697542944118288
+    cumulative elapsed: 74.8 min
+
+--- seed=2 arm=off run_id=circles_divfit_off_s2_1789660105 ---
+    wall_s=441.1  best_fitness_by_gen=[2.0, 2.0, 2.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0]  fitness_gain_per_1k_tokens=0.04251158440675084
+    cumulative elapsed: 82.2 min
+
+--- seed=2 arm=on run_id=circles_divfit_on_s2_1789660105 ---
+    wall_s=1712.8  best_fitness_by_gen=[2.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]  fitness_gain_per_1k_tokens=0.028171394765754854
+    cumulative elapsed: 110.8 min
+
+gpu after: 8179 MiB, 15360 MiB, 100 %  compute_apps: 3557984, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+total wall time (both arms, all seeds): 110.8 min
+
+No GPU contamination detected at any checkpoint -- this run's own Ollama process was the only compute-apps entry throughout.
+
+
+=== off summary across 3 seeds ===
+  final fitness: [2.0, 5.0, 4.0]  mean=3.67
+  final diversity: [2.54, 3.29, 1.04]  mean=2.29
+  fitness_gain_per_1k_tokens: [0.0209, 0.0422, 0.0425]  mean=0.0352
+
+=== on summary across 3 seeds ===
+  final fitness: [3.0, 4.0, 5.0]  mean=4.00
+  final diversity: [11.91, 12.15, 10.0]  mean=11.35
+  fitness_gain_per_1k_tokens: [0.0168, 0.0087, 0.0282]  mean=0.0179
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/circles_diversity_fitness_summary_1789660105.json

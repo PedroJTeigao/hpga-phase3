@@ -1,0 +1,15 @@
+{"timestamp": "2026-09-17T17:10:38.606598+00:00", "island_id": 0, "generation": 0, "pop_size": 8, "mean_pairwise_hamming": 19.0}
+{"timestamp": "2026-09-17T17:12:08.615328+00:00", "island_id": 0, "generation": 1, "pop_size": 12, "mean_pairwise_hamming": 16.863636363636363}
+{"timestamp": "2026-09-17T17:13:28.201189+00:00", "island_id": 0, "generation": 2, "pop_size": 12, "mean_pairwise_hamming": 12.606060606060606}
+{"timestamp": "2026-09-17T17:15:03.535163+00:00", "island_id": 0, "generation": 3, "pop_size": 12, "mean_pairwise_hamming": 14.393939393939394}
+{"timestamp": "2026-09-17T17:17:06.679417+00:00", "island_id": 0, "generation": 4, "pop_size": 12, "mean_pairwise_hamming": 13.075757575757576}
+{"timestamp": "2026-09-17T17:18:47.631803+00:00", "island_id": 0, "generation": 5, "pop_size": 12, "mean_pairwise_hamming": 13.0}
+{"timestamp": "2026-09-17T17:20:50.204287+00:00", "island_id": 0, "generation": 6, "pop_size": 12, "mean_pairwise_hamming": 14.424242424242424}
+{"timestamp": "2026-09-17T17:23:19.472931+00:00", "island_id": 0, "generation": 7, "pop_size": 12, "mean_pairwise_hamming": 15.333333333333334}
+{"timestamp": "2026-09-17T17:25:11.414637+00:00", "island_id": 0, "generation": 8, "pop_size": 12, "mean_pairwise_hamming": 12.43939393939394}
+{"timestamp": "2026-09-17T17:26:47.713130+00:00", "island_id": 0, "generation": 9, "pop_size": 12, "mean_pairwise_hamming": 12.818181818181818}
+{"timestamp": "2026-09-17T17:29:36.984637+00:00", "island_id": 0, "generation": 10, "pop_size": 12, "mean_pairwise_hamming": 11.848484848484848}
+{"timestamp": "2026-09-17T17:31:37.558744+00:00", "island_id": 0, "generation": 11, "pop_size": 12, "mean_pairwise_hamming": 9.909090909090908}
+{"timestamp": "2026-09-17T17:33:17.025683+00:00", "island_id": 0, "generation": 12, "pop_size": 12, "mean_pairwise_hamming": 11.151515151515152}
+{"timestamp": "2026-09-17T17:35:56.838200+00:00", "island_id": 0, "generation": 13, "pop_size": 12, "mean_pairwise_hamming": 10.424242424242424}
+{"timestamp": "2026-09-17T17:37:32.713066+00:00", "island_id": 0, "generation": 14, "pop_size": 12, "mean_pairwise_hamming": 10.0}

@@ -1,0 +1,15 @@
+{"timestamp": "2026-09-17T15:52:05.402970+00:00", "island_id": 0, "generation": 0, "pop_size": 8, "mean_pairwise_hamming": 19.178571428571427}
+{"timestamp": "2026-09-17T15:52:52.633001+00:00", "island_id": 0, "generation": 1, "pop_size": 12, "mean_pairwise_hamming": 16.863636363636363}
+{"timestamp": "2026-09-17T15:54:09.902698+00:00", "island_id": 0, "generation": 2, "pop_size": 12, "mean_pairwise_hamming": 15.924242424242424}
+{"timestamp": "2026-09-17T15:56:13.799015+00:00", "island_id": 0, "generation": 3, "pop_size": 12, "mean_pairwise_hamming": 13.166666666666666}
+{"timestamp": "2026-09-17T15:58:23.470752+00:00", "island_id": 0, "generation": 4, "pop_size": 12, "mean_pairwise_hamming": 13.318181818181818}
+{"timestamp": "2026-09-17T16:00:19.304820+00:00", "island_id": 0, "generation": 5, "pop_size": 12, "mean_pairwise_hamming": 12.287878787878787}
+{"timestamp": "2026-09-17T16:02:15.177957+00:00", "island_id": 0, "generation": 6, "pop_size": 12, "mean_pairwise_hamming": 12.833333333333334}
+{"timestamp": "2026-09-17T16:04:59.108683+00:00", "island_id": 0, "generation": 7, "pop_size": 12, "mean_pairwise_hamming": 13.409090909090908}
+{"timestamp": "2026-09-17T16:06:54.395568+00:00", "island_id": 0, "generation": 8, "pop_size": 12, "mean_pairwise_hamming": 13.712121212121213}
+{"timestamp": "2026-09-17T16:09:19.553396+00:00", "island_id": 0, "generation": 9, "pop_size": 12, "mean_pairwise_hamming": 13.969696969696969}
+{"timestamp": "2026-09-17T16:12:19.103489+00:00", "island_id": 0, "generation": 10, "pop_size": 12, "mean_pairwise_hamming": 12.666666666666666}
+{"timestamp": "2026-09-17T16:14:51.444533+00:00", "island_id": 0, "generation": 11, "pop_size": 12, "mean_pairwise_hamming": 11.863636363636363}
+{"timestamp": "2026-09-17T16:16:46.030789+00:00", "island_id": 0, "generation": 12, "pop_size": 12, "mean_pairwise_hamming": 10.621212121212121}
+{"timestamp": "2026-09-17T16:19:36.852570+00:00", "island_id": 0, "generation": 13, "pop_size": 12, "mean_pairwise_hamming": 10.621212121212121}
+{"timestamp": "2026-09-17T16:21:29.760058+00:00", "island_id": 0, "generation": 14, "pop_size": 12, "mean_pairwise_hamming": 11.909090909090908}
