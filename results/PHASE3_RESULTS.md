@@ -247,60 +247,234 @@ measuring.
   finishing a run, which remains a discipline this project has to keep
   applying run by run, not something the infrastructure fix does for it.
 
-## 6. What Phase 3 establishes, and what's next
+## 6. Testing whether the diversity gap converts to fitness, at a configuration with headroom
 
-Phase 3 establishes one robust result and one important negative result,
-and they don't cancel — they define what's actually open.
+*Follow-up to the "next steps" that closed this document before this
+section existed (now §7). The anchor run (§1-5, genome_length=18) plateaus
+by generation 3-4 in both arms — "diversity didn't help" there is
+indistinguishable from "neither arm needed it." This section reports the
+direct test at a configuration chosen specifically to avoid that.*
 
-The robust result (§2): circles/agent architectures on this substrate
-reliably produce more diverse populations than the plain baseline, by a
-wide margin (1.45x-3.16x across six independent runs), and — unlike
-almost every other number in this project's operator-reliability work —
-that result does not depend on the underlying LLM operators being
-reliable. It held when mutate and crossover were mostly falling back to
-the deterministic operator (the `agents_smoke`/`agents3` runs) and it
-holds now that both are fixed (`best`-style, this run). A candidate causal
-story for part of that gap — the identical-parent feedback loop — was
-tested directly and did not survive: it was strong (2.7x) precisely when
-an operator was still broken, and shrank to a small residual (1.2x) once
-both were fixed (§3). That is the right order of events for ruling a
-mechanism *out*, not in: if identical parents were doing real work, fixing
-the operators that fed them shouldn't have made the effect smaller.
+### 6.1 Picking a configuration, for free
 
-The negative result (§5) is what keeps §2 from being read as a win on its
-own: circles has not moved fitness relative to its baseline in any of four
-comparisons in this run, and on the token-efficiency comparison
-specifically it is clearly worse. Contrasted directly with
-`PHASE2_RESULTS.md` §8, where the plain role architecture *did* move
-fitness (1.0 -> 2.0) — this is not "LLM agents never help here," it's
-"this specific architecture, at this scale, hasn't yet." Diversity is
-necessary for a GA to keep finding new material, but this document has
-not shown it's sufficient here; the open question §2 raises and §5 leaves
-unanswered is whether a longer run, a larger population, or a harder
-landscape (where a converged, low-diversity `off` population would stall
-below a peak that a higher-diversity `on` population could still reach)
-would let this gap convert into a fitness advantage, or whether the extra
-tokens circles spends are simply not buying anything on this problem at
-this scale.
+`experiments/sweep_diversity_config.py` (deterministic,
+`HPGA_OPERATOR_MODE=deterministic`, zero LLM calls, 37s total) swept
+genome_length in {18, 24, 30, 36, 42} at pop_size=8 against a pop_size=64
+reference, 150-generation horizon, 3 seeds. `genome_length=24` was picked:
+pop=8 settles ~4.17 fitness points below pop=64's ceiling (real trapping —
+its own plateau doesn't arrive until generation ~54 on average) and is
+still climbing at every checkpoint from generation 10 through 25 in that
+free proxy. `pop_size=8` and the circles architecture (`N_CIRCLES=2`,
+`AGENTS_PER_CIRCLE=2`, `PROMPT_STYLE="best"`, `CENTRAL_MODE=llm`) were kept
+identical to the anchor run — only the sequence (genome_length 18 -> 24,
+`make_timing_sequence(length=26, seed=1)`) and seed count (1 -> 3) changed.
+`experiments/run_circles_diversity_fitness.py`,
+`results/raw/circles_diversity_fitness_summary_1789650346.json`.
+
+### 6.2 The diversity gap: this is the headline result, not the fitness
+
+| gen | off (mean) | on (mean) |
+|---|---|---|
+| 0 | 18.92 | 18.92 |
+| 1 | 13.64 | 16.76 |
+| 2 | 6.18 | 14.75 |
+| 3 | 3.33 | 13.35 |
+| 4 | 2.08 | 12.89 |
+| 5 | 1.93 | 12.34 |
+| 6 | 1.99 | 13.21 |
+| 7 | 2.25 | 13.63 |
+| 8 | 2.44 | 12.69 |
+| 9 | 2.18 | 12.97 |
+
+Final-generation ratio: 12.97 / 2.18 = **5.95x** — against the 1.45x-3.16x
+range across all six runs reported in §2. The gap didn't just replicate on
+a harder landscape, it **widened**, by roughly 2x over the widest prior
+run. This is the strongest version of §2's finding produced so far, and it
+came from a run designed specifically to give the comparison a fair chance
+to fail, not to succeed.
+
+### 6.3 Fitness: circles' first non-loss across five comparisons — not a win
+
+| gen | off (mean, [min-max]) | on (mean, [min-max]) |
+|---|---|---|
+| 0 | 2.00 [1-3] | 2.00 [1-3] |
+| 1 | 2.00 [1-3] | 2.00 [1-3] |
+| 2 | 2.00 [1-3] | 2.33 [2-3] |
+| 3 | 2.33 [1-3] | 2.33 [2-3] |
+| 4 | 2.33 [1-3] | 2.33 [2-3] |
+| 5 | 2.33 [1-3] | 2.67 [2-3] |
+| 6 | 3.00 [2-4] | 2.67 [2-3] |
+| 7 | 3.33 [2-4] | 3.33 [2-5] |
+| 8 | 3.33 [2-4] | 3.67 [2-5] |
+| 9 | 3.33 [2-4] | 3.67 [2-5] |
+
+Per-seed final fitness: off = [2.0, 4.0, 4.0] (mean 3.33); on = [2.0, 4.0,
+**5.0**] (mean 3.67). Counting §5's four comparisons (all ties or losses)
+plus this run's aggregate final-fitness comparison as a fifth, **this is
+circles' first non-loss on fitness in this project** — mean fitness edges
+up (3.33 -> 3.67) and one of three seeds ends strictly ahead. It is
+deliberately not written as a win: two of three seeds tie exactly, and the
+margin on the one that doesn't is a single fitness point.
+
+The seed that produced the higher final value (seed 2: off=4.0, on=5.0) is
+also the seed with the smallest token-efficiency deficit (1.51x, against
+~2.5x on the other two — §6.4). That pattern — circles pulled ahead where
+it was *cheapest* relative to `off`, not where it visibly did something
+different — is a more honest read than "circles found extra fitness here":
+it is at least as consistent with ordinary run-to-run variance in how much
+`off` itself happened to struggle on that seed as with anything
+circles-specific.
+
+**A correction, checked directly against this run's raw data rather than
+asserted.** A mid-run progress report (seed 0 only, both arms already
+complete at the time) described `on` reaching fitness 2.0 at generation 2
+against `off`'s generation 6, read as circles reaching the same ceiling
+faster. Re-checked now against the same arrays
+(`off`=[1,1,1,1,1,1,2,2,2,2], `on`=[1,1,2,2,2,2,2,2,2,2]): **that specific
+claim was correct** — both trajectories were already final when it was
+made, nothing changed on a second look. But it should not have been read
+as an advantage, and isn't carried into this write-up as one: both arms
+plateau at the identical final value (2.0), `on` simply gets there four
+generations sooner and then also stops improving, exactly like `off`
+eventually does. The fuller picture across all three seeds doesn't even
+favor `on` consistently on arrival speed — seed 1 has `off` reach its own
+shared final value (4.0) one generation *before* `on` does (gen 7 vs. gen
+8). Arrival speed to a ceiling neither arm exceeds is not a meaningful
+signal in either direction here; only seed 2's actual ceiling-exceeding is.
+
+### 6.4 Fitness gain per 1k tokens
+
+| seed | off | on | ratio |
+|---|---|---|---|
+| 0 | 0.0322 | 0.0128 | 2.52x worse |
+| 1 | 0.0318 | 0.0129 | 2.47x worse |
+| 2 | 0.0645 | 0.0426 | 1.51x worse |
+| **mean** | **0.0428** | **0.0227** | **1.89x worse** |
+
+Circles is less token-efficient on every single seed, mean 1.89x worse —
+narrower than the anchor's 2.1x but not close to parity, and (§6.3) the
+seed with the smallest deficit is the same seed that produced the only
+fitness edge, not a different one.
+
+### 6.5 Did the sweep's prediction hold? An 8x miss, and why it matters beyond this run
+
+Partially. **What held**: `off` did not plateau by generation 4 the way
+the anchor did — it kept improving through generation 7 (mean 2.00 -> 2.00
+-> 2.00 -> 2.33 -> 2.33 -> 2.33 -> 3.00 -> 3.33), which is exactly what
+`genome_length=24` was chosen to produce, and is why this comparison is
+not vacuous the way the anchor's was.
+
+**What didn't**: the deterministic sweep (classical uniform-random
+`crossover()`/`mutate()`, 150-generation horizon) predicted pop=8 wouldn't
+plateau until generation ~54 on average at this genome length. The real
+`off` arm here — running the actual `position`/`segment` LLM operators —
+plateaus around **generation 7**, roughly **8x earlier** than the free
+proxy predicted. Stated plainly, not rounded off: the sweep's quantitative
+timeline did not transfer to the real operator.
+
+The likely mechanism is the caveat flagged before this run started, now
+with direct evidence behind it: `PHASE2_RESULTS.md` §4.4 already
+documented that `best`-style LLM operators are biased (mutation
+concentrated on positions 0-1, crossover splitting near the exact
+midpoint), not uniform-random like the sweep's proxy operators — so they
+explore a narrower slice of the genome space per generation and converge
+faster than a uniform-random search over the same landscape would. **This
+generalizes past this project, the same way §4's redesign did**: a
+deterministic proxy built from classical, unbiased operators can correctly
+*rank* which configuration has more landscape structure to exploit (the
+qualitative use this sweep was put to, and it worked — genome_length=24
+was a real improvement over 18), while still being the wrong tool for
+predicting *when* a biased, narrower-exploring real operator will stall.
+That timeline question is answerable only by running the real operator,
+not proxied from a different one, however cheap the proxy is.
+
+### 6.6 Cost, GPU, and provenance
+
+Total wall time: 71.1 minutes (`off`: 731.4s across 3 seeds; `on`: 3533.3s
+across 3 seeds — the `on` arm alone is ~4.8x the `off` arm's cost,
+consistent with 4 additional agents' propose/consult/observe calls plus
+periodic central-directive/curation calls layered on top of the ordinary
+fill). GPU was free at start (0 MiB, 0%) and the only `compute_apps` entry
+throughout was this run's own Ollama server process — no other user's
+contention to discount from the timing numbers. Total tokens: 93,468
+(`off`) + 226,479 (`on`) = ~320k. Raw logs (per-seed operator-call,
+diversity, and blackboard JSONL) and the aggregate summary are committed
+(`f7e4ba7`) alongside the two scripts that produced them
+(`sweep_diversity_config.py`, `run_circles_diversity_fitness.py`) —
+finishing the run included this, per §5's retention note, not a follow-up
+step.
+
+## 7. What Phase 3 establishes, and what's next
+
+Phase 3 establishes two robust results and one narrow, qualified positive
+result, and they don't cancel — they define what's actually open.
+
+The first robust result (§2, §6.2): circles/agent architectures on this
+substrate reliably produce more diverse populations than the plain
+baseline, and the gap does not just hold up under a harder landscape, it
+**widens** — 5.95x at genome_length=24, against 1.45x-3.16x across the six
+runs at easier configurations. Unlike almost every other number in this
+project's operator-reliability work, this result does not depend on the
+underlying LLM operators being reliable: it held when mutate and crossover
+were mostly falling back to the deterministic operator (the
+`agents_smoke`/`agents3` runs), it held at the anchor's fully-fixed
+`best`-style operators, and it holds again, more strongly, here. A
+candidate causal story for part of the gap — the identical-parent feedback
+loop — was tested directly and did not survive: it was strong (2.7x)
+precisely when an operator was still broken, and shrank to a small
+residual (1.2x) once both were fixed (§3).
+
+The narrow positive result (§6.3): at a configuration with genuine
+headroom, circles produced its first non-loss on fitness across five
+comparisons in this project — not a win, a tie on two of three seeds and a
+one-point edge on the third, concentrated in the seed where circles' own
+token-efficiency deficit was smallest. Read together with §6.4 (circles
+still 1.89x less token-efficient on every seed) and §5's four comparisons
+from the anchor (all ties or losses), the honest summary across all five
+fitness comparisons this project has run is: **mostly flat, occasionally
+slightly ahead, never behind on the headline number, always behind on
+cost.** That is a meaningfully different picture than the anchor alone
+gave (§5's "circles has not won on fitness in four comparisons"), but it
+is not the clean confirmation that diversity converts to fitness once
+there's room for it to matter — it's evidence the door isn't shut, at a
+scale still too small and too single-shot (one configuration, ten
+generations) to call it open.
+
+A second, methodological result worth keeping separate from either of
+those (§6.5): the deterministic sweep used to pick this configuration was
+right about *which* landscape had more exploitable structure, and wrong by
+roughly 8x about *when* the real, biased LLM operators would actually
+plateau on it. A free proxy built from unbiased operators is a defensible
+way to rank candidate configurations before spending LLM budget — this
+project has now used that method twice (`run_circles_smoke.py` revision
+1's pop_size check, and this section's sweep) — but its quantitative
+timeline is not a substitute for running the real operator, because the
+real operator explores differently, not just more slowly.
 
 Next:
-- **Repeat the circles anchor run at more seeds.** §2's confidence rests on
-  five independent prior runs plus this one; §3's 1.2x and all of §5's
-  fitness comparisons rest on this run alone. The same multi-run treatment
-  that made §2 credible hasn't been applied to the other three findings
-  yet.
-- **Test whether the diversity gap converts to fitness on a harder
-  landscape.** This run's sequence reaches its ceiling by generation 3-4
-  in both arms — not enough runway to distinguish "diversity doesn't help
-  here" from "neither arm needed it." A longer sequence or more
-  generations, chosen the way `run_circles_smoke.py`'s revision 1 fix
-  chose `pop_size`/`n_generations` (deterministically confirmed to still
-  show movement before spending LLM budget on it), is the direct test.
+- **Run 15-20 generations at this same configuration.** `off` plateaus
+  around generation 7 within the current 10-generation budget — there's
+  only ~3 generations of runway once both arms approach their respective
+  ceilings, which is thin for judging whether `on`'s extra diversity keeps
+  paying off past that point or is also headed for a ceiling of its own.
+  Costed from this run's own measured rates (`off`: 24.4s/generation/seed;
+  `on`: 117.8s/generation/seed, both linear-scaled, 3 seeds):
+  **15 generations ≈ 107 minutes (≈1.8h) total; 20 generations ≈ 142
+  minutes (≈2.4h) total** — both well past this run's 71 minutes, driven
+  almost entirely by the `on` arm's per-generation cost. Not run yet;
+  needs explicit sign-off given the jump in wall-clock, the same way this
+  run's own config needed sign-off before it started.
+- **Repeat the anchor configuration itself (genome_length=18) at more
+  seeds.** §3's 1.2x identical-parent point and §5's original four
+  fitness comparisons still rest on that single run; the multi-seed
+  treatment applied here (§6) hasn't been applied back to the anchor's own
+  configuration yet.
 - **Recalibrate `CROSSOVER_MIN_DIFF` for `full`/`diff`-style crossover, or
   retire those styles.** §4's redesign only fixed `segment`; the old
   17.6%-false-rejection threshold is still the fallback gate for the two
   styles that still restate letters independently.
 - **Keep the raw-log discipline the retention-gap fix (§5) doesn't
-  automate.** Version control and backups now exist; they only help if
-  every run that produces a real number also commits its `results/raw/`
-  output before that number gets reported anywhere.
+  automate.** Followed this time (§6.6) — every raw file this section's
+  numbers depend on is committed. Version control and backups only help if
+  every run that produces a real number keeps doing that, not just this
+  once.
