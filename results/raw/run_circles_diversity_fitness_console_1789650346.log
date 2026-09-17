@@ -1,0 +1,43 @@
+=== run_circles_diversity_fitness  ts=1789650346  genome_length=24  pop_size=8  n_generations=10  seeds=[0, 1, 2] ===
+gpu before: 0 MiB, 15360 MiB, 0 %  compute_apps: (none)
+model warm-up: 16.9s (excluded from measured latency)
+
+--- seed=0 arm=off run_id=circles_divfit_off_s0_1789650346 ---
+    wall_s=125.7  best_fitness_by_gen=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0]  fitness_gain_per_1k_tokens=0.03221753278133961
+    cumulative elapsed: 2.1 min
+
+--- seed=0 arm=on run_id=circles_divfit_on_s0_1789650346 ---
+    wall_s=1058.0  best_fitness_by_gen=[1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]  fitness_gain_per_1k_tokens=0.012758682283293783
+    cumulative elapsed: 19.7 min
+
+--- seed=1 arm=off run_id=circles_divfit_off_s1_1789650346 ---
+    wall_s=308.8  best_fitness_by_gen=[3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0]  fitness_gain_per_1k_tokens=0.031843077314991725
+    cumulative elapsed: 24.9 min
+
+--- seed=1 arm=on run_id=circles_divfit_on_s1_1789650346 ---
+    wall_s=1323.5  best_fitness_by_gen=[3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 4.0]  fitness_gain_per_1k_tokens=0.012877470864722167
+    cumulative elapsed: 46.9 min
+
+--- seed=2 arm=off run_id=circles_divfit_off_s2_1789650346 ---
+    wall_s=296.9  best_fitness_by_gen=[2.0, 2.0, 2.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0]  fitness_gain_per_1k_tokens=0.06446414182111201
+    cumulative elapsed: 51.9 min
+
+--- seed=2 arm=on run_id=circles_divfit_on_s2_1789650346 ---
+    wall_s=1151.8  best_fitness_by_gen=[2.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 5.0, 5.0, 5.0]  fitness_gain_per_1k_tokens=0.04258581040797207
+    cumulative elapsed: 71.1 min
+
+gpu after: 8179 MiB, 15360 MiB, 100 %  compute_apps: 3500345, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+total wall time (both arms, all seeds): 71.1 min
+
+=== off summary across 3 seeds ===
+  final fitness: [2.0, 4.0, 4.0]  mean=3.33
+  final diversity: [2.39, 2.64, 1.5]  mean=2.18
+  fitness_gain_per_1k_tokens: [0.0322, 0.0318, 0.0645]  mean=0.0428
+
+=== on summary across 3 seeds ===
+  final fitness: [2.0, 4.0, 5.0]  mean=3.67
+  final diversity: [13.48, 12.73, 12.7]  mean=12.97
+  fitness_gain_per_1k_tokens: [0.0128, 0.0129, 0.0426]  mean=0.0227
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/circles_diversity_fitness_summary_1789650346.json
