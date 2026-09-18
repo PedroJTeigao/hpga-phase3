@@ -1,0 +1,54 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+seq50 = PQCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIM
+
+=== STAGE 1: fp32 @ 50 residues ===
+Loading model in torch.float32...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:01<04:18, 17.30it/s]Loading weights:  13%|█▎        | 584/4498 [00:01<00:05, 688.44it/s]Loading weights:  37%|███▋      | 1651/4498 [00:01<00:01, 2138.32it/s]Loading weights:  64%|██████▍   | 2898/4498 [00:01<00:00, 3913.73it/s]Loading weights:  94%|█████████▍| 4229/4498 [00:01<00:00, 5765.10it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 3054.57it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded + moved to GPU in 10.7s
+  fp32 @ 50: elapsed=2.21s  peak_torch=13638MB  peak_nvidia=13801MB  plddt_mean=0.433938592672348
+
+GPU after stage 1: 13753MB used
+
+=== STAGE 2: fp16 @ 50 residues ===
+GPU before stage 2: 13753MB used
+Loading model in torch.float16...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:  21%|██▏       | 966/4498 [00:00<00:00, 9631.53it/s]Loading weights:  43%|████▎     | 1930/4498 [00:00<00:00, 4935.45it/s]Loading weights:  57%|█████▋    | 2543/4498 [00:00<00:00, 4222.78it/s]Loading weights:  67%|██████▋   | 3028/4498 [00:00<00:00, 3940.85it/s]Loading weights:  77%|███████▋  | 3455/4498 [00:00<00:00, 3716.86it/s]Loading weights:  85%|████████▌ | 3844/4498 [00:00<00:00, 3535.79it/s]Loading weights:  94%|█████████▎| 4215/4498 [00:01<00:00, 3515.68it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 4027.10it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded + moved to GPU in 8.2s
+Traceback (most recent call last):
+  File "/scratch/pcanaste/projeto/esmfold/benchmark.py", line 187, in <module>
+    main()
+  File "/scratch/pcanaste/projeto/esmfold/benchmark.py", line 135, in main
+    r50 = run_one(model16, tokenizer, seq50)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/esmfold/benchmark.py", line 66, in run_one
+    output = model(input_ids)
+             ^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/transformers/models/esm/modeling_esmfold.py", line 2169, in forward
+    structure["ptm"] = compute_tm(ptm_logits, max_bin=31, no_bins=self.distogram_bins)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/transformers/models/esm/openfold_utils/loss.py", line 103, in compute_tm
+    argmax = (weighted == torch.max(weighted)).nonzero()[0]
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: index 0 is out of bounds for dimension 0 with size 0

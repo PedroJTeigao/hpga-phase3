@@ -1,0 +1,59 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+seq50 = PQCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIM
+
+=== STAGE 1: fp32 @ 50 residues ===
+Loading model in torch.float32...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:01<04:53, 15.28it/s]Loading weights:  13%|█▎        | 568/4498 [00:01<00:06, 568.18it/s]Loading weights:  25%|██▍       | 1121/4498 [00:01<00:02, 1193.68it/s]Loading weights:  42%|████▏     | 1876/4498 [00:01<00:01, 2163.37it/s]Loading weights:  59%|█████▉    | 2643/4498 [00:01<00:00, 3148.43it/s]Loading weights:  75%|███████▍  | 3366/4498 [00:01<00:00, 3978.35it/s]Loading weights:  92%|█████████▏| 4130/4498 [00:01<00:00, 4801.89it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 2379.29it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded + moved to GPU in 32.6s
+  fp32 @ 50: elapsed=7.63s  peak_torch=13638MB  peak_nvidia=13801MB  plddt_mean=0.433938592672348
+
+GPU after stage 1: 13753MB used
+
+=== STAGE 2: fp16 @ 50 residues ===
+Loading model in torch.float16...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:  19%|█▉        | 855/4498 [00:00<00:00, 8485.71it/s]Loading weights:  38%|███▊      | 1704/4498 [00:00<00:00, 5185.58it/s]Loading weights:  51%|█████     | 2293/4498 [00:00<00:00, 4486.05it/s]Loading weights:  62%|██████▏   | 2780/4498 [00:00<00:00, 4143.40it/s]Loading weights:  71%|███████▏  | 3214/4498 [00:00<00:00, 3905.07it/s]Loading weights:  80%|████████  | 3614/4498 [00:00<00:00, 3845.86it/s]Loading weights:  89%|████████▉ | 4004/4498 [00:00<00:00, 3743.29it/s]Loading weights:  97%|█████████▋| 4381/4498 [00:01<00:00, 3729.74it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 4143.51it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Traceback (most recent call last):
+  File "/scratch/pcanaste/projeto/esmfold/benchmark.py", line 179, in <module>
+    main()
+  File "/scratch/pcanaste/projeto/esmfold/benchmark.py", line 126, in main
+    model16 = load_model(torch.float16)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/esmfold/benchmark.py", line 52, in load_model
+    model = model.cuda()
+            ^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/transformers/modeling_utils.py", line 3645, in cuda
+    return super().cuda(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1097, in cuda
+    return self._apply(lambda t: t.cuda(device))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1097, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+                                 ^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 50.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 11.75 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.36 GiB is allocated by PyTorch, and 69.23 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

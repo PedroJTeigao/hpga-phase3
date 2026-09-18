@@ -1,0 +1,59 @@
+{
+  "fp32_50": {
+    "elapsed_s": 2.444911003112793,
+    "peak_torch_mb": 13637.67724609375,
+    "peak_nvidia_mb": 13801.0,
+    "positions_n_nan": 0,
+    "positions_n_inf": 0,
+    "plddt_mean": 0.433938592672348
+  },
+  "fp16_50": {
+    "elapsed_s": 1.7794291973114014,
+    "peak_torch_mb": 6752.78857421875,
+    "peak_nvidia_mb": 13757.0,
+    "positions_n_nan": 2100,
+    "positions_n_inf": 0,
+    "plddt_mean": NaN
+  },
+  "fp32_vs_fp16_diff": {
+    "all_atoms_max_abs": NaN,
+    "all_atoms_mean_abs": NaN,
+    "ca_max_abs": NaN,
+    "ca_mean_abs": NaN,
+    "ca_rmsd": NaN
+  },
+  "fp16_benchmark": {
+    "50": {
+      "elapsed_s": 1.7794291973114014,
+      "peak_torch_mb": 6752.78857421875,
+      "peak_nvidia_mb": 13757.0,
+      "positions_n_nan": 2100,
+      "positions_n_inf": 0,
+      "plddt_mean": NaN
+    },
+    "100": {
+      "elapsed_s": 2.0488152503967285,
+      "peak_torch_mb": 6775.646484375,
+      "peak_nvidia_mb": 13757.0,
+      "positions_n_nan": 4200,
+      "positions_n_inf": 0,
+      "plddt_mean": NaN
+    },
+    "150": {
+      "elapsed_s": 2.5740480422973633,
+      "peak_torch_mb": 6843.435546875,
+      "peak_nvidia_mb": 13757.0,
+      "positions_n_nan": 6300,
+      "positions_n_inf": 0,
+      "plddt_mean": NaN
+    },
+    "250": {
+      "elapsed_s": 8.6515953540802,
+      "peak_torch_mb": 7128.330078125,
+      "peak_nvidia_mb": 13997.0,
+      "positions_n_nan": 10500,
+      "positions_n_inf": 0,
+      "plddt_mean": NaN
+    }
+  }
+}

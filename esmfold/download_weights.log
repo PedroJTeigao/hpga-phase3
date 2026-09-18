@@ -1,0 +1,19 @@
+HF_HOME: /scratch/pcanaste/cache/huggingface
+TORCH_HOME: /scratch/pcanaste/cache/torch
+XDG_CACHE_HOME: /scratch/pcanaste/cache
+Downloading/loading tokenizer...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Tokenizer ready in 2.1s
+Downloading/loading model (this is the big one)...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:02<09:01,  8.28it/s]Loading weights:   2%|▏         | 105/4498 [00:02<01:11, 61.38it/s]Loading weights:  13%|█▎        | 587/4498 [00:02<00:08, 446.12it/s]Loading weights:  19%|█▊        | 834/4498 [00:02<00:05, 654.92it/s]Loading weights:  29%|██▉       | 1314/4498 [00:02<00:02, 1188.53it/s]Loading weights:  42%|████▏     | 1868/4498 [00:02<00:01, 1864.02it/s]Loading weights:  52%|█████▏    | 2358/4498 [00:02<00:00, 2414.77it/s]Loading weights:  63%|██████▎   | 2833/4498 [00:02<00:00, 2895.16it/s]Loading weights:  79%|███████▉  | 3568/4498 [00:02<00:00, 3906.29it/s]Loading weights:  96%|█████████▌| 4299/4498 [00:03<00:00, 4739.01it/s]Loading weights: 100%|██████████| 4498/4498 [00:03<00:00, 1447.78it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Model ready in 82.8s
+Total parameters: 3,525,038,915
+DONE

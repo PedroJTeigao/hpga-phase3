@@ -1,0 +1,53 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+seq50 = PQCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIM
+
+=== STAGE 1: fp32 @ 50 residues ===
+Loading model in torch.float32...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<03:17, 22.70it/s]Loading weights:  13%|█▎        | 582/4498 [00:00<00:04, 817.08it/s]Loading weights:  32%|███▏      | 1453/4498 [00:01<00:01, 2145.49it/s]Loading weights:  51%|█████     | 2299/4498 [00:01<00:00, 3369.29it/s]Loading weights:  73%|███████▎  | 3286/4498 [00:01<00:00, 4778.19it/s]Loading weights:  96%|█████████▌| 4310/4498 [00:01<00:00, 6068.79it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 3301.08it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded + moved to GPU in 12.5s
+  fp32 @ 50: elapsed=2.44s  peak_torch=13638MB  peak_nvidia=13801MB  plddt_mean=0.433938592672348
+
+GPU after stage 1: 13753MB used
+
+=== STAGE 2: fp16 @ 50 residues ===
+GPU before stage 2: 13753MB used
+Loading model in torch.float16...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:  11%|█         | 489/4498 [00:00<00:00, 4878.93it/s]Loading weights:  24%|██▍       | 1095/4498 [00:00<00:00, 5455.28it/s]Loading weights:  36%|███▋      | 1640/4498 [00:00<00:00, 4473.97it/s]Loading weights:  47%|████▋     | 2104/4498 [00:00<00:00, 4029.49it/s]Loading weights:  56%|█████▌    | 2520/4498 [00:00<00:00, 3852.51it/s]Loading weights:  65%|██████▍   | 2913/4498 [00:00<00:00, 3669.13it/s]Loading weights:  73%|███████▎  | 3284/4498 [00:00<00:00, 3560.07it/s]Loading weights:  81%|████████  | 3642/4498 [00:00<00:00, 3478.00it/s]Loading weights:  89%|████████▊ | 3991/4498 [00:01<00:00, 3363.91it/s]Loading weights:  96%|█████████▌| 4328/4498 [00:01<00:00, 3290.12it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 3703.14it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded + moved to GPU in 7.6s
+  [patch] compute_tm hit the empty-argmax case (logits likely contain NaN/Inf) -- returning NaN instead of crashing
+  !!! positions contain 2100 NaN / 0 Inf values out of 2100 !!!
+  fp16 @ 50: elapsed=1.78s  peak_torch=6753MB  peak_nvidia=13757MB  plddt_mean=nan
+
+  fp32 vs fp16 coordinate diff (all 14 atoms x 3 dims, Angstrom):
+    max_abs_diff=nan  mean_abs_diff=nan
+  fp32 vs fp16 CA-only diff:
+    max_abs_diff=nan  mean_abs_diff=nan  rmsd=nan
+
+=== STAGE 3: fp16 benchmark, 50/100/150/250 residues ===
+  [patch] compute_tm hit the empty-argmax case (logits likely contain NaN/Inf) -- returning NaN instead of crashing
+  !!! positions contain 4200 NaN / 0 Inf values out of 4200 !!!
+  fp16 @ 100: elapsed=2.05s  peak_torch=6776MB  peak_nvidia=13757MB  plddt_mean=nan
+  [patch] compute_tm hit the empty-argmax case (logits likely contain NaN/Inf) -- returning NaN instead of crashing
+  !!! positions contain 6300 NaN / 0 Inf values out of 6300 !!!
+  fp16 @ 150: elapsed=2.57s  peak_torch=6843MB  peak_nvidia=13757MB  plddt_mean=nan
+  [patch] compute_tm hit the empty-argmax case (logits likely contain NaN/Inf) -- returning NaN instead of crashing
+  !!! positions contain 10500 NaN / 0 Inf values out of 10500 !!!
+  fp16 @ 250: elapsed=8.65s  peak_torch=7128MB  peak_nvidia=13997MB  plddt_mean=nan
+
+DONE

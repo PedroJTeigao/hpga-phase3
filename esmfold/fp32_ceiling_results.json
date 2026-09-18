@@ -1,0 +1,23 @@
+{
+  "100": {
+    "elapsed_s": 2.905393600463867,
+    "peak_torch_mb": 13684.1826171875,
+    "peak_nvidia_mb": 13889.0,
+    "positions_n_nan": 0,
+    "positions_total": 4200
+  },
+  "150": {
+    "elapsed_s": 5.153991222381592,
+    "peak_torch_mb": 13839.15478515625,
+    "peak_nvidia_mb": 14049.0,
+    "positions_n_nan": 0,
+    "positions_total": 6300
+  },
+  "250": {
+    "elapsed_s": 16.092578887939453,
+    "peak_torch_mb": 14422.953125,
+    "peak_nvidia_mb": 14749.0,
+    "positions_n_nan": 0,
+    "positions_total": 10500
+  }
+}

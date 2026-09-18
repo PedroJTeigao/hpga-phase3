@@ -1,0 +1,23 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading model in fp32...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:02<08:24,  8.88it/s]Loading weights:  16%|█▌        | 709/4498 [00:02<00:08, 462.93it/s]Loading weights:  27%|██▋       | 1210/4498 [00:02<00:03, 853.55it/s]Loading weights:  52%|█████▏    | 2320/4498 [00:02<00:01, 1973.61it/s]Loading weights:  75%|███████▌  | 3392/4498 [00:02<00:00, 3154.68it/s]Loading weights: 100%|██████████| 4498/4498 [00:02<00:00, 1795.62it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded in 12.7s, GPU now: 13705MB
+
+=== fp32 @ 100 residues ===
+  elapsed=2.91s  peak_torch=13684MB  peak_nvidia=13889MB  positions_n_nan=0/4200  plddt_mean=0.2998
+
+=== fp32 @ 150 residues ===
+  elapsed=5.15s  peak_torch=13839MB  peak_nvidia=14049MB  positions_n_nan=0/6300  plddt_mean=0.2533
+
+=== fp32 @ 250 residues ===
+  elapsed=16.09s  peak_torch=14423MB  peak_nvidia=14749MB  positions_n_nan=0/10500  plddt_mean=0.2428
+
+DONE
