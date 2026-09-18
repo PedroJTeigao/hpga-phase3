@@ -17,9 +17,24 @@ deterministic and needs no live Ollama server. Four scenarios:
      output" and masking it would corrupt the T_calc/latency measurements.
 
 Exits non-zero if any assertion fails.
+
+Updated after the 3D migration (5-symbol alphabet) and the crossover
+mixed-child gate, both of which had left this script failing 4 of 6 scenarios
+while the operators were fine: (1) the "valid" mutate reply changed 1 position
+but the operator demands exactly k = round(rate * length) = 2; (2) the validity
+check only accepted moves 0-2, while the deterministic fallback draws from all
+five (hp_model.MOVES); (3) the "valid" crossover reply was CHILD1=Parent1,
+CHILD2=Parent2 -- a verbatim echo, which _crossover_sufficiently_mixed
+correctly rejects. Replies are now derived from the operator's own parameters
+rather than hardcoded, so they can't drift from them again. The operator log
+is pointed at a temp directory (unless HPGA_LLM_LOG_PATH is already set) so a
+test run doesn't leave llm_operator_calls_*.jsonl files in results/raw.
 """
 
+import os
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -27,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from hpga import operators as ops
 
 GENOME_LEN = 8
+MUTATION_RATE = 0.3
 GARBAGE = "I'm sorry, I can't help with that request."
 
 
@@ -91,7 +107,7 @@ def run_scenario(name, script, op, args, expect):
         pairs = result if op == "crossover" else None
         to_check = [result] if op == "mutate" else list(pairs)
         for g in to_check:
-            if not (isinstance(g, list) and len(g) == GENOME_LEN and all(m in (0, 1, 2) for m in g)):
+            if not (isinstance(g, list) and len(g) == GENOME_LEN and all(m in ops.MOVES for m in g)):
                 ok = False
                 details.append(f"result is not a valid length-{GENOME_LEN} genome: {g!r}")
 
@@ -106,16 +122,28 @@ def main() -> None:
     rng_genome = [0, 1, 2, 0, 1, 2, 0, 1]
     parent1 = list(rng_genome)
     parent2 = [1, 2, 0, 1, 2, 0, 1, 2]
-    valid_mutated = valid_genome_str([1, 1, 2, 0, 1, 2, 0, 1])
-    valid_pair = f"CHILD1: {valid_genome_str(parent1)}\nCHILD2: {valid_genome_str(parent2)}"
+    # Exactly k positions changed, k derived the way _llm_mutate derives it.
+    k = max(1, round(MUTATION_RATE * GENOME_LEN))
+    mutated = list(rng_genome)
+    for i in range(k):
+        mutated[i] = (mutated[i] + 1) % len(ops.MOVES)
+    valid_mutated = valid_genome_str(mutated)
+    # A genuine recombination: half-cut children. parent1 and parent2 differ at
+    # every position, so each child differs from each parent in GENOME_LEN // 2
+    # positions -- clear of _crossover_sufficiently_mixed's CROSSOVER_MIN_DIFF.
+    assert GENOME_LEN // 2 >= ops.CROSSOVER_MIN_DIFF, "raise GENOME_LEN or lower HPGA_CROSSOVER_MIN_DIFF"
+    half = GENOME_LEN // 2
+    child1, child2 = parent1[:half] + parent2[half:], parent2[:half] + parent1[half:]
+    valid_pair = f"CHILD1: {valid_genome_str(child1)}\nCHILD2: {valid_genome_str(child2)}"
 
     import random
     all_ok = True
+    assert parent1 != parent2 and all(a != b for a, b in zip(parent1, parent2))
 
     all_ok &= run_scenario(
         "mutate: always malformed -> exhausts retries, falls back",
         script=[GARBAGE] * (ops.LLM_MAX_RETRIES + 5),
-        op="mutate", args=(rng_genome, 0.3, random.Random(0)),
+        op="mutate", args=(rng_genome, MUTATION_RATE, random.Random(0)),
         expect={
             "stats": {"n_retries": ops.LLM_MAX_RETRIES + 1, "n_failures": 1},
             "result_is_valid_genome": True,
@@ -125,7 +153,7 @@ def main() -> None:
     all_ok &= run_scenario(
         "mutate: malformed once then valid -> succeeds on retry",
         script=[GARBAGE, f"MUTATED: {valid_mutated}"],
-        op="mutate", args=(rng_genome, 0.3, random.Random(0)),
+        op="mutate", args=(rng_genome, MUTATION_RATE, random.Random(0)),
         expect={
             "stats": {"n_retries": 1, "n_failures": 0},
             "result_is_valid_genome": True,
@@ -135,7 +163,7 @@ def main() -> None:
     all_ok &= run_scenario(
         "mutate: always valid -> 0 retries, 0 failures",
         script=[f"MUTATED: {valid_mutated}"],
-        op="mutate", args=(rng_genome, 0.3, random.Random(0)),
+        op="mutate", args=(rng_genome, MUTATION_RATE, random.Random(0)),
         expect={
             "stats": {"n_retries": 0, "n_failures": 0},
             "result_is_valid_genome": True,
@@ -165,7 +193,7 @@ def main() -> None:
     all_ok &= run_scenario(
         "mutate: transport exception -> propagates, not swallowed",
         script=[ConnectionError("simulated connection error")],
-        op="mutate", args=(rng_genome, 0.3, random.Random(0)),
+        op="mutate", args=(rng_genome, MUTATION_RATE, random.Random(0)),
         expect={"raises": ConnectionError},
     )
 
@@ -178,4 +206,12 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    _tmp = None
+    if not os.environ.get("HPGA_LLM_LOG_PATH"):
+        _tmp = tempfile.mkdtemp(prefix="test_operator_failure_path_")
+        os.environ["HPGA_LLM_LOG_PATH"] = os.path.join(_tmp, "calls.jsonl")
+    try:
+        main()
+    finally:
+        if _tmp:
+            shutil.rmtree(_tmp, ignore_errors=True)
