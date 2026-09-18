@@ -3,7 +3,13 @@
 *T4 (15360 MiB, compute capability 7.5), no root, no scheduler, shared node.
 `torch 2.11.0+cu128` / `transformers 5.17.0` pre-existing in
 `/scratch/pcanaste/venv` (predates this work by 3 days — not newly
-installed). Scripts and logs: `/scratch/pcanaste/projeto/esmfold/`.*
+installed). Scripts and logs: `esmfold/` in this repo (`hpga-phase3`) —
+kept here rather than a separate repo, since ESMFold is the evaluator for
+the circles/blackboard architecture (`PHASE3_RESULTS.md` §8's "change the
+problem" direction), not a parallel project; one history instead of two
+that can drift. The revisit-rate measurement in §5 lives in
+`experiments/measure_genome_revisit_rate.py`, reusing this project's
+existing deterministic GA harness directly.*
 
 ## 1. Install and weights
 
@@ -58,7 +64,7 @@ checksum comparison as a default step, not a fix applied after being
 caught.** A clean exit code from `cp` across AFS is not evidence of a
 complete, correctly-owned file.
 
-## 3. fp32: works across the full requested range, headroom shrinking
+## 3. fp32: the wall is between 250 and 300 residues
 
 | length | elapsed | peak (torch) | peak (nvidia-smi) | headroom vs. 15360MB |
 |---|---|---|---|---|
@@ -66,21 +72,45 @@ complete, correctly-owned file.
 | 100 | 2.91s | 13,684 MB | 13,889 MB | 1,471 MB |
 | 150 | 5.15s | 13,839 MB | 14,049 MB | 1,311 MB |
 | 250 | 16.09s | 14,423 MB | 14,749 MB | 611 MB |
+| 300 | — | — | — | **OOM** (tried to allocate 412MB with 305MB free) |
 
-No OOM at any tested length — the naive weight-size arithmetic (3.525B
-params x 4 bytes = 14.1GB) that suggested fp32 might not fit was measured
-wrong, not just imprecise: actual peak usage at 50 residues (13.8GB) is
-below that estimate, and stays below the card's 15GB ceiling through 250
-residues. **fp32 alone covers the full requested length range on this
-hardware.** Headroom does shrink faster than length grows late in the
-range (611MB left at 250, against 1.56GB at 50) and time scales
-super-linearly (16.09s at 250 vs. 5.15s at 150 — roughly 3x time for <2x
-length, consistent with the trunk's pairwise-attention cost), so a
-meaningfully longer sequence than 250 would need checking directly rather
-than assumed safe, but **mixed precision is now an optimization for
-speed/headroom, not a requirement for feasibility** — the question this
-section was run specifically to resolve before deciding whether to invest
-in `autocast`.
+Pushed past the originally-requested range specifically to find the wall
+rather than infer it from the trend — 611MB of headroom at 250 on a
+shared, unscheduled node is thin enough that another user's allocation
+could OOM a run anyway, so "probably fine" wasn't good enough. It isn't:
+**300 residues OOMs immediately**, `fp32_ceiling_extended.py`. The
+naive weight-size arithmetic (3.525B params x 4 bytes = 14.1GB) that
+originally suggested fp32 might not fit was measured wrong at 50 residues
+(actual: 13.8GB) but the right order of magnitude for where the wall
+actually is — **the practical fp32 ceiling on this hardware is between
+250 and 300 residues**, not "the full range with headroom to spare" as
+§3 read before this was checked. Time also scales super-linearly
+(16.09s at 250 vs. 5.15s at 150 — roughly 3x time for <2x length,
+consistent with the trunk's pairwise-attention cost), so both the memory
+wall and the time cost compound against long sequences at once.
+
+### 3.1 Scaling is a design input, not a table row
+
+At `pop_size=8`, `n_generations=15` (this project's standard config, e.g.
+`PHASE3_RESULTS.md` §6-7) with no caching, a run needs roughly 120 fitness
+evaluations (`experiments/measure_genome_revisit_rate.py` §5 below
+confirms this exactly: 120/120/120 across 3 seeds). At the measured
+per-call times:
+
+| target length | 120 x elapsed | wall time |
+|---|---|---|
+| 50 | 120 x 2.2s | **~4.4 min** |
+| 150 | 120 x 5.15s | ~10.3 min |
+| 250 | 120 x 16.09s | **~32.2 min** |
+
+**A ~7x difference in per-run wall time between the shortest and longest
+target length tested, before any caching.** This is not incidental detail
+to note alongside the numbers — it directly constrains which target
+sequence a search can practically use: a 250-residue target costs roughly
+half an hour of pure ESMFold evaluation per run, against five minutes at
+50, for the same GA budget. Target-length choice for the eventual search
+should be made with this table in hand, not decided first and measured
+after.
 
 ## 4. fp16 produces 100% NaN coordinates — the important finding, not a setup detail
 
@@ -135,19 +165,75 @@ already answered the question this was meant to resolve: fp32 covers the
 full requested range, so fp16 is not required to get a working benchmark,
 and is not safe to use without further work regardless.
 
-## 5. Bottom line
+## 5. Caching: a real but modest win, measured before building it
 
-- **Practical sequence-length ceiling on this hardware, fp32**: not yet
-  found within the requested range — 250 residues runs with 611MB of
-  headroom to spare. The real ceiling is somewhere above 250, not
-  measured here.
+ESMFold is deterministic — identical sequences fold to identical
+structures. An evolutionary search revisits candidates: elitism carries
+the same best genome forward, and this harness's `Island._dispatch_and_collect`
+re-evaluates the *full* population every generation, including unchanged
+elite copies (confirmed by reading `island.py`, not assumed) — plus, as a
+population converges (already well-documented for this harness, e.g.
+`PHASE3_RESULTS.md` §2/§6/§7's diversity collapse), crossover and mutation
+increasingly regenerate genomes already seen.
+
+`experiments/measure_genome_revisit_rate.py` measures this directly rather
+than guessing: monkeypatches `Island._dispatch_and_collect` to log every
+genome evaluated in call order, at this project's standard config
+(`pop_size=8`, `n_generations=15`, `genome_length=24`, `elitism=1`,
+deterministic operators — free, no GPU), then replays that log against a
+running "already seen" set the way a real hash cache would. Genome
+content (HP-lattice symbols here vs. amino acids for the real search)
+doesn't matter for this measurement — a revisit is a property of the GA's
+selection/elitism/convergence dynamics, not of what the symbols mean, so
+this harness is a direct, honest proxy for what an ESMFold-backed search
+would revisit under identical population mechanics.
+
+| seed | total evals | unique genomes | cache hits | hit rate |
+|---|---|---|---|---|
+| 0 | 120 | 83 | 37 | 30.8% |
+| 1 | 120 | 82 | 38 | 31.7% |
+| 2 | 120 | 77 | 43 | 35.8% |
+| **mean** | **120** | — | — | **32.8%** |
+
+(120 evaluations/run matches §3.1's arithmetic exactly — same config,
+independently confirmed, not assumed.) Hit rate is not flat across a run:
+it starts at 0% (generation 0, an all-random initial population, nothing
+to have seen yet) and climbs as the population converges — seed 0's
+generation 13-14 alone hit 4/8 and 5/8, against 0-2/8 in generations 0-3.
+
+**A hash cache in front of ESMFold would turn roughly a third of
+evaluations into free lookups, growing over the course of a run — real,
+worth building, not dramatic.** Applied to §3.1's 250-residue estimate:
+120 evaluations x 16.09s = 32.2 minutes uncached; at a 32.8% hit rate,
+only ~81 evaluations actually need to hit the GPU, cutting that to
+roughly **21.6 minutes** — about 10.6 minutes saved per run, not the
+"half an hour becomes something much smaller" a naive reading of "a third
+of calls are free" might suggest. The saving is real and roughly
+proportional to the hit rate throughout, not concentrated late — worth
+building alongside, not instead of, choosing a shorter target length in
+the first place (§3.1).
+
+## 6. Bottom line
+
+- **fp32 practical ceiling: between 250 and 300 residues.** 250 runs with
+  611MB of headroom (thin, on a shared unscheduled node); 300 OOMs
+  immediately. Time cost is the other constraint, independent of memory —
+  §3.1's ~7x wall-time spread (5→32 min for the same GA budget, 50 vs.
+  250 residues) should drive target-length choice before the memory wall
+  does, since it binds well before 300 residues would.
 - **fp16 is not a usable fallback as configured** — it doesn't trade
-  accuracy for speed, it produces unusable output, and did so at every
-  length tried. Using it for the actual search would silently poison
-  every fitness evaluation.
-- **Mixed precision (`torch.autocast`) is the next thing to try if
-  throughput at longer sequences or larger batches becomes the
-  bottleneck** — not to make ESMFold fit on this card, which fp32 already
-  does across the tested range, but to recover speed once (if) a real
-  search workload needs it. That's now an optimization decision with fp32
-  numbers to compare against, not a blind requirement.
+  accuracy for speed, it produces unusable output (100% NaN coordinates),
+  and did so at every length tried. Using it for the actual search would
+  silently poison every fitness evaluation.
+- **Mixed precision (`torch.autocast`) is worth trying next if throughput
+  at longer sequences or larger batches becomes the bottleneck** — not to
+  make ESMFold fit on this card (fp32 already does, up to the 250-300
+  wall), but to push that wall out and recover speed, if a real search
+  workload needs sequences longer than fp32 can hold. That's now an
+  optimization decision with fp32 numbers and a caching estimate to
+  compare against, not a blind requirement.
+- **A hash cache is worth building**: ~33% of evaluations would be free
+  lookups at this project's standard GA config, growing as the population
+  converges. Real savings, not a substitute for keeping the target length
+  short (§3.1) — the two compound rather than trade off against each
+  other.

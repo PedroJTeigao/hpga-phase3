@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading model in fp32...
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<03:43, 20.07it/s]Loading weights:  13%|█▎        | 568/4498 [00:01<00:05, 769.01it/s]Loading weights:  26%|██▌       | 1168/4498 [00:01<00:02, 1623.35it/s]Loading weights:  48%|████▊     | 2144/4498 [00:01<00:00, 3162.71it/s]Loading weights:  71%|███████   | 3203/4498 [00:01<00:00, 4742.89it/s]Loading weights:  95%|█████████▌| 4282/4498 [00:01<00:00, 6151.92it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 3158.10it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+  loaded in 9.3s, GPU now: 13705MB
+
+=== fp32 @ 300 residues ===
+  OOM at 300 residues: CUDA out of memory. Tried to allocate 412.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 305.75 MiB is free. Including non-PyTorch memory, this process has 14.26 GiB memory in use. Of the allocated memory 14.06 GiB is allocated by PyTorch, and 77.11 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+  Stopping here -- found the wall.
+
+DONE
