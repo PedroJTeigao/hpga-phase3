@@ -1,0 +1,255 @@
+{
+  "differences_from_lattice_probe": [
+    "segment prompt has a worked example and percentage boundaries (deliberate; sequence_model.py docstring)",
+    "mutation rate = 1/genome_len so k=1 exactly (one independent observation per call)",
+    "crossover rate 1.0 (every call is a live LLM call)",
+    "variable-length parents; mutate at one fixed genome length",
+    "uniformity computed on LLM-successful calls only",
+    "per-condition sample sizes (mutate/position=400, crossover/segment=100, full styles=30 confirmation runs)"
+  ],
+  "seed": 0,
+  "n_calls": {
+    "mutate/position": 400,
+    "crossover/segment": 100,
+    "mutate/full": 30,
+    "crossover/full": 30
+  },
+  "genome_len": 63,
+  "length_bounds": [
+    30,
+    80
+  ],
+  "model": "gemma4:12b",
+  "temperature": 0.7,
+  "gpu_before": {
+    "usage": "0 MiB, 15360 MiB, 0 %",
+    "compute_apps": "(none)"
+  },
+  "conditions": [
+    {
+      "op": "mutate",
+      "style": "position",
+      "model": "gemma4:12b",
+      "n_calls": 400,
+      "genome_len": 63,
+      "stats": {
+        "n_llm_calls": 400,
+        "n_llm_requests": 400,
+        "n_retries": 0,
+        "n_failures": 0,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 823.9669018946588,
+        "total_tokens_in": 122000,
+        "total_tokens_out": 3886,
+        "mean_latency_s": 2.059917254736647,
+        "max_latency_s": 61.78394874930382,
+        "min_latency_s": 1.024429190903902
+      },
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "n_success": 400,
+      "zero_diff_outputs": 0,
+      "success_anomalies": 0,
+      "letter_counts": {
+        "A": 22,
+        "D": 7,
+        "E": 10,
+        "F": 15,
+        "G": 102,
+        "H": 6,
+        "I": 5,
+        "K": 23,
+        "L": 40,
+        "M": 60,
+        "P": 1,
+        "Q": 1,
+        "R": 38,
+        "S": 24,
+        "T": 21,
+        "V": 16,
+        "W": 3,
+        "Y": 6
+      },
+      "position_counts": {
+        "0": 3,
+        "1": 3,
+        "2": 23,
+        "3": 55,
+        "4": 19,
+        "5": 11,
+        "10": 149,
+        "11": 12,
+        "12": 50,
+        "13": 10,
+        "14": 23,
+        "15": 19,
+        "20": 3,
+        "21": 6,
+        "22": 3,
+        "25": 1,
+        "29": 1,
+        "30": 7,
+        "32": 1,
+        "62": 1
+      },
+      "letter_uniformity": {
+        "label": "NEW letter over 20",
+        "n": 400,
+        "n_cells": 20,
+        "expected_per_cell": 20.0,
+        "chi2": 590.8,
+        "df": 19,
+        "mc_p_value": 4.999750012499375e-05,
+        "asymptotic_chi2_valid": true,
+        "n_distinct": 18,
+        "top1_share": 0.255,
+        "top3_share": 0.505
+      },
+      "position_uniformity": {
+        "label": "position over 63",
+        "n": 400,
+        "n_cells": 63,
+        "expected_per_cell": 6.349206349206349,
+        "chi2": 4324.37,
+        "df": 62,
+        "mc_p_value": 4.999750012499375e-05,
+        "asymptotic_chi2_valid": true,
+        "n_distinct": 20,
+        "top1_share": 0.3725,
+        "top3_share": 0.635
+      }
+    },
+    {
+      "op": "crossover",
+      "style": "segment",
+      "model": "gemma4:12b",
+      "n_calls": 100,
+      "stats": {
+        "n_llm_calls": 100,
+        "n_llm_requests": 100,
+        "n_retries": 0,
+        "n_failures": 0,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 478.92528665438294,
+        "total_tokens_in": 51208,
+        "total_tokens_out": 2100,
+        "mean_latency_s": 4.78925286654383,
+        "max_latency_s": 13.709399334155023,
+        "min_latency_s": 3.2735308604314923
+      },
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "n_success": 100,
+      "echo_outputs": 0,
+      "child_length_min": 33,
+      "child_length_max": 79,
+      "segment_structure": {
+        "n_valid_declarations": 100,
+        "segments_per_call": {
+          "2": 100
+        },
+        "cut_percent_counts": {
+          "40": 83,
+          "50": 17
+        },
+        "n_distinct_cut_values": 2,
+        "modal_cut": 40,
+        "modal_cut_share": 0.83,
+        "share_cuts_45_to_55": 0.17,
+        "single_cut_share": 1.0
+      }
+    },
+    {
+      "op": "mutate",
+      "style": "full",
+      "model": "gemma4:12b",
+      "n_calls": 30,
+      "genome_len": 63,
+      "stats": {
+        "n_llm_calls": 30,
+        "n_llm_requests": 79,
+        "n_retries": 73,
+        "n_failures": 24,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 927.0521226692945,
+        "total_tokens_in": 27081,
+        "total_tokens_out": 5299,
+        "mean_latency_s": 11.734836995813854,
+        "max_latency_s": 15.439709063619375,
+        "min_latency_s": 9.696726304478943
+      },
+      "fallback_rate": 0.8,
+      "requests_per_call": 2.6333333333333333,
+      "n_success": 6,
+      "zero_diff_outputs": 7,
+      "success_anomalies": 0,
+      "letter_counts": {
+        "C": 1,
+        "K": 1,
+        "P": 1,
+        "S": 1,
+        "W": 1,
+        "Y": 1
+      },
+      "position_counts": {
+        "62": 6
+      },
+      "letter_uniformity": {
+        "label": "NEW letter over 20",
+        "n": 6,
+        "n_cells": 20,
+        "expected_per_cell": 0.3,
+        "chi2": 13.999999999999998,
+        "df": 19,
+        "mc_p_value": 1.0,
+        "asymptotic_chi2_valid": false,
+        "n_distinct": 6,
+        "top1_share": 0.16666666666666666,
+        "top3_share": 0.5
+      },
+      "position_uniformity": {
+        "label": "position over 63",
+        "n": 6,
+        "n_cells": 63,
+        "expected_per_cell": 0.09523809523809523,
+        "chi2": 372.00000000000006,
+        "df": 62,
+        "mc_p_value": 4.999750012499375e-05,
+        "asymptotic_chi2_valid": false,
+        "n_distinct": 1,
+        "top1_share": 1.0,
+        "top3_share": 1.0
+      }
+    },
+    {
+      "op": "crossover",
+      "style": "full",
+      "model": "gemma4:12b",
+      "n_calls": 30,
+      "stats": {
+        "n_llm_calls": 30,
+        "n_llm_requests": 84,
+        "n_retries": 80,
+        "n_failures": 26,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 2160.7151436349377,
+        "total_tokens_in": 41675,
+        "total_tokens_out": 12457,
+        "mean_latency_s": 25.722799328987353,
+        "max_latency_s": 40.912400133907795,
+        "min_latency_s": 15.42370891571045
+      },
+      "fallback_rate": 0.8666666666666667,
+      "requests_per_call": 2.8,
+      "n_success": 4,
+      "echo_outputs": 0,
+      "child_length_min": 45,
+      "child_length_max": 79
+    }
+  ],
+  "gpu_after": {
+    "usage": "8179 MiB, 15360 MiB, 64 %",
+    "compute_apps": "409743, 8176 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "complete": true
+}
