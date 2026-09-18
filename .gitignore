@@ -19,5 +19,9 @@ ENV/
 *.pth
 models/
 
+# compiled locally from vendored source (esmfold/tmalign/TMalign.cpp) --
+# machine-specific, rebuild with the one-line g++ command in that file
+esmfold/tmalign/TMalign
+
 # OS/editor cruft
 .DS_Store
