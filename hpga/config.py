@@ -9,10 +9,11 @@ class HPGAConfig:
 
     `sequence` is fixed at construction; `genome_length = len(sequence) - 2`
     (two residues are pinned by construction to remove the four-fold rotational
-    and mirror symmetry of the lattice, see hp_model.py).
+    and mirror symmetry of the lattice, see hp_model.py). Both only apply to
+    `genome_model == "lattice"` -- see `genome_model` below.
     """
 
-    sequence: str
+    sequence: str = ""
     pop_size: int = 64
     n_generations: int = 30
     n_workers: int = 4
@@ -28,8 +29,24 @@ class HPGAConfig:
     dispatch_channels: int = 1
     island_id: int = 0
 
+    # Which GenomeModel this run uses (see hpga/genome_model.py): "lattice"
+    # (default, unchanged Phase 1-3 behaviour -- fixed-length list[int] over
+    # the 5-symbol move alphabet, hp_model.py) or "sequence" (variable-length
+    # amino-acid string, hpga/sequence_model.py, scored by ESMFold+TM-align
+    # against a fixed real-protein target). Model-specific parameters that
+    # only "sequence" needs (length bounds, target structure) deliberately
+    # do NOT live here -- they're env-var-driven constants in
+    # hpga/sequence_model.py, matching how operators.py already keeps
+    # LLM-operator config (HPGA_LLM_MODEL etc.) out of this dataclass rather
+    # than growing it with fields most runs don't use.
+    genome_model: str = "lattice"
+
     def __post_init__(self) -> None:
-        if len(self.sequence) < 4:
+        if self.genome_model not in ("lattice", "sequence"):
+            raise ValueError(
+                f"genome_model must be 'lattice' or 'sequence', got {self.genome_model!r}"
+            )
+        if self.genome_model == "lattice" and len(self.sequence) < 4:
             raise ValueError("sequence must have at least 4 residues")
         if self.n_workers < 1:
             raise ValueError("n_workers must be >= 1")
