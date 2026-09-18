@@ -34,6 +34,8 @@ from typing import Sequence
 from hpga.hp_model import MOVES
 from hpga import agents
 from hpga import circles
+from hpga import genome_model
+from hpga.genome_model import LLMOpPlan
 
 Genome = list[int]
 
@@ -557,31 +559,12 @@ SEGMENTS: <start>-<end>:<parent>, <start>-<end>:<parent>, ...
 {retry_hint}"""
 
 
-def _llm_crossover(
-    parent1: Genome, parent2: Genome, rate: float, rng: random.Random, generation: int | None = None,
-) -> tuple[Genome, Genome]:
-    """`generation`, when given, is logged (with `identical_parents`) on
-    every attempt this call makes -- diagnostic for the population-
-    convergence mechanism documented in PHASE2_RESULTS.md sec 4.1 and
-    re-observed in Phase 3: once two selected parents are literally
-    identical, _crossover_sufficiently_mixed can never pass regardless of
-    prompt style, so a rising identical-parent rate over a run's
-    generations is a distinct, measurable cause of crossover fallback from
-    a format/compliance failure. Optional and defaults to None so existing
-    direct callers (test_operator_failure_path.py, ad-hoc scripts) are
-    unaffected."""
-    identical_parents = list(parent1) == list(parent2)
-    if rng.random() > rate or len(parent1) < 2:
-        with _stats_lock:
-            _stats.n_skipped_no_op += 1
-        return list(parent1), list(parent2)
-
-    length = len(parent1)
+def _lattice_crossover_plan(style: str, parent1: Genome, parent2: Genome, length: int) -> LLMOpPlan:
+    """The 5-symbol crossover prompt styles: the style dispatch that used to
+    live inline in _llm_crossover, moved here unchanged so the lattice model
+    (genome_model.LatticeGenomeModel.plan_llm_crossover) can hand it back as
+    a plan. Unknown `style` values fall through to 'full', as before."""
     p1_str, p2_str = _genome_to_str(parent1), _genome_to_str(parent2)
-    style = _prompt_style()
-
-    def fallback():
-        return crossover(parent1, parent2, rate, rng)
 
     def mix_hint(base_hint: str) -> str:
         return (
@@ -652,22 +635,82 @@ def _llm_crossover(
 
         retry_hint_text = mix_hint(_RETRY_HINT_FULL)
 
+    return LLMOpPlan(
+        system=_CROSSOVER_SYSTEM, build_prompt=build_prompt, parse=parse,
+        num_predict=num_predict, retry_hint_text=retry_hint_text,
+    )
+
+
+def _model_for(genome) -> "genome_model.GenomeModel":
+    """The GenomeModel the LLM entry points dispatch through. The active
+    model if one is set; otherwise a config-less lattice model, but only for
+    a list genome -- see hpga/genome_model.py's module docstring for why this
+    departs from current()'s raise-if-unset rule, and what gap it leaves."""
+    model = genome_model.active_or_none()
+    if model is None:
+        if isinstance(genome, str):
+            raise RuntimeError(
+                "str genome passed to an LLM operator with no active GenomeModel -- call "
+                "genome_model.set_active(build_genome_model(config)) first; refusing to "
+                "fall back to the lattice model for a sequence genome"
+            )
+        return _LEGACY_LATTICE
+    if not isinstance(genome, model.genome_type):
+        raise RuntimeError(
+            f"active GenomeModel is {model.name!r} (genome_type {model.genome_type.__name__}) "
+            f"but the operator was handed a {type(genome).__name__} genome"
+        )
+    return model
+
+
+_LEGACY_LATTICE = genome_model.LatticeGenomeModel()
+
+
+def _llm_crossover(
+    parent1: Genome, parent2: Genome, rate: float, rng: random.Random, generation: int | None = None,
+) -> tuple[Genome, Genome]:
+    """`generation`, when given, is logged (with `identical_parents`) on
+    every attempt this call makes -- diagnostic for the population-
+    convergence mechanism documented in PHASE2_RESULTS.md sec 4.1 and
+    re-observed in Phase 3: once two selected parents are literally
+    identical, _crossover_sufficiently_mixed can never pass regardless of
+    prompt style, so a rising identical-parent rate over a run's
+    generations is a distinct, measurable cause of crossover fallback from
+    a format/compliance failure. Optional and defaults to None so existing
+    direct callers (test_operator_failure_path.py, ad-hoc scripts) are
+    unaffected.
+
+    Prompt building and response parsing come from the active GenomeModel
+    (see _model_for); everything else -- the rate gate and its RNG draw,
+    retries, fallback, logging, stats -- is model-independent and unchanged."""
+    model = _model_for(parent1)
+    identical_parents = list(parent1) == list(parent2)
+    if rng.random() > rate or len(parent1) < 2:
+        with _stats_lock:
+            _stats.n_skipped_no_op += 1
+        return model.copy(parent1), model.copy(parent2)
+
+    style = _prompt_style()
+    plan = model.plan_llm_crossover(style, parent1, parent2)
+
+    def fallback():
+        return model.deterministic_crossover(parent1, parent2, rate, rng)
+
     return _run_llm_op(
-        op="crossover", style=style, system=_CROSSOVER_SYSTEM, build_prompt=build_prompt,
-        parse=parse, rng=rng, num_predict=num_predict, fallback=fallback,
-        retry_hint_text=retry_hint_text,
+        op="crossover", style=style, system=plan.system, build_prompt=plan.build_prompt,
+        parse=plan.parse, rng=rng, num_predict=plan.num_predict, fallback=fallback,
+        retry_hint_text=plan.retry_hint_text,
         extra_log_fields={"generation": generation, "identical_parents": identical_parents},
     )
 
 
-def _llm_mutate(genome: Genome, rate: float, rng: random.Random) -> Genome:
-    length = len(genome)
+def _lattice_mutate_plan(style: str, genome: Genome, length: int, k: int) -> LLMOpPlan:
+    """The 5-symbol mutate prompt styles: the style dispatch that used to
+    live inline in _llm_mutate, moved here unchanged so the lattice model
+    (genome_model.LatticeGenomeModel.plan_llm_mutate) can hand it back as a
+    plan. Unknown `style` values (and 'segment', which mutate doesn't
+    recognize) fall through to 'full', as before."""
     genome_str = _genome_to_str(genome)
-    style = _prompt_style()
-    k = max(1, round(rate * length))
-
-    def fallback():
-        return mutate(genome, rate, rng)
 
     def count_hint(base_hint: str) -> str:
         return (
@@ -719,10 +762,28 @@ def _llm_mutate(genome: Genome, rate: float, rng: random.Random) -> Genome:
 
         retry_hint_text = count_hint(_RETRY_HINT_FULL)
 
+    return LLMOpPlan(
+        system=_MUTATE_SYSTEM, build_prompt=build_prompt, parse=parse,
+        num_predict=num_predict, retry_hint_text=retry_hint_text,
+    )
+
+
+def _llm_mutate(genome: Genome, rate: float, rng: random.Random) -> Genome:
+    """Prompt building and response parsing come from the active GenomeModel
+    (see _model_for); retries, fallback, logging and stats are unchanged."""
+    model = _model_for(genome)
+    length = len(genome)
+    style = _prompt_style()
+    k = max(1, round(rate * length))
+    plan = model.plan_llm_mutate(style, genome, k)
+
+    def fallback():
+        return model.deterministic_mutate(genome, rate, rng)
+
     return _run_llm_op(
-        op="mutate", style=style, system=_MUTATE_SYSTEM, build_prompt=build_prompt,
-        parse=parse, rng=rng, num_predict=num_predict, fallback=fallback,
-        retry_hint_text=retry_hint_text,
+        op="mutate", style=style, system=plan.system, build_prompt=plan.build_prompt,
+        parse=plan.parse, rng=rng, num_predict=plan.num_predict, fallback=fallback,
+        retry_hint_text=plan.retry_hint_text,
     )
 
 
