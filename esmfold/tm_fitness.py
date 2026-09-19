@@ -1,4 +1,5 @@
-"""Standalone TM-score fitness for the sequence genome: NOT wired into the GA.
+"""TM-score fitness for the sequence genome (no GA code in this module; hpga.sequence_model
+calls it for SequenceGenomeModel.evaluate_fitness).
 
     genome string -> ESMFold predictor (esmfold/fitness.py) -> coordinates (PDB)
     -> TM-align against the fixed reference esmfold/pdb_cache/7UR7.pdb -> float
@@ -16,8 +17,9 @@ that score_detailed() returns. score() returns the TM-score and nothing else.
 
 The predictor is loaded once, when a TMFitness is built, and reused for every
 call. A process-wide default (get_default / tm_fitness) builds one lazily. ESMFold
-in fp32 is ~13.7GB and the GPU holds one copy, so a process that also uses
-hpga.sequence_model's own ESMFoldFitness singleton should pass THAT object as
+in fp32 is ~13.7GB and the GPU holds one copy. hpga.sequence_model's
+fitness IS this module's default instance (get_default), so the two share one
+predictor; a process that builds its own ESMFoldFitness should pass it as
 `predictor=` rather than letting this module load a second one.
 
 TM-align binary: $TMALIGN_BIN, default /scratch/pcanaste/bin/TMalign (built

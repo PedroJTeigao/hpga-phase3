@@ -52,27 +52,39 @@ this module's original "never default to lattice" rule no longer holds:
   for genome_model="sequence" must call
   `set_active(build_genome_model(config))` itself.
 
-Not yet dispatched through this module (found while wiring the LLM entry
-points; known scope of the follow-up task, deliberately left alone here):
+Dispatched since (operators.py, deterministic path): tournament_select and
+next_generation's elitism copy keep a str genome whole (_copy_genome);
+random_population delegates to the active sequence model's random_genome;
+next_generation's deterministic branch calls model.deterministic_crossover /
+deterministic_mutate. With no active model or a lattice one every one of those
+runs the original lattice code unchanged. With a sequence model active,
+next_generation raises (in any operator mode) if HPGA_AGENTS_ENABLED,
+HPGA_CIRCLES_ENABLED or HPGA_LOG_DIVERSITY is 1, if the population holds
+non-str genomes, or -- with no sequence model active -- if it holds str genomes.
 
-  - operators.tournament_select: `list(population[best])` turns a str genome
-    into a list of single characters.
-  - operators.next_generation's elitism copy
-    (`[list(population[i]) for i in ranked[:elitism]]`): same problem.
-  - operators.random_genome / random_population: always lattice (MOVES).
-  - operators.next_generation's deterministic branch calls the lattice
-    crossover()/mutate() directly rather than model.deterministic_*.
-  - operators.next_generation's agents/circles hooks assume fixed length
-    (`genome_length = len(population[0])`).
+Still not dispatched (known scope of the follow-up tasks):
+
   - agents.py / circles.py: their LLM calls hardcode the 5-letter alphabet
     (ops._CHAR_TO_MOVE, ops._genome_to_str, ops._extract_labelled, and the
     S/L/R/U/D parsers in agents._extract_refine_position and
-    circles._extract_fold_line).
+    circles._extract_fold_line), and next_generation's agents/circles hooks
+    assume fixed length (`genome_length = len(population[0])`). Sequence mode
+    refuses to enable them rather than run that code.
   - agents.mean_pairwise_hamming / log_diversity: zip()-based Hamming, which
     silently truncates on unequal lengths; GenomeModel.distance exists for
-    exactly this and isn't used there.
-  - Nothing outside operators.py's LLM entry points calls set_active or
-    current() yet, including island.py.
+    exactly this and isn't used there. Sequence mode refuses
+    HPGA_LOG_DIVERSITY=1 for the same reason.
+  - island.py / worker.py / instrumentation.py: Island builds a lattice
+    population and evaluates it in a pool of worker processes whose target
+    hard-wires hp_model.evaluate_fitness; the sequence fitness is one
+    GPU-resident predictor and cannot be replicated per worker. Sequence mode
+    is driven in-process instead (experiments/run_sequence_ga_smoke.py). Nothing
+    outside operators.py's dispatch points and that driver calls set_active.
+    Island(HPGAConfig(genome_model="sequence")) with no model active still
+    constructs silently (a population of empty lattice genomes: genome_length
+    is len("") - 2); with a sequence model active it raises ValueError from
+    random_population ("length -2 outside [30, 80]"). Neither is a supported
+    way to run sequence mode.
 """
 
 import random

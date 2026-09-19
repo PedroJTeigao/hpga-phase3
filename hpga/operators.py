@@ -46,14 +46,35 @@ def random_genome(length: int, rng: random.Random) -> Genome:
     return [rng.choice(MOVES) for _ in range(length)]
 
 
-def random_population(pop_size: int, genome_length: int, rng: random.Random) -> list[Genome]:
+def _sequence_model_or_none():
+    """The active GenomeModel if it is the str-genome (sequence) one, else None.
+    Everything sequence-specific in this module keys off this: with no active
+    model, or a lattice one, every path below is the original lattice code."""
+    model = genome_model.active_or_none()
+    return model if model is not None and model.genome_type is str else None
+
+
+def _copy_genome(genome):
+    """list(genome) for a lattice genome, exactly as before; a sequence genome
+    is a str, already immutable, and list() would split it into characters."""
+    return genome if isinstance(genome, str) else list(genome)
+
+
+def random_population(pop_size: int, genome_length: int | None, rng: random.Random) -> list[Genome]:
+    """Lattice: `genome_length` fixed-length move lists, unchanged. With a
+    sequence GenomeModel active, delegates to its random_genome, where
+    `genome_length=None` draws each genome's length uniformly over the model's
+    bounds and an int must lie inside them (out of range raises)."""
+    seq = _sequence_model_or_none()
+    if seq is not None:
+        return [seq.random_genome(rng, genome_length) for _ in range(pop_size)]
     return [random_genome(genome_length, rng) for _ in range(pop_size)]
 
 
 def tournament_select(population: Sequence[Genome], fitnesses: Sequence[float], k: int, rng: random.Random) -> Genome:
     idxs = rng.sample(range(len(population)), k)
     best = max(idxs, key=lambda i: fitnesses[i])
-    return list(population[best])
+    return _copy_genome(population[best])
 
 
 def crossover(parent1: Genome, parent2: Genome, rate: float, rng: random.Random) -> tuple[Genome, Genome]:
@@ -790,6 +811,36 @@ def _llm_mutate(genome: Genome, rate: float, rng: random.Random) -> Genome:
 # --- GA phase entry point ---------------------------------------------------
 
 
+def _check_genome_kind(population: Sequence[Genome], seq) -> None:
+    """Fail loudly, before any RNG draw or side effect, where sequence mode
+    would otherwise run lattice code. `seq` is _sequence_model_or_none().
+
+    Sequence mode: the population must be all str, and the features whose code
+    is still lattice-only (agents and circles: 5-letter parsers, fixed-length
+    assumptions; HPGA_LOG_DIVERSITY: agents.mean_pairwise_hamming zip()-truncates
+    unequal lengths) must be off, in any operator mode -- a flag that is set but
+    silently ignored would be as misleading as one that runs the lattice
+    parser. Lattice mode: a str population with no sequence model active
+    (list(str) would split it into characters) is refused; list genomes, the
+    only thing lattice mode ever held, never reach either check."""
+    if seq is not None:
+        if not all(isinstance(g, str) for g in population):
+            raise RuntimeError(f"active GenomeModel is {seq.name!r} but the population holds non-str genomes")
+        for flag, what in (("HPGA_AGENTS_ENABLED", "agents"), ("HPGA_CIRCLES_ENABLED", "circles"),
+                           ("HPGA_LOG_DIVERSITY", "diversity logging")):
+            if os.environ.get(flag, "0") == "1":
+                raise RuntimeError(
+                    f"{flag}=1 is not supported with the sequence GenomeModel: {what} is still lattice-only "
+                    "(see the 'Not yet dispatched' list in hpga/genome_model.py). Refusing rather than running "
+                    "lattice code on sequence genomes."
+                )
+    elif population and isinstance(population[0], str):
+        raise RuntimeError(
+            "str genomes passed to next_generation with no sequence GenomeModel active -- call "
+            "genome_model.set_active(build_genome_model(HPGAConfig(genome_model='sequence'))) first"
+        )
+
+
 def _dispatch_degree() -> int:
     """DIBM analogue: number of concurrent operator-call 'injection channels'
     the master issues through instead of serialising through one. Read fresh
@@ -854,6 +905,12 @@ def next_generation(
     so every arm of an agents-off/agents-no-comm/agents-comm comparison
     gets a diversity trace.
 
+    Sequence mode (an active GenomeModel whose genome_type is str): selection,
+    elitism and the deterministic crossover/mutate go through the model
+    (str genomes, variable length). Agents, circles and HPGA_LOG_DIVERSITY
+    raise if enabled -- see _check_genome_kind. With no active model or a
+    lattice one, none of this executes and behaviour is unchanged.
+
     Circles (Phase 3, optional, off by default -- see hpga/circles.py and
     hpga/blackboard.py): when HPGA_OPERATOR_MODE=llm and
     HPGA_CIRCLES_ENABLED=1, HPGA_N_CIRCLES * HPGA_AGENTS_PER_CIRCLE genomes
@@ -879,13 +936,16 @@ def next_generation(
             "running them together would confound either one's measurement."
         )
 
+    seq = _sequence_model_or_none()
+    _check_genome_kind(population, seq)
+
     gen = agents.tick_generation()
 
     if os.environ.get("HPGA_LOG_DIVERSITY", "0") == "1" and population:
         agents.log_diversity(population, gen)
 
     ranked = sorted(range(len(population)), key=lambda i: fitnesses[i], reverse=True)
-    new_pop: list[Genome] = [list(population[i]) for i in ranked[:elitism]]
+    new_pop: list[Genome] = [_copy_genome(population[i]) for i in ranked[:elitism]]
 
     if use_llm and P > 1:
         n_units = -(-(pop_size - len(new_pop)) // 2)  # ceil division: pairs needed
@@ -916,6 +976,10 @@ def next_generation(
                 c1, c2 = _llm_crossover(p1, p2, crossover_rate, rng, generation=gen)
                 c1 = _llm_mutate(c1, mutation_rate, rng)
                 c2 = _llm_mutate(c2, mutation_rate, rng)
+            elif seq is not None:
+                c1, c2 = seq.deterministic_crossover(p1, p2, crossover_rate, rng)
+                c1 = seq.deterministic_mutate(c1, mutation_rate, rng)
+                c2 = seq.deterministic_mutate(c2, mutation_rate, rng)
             else:
                 c1, c2 = crossover(p1, p2, crossover_rate, rng)
                 c1 = mutate(c1, mutation_rate, rng)

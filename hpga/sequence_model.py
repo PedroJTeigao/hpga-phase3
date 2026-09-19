@@ -85,7 +85,7 @@ def random_sequence(rng: random.Random, length: int | None = None) -> str:
     return "".join(rng.choice(ALPHABET) for _ in range(length))
 
 
-_fitness = None  # lazy ESMFoldFitness singleton
+_fitness = None  # lazy esmfold.tm_fitness.TMFitness singleton
 
 
 def _get_fitness():
@@ -94,12 +94,17 @@ def _get_fitness():
     cached process-wide rather than per SequenceGenomeModel instance so
     constructing more than one of those (e.g. a probe script building its
     own alongside Island's) doesn't try to load the model twice onto a GPU
-    that only fits one copy."""
+    that only fits one copy. The object is esmfold.tm_fitness's process-wide
+    default TMFitness (ESMFold once, kept warm; TM-score against 7UR7
+    normalised by the reference length), so anything else in the process that
+    calls esmfold.tm_fitness.tm_fitness() shares this one predictor. It is
+    in-process only: the multiprocessing worker pool (worker.py) never sees
+    it, so a GPU-resident predictor cannot be replicated per worker."""
     global _fitness
     if _fitness is None:
-        from esmfold.fitness import ESMFoldFitness
+        from esmfold.tm_fitness import get_default
 
-        _fitness = ESMFoldFitness()
+        _fitness = get_default()
     return _fitness
 
 
