@@ -1,0 +1,72 @@
+# Stage 1 checks, 2026-09-19T07:43:45-04:00, code at 421930b + uncommitted stage-1 code
+
+##### golden lattice circles (recorded at 421930b on the untouched tree)
+produced 1071912 bytes, sha256 fa57e4d2d45d307c, 396 stubbed model calls
+GOLDEN REPRODUCED BYTE FOR BYTE
+
+##### verify_llm_operator_parity.py --baseline 50de6f8 self
+baseline=50de6f8  mode=self
+[self] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[self] next_generation specs: 13  diverged: 0
+[self] namespace problems: 0 []
+
+##### verify_llm_operator_parity.py --baseline 50de6f8 check
+baseline=50de6f8  mode=check
+[check (no active model)] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[check (no active model)] next_generation specs: 13  diverged: 0
+[check (no active model)] namespace problems: 0 []
+
+##### verify_llm_operator_parity.py --baseline 50de6f8 active
+baseline=50de6f8  mode=active
+[active lattice model] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[active lattice model] next_generation specs: 13  diverged: 0
+[active lattice model] namespace problems: 0 []
+
+##### verify_llm_operator_parity.py --baseline 50de6f8 mutants
+baseline=50de6f8  mode=mutants
+  mutant prompt_word_in_full_mutate             DETECTED (1266 divergences)
+  mutant retry_hint_diff_text                   DETECTED (186 divergences)
+  mutant segment_num_predict                    DETECTED (142 divergences)
+  mutant mixed_gate_strictness                  DETECTED (44 divergences)
+  mutant extra_rng_draw_in_mutate               DETECTED (2217 divergences)
+  mutant crossover_fallback_rate                DETECTED (77 divergences)
+  mutant log_field_rename                       DETECTED (2392 divergences)
+  mutant identical_parents_check                DETECTED (310 divergences)
+  mutant position_parse_same_letter_allowed     DETECTED (81 divergences)
+  mutant unknown_style_falls_to_diff            DETECTED (116 divergences)
+ALL APPLICABLE MUTANTS DETECTED
+
+##### verify_sequence_next_generation.py --baseline c089c3a
+  [PASS] str genomes with no sequence model active raises
+  [PASS] str genomes with a LATTICE model active raises
+  [PASS] lattice + HPGA_AGENTS_ENABLED=1 in deterministic mode still runs (unchanged)
+ALL CHECKS PASSED
+
+##### verify_sequence_circles.py
+1-4. normal run (stubbed model, ~15% malformed replies)
+  [PASS] every generation returns pop_size + n_slots str genomes
+  [PASS] every genome inside [30, 80]
+  [PASS] each proposal is its slot's previous member with exactly k positions changed, or unchanged (fallback)
+  [PASS] some proposals were valid edits
+  [PASS] proposal prompts exist, carry the directive / guidance / observations, and use the position-style format
+  [PASS] no prompt asks the model to write a whole sequence (no FOLD / CHILD1 / MUTATED / RATIONALE restatement)
+  [PASS] prompts never name the target structure ('7UR7' or the whole word 'target'; 'targeted' in generated text is fine)
+  [PASS] observation prompts exist and name the changed positions
+  [PASS] the blackboard holds observations and directives
+  [PASS] curation ran (an LLM call with DROP/MERGE format)
+  [PASS] mutate and crossover in this run use position / segment (no full-restatement prompts)
+5. fallback: a model that never answers a proposal validly
+  [PASS] every proposal falls back to its unchanged base, no exception
+  [PASS] the fallbacks are logged as propose fallback events
+6. determinism
+  [PASS] same seed -> identical populations at every generation
+7. loud failures
+  [PASS] HPGA_AGENTS_ENABLED=1 still raises in sequence mode
+  [PASS] HPGA_LOG_DIVERSITY=1 still raises in sequence mode
+  [PASS] circles + deterministic operators raises (a set flag must not be silently ignored)
+ALL CHECKS PASSED
+
+##### protected/lattice files changed vs 8a77a7c
+ hpga/circles.py | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+(circles.py: additions only?) deletions in circles.py: 0

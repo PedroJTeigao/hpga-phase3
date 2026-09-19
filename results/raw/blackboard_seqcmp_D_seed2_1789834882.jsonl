@@ -1,0 +1,300 @@
+{"timestamp": "2026-09-19T16:23:56.032554+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-1", "generation": 0, "author": "central", "circle_id": null, "type": "directive", "content": "Explore a wide variety of amino acid combinations to establish a baseline for the sequence.", "tokens": 15, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:23:56.033158+00:00", "event": "board_size", "generation": 0, "live_entries": 1, "live_tokens": 15}
+{"timestamp": "2026-09-19T16:30:58.954072+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-2", "generation": 2, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Replacing the Cysteine and Proline with Glycine and Leucine negatively impacted fitness.", "tokens": 12, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:30:58.954486+00:00", "event": "board_size", "generation": 2, "live_entries": 2, "live_tokens": 27}
+{"timestamp": "2026-09-19T16:31:04.148182+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-3", "generation": 2, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Replacing specific residues in the middle and towards the end of the sequence improved fitness.", "tokens": 15, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:31:04.148499+00:00", "event": "board_size", "generation": 2, "live_entries": 3, "live_tokens": 42}
+{"timestamp": "2026-09-19T16:31:08.855465+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-4", "generation": 2, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Replacing the L A V motif with M I L in the first third of the sequence decreased fitness.", "tokens": 19, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:31:08.855866+00:00", "event": "board_size", "generation": 2, "live_entries": 4, "live_tokens": 61}
+{"timestamp": "2026-09-19T16:31:17.080480+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-5", "generation": 2, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "The substitution of R E E with L F I in the first third of the sequence slightly decreased fitness, suggesting this region is sensitive to hydrophobic changes.", "tokens": 28, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:31:17.080872+00:00", "event": "board_size", "generation": 2, "live_entries": 5, "live_tokens": 89}
+{"timestamp": "2026-09-19T16:34:51.904128+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-6", "generation": 3, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 10 and 26 resulted in a slight fitness decrease, suggesting these sites are less tolerant of variation.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:34:51.904405+00:00", "event": "board_size", "generation": 3, "live_entries": 6, "live_tokens": 110}
+{"timestamp": "2026-09-19T16:34:56.798802+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-7", "generation": 3, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 6 and 23 significantly improved fitness, suggesting these sites are key for stability or activity.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:34:56.799030+00:00", "event": "board_size", "generation": 3, "live_entries": 7, "live_tokens": 128}
+{"timestamp": "2026-09-19T16:35:03.250102+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-8", "generation": 3, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 18, 23, and 42 improved fitness, suggesting these sites are tolerant of variation or favor the new residues.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:35:03.250555+00:00", "event": "board_size", "generation": 3, "live_entries": 8, "live_tokens": 149}
+{"timestamp": "2026-09-19T16:35:08.562778+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-9", "generation": 3, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions in the central region of the sequence improved fitness, suggesting higher tolerance or improved binding in those specific motifs.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:35:08.563319+00:00", "event": "board_size", "generation": 3, "live_entries": 9, "live_tokens": 169}
+{"timestamp": "2026-09-19T16:39:36.009943+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-10", "generation": 4, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 14 and 16 negatively impacted the fitness score.", "tokens": 12, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:39:36.010385+00:00", "event": "board_size", "generation": 4, "live_entries": 10, "live_tokens": 181}
+{"timestamp": "2026-09-19T16:39:42.589553+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-11", "generation": 4, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 6 and 14 decreased fitness, suggesting these sites should be conserved or explored with different residues.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:39:42.590086+00:00", "event": "board_size", "generation": 4, "live_entries": 11, "live_tokens": 201}
+{"timestamp": "2026-09-19T16:39:46.981568+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-12", "generation": 4, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Replacing hydrophobic residues in the middle and late regions improved fitness.", "tokens": 11, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:39:46.981871+00:00", "event": "board_size", "generation": 4, "live_entries": 12, "live_tokens": 212}
+{"timestamp": "2026-09-19T16:39:51.764482+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-13", "generation": 4, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "The small fitness increase suggests these specific substitutions are marginally favorable but do not indicate a high-sensitivity hotspot.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:39:51.764927+00:00", "event": "board_size", "generation": 4, "live_entries": 13, "live_tokens": 230}
+{"timestamp": "2026-09-19T16:43:36.006867+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-14", "generation": 5, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 15 and 23 improved fitness, suggesting these sites are tolerant of hydrophobic modifications.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:43:36.007302+00:00", "event": "board_size", "generation": 5, "live_entries": 14, "live_tokens": 246}
+{"timestamp": "2026-09-19T16:43:40.157185+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-15", "generation": 5, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 12 and 18 were detrimental to fitness.", "tokens": 11, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:43:40.157604+00:00", "event": "board_size", "generation": 5, "live_entries": 15, "live_tokens": 257}
+{"timestamp": "2026-09-19T16:43:45.172311+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-16", "generation": 5, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 18, 23, and 42 were detrimental to the fitness score.", "tokens": 13, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:43:45.172723+00:00", "event": "board_size", "generation": 5, "live_entries": 16, "live_tokens": 270}
+{"timestamp": "2026-09-19T16:43:50.341989+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-17", "generation": 5, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Replacing bulky hydrophobic residues with smaller ones in the middle of the sequence improved fitness.", "tokens": 15, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:43:50.342385+00:00", "event": "board_size", "generation": 5, "live_entries": 17, "live_tokens": 285}
+{"timestamp": "2026-09-19T16:43:55.729508+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-18", "generation": 5, "author": "central", "circle_id": null, "type": "directive", "content": "Prioritize substituting bulky hydrophobic residues in the middle region with smaller, less bulky ones.", "tokens": 14, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:43:55.729861+00:00", "event": "board_size", "generation": 5, "live_entries": 18, "live_tokens": 299}
+{"timestamp": "2026-09-19T16:47:28.227715+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-19", "generation": 6, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 14 and 20 slightly decreased fitness, suggesting these sites may be less tolerant of change or less optimal in their new forms.", "tokens": 25, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:47:28.228161+00:00", "event": "board_size", "generation": 6, "live_entries": 19, "live_tokens": 324}
+{"timestamp": "2026-09-19T16:47:32.112070+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-20", "generation": 6, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Replacing bulky aromatic residues with smaller, hydrophobic ones in the middle of the sequence improved fitness.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:47:32.112463+00:00", "event": "board_size", "generation": 6, "live_entries": 20, "live_tokens": 340}
+{"timestamp": "2026-09-19T16:47:39.736693+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-21", "generation": 6, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Replacing L with I and K with G in the central region decreased fitness, suggesting these specific substitutions are suboptimal for the target property.", "tokens": 24, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:47:39.737099+00:00", "event": "board_size", "generation": 6, "live_entries": 21, "live_tokens": 364}
+{"timestamp": "2026-09-19T16:47:47.309811+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-22", "generation": 6, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 24, 30, and 33 decreased fitness, suggesting these residues are critical for structural stability or binding.", "tokens": 19, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:47:47.310178+00:00", "event": "board_size", "generation": 6, "live_entries": 22, "live_tokens": 383}
+{"timestamp": "2026-09-19T16:49:10.677028+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-10", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.677376+00:00", "event": "board_size", "generation": 6, "live_entries": 21, "live_tokens": 371}
+{"timestamp": "2026-09-19T16:49:10.677710+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-21", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.677996+00:00", "event": "board_size", "generation": 6, "live_entries": 20, "live_tokens": 347}
+{"timestamp": "2026-09-19T16:49:10.678293+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-13", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.678583+00:00", "event": "board_size", "generation": 6, "live_entries": 19, "live_tokens": 329}
+{"timestamp": "2026-09-19T16:49:10.678888+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-6", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.679302+00:00", "event": "board_size", "generation": 6, "live_entries": 18, "live_tokens": 308}
+{"timestamp": "2026-09-19T16:49:10.679714+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-1", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.680046+00:00", "event": "board_size", "generation": 6, "live_entries": 17, "live_tokens": 293}
+{"timestamp": "2026-09-19T16:49:10.680359+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-5", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.680658+00:00", "event": "board_size", "generation": 6, "live_entries": 16, "live_tokens": 265}
+{"timestamp": "2026-09-19T16:49:10.680950+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-2", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.681216+00:00", "event": "board_size", "generation": 6, "live_entries": 15, "live_tokens": 253}
+{"timestamp": "2026-09-19T16:49:10.681511+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-4", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.681783+00:00", "event": "board_size", "generation": 6, "live_entries": 14, "live_tokens": 234}
+{"timestamp": "2026-09-19T16:49:10.682067+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-11", "superseded_by": null}
+{"timestamp": "2026-09-19T16:49:10.682347+00:00", "event": "board_size", "generation": 6, "live_entries": 13, "live_tokens": 214}
+{"timestamp": "2026-09-19T16:49:10.682710+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-23", "generation": 6, "author": "curator", "circle_id": null, "type": "summary", "content": "Sites 18, 23, and 42, along with the central region, show tolerance for variation or improved fitness with substitutions.", "tokens": 19, "source_entry_ids": ["seqcmp_D_seed2_1789834882-7", "seqcmp_D_seed2_1789834882-8", "seqcmp_D_seed2_1789834882-9"], "live": true}
+{"timestamp": "2026-09-19T16:49:10.683022+00:00", "event": "board_size", "generation": 6, "live_entries": 14, "live_tokens": 233}
+{"timestamp": "2026-09-19T16:49:10.683308+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-7", "superseded_by": "seqcmp_D_seed2_1789834882-23"}
+{"timestamp": "2026-09-19T16:49:10.683596+00:00", "event": "board_size", "generation": 6, "live_entries": 13, "live_tokens": 215}
+{"timestamp": "2026-09-19T16:49:10.683879+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-8", "superseded_by": "seqcmp_D_seed2_1789834882-23"}
+{"timestamp": "2026-09-19T16:49:10.684141+00:00", "event": "board_size", "generation": 6, "live_entries": 12, "live_tokens": 194}
+{"timestamp": "2026-09-19T16:49:10.684422+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-9", "superseded_by": "seqcmp_D_seed2_1789834882-23"}
+{"timestamp": "2026-09-19T16:49:10.684714+00:00", "event": "board_size", "generation": 6, "live_entries": 11, "live_tokens": 174}
+{"timestamp": "2026-09-19T16:49:10.685078+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-24", "generation": 6, "author": "curator", "circle_id": null, "type": "summary", "content": "Improving fitness by replacing bulky hydrophobic or aromatic residues in the middle region with smaller ones.", "tokens": 16, "source_entry_ids": ["seqcmp_D_seed2_1789834882-20", "seqcmp_D_seed2_1789834882-14", "seqcmp_D_seed2_1789834882-18", "seqcmp_D_seed2_1789834882-12", "seqcmp_D_seed2_1789834882-17"], "live": true}
+{"timestamp": "2026-09-19T16:49:10.685387+00:00", "event": "board_size", "generation": 6, "live_entries": 12, "live_tokens": 190}
+{"timestamp": "2026-09-19T16:49:10.685698+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-20", "superseded_by": "seqcmp_D_seed2_1789834882-24"}
+{"timestamp": "2026-09-19T16:49:10.685960+00:00", "event": "board_size", "generation": 6, "live_entries": 11, "live_tokens": 174}
+{"timestamp": "2026-09-19T16:49:10.686249+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-14", "superseded_by": "seqcmp_D_seed2_1789834882-24"}
+{"timestamp": "2026-09-19T16:49:10.686669+00:00", "event": "board_size", "generation": 6, "live_entries": 10, "live_tokens": 158}
+{"timestamp": "2026-09-19T16:49:10.687042+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-18", "superseded_by": "seqcmp_D_seed2_1789834882-24"}
+{"timestamp": "2026-09-19T16:49:10.687343+00:00", "event": "board_size", "generation": 6, "live_entries": 9, "live_tokens": 144}
+{"timestamp": "2026-09-19T16:49:10.687658+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-12", "superseded_by": "seqcmp_D_seed2_1789834882-24"}
+{"timestamp": "2026-09-19T16:49:10.687937+00:00", "event": "board_size", "generation": 6, "live_entries": 8, "live_tokens": 133}
+{"timestamp": "2026-09-19T16:49:10.688218+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-17", "superseded_by": "seqcmp_D_seed2_1789834882-24"}
+{"timestamp": "2026-09-19T16:49:10.688496+00:00", "event": "board_size", "generation": 6, "live_entries": 7, "live_tokens": 118}
+{"timestamp": "2026-09-19T16:52:39.763785+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-25", "generation": 7, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 15 and 21 improved fitness, suggesting these sites are permissive or beneficial for the target property.", "tokens": 19, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:52:39.764281+00:00", "event": "board_size", "generation": 7, "live_entries": 8, "live_tokens": 137}
+{"timestamp": "2026-09-19T16:52:45.478329+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-26", "generation": 7, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Replacing the leucine at position 13 with isoleucine improved fitness, suggesting a preference for branched-chain hydrophobic residues at that site.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:52:45.478764+00:00", "event": "board_size", "generation": 7, "live_entries": 9, "live_tokens": 157}
+{"timestamp": "2026-09-19T16:52:54.373930+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-27", "generation": 7, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 25, 38, and 45 provided a marginal fitness increase, suggesting these sites may have some tolerance for variation.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:52:54.374337+00:00", "event": "board_size", "generation": 7, "live_entries": 10, "live_tokens": 178}
+{"timestamp": "2026-09-19T16:52:59.879503+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-28", "generation": 7, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "The substitutions at positions 11, 21, and 45 negatively impacted fitness, suggesting these sites are sensitive to mutations.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:52:59.879834+00:00", "event": "board_size", "generation": 7, "live_entries": 11, "live_tokens": 196}
+{"timestamp": "2026-09-19T16:56:24.633704+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-29", "generation": 8, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Mutations at positions 4 and 5 were detrimental to fitness.", "tokens": 10, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:56:24.634108+00:00", "event": "board_size", "generation": 8, "live_entries": 12, "live_tokens": 206}
+{"timestamp": "2026-09-19T16:56:29.316699+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-30", "generation": 8, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "The mutations at positions 14 and 21 are neutral and do not impact the current fitness level.", "tokens": 17, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:56:29.317044+00:00", "event": "board_size", "generation": 8, "live_entries": 13, "live_tokens": 223}
+{"timestamp": "2026-09-19T16:56:35.100689+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-31", "generation": 8, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "The mutations at positions 13, 15, and 21 resulted in a fitness decrease, suggesting these regions are sensitive to substitution.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:56:35.101099+00:00", "event": "board_size", "generation": 8, "live_entries": 14, "live_tokens": 243}
+{"timestamp": "2026-09-19T16:56:38.927819+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-32", "generation": 8, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions in the first quarter of the sequence significantly improved fitness.", "tokens": 11, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T16:56:38.928158+00:00", "event": "board_size", "generation": 8, "live_entries": 15, "live_tokens": 254}
+{"timestamp": "2026-09-19T17:00:23.435965+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-33", "generation": 9, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 1 and 2 do not affect the fitness score.", "tokens": 12, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:00:23.436423+00:00", "event": "board_size", "generation": 9, "live_entries": 16, "live_tokens": 266}
+{"timestamp": "2026-09-19T17:00:28.981037+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-34", "generation": 9, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 2 and 10 resulted in a negligible fitness decrease, suggesting these sites are not critical for activity.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:00:28.981358+00:00", "event": "board_size", "generation": 9, "live_entries": 17, "live_tokens": 287}
+{"timestamp": "2026-09-19T17:00:35.781956+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-35", "generation": 9, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 25, 38, and 45 improved fitness, suggesting these specific sites are tolerant of, or benefit from, these mutations.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:00:35.782322+00:00", "event": "board_size", "generation": 9, "live_entries": 18, "live_tokens": 308}
+{"timestamp": "2026-09-19T17:00:42.972846+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-36", "generation": 9, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 25, 38, and 45 yielded a fitness increase, suggesting these sites are tolerant of variation or beneficial for stability.", "tokens": 22, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:00:42.973217+00:00", "event": "board_size", "generation": 9, "live_entries": 19, "live_tokens": 330}
+{"timestamp": "2026-09-19T17:01:57.903318+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-27", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.903543+00:00", "event": "board_size", "generation": 9, "live_entries": 18, "live_tokens": 309}
+{"timestamp": "2026-09-19T17:01:57.903723+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-31", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.903892+00:00", "event": "board_size", "generation": 9, "live_entries": 17, "live_tokens": 289}
+{"timestamp": "2026-09-19T17:01:57.904097+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-34", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.904242+00:00", "event": "board_size", "generation": 9, "live_entries": 16, "live_tokens": 268}
+{"timestamp": "2026-09-19T17:01:57.904471+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-33", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.904632+00:00", "event": "board_size", "generation": 9, "live_entries": 15, "live_tokens": 256}
+{"timestamp": "2026-09-19T17:01:57.904804+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-26", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.904956+00:00", "event": "board_size", "generation": 9, "live_entries": 14, "live_tokens": 236}
+{"timestamp": "2026-09-19T17:01:57.905123+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-29", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.905253+00:00", "event": "board_size", "generation": 9, "live_entries": 13, "live_tokens": 226}
+{"timestamp": "2026-09-19T17:01:57.905425+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-32", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.905635+00:00", "event": "board_size", "generation": 9, "live_entries": 12, "live_tokens": 215}
+{"timestamp": "2026-09-19T17:01:57.905815+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-25", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.905952+00:00", "event": "board_size", "generation": 9, "live_entries": 11, "live_tokens": 196}
+{"timestamp": "2026-09-19T17:01:57.906109+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-16", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.906283+00:00", "event": "board_size", "generation": 9, "live_entries": 10, "live_tokens": 183}
+{"timestamp": "2026-09-19T17:01:57.906437+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-24", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.906601+00:00", "event": "board_size", "generation": 9, "live_entries": 9, "live_tokens": 167}
+{"timestamp": "2026-09-19T17:01:57.906763+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-30", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.906939+00:00", "event": "board_size", "generation": 9, "live_entries": 8, "live_tokens": 150}
+{"timestamp": "2026-09-19T17:01:57.907133+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-22", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.907282+00:00", "event": "board_size", "generation": 9, "live_entries": 7, "live_tokens": 131}
+{"timestamp": "2026-09-19T17:01:57.907467+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-28", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.907614+00:00", "event": "board_size", "generation": 9, "live_entries": 6, "live_tokens": 113}
+{"timestamp": "2026-09-19T17:01:57.907796+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-19", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.907951+00:00", "event": "board_size", "generation": 9, "live_entries": 5, "live_tokens": 88}
+{"timestamp": "2026-09-19T17:01:57.908105+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-23", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.908248+00:00", "event": "board_size", "generation": 9, "live_entries": 4, "live_tokens": 69}
+{"timestamp": "2026-09-19T17:01:57.916489+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-15", "superseded_by": null}
+{"timestamp": "2026-09-19T17:01:57.916673+00:00", "event": "board_size", "generation": 9, "live_entries": 3, "live_tokens": 58}
+{"timestamp": "2026-09-19T17:05:21.654961+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-37", "generation": 10, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 14 and 21 did not improve the fitness score, suggesting these specific sites are not sensitive to these mutations.", "tokens": 23, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:05:21.655394+00:00", "event": "board_size", "generation": 10, "live_entries": 4, "live_tokens": 81}
+{"timestamp": "2026-09-19T17:05:26.126973+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-38", "generation": 10, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Replacing the hydrophobic residues at positions 12 and 14 with phenylalanine and leucine did not improve fitness.", "tokens": 17, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:05:26.127369+00:00", "event": "board_size", "generation": 10, "live_entries": 5, "live_tokens": 98}
+{"timestamp": "2026-09-19T17:05:33.003818+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-39", "generation": 10, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Mutations at positions 25, 38, and 45 negatively impacted fitness, suggesting these sites should be conserved.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:05:33.004147+00:00", "event": "board_size", "generation": 10, "live_entries": 6, "live_tokens": 114}
+{"timestamp": "2026-09-19T17:05:40.932613+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-40", "generation": 10, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 25, 38, and 45 improved fitness, suggesting these specific sites are tolerant of variation or favorable mutations.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:05:40.932946+00:00", "event": "board_size", "generation": 10, "live_entries": 7, "live_tokens": 134}
+{"timestamp": "2026-09-19T17:05:47.312301+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-41", "generation": 10, "author": "central", "circle_id": null, "type": "directive", "content": "Prioritize stabilizing and optimizing residues at positions 25, 38, and 45 while keeping positions 12 and 14 conserved.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:05:47.312640+00:00", "event": "board_size", "generation": 10, "live_entries": 8, "live_tokens": 152}
+{"timestamp": "2026-09-19T17:09:16.444439+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-42", "generation": 11, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 24 and 30 were neutral and did not affect the fitness score.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:09:16.444805+00:00", "event": "board_size", "generation": 11, "live_entries": 9, "live_tokens": 168}
+{"timestamp": "2026-09-19T17:09:20.432053+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-43", "generation": 11, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Substituting tyrosine with leucine and serine at the tail end of the sequence slightly improved fitness.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:09:20.432399+00:00", "event": "board_size", "generation": 11, "live_entries": 10, "live_tokens": 184}
+{"timestamp": "2026-09-19T17:09:25.767072+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-44", "generation": 11, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "The identity of the sequence suggests the current local region is at a local optimum or is insensitive to the current mutation types.", "tokens": 23, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:09:25.767421+00:00", "event": "board_size", "generation": 11, "live_entries": 11, "live_tokens": 207}
+{"timestamp": "2026-09-19T17:09:31.329858+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-45", "generation": 11, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "The substitutions at positions 25, 38, and 45 significantly degraded fitness, suggesting these regions are sensitive to mutation.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:09:31.330283+00:00", "event": "board_size", "generation": 11, "live_entries": 12, "live_tokens": 225}
+{"timestamp": "2026-09-19T17:12:51.936156+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-46", "generation": 12, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Substitutions at the terminal positions did not impact the fitness score.", "tokens": 11, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:12:51.936462+00:00", "event": "board_size", "generation": 12, "live_entries": 13, "live_tokens": 236}
+{"timestamp": "2026-09-19T17:12:55.208031+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-47", "generation": 12, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Mutations at the end of the sequence did not affect fitness.", "tokens": 11, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:12:55.208384+00:00", "event": "board_size", "generation": 12, "live_entries": 14, "live_tokens": 247}
+{"timestamp": "2026-09-19T17:13:00.879338+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-48", "generation": 12, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 22, 28, and 34 are detrimental to fitness and should be avoided in future iterations.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:13:00.879965+00:00", "event": "board_size", "generation": 12, "live_entries": 15, "live_tokens": 265}
+{"timestamp": "2026-09-19T17:13:07.035211+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-49", "generation": 12, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Replacing F L V with L L I in the central region improved fitness, suggesting that increasing hydrophobicity or side-chain bulk in this motif is favorable.", "tokens": 26, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:13:07.035436+00:00", "event": "board_size", "generation": 12, "live_entries": 16, "live_tokens": 291}
+{"timestamp": "2026-09-19T17:13:54.643131+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-36", "superseded_by": null}
+{"timestamp": "2026-09-19T17:13:54.643471+00:00", "event": "board_size", "generation": 12, "live_entries": 15, "live_tokens": 269}
+{"timestamp": "2026-09-19T17:13:54.643786+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-45", "superseded_by": null}
+{"timestamp": "2026-09-19T17:13:54.644050+00:00", "event": "board_size", "generation": 12, "live_entries": 14, "live_tokens": 251}
+{"timestamp": "2026-09-19T17:13:54.644329+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-40", "superseded_by": null}
+{"timestamp": "2026-09-19T17:13:54.644616+00:00", "event": "board_size", "generation": 12, "live_entries": 13, "live_tokens": 231}
+{"timestamp": "2026-09-19T17:13:54.644905+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-35", "superseded_by": null}
+{"timestamp": "2026-09-19T17:13:54.645296+00:00", "event": "board_size", "generation": 12, "live_entries": 12, "live_tokens": 210}
+{"timestamp": "2026-09-19T17:13:54.645704+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-50", "generation": 12, "author": "curator", "circle_id": null, "type": "summary", "content": "Positions 12, 14, and 21 are not sensitive to substitutions and should be conserved.", "tokens": 14, "source_entry_ids": ["seqcmp_D_seed2_1789834882-38", "seqcmp_D_seed2_1789834882-37"], "live": true}
+{"timestamp": "2026-09-19T17:13:54.646014+00:00", "event": "board_size", "generation": 12, "live_entries": 13, "live_tokens": 224}
+{"timestamp": "2026-09-19T17:13:54.646315+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-38", "superseded_by": "seqcmp_D_seed2_1789834882-50"}
+{"timestamp": "2026-09-19T17:13:54.646728+00:00", "event": "board_size", "generation": 12, "live_entries": 12, "live_tokens": 207}
+{"timestamp": "2026-09-19T17:13:54.647100+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-37", "superseded_by": "seqcmp_D_seed2_1789834882-50"}
+{"timestamp": "2026-09-19T17:13:54.647370+00:00", "event": "board_size", "generation": 12, "live_entries": 11, "live_tokens": 184}
+{"timestamp": "2026-09-19T17:13:54.647697+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-51", "generation": 12, "author": "curator", "circle_id": null, "type": "summary", "content": "Terminal positions are insensitive to mutations and do not affect fitness.", "tokens": 11, "source_entry_ids": ["seqcmp_D_seed2_1789834882-47", "seqcmp_D_seed2_1789834882-46"], "live": true}
+{"timestamp": "2026-09-19T17:13:54.647991+00:00", "event": "board_size", "generation": 12, "live_entries": 12, "live_tokens": 195}
+{"timestamp": "2026-09-19T17:13:54.648270+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-47", "superseded_by": "seqcmp_D_seed2_1789834882-51"}
+{"timestamp": "2026-09-19T17:13:54.648544+00:00", "event": "board_size", "generation": 12, "live_entries": 11, "live_tokens": 184}
+{"timestamp": "2026-09-19T17:13:54.648819+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-46", "superseded_by": "seqcmp_D_seed2_1789834882-51"}
+{"timestamp": "2026-09-19T17:13:54.649062+00:00", "event": "board_size", "generation": 12, "live_entries": 10, "live_tokens": 173}
+{"timestamp": "2026-09-19T17:17:27.094609+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-52", "generation": 13, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitution of F and I with L and V in the middle of the sequence had no impact on fitness.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:17:27.095055+00:00", "event": "board_size", "generation": 13, "live_entries": 11, "live_tokens": 194}
+{"timestamp": "2026-09-19T17:17:31.990443+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-53", "generation": 13, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "The substitution of F and I with L at positions 12 and 13 had no impact on fitness.", "tokens": 18, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:17:31.990857+00:00", "event": "board_size", "generation": 13, "live_entries": 12, "live_tokens": 212}
+{"timestamp": "2026-09-19T17:17:37.213998+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-54", "generation": 13, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substituting C and W with L at these specific positions improved fitness, suggesting a preference for hydrophobic residues in those regions.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:17:37.214407+00:00", "event": "board_size", "generation": 13, "live_entries": 13, "live_tokens": 233}
+{"timestamp": "2026-09-19T17:17:44.524047+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-55", "generation": 13, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Replacing G and I with L at positions 12-14 increased fitness, suggesting a preference for hydrophobic residues in that region.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:17:44.524365+00:00", "event": "board_size", "generation": 13, "live_entries": 14, "live_tokens": 253}
+{"timestamp": "2026-09-19T17:21:04.845573+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-56", "generation": 14, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 13 and 25 did not impact the fitness score.", "tokens": 13, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:21:04.846077+00:00", "event": "board_size", "generation": 14, "live_entries": 15, "live_tokens": 266}
+{"timestamp": "2026-09-19T17:21:08.752271+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-57", "generation": 14, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 11 and 13 are neutral with respect to fitness.", "tokens": 13, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:21:08.752637+00:00", "event": "board_size", "generation": 14, "live_entries": 16, "live_tokens": 279}
+{"timestamp": "2026-09-19T17:21:13.980476+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-58", "generation": 14, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "The substitutions at positions 25, 27, and 31 are neutral with respect to the current fitness score.", "tokens": 17, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:21:13.981013+00:00", "event": "board_size", "generation": 14, "live_entries": 17, "live_tokens": 296}
+{"timestamp": "2026-09-19T17:21:20.667188+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-59", "generation": 14, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substituting hydrophobic residues at positions 23, 29, and 35 improved fitness, suggesting these sites are tolerant of, or benefit from, increased hydrophobicity.", "tokens": 22, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:21:20.667662+00:00", "event": "board_size", "generation": 14, "live_entries": 18, "live_tokens": 318}
+{"timestamp": "2026-09-19T17:25:01.475994+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-60", "generation": 15, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The substitutions at positions 10 and 21 are neutral and do not impact the current fitness level.", "tokens": 17, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:25:01.476385+00:00", "event": "board_size", "generation": 15, "live_entries": 19, "live_tokens": 335}
+{"timestamp": "2026-09-19T17:25:09.203926+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-61", "generation": 15, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Replacing V L with Q N at positions 13 and 14 resulted in a negligible fitness decrease, suggesting this region is relatively tolerant to substitution.", "tokens": 25, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:25:09.204481+00:00", "event": "board_size", "generation": 15, "live_entries": 20, "live_tokens": 360}
+{"timestamp": "2026-09-19T17:25:16.807328+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-62", "generation": 15, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "The mutations at positions 12, 23, and 29 had no impact on the fitness score, suggesting these sites are not critical for the current objective.", "tokens": 25, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:25:16.807810+00:00", "event": "board_size", "generation": 15, "live_entries": 21, "live_tokens": 385}
+{"timestamp": "2026-09-19T17:25:21.329113+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-63", "generation": 15, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "The sequence remained unchanged, suggesting the current motif is a local fitness plateau.", "tokens": 13, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:25:21.329486+00:00", "event": "board_size", "generation": 15, "live_entries": 22, "live_tokens": 398}
+{"timestamp": "2026-09-19T17:25:28.151066+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-64", "generation": 15, "author": "central", "circle_id": null, "type": "directive", "content": "Explore hydrophobic substitutions at positions 23, 29, and 35 to capitalize on identified fitness improvements.", "tokens": 15, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:25:28.151404+00:00", "event": "board_size", "generation": 15, "live_entries": 23, "live_tokens": 413}
+{"timestamp": "2026-09-19T17:26:47.440194+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-44", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.440591+00:00", "event": "board_size", "generation": 15, "live_entries": 22, "live_tokens": 390}
+{"timestamp": "2026-09-19T17:26:47.440919+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-52", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.441206+00:00", "event": "board_size", "generation": 15, "live_entries": 21, "live_tokens": 369}
+{"timestamp": "2026-09-19T17:26:47.441699+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-58", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.442053+00:00", "event": "board_size", "generation": 15, "live_entries": 20, "live_tokens": 352}
+{"timestamp": "2026-09-19T17:26:47.442369+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-55", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.442679+00:00", "event": "board_size", "generation": 15, "live_entries": 19, "live_tokens": 332}
+{"timestamp": "2026-09-19T17:26:47.443139+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-3", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.443523+00:00", "event": "board_size", "generation": 15, "live_entries": 18, "live_tokens": 317}
+{"timestamp": "2026-09-19T17:26:47.443873+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-61", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.444155+00:00", "event": "board_size", "generation": 15, "live_entries": 17, "live_tokens": 292}
+{"timestamp": "2026-09-19T17:26:47.444485+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-56", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.444775+00:00", "event": "board_size", "generation": 15, "live_entries": 16, "live_tokens": 279}
+{"timestamp": "2026-09-19T17:26:47.445072+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-42", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.445338+00:00", "event": "board_size", "generation": 15, "live_entries": 15, "live_tokens": 263}
+{"timestamp": "2026-09-19T17:26:47.445672+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-53", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.446079+00:00", "event": "board_size", "generation": 15, "live_entries": 14, "live_tokens": 245}
+{"timestamp": "2026-09-19T17:26:47.446499+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-43", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.446798+00:00", "event": "board_size", "generation": 15, "live_entries": 13, "live_tokens": 229}
+{"timestamp": "2026-09-19T17:26:47.447101+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-63", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.447409+00:00", "event": "board_size", "generation": 15, "live_entries": 12, "live_tokens": 216}
+{"timestamp": "2026-09-19T17:26:47.447790+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-57", "superseded_by": null}
+{"timestamp": "2026-09-19T17:26:47.448098+00:00", "event": "board_size", "generation": 15, "live_entries": 11, "live_tokens": 203}
+{"timestamp": "2026-09-19T17:26:47.448422+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-65", "generation": 15, "author": "curator", "circle_id": null, "type": "summary", "content": "Increasing hydrophobicity at positions 23, 29, and 35 is favorable and should be explored.", "tokens": 14, "source_entry_ids": ["seqcmp_D_seed2_1789834882-49", "seqcmp_D_seed2_1789834882-59", "seqcmp_D_seed2_1789834882-54"], "live": true}
+{"timestamp": "2026-09-19T17:26:47.448775+00:00", "event": "board_size", "generation": 15, "live_entries": 12, "live_tokens": 217}
+{"timestamp": "2026-09-19T17:26:47.449068+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-49", "superseded_by": "seqcmp_D_seed2_1789834882-65"}
+{"timestamp": "2026-09-19T17:26:47.449332+00:00", "event": "board_size", "generation": 15, "live_entries": 11, "live_tokens": 191}
+{"timestamp": "2026-09-19T17:26:47.449790+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-59", "superseded_by": "seqcmp_D_seed2_1789834882-65"}
+{"timestamp": "2026-09-19T17:26:47.450118+00:00", "event": "board_size", "generation": 15, "live_entries": 10, "live_tokens": 169}
+{"timestamp": "2026-09-19T17:26:47.450418+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-54", "superseded_by": "seqcmp_D_seed2_1789834882-65"}
+{"timestamp": "2026-09-19T17:26:47.450724+00:00", "event": "board_size", "generation": 15, "live_entries": 9, "live_tokens": 148}
+{"timestamp": "2026-09-19T17:30:27.058486+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-66", "generation": 16, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The mutations at positions 23 and 29 did not impact the fitness score, suggesting these sites may be tolerant to variation.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:30:27.058949+00:00", "event": "board_size", "generation": 16, "live_entries": 10, "live_tokens": 169}
+{"timestamp": "2026-09-19T17:30:32.749021+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-67", "generation": 16, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Substitutions at the C-terminal end slightly improved fitness, suggesting potential for further optimization in that region.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:30:32.749438+00:00", "event": "board_size", "generation": 16, "live_entries": 11, "live_tokens": 185}
+{"timestamp": "2026-09-19T17:30:38.247276+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-68", "generation": 16, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "Substitutions in the hydrophobic core region slightly improved fitness, suggesting these positions are tolerant of variation.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:30:38.247706+00:00", "event": "board_size", "generation": 16, "live_entries": 12, "live_tokens": 201}
+{"timestamp": "2026-09-19T17:30:46.630743+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-69", "generation": 16, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 22, 28, and 34 in the hydrophobic core region decreased fitness, suggesting these sites are sensitive to changes.", "tokens": 21, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:30:46.631171+00:00", "event": "board_size", "generation": 16, "live_entries": 13, "live_tokens": 222}
+{"timestamp": "2026-09-19T17:34:18.192434+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-70", "generation": 17, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 15 and 26 provide a marginal fitness increase, suggesting these sites are less critical for core stability than other regions.", "tokens": 23, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:34:18.192749+00:00", "event": "board_size", "generation": 17, "live_entries": 14, "live_tokens": 245}
+{"timestamp": "2026-09-19T17:34:23.738117+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-71", "generation": 17, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Substitutions at positions 12 and 18 resulted in a negligible fitness change.", "tokens": 12, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:34:23.738335+00:00", "event": "board_size", "generation": 17, "live_entries": 15, "live_tokens": 257}
+{"timestamp": "2026-09-19T17:34:30.030280+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-72", "generation": 17, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "The substitutions at the tail end of the sequence slightly decreased fitness, suggesting these positions are less tolerant of variation.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:34:30.030737+00:00", "event": "board_size", "generation": 17, "live_entries": 16, "live_tokens": 277}
+{"timestamp": "2026-09-19T17:34:35.531395+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-73", "generation": 17, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Mutations at the distant end of the sequence and in the hydrophobic core region improved fitness.", "tokens": 16, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:34:35.531786+00:00", "event": "board_size", "generation": 17, "live_entries": 17, "live_tokens": 293}
+{"timestamp": "2026-09-19T17:38:17.917481+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-74", "generation": 18, "author": "circle0-agent0", "circle_id": 0, "type": "observation", "content": "The mutations at positions 10 and 13 are neutral with respect to fitness.", "tokens": 13, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:38:17.917943+00:00", "event": "board_size", "generation": 18, "live_entries": 18, "live_tokens": 306}
+{"timestamp": "2026-09-19T17:38:22.012178+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-75", "generation": 18, "author": "circle0-agent1", "circle_id": 0, "type": "observation", "content": "Replacing a polar residue with a hydrophobic one at position 13 improved fitness.", "tokens": 13, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:38:22.012631+00:00", "event": "board_size", "generation": 18, "live_entries": 19, "live_tokens": 319}
+{"timestamp": "2026-09-19T17:38:27.864950+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-76", "generation": 18, "author": "circle1-agent0", "circle_id": 1, "type": "observation", "content": "The substitutions at positions 15, 26, and 40 did not affect the fitness score, suggesting these sites are currently neutral.", "tokens": 20, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:38:27.865305+00:00", "event": "board_size", "generation": 18, "live_entries": 20, "live_tokens": 339}
+{"timestamp": "2026-09-19T17:38:35.588915+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-77", "generation": 18, "author": "circle1-agent1", "circle_id": 1, "type": "observation", "content": "Substitutions at positions 15, 26, and 40 improved fitness, suggesting these sites are tolerant of hydrophobic variations.", "tokens": 17, "source_entry_ids": [], "live": true}
+{"timestamp": "2026-09-19T17:38:35.589255+00:00", "event": "board_size", "generation": 18, "live_entries": 21, "live_tokens": 356}
+{"timestamp": "2026-09-19T17:39:58.811017+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-50", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.811499+00:00", "event": "board_size", "generation": 18, "live_entries": 20, "live_tokens": 342}
+{"timestamp": "2026-09-19T17:39:58.811972+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-76", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.812372+00:00", "event": "board_size", "generation": 18, "live_entries": 19, "live_tokens": 322}
+{"timestamp": "2026-09-19T17:39:58.812844+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-60", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.813238+00:00", "event": "board_size", "generation": 18, "live_entries": 18, "live_tokens": 305}
+{"timestamp": "2026-09-19T17:39:58.813695+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-66", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.814100+00:00", "event": "board_size", "generation": 18, "live_entries": 17, "live_tokens": 284}
+{"timestamp": "2026-09-19T17:39:58.814547+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-71", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.814945+00:00", "event": "board_size", "generation": 18, "live_entries": 16, "live_tokens": 272}
+{"timestamp": "2026-09-19T17:39:58.815381+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-64", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.815789+00:00", "event": "board_size", "generation": 18, "live_entries": 15, "live_tokens": 257}
+{"timestamp": "2026-09-19T17:39:58.816222+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-51", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.816629+00:00", "event": "board_size", "generation": 18, "live_entries": 14, "live_tokens": 246}
+{"timestamp": "2026-09-19T17:39:58.817060+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-65", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.817444+00:00", "event": "board_size", "generation": 18, "live_entries": 13, "live_tokens": 232}
+{"timestamp": "2026-09-19T17:39:58.817900+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-75", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.818284+00:00", "event": "board_size", "generation": 18, "live_entries": 12, "live_tokens": 219}
+{"timestamp": "2026-09-19T17:39:58.818736+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-74", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.819122+00:00", "event": "board_size", "generation": 18, "live_entries": 11, "live_tokens": 206}
+{"timestamp": "2026-09-19T17:39:58.819558+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-62", "superseded_by": null}
+{"timestamp": "2026-09-19T17:39:58.819950+00:00", "event": "board_size", "generation": 18, "live_entries": 10, "live_tokens": 181}
+{"timestamp": "2026-09-19T17:39:58.820417+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-78", "generation": 18, "author": "curator", "circle_id": null, "type": "summary", "content": "Tail end positions show mixed sensitivity, with some showing potential for optimization and others showing lower tolerance.", "tokens": 17, "source_entry_ids": ["seqcmp_D_seed2_1789834882-72", "seqcmp_D_seed2_1789834882-67"], "live": true}
+{"timestamp": "2026-09-19T17:39:58.820933+00:00", "event": "board_size", "generation": 18, "live_entries": 11, "live_tokens": 198}
+{"timestamp": "2026-09-19T17:39:58.821379+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-72", "superseded_by": "seqcmp_D_seed2_1789834882-78"}
+{"timestamp": "2026-09-19T17:39:58.821793+00:00", "event": "board_size", "generation": 18, "live_entries": 10, "live_tokens": 178}
+{"timestamp": "2026-09-19T17:39:58.822222+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-67", "superseded_by": "seqcmp_D_seed2_1789834882-78"}
+{"timestamp": "2026-09-19T17:39:58.822629+00:00", "event": "board_size", "generation": 18, "live_entries": 9, "live_tokens": 162}
+{"timestamp": "2026-09-19T17:39:58.823092+00:00", "event": "entry", "id": "seqcmp_D_seed2_1789834882-79", "generation": 18, "author": "curator", "circle_id": null, "type": "summary", "content": "Hydrophobic core and distant regions show potential for", "tokens": 8, "source_entry_ids": ["seqcmp_D_seed2_1789834882-68", "seqcmp_D_seed2_1789834882-73"], "live": true}
+{"timestamp": "2026-09-19T17:39:58.823555+00:00", "event": "board_size", "generation": 18, "live_entries": 10, "live_tokens": 170}
+{"timestamp": "2026-09-19T17:39:58.823999+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-68", "superseded_by": "seqcmp_D_seed2_1789834882-79"}
+{"timestamp": "2026-09-19T17:39:58.824389+00:00", "event": "board_size", "generation": 18, "live_entries": 9, "live_tokens": 154}
+{"timestamp": "2026-09-19T17:39:58.824843+00:00", "event": "tombstone", "id": "seqcmp_D_seed2_1789834882-73", "superseded_by": "seqcmp_D_seed2_1789834882-79"}
+{"timestamp": "2026-09-19T17:39:58.825230+00:00", "event": "board_size", "generation": 18, "live_entries": 8, "live_tokens": 138}
