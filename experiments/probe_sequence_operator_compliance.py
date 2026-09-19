@@ -47,7 +47,7 @@ models' results isn't misattributed to the alphabet):
      result to follow up with a real sample, and their letter/position tests
      here (on successes only, so tiny n) are descriptive at best.
 
-WHY mutate/position DEFAULTS TO 400 CALLS, not 40-50. The 5-symbol uniformity
+WHY mutate/position DEFAULTS TO 400 CALLS, not 40-50. The 3-symbol uniformity
 check (PHASE2_RESULTS.md sec. 4.4: chi-square of chosen positions, df=17,
 n=40, 211.10) worked at n=40 because what it found was a GROSS collapse
 (80% of mass on 2 of 18 cells). It would still detect that at 20 letters. What
@@ -252,7 +252,7 @@ def _segment_records(path: Path, start_line: int, style: str) -> list[dict]:
 
 def segment_structure(records: list[dict]) -> dict:
     """What the model actually declared, from the valid attempts in the log:
-    the collapse check the 5-symbol study did by hand (PHASE2_RESULTS.md 4.4:
+    the collapse check the 3-symbol study did by hand (PHASE2_RESULTS.md 4.4:
     always 2 segments, cut at the midpoint in 36/40)."""
     n_segments, cuts = Counter(), Counter()
     for r in records:

@@ -576,7 +576,8 @@ Next, in priority order — the first item is the critical path implied by
   substrate is that the genome carries no semantic content for an LLM to
   reason about, the direct test is a representation where it does — amino
   acid sequences with an ESMFold-predicted structure as the fitness
-  oracle, currently being set up as a separate track. This is the test
+  oracle (the operators on that representation are measured in §9; no
+  fitness or search result is reported there). This is the test
   the circles/blackboard architecture hasn't had: everything in §1-7 ran
   on a move-string with no meaning beyond its own geometry, so no result
   here has yet distinguished "diversity doesn't help this architecture"
