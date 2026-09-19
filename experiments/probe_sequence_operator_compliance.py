@@ -69,6 +69,28 @@ over genome_len positions.
 
 Model is whatever HPGA_LLM_MODEL is set to (read by operators.py at import).
 Every call is also logged to the usual llm_operator_calls_<run_id>.jsonl.
+
+SEGMENT-EXAMPLE ABLATION (--segment-example {current,shifted,absent}). The
+first run found 83/100 segment cuts at 40, the value in the prompt's worked
+example ('e.g. 0-40:1, 40-100:2'). This flag varies that example, one setting
+per invocation, to see whether the modal cut follows it:
+  current -- the example as sequence_model.py has it (prompts left untouched)
+  shifted -- the same example with both boundary numbers 70
+  absent  -- the example removed; the rest of the prose is unchanged
+The example is varied wherever it occurs: in the segment prompt AND in the
+retry hint, so a retry can't reintroduce the value being ablated. The variant
+is applied by wrapping sm._crossover_segment_prompt / patching
+sm._RETRY_HINT_SEGMENT from HERE; hpga/ is not edited, and omitting the flag
+changes nothing. NOT varied, in any setting: the prose sentence "a boundary at
+40 falls 40% of the way along Parent 1 and 40% ... Parent 2" and the
+"SEGMENTS: <start>-<end>:<parent>" template line (no numbers). The first is a
+second '40' anchor outside the worked example; the header records it under
+"unvaried_anchors" so a modal of 40 under 'absent' isn't read as "not the
+prompt". Only crossover/segment is affected, so the flag requires it in
+--conditions; the output file gets a _segex_<setting> suffix automatically so
+it can't overwrite the default one. Each result carries "segment_example_check"
+(what the logged prompts actually contained) and "boundary_summary" (the full
+cut distribution and every modal value, ties included).
 """
 
 import argparse
@@ -276,6 +298,75 @@ def run_crossover(style: str, n_calls: int, rng: random.Random, genome_len: int)
     return result
 
 
+# --- segment-example ablation (see module docstring) -------------------------
+
+SEGMENT_EXAMPLE_SETTINGS = ("current", "shifted", "absent")
+_EXAMPLE_TEXT = " (e.g. 0-40:1, 40-100:2)"  # as in sequence_model.py, with the leading space
+_SHIFTED_EXAMPLE_TEXT = " (e.g. 0-70:1, 70-100:2)"
+UNVARIED_ANCHORS = [
+    'prose "a boundary at 40 falls 40% of the way along Parent 1 and 40% of the way along Parent 2" '
+    "(present in all three settings)",
+    'template line "SEGMENTS: <start>-<end>:<parent>, ..." (no numbers; all three settings)',
+]
+
+
+def _swap_example(text: str, setting: str, where: str) -> str:
+    if text.count(_EXAMPLE_TEXT) != 1:  # sequence_model.py changed under us: refuse rather than mis-ablate
+        raise SystemExit(f"expected exactly one {_EXAMPLE_TEXT!r} in the {where}, found {text.count(_EXAMPLE_TEXT)}")
+    return text.replace(_EXAMPLE_TEXT, _SHIFTED_EXAMPLE_TEXT if setting == "shifted" else "")
+
+
+def apply_segment_example(setting: str) -> None:
+    """Rewrite the segment prompt's worked example, everywhere it occurs, for
+    this process. 'current' patches nothing."""
+    if setting == "current":
+        return
+    orig_prompt = sm._crossover_segment_prompt
+    sm._RETRY_HINT_SEGMENT = _swap_example(sm._RETRY_HINT_SEGMENT, setting, "retry hint")  # read at plan time
+
+    def varied_prompt(p1_str, p2_str, n1, n2, retry_hint):
+        # retry_hint is the already-varied constant above, so only the body's example is left to swap
+        return _swap_example(orig_prompt(p1_str, p2_str, n1, n2, retry_hint), setting, "segment prompt")
+
+    sm._crossover_segment_prompt = varied_prompt
+
+
+def _count_lines(path: Path) -> int:
+    return sum(1 for _ in open(path, encoding="utf-8")) if path.exists() else 0
+
+
+def segment_example_check(path: Path, start_line: int) -> dict:
+    """What the segment prompts actually sent contained, from the call log: the
+    proof the setting took effect, counted over EVERY logged attempt."""
+    n = orig = shifted = any_eg = 0
+    with open(path, encoding="utf-8") as f:
+        for i, line in enumerate(f):
+            if i < start_line:
+                continue
+            r = json.loads(line)
+            if r.get("op") != "crossover" or r.get("prompt_style") != "segment" or "prompt" not in r:
+                continue
+            n += 1
+            orig += "0-40:1, 40-100:2" in r["prompt"]
+            shifted += "0-70:1, 70-100:2" in r["prompt"]
+            any_eg += "e.g." in r["prompt"]
+    return {"n_logged_attempts": n, "with_0-40_example": orig, "with_0-70_example": shifted, "with_any_e.g.": any_eg}
+
+
+def boundary_summary(structure: dict) -> dict:
+    """The cut distribution from segment_structure(), plus EVERY modal value
+    (the structure's own modal_cut silently takes the first of a tie)."""
+    cuts = {int(k): v for k, v in structure["cut_percent_counts"].items()}
+    total = sum(cuts.values())
+    if not total:
+        return {"n_cuts": 0}
+    top = max(cuts.values())
+    modal = sorted(v for v, c in cuts.items() if c == top)
+    return {"n_cuts": total, "n_valid_declarations": structure["n_valid_declarations"],
+            "cut_percent_counts": dict(sorted(cuts.items())), "modal_values": modal,
+            "modal_count": top, "modal_share_of_cuts": top / total}
+
+
 CONDITIONS = [  # priority order == default run order
     ("mutate/position", run_mutate, "position"),
     ("crossover/segment", run_crossover, "segment"),
@@ -304,6 +395,9 @@ def _print_result(label: str, r: dict) -> None:
               f"child_length=[{r['child_length_min']}, {r['child_length_max']}]")
         if "segment_structure" in r:
             print(f"  segment_structure={r['segment_structure']}")
+        if "boundary_summary" in r:
+            print(f"  segment_example={r['segment_example']}  check={r['segment_example_check']}")
+            print(f"  boundary_summary={r['boundary_summary']}")
 
 
 def main(argv=None) -> None:
@@ -320,6 +414,9 @@ def main(argv=None) -> None:
     parser.add_argument("--out-dir", type=str, default=None,
                         help="Default: results/raw. (The operator call log location is HPGA_LLM_LOG_PATH / "
                              "HPGA_RUN_ID, as everywhere else.)")
+    parser.add_argument("--segment-example", choices=SEGMENT_EXAMPLE_SETTINGS, default=None,
+                        help="Ablate the worked example in the crossover/segment prompt (see module docstring). "
+                             "Omitted: prompts untouched and output identical to before.")
     parser.add_argument("--dry-run", action="store_true",
                         help="Print the plan and exit without contacting Ollama.")
     args = parser.parse_args(argv)
@@ -338,14 +435,23 @@ def main(argv=None) -> None:
     if not (sm.MIN_LENGTH <= args.genome_len <= sm.MAX_LENGTH):
         raise SystemExit(f"--genome-len {args.genome_len} outside [{sm.MIN_LENGTH}, {sm.MAX_LENGTH}]")
 
+    if args.segment_example is not None:
+        if "crossover/segment" not in n_for:
+            raise SystemExit("--segment-example only affects crossover/segment; include it in --conditions")
+        args.out_suffix += f"_segex_{args.segment_example}"
+
     print(f"model={ops.LLM_MODEL} host={ops.LLM_HOST} genome_len={args.genome_len} seed={args.seed} "
           f"length_bounds=[{sm.MIN_LENGTH},{sm.MAX_LENGTH}]")
     print(f"plan: {n_for}  (total {sum(n_for.values())} calls, before retries)")
+    if args.segment_example is not None:
+        print(f"segment example: {args.segment_example}")
     if args.dry_run:
         return
 
     genome_model.set_active(genome_model.build_genome_model(HPGAConfig(genome_model="sequence")))
 
+    if args.segment_example is not None:
+        apply_segment_example(args.segment_example)
     rng = random.Random(args.seed)
     gpu_before = gpu_snapshot()
     print(f"gpu before: {gpu_before['usage']}  compute_apps: {gpu_before['compute_apps']}\n")
@@ -361,9 +467,17 @@ def main(argv=None) -> None:
         "n_calls": n_for, "genome_len": args.genome_len, "length_bounds": [sm.MIN_LENGTH, sm.MAX_LENGTH],
         "model": ops.LLM_MODEL, "temperature": ops.LLM_TEMPERATURE, "gpu_before": gpu_before,
     }
+    if args.segment_example is not None:
+        header.update({"segment_example": args.segment_example, "unvaried_anchors": UNVARIED_ANCHORS})
     for label, fn, style in conditions:
         print(f"=== {label} (n={n_for[label]}) ===")
+        ablating = args.segment_example is not None and label == "crossover/segment"
+        start_line = _count_lines(ops._log_path()) if ablating else 0
         r = fn(style, n_for[label], rng, args.genome_len)
+        if ablating:
+            r["segment_example"] = args.segment_example
+            r["segment_example_check"] = segment_example_check(ops._log_path(), start_line)
+            r["boundary_summary"] = boundary_summary(r["segment_structure"])
         results.append(r)
         _print_result(label, r)
         print()
