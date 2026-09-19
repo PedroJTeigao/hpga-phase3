@@ -1,0 +1,96 @@
+2026-09-18 21:58:25,008 httpx HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,032 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-18 21:58:25,038 httpx HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/esmfold_v1/75a3841ee059df2bf4d56688166c8fb459ddd97a/config.json?%2Ffacebook%2Fesmfold_v1%2Fresolve%2Fmain%2Fconfig.json=&etag=%221232d0aee4be551021d8e70e66ed2b062df917bf%22 "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,113 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-18 21:58:25,114 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-18 21:58:25,123 httpx HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/esmfold_v1/75a3841ee059df2bf4d56688166c8fb459ddd97a/tokenizer_config.json?%2Ffacebook%2Fesmfold_v1%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22aad24fba9f1bad2d74ed79d414ddcd60e6b0f812%22 "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,157 httpx HTTP Request: GET https://huggingface.co/api/models/facebook/esmfold_v1/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-18 21:58:25,189 httpx HTTP Request: GET https://huggingface.co/api/models/facebook/esmfold_v1/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,217 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-18 21:58:25,223 httpx HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/esmfold_v1/75a3841ee059df2bf4d56688166c8fb459ddd97a/config.json?%2Ffacebook%2Fesmfold_v1%2Fresolve%2Fmain%2Fconfig.json=&etag=%221232d0aee4be551021d8e70e66ed2b062df917bf%22 "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,321 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-09-18 21:58:25,352 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-09-18 21:58:25,383 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+2026-09-18 21:58:25,408 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-09-18 21:58:25,435 httpx HTTP Request: GET https://huggingface.co/api/models/facebook/esmfold_v1 "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,480 httpx HTTP Request: GET https://huggingface.co/api/models/facebook/esmfold_v1/commits/main "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,519 httpx HTTP Request: GET https://huggingface.co/api/models/facebook/esmfold_v1/discussions?p=0 "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,563 httpx HTTP Request: GET https://huggingface.co/api/models/facebook/esmfold_v1/commits/refs%2Fpr%2F6 "HTTP/1.1 200 OK"
+2026-09-18 21:58:25,590 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/refs%2Fpr%2F6/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-09-18 21:58:25,620 httpx HTTP Request: HEAD https://huggingface.co/facebook/esmfold_v1/resolve/refs%2Fpr%2F6/model.safetensors "HTTP/1.1 302 Found"
+gpu before: {'gpu': 'Tesla T4, 0 MiB, 15360 MiB, 0 %', 'compute_apps': '(none)'}
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<02:24, 31.10it/s]Loading weights:  22%|██▏       | 995/4498 [00:00<00:01, 1959.03it/s]Loading weights:  45%|████▌     | 2030/4498 [00:00<00:00, 3808.39it/s]Loading weights:  68%|██████▊   | 3069/4498 [00:00<00:00, 5384.25it/s]Loading weights:  94%|█████████▍| 4218/4498 [00:00<00:00, 6939.61it/s]Loading weights: 100%|██████████| 4498/4498 [00:00<00:00, 4516.26it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-18 21:58:38,245 esmfold.tm_fitness TM=0.91366 aligned_length=62 rmsd=0.83 genome_length=63 predictor_s=4.030 tmalign_s=0.019
+model load: 9.3s  reference length 63
+call  1 a_reference                TM=0.91366 aligned=62 rmsd=0.83 predictor=4.030s tmalign=0.019s
+2026-09-18 21:58:40,411 esmfold.tm_fitness TM=0.19587 aligned_length=29 rmsd=4.57 genome_length=63 predictor_s=2.148 tmalign_s=0.017
+call  2 b_random_0                 TM=0.19587 aligned=29 rmsd=4.57 predictor=2.148s tmalign=0.017s
+2026-09-18 21:58:42,799 esmfold.tm_fitness TM=0.25226 aligned_length=35 rmsd=3.96 genome_length=63 predictor_s=2.370 tmalign_s=0.018
+call  3 b_random_1                 TM=0.25226 aligned=35 rmsd=3.96 predictor=2.370s tmalign=0.018s
+2026-09-18 21:58:44,808 esmfold.tm_fitness TM=0.26052 aligned_length=35 rmsd=4.33 genome_length=63 predictor_s=1.990 tmalign_s=0.019
+call  4 b_random_2                 TM=0.26052 aligned=35 rmsd=4.33 predictor=1.990s tmalign=0.019s
+2026-09-18 21:58:46,541 esmfold.tm_fitness TM=0.28429 aligned_length=31 rmsd=3.91 genome_length=63 predictor_s=1.716 tmalign_s=0.017
+call  5 b_random_3                 TM=0.28429 aligned=31 rmsd=3.91 predictor=1.716s tmalign=0.017s
+2026-09-18 21:58:48,258 esmfold.tm_fitness TM=0.27335 aligned_length=30 rmsd=3.90 genome_length=63 predictor_s=1.698 tmalign_s=0.018
+call  6 b_random_4                 TM=0.27335 aligned=30 rmsd=3.90 predictor=1.698s tmalign=0.018s
+2026-09-18 21:58:49,976 esmfold.tm_fitness TM=0.31516 aligned_length=29 rmsd=3.42 genome_length=63 predictor_s=1.704 tmalign_s=0.015
+call  7 b_random_5                 TM=0.31516 aligned=29 rmsd=3.42 predictor=1.704s tmalign=0.015s
+2026-09-18 21:58:51,707 esmfold.tm_fitness TM=0.91366 aligned_length=62 rmsd=0.83 genome_length=63 predictor_s=1.712 tmalign_s=0.018
+call  8 c_repeat_of_a_reference    TM=0.91366 aligned=62 rmsd=0.83 predictor=1.712s tmalign=0.018s
+2026-09-18 21:58:53,428 esmfold.tm_fitness TM=0.19587 aligned_length=29 rmsd=4.57 genome_length=63 predictor_s=1.702 tmalign_s=0.018
+call  9 c_repeat_of_b_random_0     TM=0.19587 aligned=29 rmsd=4.57 predictor=1.702s tmalign=0.018s
+
+{
+  "a_reference_self_score": 0.91366,
+  "b_random_scores": [
+    0.19587,
+    0.25226,
+    0.26052,
+    0.28429,
+    0.27335,
+    0.31516
+  ],
+  "b_min": 0.19587,
+  "b_max": 0.31516,
+  "b_mean": 0.263575,
+  "a_minus_b_max": 0.5985,
+  "a_above_every_b": true,
+  "c_repeat_reference": {
+    "first": 0.91366,
+    "second": 0.91366,
+    "identical": true
+  },
+  "c_repeat_random_0": {
+    "first": 0.19587,
+    "second": 0.19587,
+    "identical": true
+  },
+  "c_aligned_length_and_rmsd_also_identical": true,
+  "d_timing_all_calls": {
+    "n_calls": 9,
+    "predictor_s_mean": 2.118878718258606,
+    "predictor_s_median": 1.7158863907679915,
+    "tmalign_s_mean": 0.01770068674037854,
+    "tmalign_s_median": 0.018164511770009995,
+    "total_s_mean": 2.136579404998985
+  },
+  "d_timing_excluding_call_1": {
+    "n_calls": 8,
+    "predictor_s_mean": 1.879969573346898,
+    "predictor_s_median": 1.714117765892297,
+    "tmalign_s_mean": 0.01757902733515948,
+    "tmalign_s_median": 0.018158067017793655,
+    "total_s_mean": 1.8975486006820574
+  }
+}
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/tm_fitness_sanity.json

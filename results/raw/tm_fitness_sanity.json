@@ -1,0 +1,171 @@
+{
+  "seed": 0,
+  "genome_len": 63,
+  "model_load_s": 9.26057645585388,
+  "env": {
+    "python": "3.12.11",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.17.0",
+    "tmalign_bin": "/scratch/pcanaste/bin/TMalign",
+    "tmalign_sha256": "a1ed9085ef2b9c7019a72d8e62758e61d1089390d685c0dea5175eb58b9e93f4",
+    "tmalign_source_sha256": "c68bb4ddc4f6162b2aa53fafb53ed8007eb3f24c21e62ced18a93604742fb013",
+    "reference_pdb": "esmfold/pdb_cache/7UR7.pdb",
+    "reference_pdb_sha256": "254ae90024eff7beaec6efdd2153bc5be0da818b7ee61ed921625ab810fc3baa",
+    "reference_length": 63,
+    "reference_sequence": "SEVKELLEEFLKRNKPVRIHHKNGEEIKVRITHIGEDTVEFELNGRTHRINIKDILDVKEWLE",
+    "reference_sequence_equals_fitness_py_TARGET_SEQ": true,
+    "git_head": "c089c3a5d6c46e9ad6bdc209d5dd8e8767610ed3"
+  },
+  "gpu_before": {
+    "gpu": "Tesla T4, 0 MiB, 15360 MiB, 0 %",
+    "compute_apps": "(none)"
+  },
+  "gpu_after": {
+    "gpu": "Tesla T4, 13805 MiB, 15360 MiB, 54 %",
+    "compute_apps": "1038500, 13802 MiB, /scratch/pcanaste/venv/bin/python"
+  },
+  "calls": [
+    {
+      "call": 1,
+      "label": "a_reference",
+      "genome": "SEVKELLEEFLKRNKPVRIHHKNGEEIKVRITHIGEDTVEFELNGRTHRINIKDILDVKEWLE",
+      "tm_score": 0.91366,
+      "aligned_length": 62,
+      "rmsd": 0.83,
+      "genome_length": 63,
+      "predictor_s": 4.030151877552271,
+      "tmalign_s": 0.018673961982131004
+    },
+    {
+      "call": 2,
+      "label": "b_random_0",
+      "genome": "PQCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIMDHWIIFVRDDMTS",
+      "tm_score": 0.19587,
+      "aligned_length": 29,
+      "rmsd": 4.57,
+      "genome_length": 63,
+      "predictor_s": 2.1482602460309863,
+      "tmalign_s": 0.016948153264820576
+    },
+    {
+      "call": 3,
+      "label": "b_random_1",
+      "genome": "ELVLEVMVHYVWLRDYPMWILGHGCYKSDDFFCDVPTKTIHWQWKRSNDMYESWMHIAKEING",
+      "tm_score": 0.25226,
+      "aligned_length": 35,
+      "rmsd": 3.96,
+      "genome_length": 63,
+      "predictor_s": 2.3695884020999074,
+      "tmalign_s": 0.018164511770009995
+    },
+    {
+      "call": 4,
+      "label": "b_random_2",
+      "genome": "MQCEFICWVYDAEHYWEPDNECYAHGESHCAVQYEKDIDLNQGCTRCYEPHKNSWGHCGGMTK",
+      "tm_score": 0.26052,
+      "aligned_length": 35,
+      "rmsd": 4.33,
+      "genome_length": 63,
+      "predictor_s": 1.9897400420159101,
+      "tmalign_s": 0.018990112468600273
+    },
+    {
+      "call": 5,
+      "label": "b_random_3",
+      "genome": "EYRGASQWTLNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRPWQCPWQCGRDKGRTSVYA",
+      "tm_score": 0.28429,
+      "aligned_length": 31,
+      "rmsd": 3.91,
+      "genome_length": 63,
+      "predictor_s": 1.7158863907679915,
+      "tmalign_s": 0.016808982007205486
+    },
+    {
+      "call": 6,
+      "label": "b_random_4",
+      "genome": "CSMLRCQHVDFAPQMAHAATYEHEYHLKGESPDAKREKFTNEFKACCHKVMNWCYSRQNVGHP",
+      "tm_score": 0.27335,
+      "aligned_length": 30,
+      "rmsd": 3.9,
+      "genome_length": 63,
+      "predictor_s": 1.6981107024475932,
+      "tmalign_s": 0.018151622265577316
+    },
+    {
+      "call": 7,
+      "label": "b_random_5",
+      "genome": "WLAFFKMMNDMYCCKGFWLNPVFLESICLGTDLPMLQEEVSSMMESESQCLMFGWPDDDHICP",
+      "tm_score": 0.31516,
+      "aligned_length": 29,
+      "rmsd": 3.42,
+      "genome_length": 63,
+      "predictor_s": 1.7035009218379855,
+      "tmalign_s": 0.014900809153914452
+    },
+    {
+      "call": 8,
+      "label": "c_repeat_of_a_reference",
+      "genome": "SEVKELLEEFLKRNKPVRIHHKNGEEIKVRITHIGEDTVEFELNGRTHRINIKDILDVKEWLE",
+      "tm_score": 0.91366,
+      "aligned_length": 62,
+      "rmsd": 0.83,
+      "genome_length": 63,
+      "predictor_s": 1.7123491410166025,
+      "tmalign_s": 0.018220958299934864
+    },
+    {
+      "call": 9,
+      "label": "c_repeat_of_b_random_0",
+      "genome": "PQCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIMDHWIIFVRDDMTS",
+      "tm_score": 0.19587,
+      "aligned_length": 29,
+      "rmsd": 4.57,
+      "genome_length": 63,
+      "predictor_s": 1.702320740558207,
+      "tmalign_s": 0.018447069451212883
+    }
+  ],
+  "summary": {
+    "a_reference_self_score": 0.91366,
+    "b_random_scores": [
+      0.19587,
+      0.25226,
+      0.26052,
+      0.28429,
+      0.27335,
+      0.31516
+    ],
+    "b_min": 0.19587,
+    "b_max": 0.31516,
+    "b_mean": 0.263575,
+    "a_minus_b_max": 0.5985,
+    "a_above_every_b": true,
+    "c_repeat_reference": {
+      "first": 0.91366,
+      "second": 0.91366,
+      "identical": true
+    },
+    "c_repeat_random_0": {
+      "first": 0.19587,
+      "second": 0.19587,
+      "identical": true
+    },
+    "c_aligned_length_and_rmsd_also_identical": true,
+    "d_timing_all_calls": {
+      "n_calls": 9,
+      "predictor_s_mean": 2.118878718258606,
+      "predictor_s_median": 1.7158863907679915,
+      "tmalign_s_mean": 0.01770068674037854,
+      "tmalign_s_median": 0.018164511770009995,
+      "total_s_mean": 2.136579404998985
+    },
+    "d_timing_excluding_call_1": {
+      "n_calls": 8,
+      "predictor_s_mean": 1.879969573346898,
+      "predictor_s_median": 1.714117765892297,
+      "tmalign_s_mean": 0.01757902733515948,
+      "tmalign_s_median": 0.018158067017793655,
+      "total_s_mean": 1.8975486006820574
+    }
+  }
+}
