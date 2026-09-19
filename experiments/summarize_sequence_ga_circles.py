@@ -216,8 +216,9 @@ def sections(runs, status):
               "**Arm C was run with different accounting:** its swap time excludes the Ollama reload, which fell inside the first LLM call of each breeding step and is "
               "therefore in its LLM time. Estimate of that reload for C (excess latency of the first request after each fold phase over the operator median, from its call log): "
               + ", ".join(f"seed {s}: {est:.0f} s" for s in seeds if (est := estimate_reload_s(runs[('C', s)])) is not None) + ". D and E carry the measured load in swap time.\n")
+    dseeds = sorted(s for (a, s) in runs if a == "D")  # every completed D run, including a seed whose control (E) did not finish
     tab = []
-    for s in seeds:
+    for s in dseeds:
         m = runs[("D", s)]["summary"]["operators"]
         for op in ("mutate", "crossover", "propose", "observe", "consult", "central_directive", "curate"):
             if op in m:
@@ -229,14 +230,14 @@ def sections(runs, status):
         "\n\n**Circle proposal fallback rate** (`propose`, position edits to a population member) is the `propose` rows; the stage-1 probe gave 1 of 50. "
         "`observe`, `consult`, `central_directive` and `curate` fall back to nothing (no observation written, empty note, deterministic directive, board unchanged).\n")
     tot = {op: [0, 0] for op in ("propose", "observe", "consult", "central_directive", "curate", "mutate", "crossover")}
-    for s in seeds:
+    for s in dseeds:
         for op, t in runs[("D", s)]["summary"]["operators"].items():
             if op in tot:
                 tot[op][0] += t["n_llm_calls"]; tot[op][1] += t["n_failures"]
     facts["D_fallbacks"] = {op: {"llm_calls": v[0], "fell_back": v[1], "rate": (v[1] / v[0]) if v[0] else None} for op, v in tot.items()}
-    md.append("Over all D seeds: " + "; ".join(f"{op} {v[1]}/{v[0]}" for op, v in tot.items() if v[0]) + " (fell back / LLM calls).\n")
+    md.append(f"Over all {len(dseeds)} completed D runs (seeds {dseeds}): " + "; ".join(f"{op} {v[1]}/{v[0]}" for op, v in tot.items() if v[0]) + " (fell back / LLM calls).\n")
     bbrows = [[s, *(runs[("D", s)]["summary"]["blackboard"][k] for k in ("entries_written", "live_at_end")),
-               *(runs[("D", s)]["summary"]["blackboard"]["by_type"][t] for t in ("observation", "directive", "summary"))] for s in seeds]
+               *(runs[("D", s)]["summary"]["blackboard"]["by_type"][t] for t in ("observation", "directive", "summary"))] for s in dseeds]
     md.append("Blackboard at the end of each D run:\n\n" + s1.md_table(["seed", "entries written", "live at end", "observations", "directives", "summaries (curation)"], bbrows) + "\n")
 
     # 9.9 edit distance to reference
