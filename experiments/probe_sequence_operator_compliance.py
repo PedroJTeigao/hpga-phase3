@@ -77,16 +77,23 @@ per invocation, to see whether the modal cut follows it:
   current -- the example as sequence_model.py has it (prompts left untouched)
   shifted -- the same example with both boundary numbers 70
   absent  -- the example removed; the rest of the prose is unchanged
+  absent_prose25 -- 'absent', and the prose sentence that illustrates the
+            percentage convention ("a boundary at 40 falls 40% of the way along
+            Parent 1 and 40% ... Parent 2") rewritten with 25 in place of all
+            three 40s, so no 40 remains in the prompt template or retry hint
 The example is varied wherever it occurs: in the segment prompt AND in the
 retry hint, so a retry can't reintroduce the value being ablated. The variant
 is applied by wrapping sm._crossover_segment_prompt / patching
 sm._RETRY_HINT_SEGMENT from HERE; hpga/ is not edited, and omitting the flag
 changes nothing. NOT varied, in any setting: the prose sentence "a boundary at
-40 falls 40% of the way along Parent 1 and 40% ... Parent 2" and the
-"SEGMENTS: <start>-<end>:<parent>" template line (no numbers). The first is a
-second '40' anchor outside the worked example; the header records it under
-"unvaried_anchors" so a modal of 40 under 'absent' isn't read as "not the
-prompt". Only crossover/segment is affected, so the flag requires it in
+40 falls 40% of the way along Parent 1 and 40% ... Parent 2" (in all but
+absent_prose25) and the "SEGMENTS: <start>-<end>:<parent>" template line (no
+numbers). The first is a second '40' anchor outside the worked example; the
+header records what was left unvaried under "unvaried_anchors" so a modal of 40
+under 'absent' isn't read as "not the prompt". absent_prose25 is the setting
+that removes it. A 40 can still reach the prompt as DATA -- a parent of length
+40 prints "(length 40)" -- so the check reports 40s outside the parent headers
+separately. Only crossover/segment is affected, so the flag requires it in
 --conditions; the output file gets a _segex_<setting> suffix automatically so
 it can't overwrite the default one. Each result carries "segment_example_check"
 (what the logged prompts actually contained) and "boundary_summary" (the full
@@ -300,14 +307,19 @@ def run_crossover(style: str, n_calls: int, rng: random.Random, genome_len: int)
 
 # --- segment-example ablation (see module docstring) -------------------------
 
-SEGMENT_EXAMPLE_SETTINGS = ("current", "shifted", "absent")
+SEGMENT_EXAMPLE_SETTINGS = ("current", "shifted", "absent", "absent_prose25")
 _EXAMPLE_TEXT = " (e.g. 0-40:1, 40-100:2)"  # as in sequence_model.py, with the leading space
 _SHIFTED_EXAMPLE_TEXT = " (e.g. 0-70:1, 70-100:2)"
-UNVARIED_ANCHORS = [
-    'prose "a boundary at 40 falls 40% of the way along Parent 1 and 40% of the way along Parent 2" '
-    "(present in all three settings)",
-    'template line "SEGMENTS: <start>-<end>:<parent>, ..." (no numbers; all three settings)',
-]
+_PROSE_TEXT = "a boundary at 40 falls 40% of the way along Parent 1 and 40% of the way"
+_PROSE_TEXT_25 = "a boundary at 25 falls 25% of the way along Parent 1 and 25% of the way"
+_TEMPLATE_ANCHOR = 'template line "SEGMENTS: <start>-<end>:<parent>, ..." (no numbers; every setting)'
+
+
+def unvaried_anchors(setting: str) -> list[str]:
+    if setting == "absent_prose25":
+        return [_TEMPLATE_ANCHOR, 'prose sentence changed to use 25 instead of 40 (25 is now the illustrative number)']
+    return ['prose "a boundary at 40 falls 40% of the way along Parent 1 and 40% of the way along Parent 2" '
+            "(present in the current, shifted and absent settings)", _TEMPLATE_ANCHOR]
 
 
 def _swap_example(text: str, setting: str, where: str) -> str:
@@ -326,7 +338,12 @@ def apply_segment_example(setting: str) -> None:
 
     def varied_prompt(p1_str, p2_str, n1, n2, retry_hint):
         # retry_hint is the already-varied constant above, so only the body's example is left to swap
-        return _swap_example(orig_prompt(p1_str, p2_str, n1, n2, retry_hint), setting, "segment prompt")
+        text = _swap_example(orig_prompt(p1_str, p2_str, n1, n2, retry_hint), setting, "segment prompt")
+        if setting == "absent_prose25":
+            if text.count(_PROSE_TEXT) != 1:
+                raise SystemExit(f"expected exactly one {_PROSE_TEXT!r} in the segment prompt, found {text.count(_PROSE_TEXT)}")
+            text = text.replace(_PROSE_TEXT, _PROSE_TEXT_25)
+        return text
 
     sm._crossover_segment_prompt = varied_prompt
 
@@ -338,7 +355,7 @@ def _count_lines(path: Path) -> int:
 def segment_example_check(path: Path, start_line: int) -> dict:
     """What the segment prompts actually sent contained, from the call log: the
     proof the setting took effect, counted over EVERY logged attempt."""
-    n = orig = shifted = any_eg = 0
+    n = orig = shifted = any_eg = prose40 = prose25 = header40 = outside40 = 0
     with open(path, encoding="utf-8") as f:
         for i, line in enumerate(f):
             if i < start_line:
@@ -350,7 +367,15 @@ def segment_example_check(path: Path, start_line: int) -> dict:
             orig += "0-40:1, 40-100:2" in r["prompt"]
             shifted += "0-70:1, 70-100:2" in r["prompt"]
             any_eg += "e.g." in r["prompt"]
-    return {"n_logged_attempts": n, "with_0-40_example": orig, "with_0-70_example": shifted, "with_any_e.g.": any_eg}
+            prose40 += "boundary at 40" in r["prompt"]
+            prose25 += "boundary at 25" in r["prompt"]
+            # "40" as DATA (a parent of length 40) vs. anywhere else in the prompt
+            lines = r["prompt"].splitlines()
+            header40 += any(l.startswith(("Parent 1 (length", "Parent 2 (length")) and "length 40)" in l for l in lines)
+            outside40 += "40" in "\n".join(l for l in lines if not l.startswith(("Parent 1 (length", "Parent 2 (length")))
+    return {"n_logged_attempts": n, "with_0-40_example": orig, "with_0-70_example": shifted, "with_any_e.g.": any_eg,
+            "with_prose_40": prose40, "with_prose_25": prose25, "with_parent_length_40_in_header": header40,
+            "with_40_outside_parent_headers": outside40}
 
 
 def boundary_summary(structure: dict) -> dict:
@@ -363,7 +388,8 @@ def boundary_summary(structure: dict) -> dict:
     top = max(cuts.values())
     modal = sorted(v for v, c in cuts.items() if c == top)
     return {"n_cuts": total, "n_valid_declarations": structure["n_valid_declarations"],
-            "cut_percent_counts": dict(sorted(cuts.items())), "modal_values": modal,
+            "cut_percent_counts": dict(sorted(cuts.items())), "n_distinct_values": len(cuts),
+            "distinct_values": sorted(cuts), "modal_values": modal,
             "modal_count": top, "modal_share_of_cuts": top / total}
 
 
@@ -468,7 +494,7 @@ def main(argv=None) -> None:
         "model": ops.LLM_MODEL, "temperature": ops.LLM_TEMPERATURE, "gpu_before": gpu_before,
     }
     if args.segment_example is not None:
-        header.update({"segment_example": args.segment_example, "unvaried_anchors": UNVARIED_ANCHORS})
+        header.update({"segment_example": args.segment_example, "unvaried_anchors": unvaried_anchors(args.segment_example)})
     for label, fn, style in conditions:
         print(f"=== {label} (n={n_for[label]}) ===")
         ablating = args.segment_example is not None and label == "crossover/segment"

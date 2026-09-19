@@ -1,0 +1,158 @@
+{
+  "n_possible_cut_values": 99,
+  "possible_values_note": "integer cuts 1..99; every one is valid for every parent-length pair in the length bounds",
+  "per_setting": {
+    "current": {
+      "source_file": "sequence_operator_compliance_gemma4_12b_len63_segex_current.json",
+      "model": "gemma4:12b",
+      "temperature": 0.7,
+      "seed": 0,
+      "genome_len": 63,
+      "length_bounds": [
+        30,
+        80
+      ],
+      "n_calls": 100,
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "n_cuts": 100,
+      "cut_counts": {
+        "40": 79,
+        "50": 21
+      },
+      "n_distinct_values": 2,
+      "distinct_values": [
+        40,
+        50
+      ],
+      "share_of_space_reached": 0.020202020202020204,
+      "modal_values": [
+        40
+      ],
+      "modal_share": 0.79,
+      "segment_example_check": {
+        "n_logged_attempts": 100,
+        "with_0-40_example": 100,
+        "with_0-70_example": 0,
+        "with_any_e.g.": 100
+      }
+    },
+    "shifted": {
+      "source_file": "sequence_operator_compliance_gemma4_12b_len63_segex_shifted.json",
+      "model": "gemma4:12b",
+      "temperature": 0.7,
+      "seed": 0,
+      "genome_len": 63,
+      "length_bounds": [
+        30,
+        80
+      ],
+      "n_calls": 100,
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "n_cuts": 100,
+      "cut_counts": {
+        "40": 74,
+        "50": 26
+      },
+      "n_distinct_values": 2,
+      "distinct_values": [
+        40,
+        50
+      ],
+      "share_of_space_reached": 0.020202020202020204,
+      "modal_values": [
+        40
+      ],
+      "modal_share": 0.74,
+      "segment_example_check": {
+        "n_logged_attempts": 100,
+        "with_0-40_example": 0,
+        "with_0-70_example": 100,
+        "with_any_e.g.": 100
+      }
+    },
+    "absent": {
+      "source_file": "sequence_operator_compliance_gemma4_12b_len63_segex_absent.json",
+      "model": "gemma4:12b",
+      "temperature": 0.7,
+      "seed": 0,
+      "genome_len": 63,
+      "length_bounds": [
+        30,
+        80
+      ],
+      "n_calls": 100,
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "n_cuts": 100,
+      "cut_counts": {
+        "40": 77,
+        "50": 23
+      },
+      "n_distinct_values": 2,
+      "distinct_values": [
+        40,
+        50
+      ],
+      "share_of_space_reached": 0.020202020202020204,
+      "modal_values": [
+        40
+      ],
+      "modal_share": 0.77,
+      "segment_example_check": {
+        "n_logged_attempts": 100,
+        "with_0-40_example": 0,
+        "with_0-70_example": 0,
+        "with_any_e.g.": 0
+      }
+    },
+    "absent_prose25": {
+      "source_file": "sequence_operator_compliance_gemma4_12b_len63_segex_absent_prose25.json",
+      "model": "gemma4:12b",
+      "temperature": 0.7,
+      "seed": 0,
+      "genome_len": 63,
+      "length_bounds": [
+        30,
+        80
+      ],
+      "n_calls": 100,
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.0,
+      "n_cuts": 100,
+      "cut_counts": {
+        "50": 100
+      },
+      "n_distinct_values": 1,
+      "distinct_values": [
+        50
+      ],
+      "share_of_space_reached": 0.010101010101010102,
+      "modal_values": [
+        50
+      ],
+      "modal_share": 1.0,
+      "segment_example_check": {
+        "n_logged_attempts": 100,
+        "with_0-40_example": 0,
+        "with_0-70_example": 0,
+        "with_any_e.g.": 0,
+        "with_prose_40": 0,
+        "with_prose_25": 100,
+        "with_parent_length_40_in_header": 3,
+        "with_40_outside_parent_headers": 0
+      }
+    }
+  },
+  "values_ever_chosen": {
+    "first_three_settings_300_calls": [
+      40,
+      50
+    ],
+    "all_four_settings_400_calls": [
+      40,
+      50
+    ]
+  }
+}
