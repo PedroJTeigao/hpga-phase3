@@ -59,6 +59,39 @@ def f4(x) -> str:
     return "—" if x is None else f"{x:.4f}"
 
 
+def llm_behaviour(run: dict | None):
+    """[mutate calls, positions changed, distinct indices, top index, distinct letters, top letter,
+    crossover calls, distinct cuts, cut counts] from the call log of one arm-C run."""
+    import re
+    from collections import Counter
+    if not run or not run.get("llm_call_log"):
+        return None
+    path = Path(run["llm_call_log"])
+    path = path if path.is_absolute() else ROOT / path
+    if not path.exists():
+        return None
+    pos, let, cuts, n_mut, n_x = Counter(), Counter(), Counter(), 0, 0
+    for line in open(path, encoding="utf-8"):
+        r = json.loads(line)
+        if r.get("valid") is not True:
+            continue
+        if r.get("op") == "mutate":
+            n_mut += 1
+            for a, b in re.findall(r"POSITION\s*:\s*(\d+)\s*,\s*NEW\s*:\s*([A-Za-z])", r["response"], re.I):
+                pos[int(a)] += 1
+                let[b.upper()] += 1
+        elif r.get("op") == "crossover":
+            n_x += 1
+            m = re.search(r"SEGMENTS\s*:\s*(.*)", r["response"])
+            trip = sorted((int(a), int(b), int(c)) for a, b, c in re.findall(r"(\d+)\s*-\s*(\d+)\s*:\s*([12])", m.group(1))) if m else []
+            for t in trip[1:]:
+                cuts[t[0]] += 1
+    tp, tl = pos.most_common(1)[0] if pos else (None, 0), let.most_common(1)[0] if let else (None, 0)
+    return [n_mut, sum(pos.values()), len(pos), f"{tp[0]} ({tp[1] / max(1, sum(pos.values())):.0%})",
+            len(let), f"{tl[0]} ({tl[1] / max(1, sum(let.values())):.0%})", n_x, len(cuts),
+            ", ".join(f"{c}: {n}" for c, n in sorted(cuts.items()))]
+
+
 def sections(runs: dict, status: dict | None, check: dict | None) -> tuple[str, dict]:
     seeds = sorted({s for (_, s) in runs})
     md, facts = [], {}
@@ -192,16 +225,29 @@ def sections(runs: dict, status: dict | None, check: dict | None) -> tuple[str, 
         wins, losses = sum(d > 0 for d in diffs), sum(d < 0 for d in diffs)
         mean_d = statistics.mean(diffs)
         if wins == k and mean_d > 0:
-            verdict = f"{x} BEATS {y}: higher in all {k} of {k} seeds"
+            verdict = f"{x} BEATS {y} under the pre-set rule (higher in all {k} of {k} seeds)"
         elif losses == k and mean_d < 0:
-            verdict = f"{y} BEATS {x}: {x} lower in all {k} of {k} seeds"
+            verdict = f"{y} BEATS {x} under the pre-set rule ({x} lower in all {k} of {k} seeds)"
         else:
             verdict = f"NO DEMONSTRATED DIFFERENCE between {x} and {y}: {x} higher in {wins}, lower in {losses}, tied in {k - wins - losses} of {k} seeds"
+        if k < 3:
+            verdict = f"ONLY {k} SEED(S), NOT INTERPRETABLE ({verdict})"
         verdicts[f"{x}_vs_{y}"] = {"verdict": verdict, "wins": wins, "losses": losses, "k": k, "mean_diff": mean_d,
                                    "min_diff": min(diffs), "max_diff": max(diffs), "min_p": 2 * 0.5 ** k}
         md.append(f"**{x} vs {y}**\n\n" + md_table(["seed", "budget n", f"{x} best@n", f"{y} best@n", "difference", "higher"], rows) +
                   f"\n\nMean difference {mean_d:+.4f} (range {min(diffs):+.4f} to {max(diffs):+.4f}). **{verdict}.** "
                   f"Smallest two-sided sign-test p possible with {k} seeds: {2 * 0.5 ** k:.4f}.\n")
+    # 9 ------------------------------------------------------------ LLM behaviour
+    md.append("### 9. What the LLM operators did inside arm C (from the per-call logs; accepted, i.e. valid, responses only)\n")
+    rows = []
+    for s in seeds:
+        b = llm_behaviour(runs.get(("C", s)))
+        if b:
+            rows.append([s] + b)
+    if rows:
+        md.append(md_table(["seed", "mutate calls", "positions changed", "distinct position indices", "most-used index (share)",
+                            "distinct new letters (of 20)", "most-used letter (share)", "crossover calls", "distinct cut values",
+                            "cut values (count)"], rows) + "\n")
     facts["verdicts"] = verdicts
     return "\n".join(md), facts
 
