@@ -613,3 +613,144 @@ Not deferred — applies regardless of representation:
   sections' numbers depend on is committed. Version control and backups
   only help if every run that produces a real number keeps doing that,
   including whatever comes out of the representation change above.
+
+## 9. The 20-letter sequence genome: operator format, operator coverage, and a four-setting segment ablation
+
+*What this section is: the LLM operators dispatched through the sequence
+`GenomeModel` (variable-length amino-acid strings, 20-letter alphabet),
+measured in isolation. No fitness is evaluated (ESMFold is never loaded) and
+no GA is run, so nothing here says anything about search quality; it says what
+the operators do when called. Everything is `gemma4:12b`, temperature 0.7, seed 0;
+mutate at one fixed length (63, the 7UR7 resolved core), crossover parents
+uniform over the length bounds [30, 80], a fresh random genome or parent pair
+per call. Script: `experiments/probe_sequence_operator_compliance.py` (its
+docstring records the six deliberate differences from the 5-symbol probe).
+Raw: `results/raw/sequence_operator_compliance_gemma4_12b_len63.json` and
+`results/raw/llm_operator_calls_1789749658_409662.jsonl` (560 calls). The ablation
+adds `--segment-example` to the same script: raw in
+`results/raw/sequence_operator_compliance_gemma4_12b_len63_segex_{current,shifted,absent,absent_prose25}.json`,
+the four per-run call logs `results/raw/llm_operator_calls_{1789775129_936752,1789775387_939993,1789775835_945019,1789777935_979385}.jsonl`,
+and the per-setting summary `results/raw/segment_example_ablation_summary.json`
+(from `experiments/summarize_segment_example_ablation.py`).*
+
+**Caveats that apply to every number below.** Each figure is a single run.
+The segment conditions are 100 calls per setting at temperature 0.7; a
+fallback rate of 0/100 bounds the true rate at about 3% (rule of three,
+95%), it does not show the rate is zero. (0/400 bounds it at about 0.75%.)
+The two `full`-style conditions are 30-call confirmation runs, not
+measurements.
+
+### 9.1 Format transfer: position and segment at 0% fallback, full at 80-87%
+
+| condition (20 letters, n) | fell back to deterministic | requests/call |
+|---|---|---|
+| mutate/position (400) | **0.00 (0/400)** | 1.00 |
+| crossover/segment (100) | **0.00 (0/100)** | 1.00 |
+| mutate/full (30) | **0.80 (24/30)** | 2.63 |
+| crossover/full (30) | **0.87 (26/30)** | 2.80 |
+
+The format result from the smaller alphabets carries over. `position` and
+`segment` never fell back at 3 letters (`PHASE2_RESULTS.md` §4.3: 0/50 each),
+at 5 letters (§7.6.1: 0/20 each), or here at 20. The `full` styles, which ask the
+model to restate letters, mostly fall back at every alphabet measured (3
+letters, §4.2: 70% mutate and 40% crossover at n=10; 5 letters, §7.6.2: 67% and
+67% at n=3; here 80% and 87% at n=30). What carries over is the direction; the
+earlier `full` samples are too small to compare the rates themselves.
+
+### 9.2 Mutate coverage: 20 of 63 positions ever chosen, one position at 37%
+
+mutate/position, 400 calls, all 400 LLM-successful (no fallbacks, so none
+excluded from the tests). Null: on a uniform-random genome the position is
+uniform over 63 and the new letter is uniform over 20.
+
+| test | cells ever hit | most-chosen cell | χ² (df) | Monte-Carlo p |
+|---|---|---|---|---|
+| position over 63 (6.35 expected/cell) | **20 of 63** | position 10: 149/400 = **37.3%** | 4324.37 (62) | 4.9998e-05 |
+| new letter over 20 (20 expected/cell) | 18 of 20 | G: 102/400 = 25.5% | 590.8 (19) | 4.9998e-05 |
+
+Both p-values are the floor of the test: 4.9998e-05 is 1/20,001, the smallest
+value 20,000 Monte-Carlo simulations can return, and no simulated uniform
+draw reached either observed statistic. Read them as p < 5e-5, not as a
+measured 5e-5. Both expected-per-cell counts are above 5, so the
+asymptotic χ² is also valid.
+
+Position: three positions take 63.5% of all mutations (position 10: 149,
+position 3: 55, position 12: 50; the next two, 2 and 14, have 23 each).
+Because every call draws a fresh uniform-random genome, this concentration
+belongs to the operator, not to anything in a particular sequence. Symbol:
+G, M and L together are 50.5% of new letters; C and N were never chosen.
+Jointly, the 400 calls produced **128 distinct (position, new letter)
+combinations out of 1,260 possible (63 × 20), about 10%**, with (10, G) and
+(10, M) the most frequent at 30 each.
+
+For reference, the 3-symbol case put 50% of mutations on position 1 and
+touched 7 of 18 positions (χ² = 211.10, df 17; `PHASE2_RESULTS.md` §4.4), and
+the 5-symbol n=20 run put 75% on position 1 and touched 4 of 18 (§7.6.1). The
+χ² values are not comparable across different df and n. The concentration
+here is on an interior position, not at the start of the sequence.
+
+### 9.3 Crossover coverage: the 40 mode came from the prompt prose, and with no 40 the operator chose the midpoint 100 of 100 times
+
+crossover/segment: the model declares cut points as percentages (0-100)
+along each parent. Any integer cut from 1 to 99 is a valid two-segment
+declaration for every pair of parent lengths in [30, 80] (checked
+exhaustively: 0 rejections across 51 × 51 × 99 combinations of two lengths
+and a cut), so the space is **99 values**, and the length check excludes none of them.
+
+In the first run (the prompt as shipped), 83 of 100 cuts were at 40, the
+value in the prompt's worked example (`e.g. 0-40:1, 40-100:2`), and 17 at 50.
+The ablation varies what the prompt says, one setting per run, 100 calls
+each. All four settings used the same 100 parent pairs and the same per-call
+seeds (verified from the call logs; there were no retries or fallbacks to
+desynchronise them), so the prompt text is the only difference between rows.
+The example was varied wherever it occurs, including the retry hint. Every
+setting produced exactly two segments per call, so there is one cut per call.
+
+| setting | example | prose sentence ("a boundary at N falls N% of the way along…") | fallback | requests/call | **distinct values (of 99)** | values chosen (count) | modal value (share) |
+|---|---|---|---|---|---|---|---|
+| current | 0-40 | 40 | 0/100 | 1.00 | **2** | 40 ×79, 50 ×21 | 40 (79%) |
+| shifted | 0-70 | 40 | 0/100 | 1.00 | **2** | 40 ×74, 50 ×26 | 40 (74%) |
+| absent | none | 40 | 0/100 | 1.00 | **2** | 40 ×77, 50 ×23 | 40 (77%) |
+| absent_prose25 | none | **25** | 0/100 | 1.00 | **1** | 50 ×100 | 50 (100%) |
+
+The rows are separate runs and are not pooled.
+
+- **The 40 mode came from the number in the prompt prose, not from the worked
+  example.** Changing the example to 70 left the modal cut at 40 (74%), and
+  70 was never chosen. Removing the example left it at 40 (77%). The prose
+  sentence's 40, which the first three settings leave untouched, is what
+  moves it: `absent` and `absent_prose25` differ only in that sentence's
+  number, 40 versus 25, and the share at 40 went from 77% to 0%.
+- **With no 40 anywhere in the prompt template or retry hint, the operator
+  chose the midpoint, 50, in 100 of 100 calls.** It did not follow 25
+  either: 25 was never chosen.
+- **The operator reached 2 of 99 values in each of the first three settings
+  and 1 of 99 in the fourth.** Across the 300 calls of the first three it chose only two
+  distinct boundary values, 40 and 50; adding the fourth setting's 100
+  calls adds no third value.
+
+Scope of these claims: the fresh `current` run (79/21) reproduces the first
+run's 83/17 with different parent pairs. In `absent_prose25`, 3 of the 100
+prompts print a parent length of 40 as data (`(length 40)`), which the
+template cannot avoid; all three of those calls chose 50. The ablation has no
+setting that pairs the shifted example with the prose changed to 25, so it
+shows that the example is not what produced the 40 mode; it does not show the
+example could never influence the cut.
+
+### 9.4 What this shows
+
+On the 20-letter genome the LLM operators are reliable in format and reach a
+small fraction of their space. `position` mutate and `segment` crossover fell
+back 0 times in 400 and in 100 calls (and 0 of 100 in each ablation
+setting); but mutate ever chose 20 of 63 positions with 37% on one of them
+and covered about 10% of the (position, letter) combinations, and crossover
+chose 1 or 2 of 99 possible cut values in every setting. This is the same
+behaviour `PHASE2_RESULTS.md` §4.4 measured at 3 letters on the same model: 36
+of 40 cuts at the exact midpoint of the 18-position genome and the other 4
+one position off, which that section called "the next cheapest valid answer
+the format admits." It is measured here a second time with a different
+alphabet, genome length, cut convention (percentages rather than
+positions) and sample size, and the 3-symbol segment prompt, like the
+`absent_prose25` prompt, contained no illustrative cut value. In both, the
+model cuts at the midpoint. In the prompts that contain a 40, it uses 40 in
+74-79% of calls and the midpoint in the rest.
