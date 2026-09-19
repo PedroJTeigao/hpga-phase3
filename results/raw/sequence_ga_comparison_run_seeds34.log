@@ -1,0 +1,109 @@
+2026-09-19 02:59:15,350 seqcmp plan: [('B', 3), ('C', 3), ('A', 3), ('B', 4), ('C', 4), ('A', 4)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-19 02:59:24,611 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 5/4498 [00:08<2:14:44,  1.80s/it]Loading weights:   0%|          | 15/4498 [00:09<36:50,  2.03it/s] Loading weights:   0%|          | 15/4498 [00:19<36:50,  2.03it/s]Loading weights:   0%|          | 18/4498 [01:19<7:27:38,  6.00s/it]Loading weights:  10%|█         | 456/4498 [01:19<07:53,  8.53it/s] Loading weights:  26%|██▌       | 1154/4498 [01:19<02:01, 27.49it/s]Loading weights:  45%|████▌     | 2041/4498 [01:19<00:39, 61.71it/s]Loading weights:  65%|██████▌   | 2945/4498 [01:19<00:13, 111.08it/s]Loading weights:  86%|████████▌ | 3848/4498 [01:19<00:03, 180.59it/s]Loading weights: 100%|██████████| 4498/4498 [01:19<00:00, 56.26it/s] 
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-19 03:01:00,968 seqcmp === B seed 3 attempt 1 ===
+2026-09-19 03:01:33,880 seqcmp B seed 3 gen  0 best=0.2983 mean=0.2381 distinct=16 hits=0 div=53.9
+2026-09-19 03:01:58,708 seqcmp B seed 3 gen  1 best=0.3572 mean=0.2792 distinct=30 hits=2 div=52.5
+2026-09-19 03:02:22,818 seqcmp B seed 3 gen  2 best=0.3572 mean=0.2911 distinct=43 hits=5 div=41.8
+2026-09-19 03:02:49,741 seqcmp B seed 3 gen  3 best=0.3572 mean=0.2997 distinct=57 hits=7 div=35.9
+2026-09-19 03:03:17,485 seqcmp B seed 3 gen  4 best=0.3587 mean=0.2971 distinct=71 hits=9 div=37.8
+2026-09-19 03:03:46,476 seqcmp B seed 3 gen  5 best=0.3820 mean=0.3027 distinct=85 hits=11 div=37.8
+2026-09-19 03:04:20,065 seqcmp B seed 3 gen  6 best=0.3820 mean=0.2924 distinct=99 hits=13 div=36.8
+2026-09-19 03:05:02,896 seqcmp B seed 3 gen  7 best=0.3820 mean=0.2976 distinct=113 hits=15 div=34.5
+2026-09-19 03:05:45,424 seqcmp B seed 3 gen  8 best=0.3820 mean=0.3040 distinct=127 hits=17 div=27.5
+2026-09-19 03:06:27,223 seqcmp B seed 3 gen  9 best=0.3820 mean=0.3171 distinct=141 hits=19 div=26.6
+2026-09-19 03:07:10,674 seqcmp B seed 3 gen 10 best=0.3820 mean=0.3083 distinct=155 hits=21 div=20.2
+2026-09-19 03:07:54,735 seqcmp B seed 3 gen 11 best=0.3820 mean=0.3084 distinct=169 hits=23 div=16.6
+2026-09-19 03:08:37,108 seqcmp B seed 3 gen 12 best=0.3820 mean=0.3122 distinct=183 hits=25 div=18.1
+2026-09-19 03:09:20,694 seqcmp B seed 3 gen 13 best=0.3820 mean=0.3143 distinct=197 hits=27 div=21.2
+2026-09-19 03:10:07,145 seqcmp B seed 3 gen 14 best=0.3820 mean=0.3331 distinct=211 hits=29 div=17.7
+2026-09-19 03:10:49,783 seqcmp B seed 3 gen 15 best=0.3820 mean=0.3135 distinct=225 hits=31 div=20.2
+2026-09-19 03:11:31,723 seqcmp B seed 3 gen 16 best=0.4007 mean=0.3228 distinct=239 hits=33 div=19.1
+2026-09-19 03:12:17,552 seqcmp B seed 3 gen 17 best=0.4007 mean=0.3269 distinct=253 hits=35 div=13.3
+2026-09-19 03:13:01,940 seqcmp B seed 3 gen 18 best=0.4007 mean=0.3107 distinct=267 hits=37 div=11.8
+2026-09-19 03:13:42,880 seqcmp B seed 3 gen 19 best=0.4007 mean=0.3217 distinct=280 hits=40 div=12.1
+2026-09-19 03:13:42,967 seqcmp === C seed 3 attempt 1 ===
+2026-09-19 03:16:20,761 seqcmp C seed 3 gen  0 best=0.2983 mean=0.2381 distinct=16 hits=0 div=53.9
+2026-09-19 03:19:12,009 seqcmp C seed 3 gen  1 best=0.4124 mean=0.2969 distinct=30 hits=2 div=51.0
+2026-09-19 03:21:47,467 seqcmp C seed 3 gen  2 best=0.4319 mean=0.3012 distinct=44 hits=4 div=47.1
+2026-09-19 03:24:22,977 seqcmp C seed 3 gen  3 best=0.4319 mean=0.3627 distinct=58 hits=6 div=30.3
+2026-09-19 03:26:54,888 seqcmp C seed 3 gen  4 best=0.4319 mean=0.3432 distinct=72 hits=8 div=14.1
+2026-09-19 03:29:23,297 seqcmp C seed 3 gen  5 best=0.4696 mean=0.3911 distinct=86 hits=10 div=11.7
+2026-09-19 03:32:15,994 seqcmp C seed 3 gen  6 best=0.4696 mean=0.3585 distinct=100 hits=12 div=10.7
+2026-09-19 03:34:42,483 seqcmp C seed 3 gen  7 best=0.5434 mean=0.3758 distinct=114 hits=14 div=10.5
+2026-09-19 03:37:27,104 seqcmp C seed 3 gen  8 best=0.5434 mean=0.4075 distinct=127 hits=17 div=11.0
+2026-09-19 03:40:11,356 seqcmp C seed 3 gen  9 best=0.5434 mean=0.3942 distinct=141 hits=19 div=10.7
+2026-09-19 03:43:11,380 seqcmp C seed 3 gen 10 best=0.5434 mean=0.3910 distinct=155 hits=21 div=10.5
+2026-09-19 03:45:43,969 seqcmp C seed 3 gen 11 best=0.5434 mean=0.4055 distinct=169 hits=23 div=9.0
+2026-09-19 03:48:23,309 seqcmp C seed 3 gen 12 best=0.5434 mean=0.4149 distinct=183 hits=25 div=7.6
+2026-09-19 03:50:58,539 seqcmp C seed 3 gen 13 best=0.5434 mean=0.3935 distinct=197 hits=27 div=7.2
+2026-09-19 03:53:47,668 seqcmp C seed 3 gen 14 best=0.5434 mean=0.3839 distinct=211 hits=29 div=7.0
+2026-09-19 03:56:14,389 seqcmp C seed 3 gen 15 best=0.5434 mean=0.4141 distinct=225 hits=31 div=6.7
+2026-09-19 03:58:39,007 seqcmp C seed 3 gen 16 best=0.5434 mean=0.4255 distinct=239 hits=33 div=6.2
+2026-09-19 04:01:06,643 seqcmp C seed 3 gen 17 best=0.5434 mean=0.4147 distinct=253 hits=35 div=7.2
+2026-09-19 04:03:32,684 seqcmp C seed 3 gen 18 best=0.5434 mean=0.4061 distinct=266 hits=38 div=8.1
+2026-09-19 04:04:10,418 seqcmp C seed 3 gen 19 best=0.5434 mean=0.4064 distinct=280 hits=40 div=6.5
+2026-09-19 04:04:10,497 seqcmp === A seed 3 attempt 1 ===
+2026-09-19 04:05:56,361 seqcmp A seed 3 draws=50 distinct=50 best=0.3320
+2026-09-19 04:07:51,605 seqcmp A seed 3 draws=100 distinct=100 best=0.3605
+2026-09-19 04:09:46,658 seqcmp A seed 3 draws=150 distinct=150 best=0.4035
+2026-09-19 04:11:30,442 seqcmp A seed 3 draws=200 distinct=200 best=0.4035
+2026-09-19 04:13:20,262 seqcmp A seed 3 draws=250 distinct=250 best=0.4035
+2026-09-19 04:14:25,119 seqcmp === B seed 4 attempt 1 ===
+2026-09-19 04:14:59,495 seqcmp B seed 4 gen  0 best=0.3447 mean=0.2611 distinct=16 hits=0 div=52.2
+2026-09-19 04:15:25,890 seqcmp B seed 4 gen  1 best=0.3727 mean=0.2868 distinct=29 hits=3 div=47.8
+2026-09-19 04:15:57,361 seqcmp B seed 4 gen  2 best=0.3727 mean=0.3093 distinct=43 hits=5 div=47.0
+2026-09-19 04:16:34,362 seqcmp B seed 4 gen  3 best=0.4080 mean=0.3184 distinct=57 hits=7 div=45.9
+2026-09-19 04:17:04,928 seqcmp B seed 4 gen  4 best=0.4090 mean=0.3374 distinct=71 hits=9 div=34.2
+2026-09-19 04:17:35,215 seqcmp B seed 4 gen  5 best=0.4263 mean=0.3371 distinct=85 hits=11 div=33.9
+2026-09-19 04:18:04,873 seqcmp B seed 4 gen  6 best=0.4451 mean=0.3489 distinct=98 hits=14 div=28.4
+2026-09-19 04:18:34,677 seqcmp B seed 4 gen  7 best=0.4506 mean=0.3547 distinct=111 hits=17 div=20.9
+2026-09-19 04:19:04,688 seqcmp B seed 4 gen  8 best=0.4506 mean=0.3629 distinct=124 hits=20 div=22.7
+2026-09-19 04:19:36,874 seqcmp B seed 4 gen  9 best=0.4691 mean=0.3872 distinct=138 hits=22 div=18.6
+2026-09-19 04:20:06,611 seqcmp B seed 4 gen 10 best=0.4691 mean=0.3815 distinct=151 hits=25 div=17.7
+2026-09-19 04:20:37,578 seqcmp B seed 4 gen 11 best=0.4691 mean=0.3735 distinct=165 hits=27 div=9.8
+2026-09-19 04:21:07,837 seqcmp B seed 4 gen 12 best=0.4713 mean=0.3789 distinct=179 hits=29 div=9.2
+2026-09-19 04:21:38,313 seqcmp B seed 4 gen 13 best=0.4835 mean=0.3896 distinct=193 hits=31 div=10.5
+2026-09-19 04:22:08,701 seqcmp B seed 4 gen 14 best=0.4835 mean=0.3673 distinct=207 hits=33 div=14.4
+2026-09-19 04:22:38,310 seqcmp B seed 4 gen 15 best=0.4873 mean=0.3735 distinct=221 hits=35 div=13.4
+2026-09-19 04:23:09,329 seqcmp B seed 4 gen 16 best=0.4873 mean=0.3965 distinct=235 hits=37 div=14.5
+2026-09-19 04:23:40,099 seqcmp B seed 4 gen 17 best=0.4873 mean=0.3599 distinct=249 hits=39 div=13.9
+2026-09-19 04:24:06,064 seqcmp B seed 4 gen 18 best=0.4873 mean=0.4085 distinct=261 hits=43 div=12.9
+2026-09-19 04:24:36,978 seqcmp B seed 4 gen 19 best=0.4873 mean=0.4161 distinct=275 hits=45 div=15.1
+2026-09-19 04:24:37,062 seqcmp === C seed 4 attempt 1 ===
+2026-09-19 04:27:01,245 seqcmp C seed 4 gen  0 best=0.3447 mean=0.2611 distinct=16 hits=0 div=52.2
+2026-09-19 04:29:52,051 seqcmp C seed 4 gen  1 best=0.3777 mean=0.2777 distinct=30 hits=2 div=50.9
+2026-09-19 04:32:35,909 seqcmp C seed 4 gen  2 best=0.3777 mean=0.3044 distinct=44 hits=4 div=48.8
+2026-09-19 04:35:32,638 seqcmp C seed 4 gen  3 best=0.3777 mean=0.3286 distinct=58 hits=6 div=44.7
+2026-09-19 04:38:32,476 seqcmp C seed 4 gen  4 best=0.3777 mean=0.3060 distinct=72 hits=8 div=36.8
+2026-09-19 04:41:37,245 seqcmp C seed 4 gen  5 best=0.4104 mean=0.3323 distinct=86 hits=10 div=28.6
+2026-09-19 04:44:41,611 seqcmp C seed 4 gen  6 best=0.4104 mean=0.3058 distinct=100 hits=12 div=27.5
+2026-09-19 04:47:30,852 seqcmp C seed 4 gen  7 best=0.4104 mean=0.3282 distinct=114 hits=14 div=27.2
+2026-09-19 04:50:27,254 seqcmp C seed 4 gen  8 best=0.4104 mean=0.3229 distinct=128 hits=16 div=27.1
+2026-09-19 04:53:39,752 seqcmp C seed 4 gen  9 best=0.4104 mean=0.3172 distinct=142 hits=18 div=27.5
+2026-09-19 04:56:49,215 seqcmp C seed 4 gen 10 best=0.4104 mean=0.2949 distinct=156 hits=20 div=27.7
+2026-09-19 04:59:54,525 seqcmp C seed 4 gen 11 best=0.4104 mean=0.3311 distinct=170 hits=22 div=26.5
+2026-09-19 05:02:37,847 seqcmp C seed 4 gen 12 best=0.4104 mean=0.3289 distinct=184 hits=24 div=26.2
+2026-09-19 05:05:38,507 seqcmp C seed 4 gen 13 best=0.4104 mean=0.3546 distinct=198 hits=26 div=23.1
+2026-09-19 05:08:22,501 seqcmp C seed 4 gen 14 best=0.4104 mean=0.3276 distinct=212 hits=28 div=15.8
+2026-09-19 05:11:01,631 seqcmp C seed 4 gen 15 best=0.4370 mean=0.3467 distinct=225 hits=31 div=9.6
+2026-09-19 05:13:41,305 seqcmp C seed 4 gen 16 best=0.4370 mean=0.3498 distinct=239 hits=33 div=9.8
+2026-09-19 05:16:06,780 seqcmp C seed 4 gen 17 best=0.4370 mean=0.3539 distinct=252 hits=36 div=8.9
+2026-09-19 05:19:06,521 seqcmp C seed 4 gen 18 best=0.4370 mean=0.3671 distinct=266 hits=38 div=9.1
+2026-09-19 05:19:55,560 seqcmp C seed 4 gen 19 best=0.4370 mean=0.3827 distinct=280 hits=40 div=10.2
+2026-09-19 05:19:55,644 seqcmp === A seed 4 attempt 1 ===
+2026-09-19 05:21:46,843 seqcmp A seed 4 draws=50 distinct=50 best=0.3756
+2026-09-19 05:23:38,184 seqcmp A seed 4 draws=100 distinct=100 best=0.4009
+2026-09-19 05:25:22,358 seqcmp A seed 4 draws=150 distinct=150 best=0.4009
+2026-09-19 05:27:07,812 seqcmp A seed 4 draws=200 distinct=200 best=0.4009
+2026-09-19 05:28:50,412 seqcmp A seed 4 draws=250 distinct=250 best=0.4009
+2026-09-19 05:29:51,112 seqcmp finished: all planned runs attempted

@@ -1,0 +1,161 @@
+# Checks for next_generation on the sequence GenomeModel (deterministic operators). Run 2026-09-18T22:21:49-04:00.
+# Working tree = the commit that adds this file; 'before' = the untouched parent commit 2fb3962.
+
+########## experiments/verify_sequence_next_generation.py --baseline main
+baseline = main
+A. lattice parity (deterministic path)
+  [before-vs-after] 4536 lattice cases (x4 chained generations), diverged: 0
+  [PASS] baseline vs working tree: identical on every case
+  [mutant tournament_select returns an alias] 4536 lattice cases (x4 chained generations), diverged: 4536
+  [PASS] self-check: mutant 'tournament_select returns an alias' is detected
+  [mutant tournament_select samples in another order] 4536 lattice cases (x4 chained generations), diverged: 1408
+  [PASS] self-check: mutant 'tournament_select samples in another order' is detected
+B. sequence mode
+  [PASS] random_population(8, None): 8 str genomes
+  [PASS] random_population(None): lengths inside bounds and varied
+  [PASS] random_population(63): every genome length 63
+  [PASS] random_population(length below bounds) raises
+  [PASS] tournament_select returns the str genome itself, not a list of characters
+  [PASS] next_generation x360 steps: always pop_size genomes
+  [PASS] next_generation: every genome is a str
+  [PASS] next_generation: every length inside [30, 80]
+  [PASS] next_generation: only the 20 canonical letters
+  [PASS] next_generation: the top-2 genomes carried over as the first two
+  [PASS] same seed -> identical population and RNG state
+  [PASS] different seeds -> different populations
+  [PASS] crossover=0, mutation=0: every child is an unchanged parent
+C. loud failures
+  [PASS] sequence mode + HPGA_AGENTS_ENABLED=1 raises (operator mode deterministic)
+  [PASS]   ...and touched nothing first (agents): RNG state and generation counter unchanged
+  [PASS] sequence mode + HPGA_CIRCLES_ENABLED=1 raises (operator mode deterministic)
+  [PASS]   ...and touched nothing first (circles): RNG state and generation counter unchanged
+  [PASS] sequence mode + HPGA_LOG_DIVERSITY=1 raises (operator mode deterministic)
+  [PASS]   ...and touched nothing first (diversity logging): RNG state and generation counter unchanged
+  [PASS] sequence model active + list genomes raises
+  [PASS] str genomes with no sequence model active raises
+  [PASS] str genomes with a LATTICE model active raises
+  [PASS] lattice + HPGA_AGENTS_ENABLED=1 in deterministic mode still runs (unchanged)
+ALL CHECKS PASSED
+
+########## verify_llm_operator_parity.py --baseline 50de6f8  (the harness's documented baseline; valid)
+--- BEFORE, mode=self
+baseline=50de6f8  mode=self
+[self] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[self] next_generation specs: 13  diverged: 0
+[self] namespace problems: 0 []
+--- AFTER, mode=self
+baseline=50de6f8  mode=self
+[self] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[self] next_generation specs: 13  diverged: 0
+[self] namespace problems: 0 []
+--- BEFORE, mode=check
+baseline=50de6f8  mode=check
+[check (no active model)] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[check (no active model)] next_generation specs: 13  diverged: 0
+[check (no active model)] namespace problems: 0 []
+--- AFTER, mode=check
+baseline=50de6f8  mode=check
+[check (no active model)] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[check (no active model)] next_generation specs: 13  diverged: 0
+[check (no active model)] namespace problems: 0 []
+--- BEFORE, mode=active
+baseline=50de6f8  mode=active
+[active lattice model] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[active lattice model] next_generation specs: 13  diverged: 0
+[active lattice model] namespace problems: 0 []
+--- AFTER, mode=active
+baseline=50de6f8  mode=active
+[active lattice model] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 941, 'fallback': 770, 'retry_success': 411, 'raised': 850}
+[active lattice model] next_generation specs: 13  diverged: 0
+[active lattice model] namespace problems: 0 []
+--- BEFORE, mode=mutants
+baseline=50de6f8  mode=mutants
+  mutant prompt_word_in_full_mutate             DETECTED (1266 divergences)
+  mutant retry_hint_diff_text                   DETECTED (186 divergences)
+  mutant segment_num_predict                    DETECTED (142 divergences)
+  mutant mixed_gate_strictness                  DETECTED (44 divergences)
+  mutant extra_rng_draw_in_mutate               DETECTED (2217 divergences)
+  mutant crossover_fallback_rate                DETECTED (77 divergences)
+  mutant log_field_rename                       DETECTED (2392 divergences)
+  mutant identical_parents_check                DETECTED (310 divergences)
+  mutant position_parse_same_letter_allowed     DETECTED (81 divergences)
+  mutant unknown_style_falls_to_diff            DETECTED (116 divergences)
+ALL APPLICABLE MUTANTS DETECTED
+--- AFTER, mode=mutants
+baseline=50de6f8  mode=mutants
+  mutant prompt_word_in_full_mutate             DETECTED (1266 divergences)
+  mutant retry_hint_diff_text                   DETECTED (186 divergences)
+  mutant segment_num_predict                    DETECTED (142 divergences)
+  mutant mixed_gate_strictness                  DETECTED (44 divergences)
+  mutant extra_rng_draw_in_mutate               DETECTED (2217 divergences)
+  mutant crossover_fallback_rate                DETECTED (77 divergences)
+  mutant log_field_rename                       DETECTED (2392 divergences)
+  mutant identical_parents_check                DETECTED (310 divergences)
+  mutant position_parse_same_letter_allowed     DETECTED (81 divergences)
+  mutant unknown_style_falls_to_diff            DETECTED (116 divergences)
+ALL APPLICABLE MUTANTS DETECTED
+
+########## verify_llm_operator_parity.py --baseline main  (as requested; NOT a valid baseline for this harness -- see note)
+# main's hpga/ was identical to the working tree before any edit, yet check/active report 355 divergences and 6 mutants escape:
+# the harness sets CROSSOVER_MIN_DIFF etc. on the loaded baseline copy, but since the GenomeModel refactor that copy's LLM path
+# gets its plans from the working-tree hpga.operators (LatticeGenomeModel imports it), so the 'baseline' is contaminated.
+--- BEFORE, mode=self
+baseline=main  mode=self
+[self] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 889, 'fallback': 838, 'retry_success': 383, 'raised': 862}
+[self] next_generation specs: 13  diverged: 0
+[self] namespace problems: 0 []
+--- AFTER, mode=self
+baseline=main  mode=self
+[self] direct-call cases: 4410  diverged: 0   coverage(before side): {'valid_first': 889, 'fallback': 838, 'retry_success': 383, 'raised': 862}
+[self] next_generation specs: 13  diverged: 0
+[self] namespace problems: 0 []
+--- before/after identical: yes
+--- BEFORE, mode=check
+baseline=main  mode=check
+[check (no active model)] direct-call cases: 4410  diverged: 355   coverage(before side): {'valid_first': 945, 'fallback': 790, 'retry_success': 394, 'raised': 843}
+[check (no active model)] next_generation specs: 13  diverged: 0
+[check (no active model)] namespace problems: 0 []
+--- AFTER, mode=check
+baseline=main  mode=check
+[check (no active model)] direct-call cases: 4410  diverged: 355   coverage(before side): {'valid_first': 945, 'fallback': 790, 'retry_success': 394, 'raised': 843}
+[check (no active model)] next_generation specs: 13  diverged: 0
+[check (no active model)] namespace problems: 0 []
+--- before/after identical: yes
+--- BEFORE, mode=active
+baseline=main  mode=active
+[active lattice model] direct-call cases: 4410  diverged: 355   coverage(before side): {'valid_first': 945, 'fallback': 790, 'retry_success': 394, 'raised': 843}
+[active lattice model] next_generation specs: 13  diverged: 0
+[active lattice model] namespace problems: 0 []
+--- AFTER, mode=active
+baseline=main  mode=active
+[active lattice model] direct-call cases: 4410  diverged: 355   coverage(before side): {'valid_first': 945, 'fallback': 790, 'retry_success': 394, 'raised': 843}
+[active lattice model] next_generation specs: 13  diverged: 0
+[active lattice model] namespace problems: 0 []
+--- before/after identical: yes
+--- BEFORE, mode=mutants
+baseline=main  mode=mutants
+  mutant prompt_word_in_full_mutate             ESCAPED (0 divergences)
+  mutant retry_hint_diff_text                   ESCAPED (0 divergences)
+  mutant segment_num_predict                    ESCAPED (0 divergences)
+  mutant mixed_gate_strictness                  ESCAPED (0 divergences)
+  mutant extra_rng_draw_in_mutate               SKIPPED (pattern absent from baseline main)
+  mutant crossover_fallback_rate                SKIPPED (pattern absent from baseline main)
+  mutant log_field_rename                       DETECTED (2392 divergences)
+  mutant identical_parents_check                DETECTED (310 divergences)
+  mutant position_parse_same_letter_allowed     ESCAPED (0 divergences)
+  mutant unknown_style_falls_to_diff            ESCAPED (0 divergences)
+6 PROBLEM(S) -- harness not trustworthy for this baseline
+--- AFTER, mode=mutants
+baseline=main  mode=mutants
+  mutant prompt_word_in_full_mutate             ESCAPED (0 divergences)
+  mutant retry_hint_diff_text                   ESCAPED (0 divergences)
+  mutant segment_num_predict                    ESCAPED (0 divergences)
+  mutant mixed_gate_strictness                  ESCAPED (0 divergences)
+  mutant extra_rng_draw_in_mutate               SKIPPED (pattern absent from baseline main)
+  mutant crossover_fallback_rate                SKIPPED (pattern absent from baseline main)
+  mutant log_field_rename                       DETECTED (2392 divergences)
+  mutant identical_parents_check                DETECTED (310 divergences)
+  mutant position_parse_same_letter_allowed     ESCAPED (0 divergences)
+  mutant unknown_style_falls_to_diff            ESCAPED (0 divergences)
+6 PROBLEM(S) -- harness not trustworthy for this baseline
+--- before/after identical: yes

@@ -1,0 +1,78 @@
+{
+ "plan": [
+  [
+   "B",
+   3
+  ],
+  [
+   "C",
+   3
+  ],
+  [
+   "A",
+   3
+  ],
+  [
+   "B",
+   4
+  ],
+  [
+   "C",
+   4
+  ],
+  [
+   "A",
+   4
+  ]
+ ],
+ "started": "2026-09-19T02:59:15-0400",
+ "done": [
+  {
+   "arm": "B",
+   "seed": 3,
+   "attempt": 1,
+   "seconds": 761.9155716896057,
+   "final_best": 0.40073
+  },
+  {
+   "arm": "C",
+   "seed": 3,
+   "attempt": 1,
+   "seconds": 3027.454761505127,
+   "final_best": 0.5434
+  },
+  {
+   "arm": "A",
+   "seed": 3,
+   "attempt": 1,
+   "seconds": 614.5140857696533,
+   "final_best": 0.40352
+  },
+  {
+   "arm": "B",
+   "seed": 4,
+   "attempt": 1,
+   "seconds": 611.8625237941742,
+   "final_best": 0.48727
+  },
+  {
+   "arm": "C",
+   "seed": 4,
+   "attempt": 1,
+   "seconds": 3318.5032589435577,
+   "final_best": 0.43703
+  },
+  {
+   "arm": "A",
+   "seed": 4,
+   "attempt": 1,
+   "seconds": 595.4668869972229,
+   "final_best": 0.40091
+  }
+ ],
+ "failed": [],
+ "skipped": [],
+ "finished": true,
+ "exit_reason": "all planned runs attempted",
+ "ended": "2026-09-19T05:29:51-0400"
+}

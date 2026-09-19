@@ -1,0 +1,29 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-18 23:01:28,907 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<02:17, 32.59it/s]Loading weights:   2%|▏         | 77/4498 [00:00<00:30, 147.10it/s]Loading weights:  18%|█▊        | 803/4498 [00:00<00:02, 1761.01it/s]Loading weights:  35%|███▍      | 1559/4498 [00:00<00:00, 3180.27it/s]Loading weights:  51%|█████▏    | 2310/4498 [00:00<00:00, 4301.02it/s]Loading weights:  68%|██████▊   | 3063/4498 [00:01<00:00, 5171.76it/s]Loading weights:  90%|█████████ | 4056/4498 [00:01<00:00, 6496.02it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 3770.02it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+{
+ "fallback_rate_by_operator": {
+  "mutate": 0.0,
+  "crossover": 0.0
+ },
+ "skip_arm_C": false,
+ "fold_phase_s": 33.575964896939695,
+ "breed_s": 52.57181249931455,
+ "swap_s": 24.35584355145693,
+ "children_valid": true,
+ "swap_integrity": {
+  "before": 0.24329,
+  "after": 0.24329,
+  "identical": true
+ }
+}
+mutate {'style': 'position', 'wrapper_calls': 14, 'n_llm_calls': 14, 'n_llm_requests': 14, 'n_retries': 0, 'n_failures': 0, 'n_skipped_no_op': 0, 'fallback_rate': 0.0, 'requests_per_call': 1.0, 'wall_s': 28.299115610308945}
+crossover {'style': 'segment', 'wrapper_calls': 7, 'n_llm_calls': 7, 'n_llm_requests': 7, 'n_retries': 0, 'n_failures': 0, 'n_skipped_no_op': 0, 'fallback_rate': 0.0, 'requests_per_call': 1.0, 'wall_s': 24.26886217854917}

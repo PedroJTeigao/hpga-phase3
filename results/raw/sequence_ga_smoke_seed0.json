@@ -1,0 +1,478 @@
+{
+  "config": {
+    "pop_size": 8,
+    "n_generations": 10,
+    "seed": 0,
+    "crossover_rate": 0.9,
+    "mutation_rate": 0.05,
+    "tournament_k": 3,
+    "elitism": 2,
+    "operator_mode": "deterministic",
+    "length_bounds": [
+      30,
+      80
+    ],
+    "initial_lengths": "uniform over the bounds"
+  },
+  "env": {
+    "python": "3.12.11",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.17.0",
+    "tmalign_bin": "/scratch/pcanaste/bin/TMalign",
+    "reference_pdb": "esmfold/pdb_cache/7UR7.pdb",
+    "reference_sequence": "SEVKELLEEFLKRNKPVRIHHKNGEEIKVRITHIGEDTVEFELNGRTHRINIKDILDVKEWLE",
+    "git_head": "2fb396255937817be3829014b2f80d8c112e0d20"
+  },
+  "model_load_s": 13.164317673072219,
+  "gpu_before": {
+    "gpu": "Tesla T4, 0 MiB, 15360 MiB, 0 %",
+    "compute_apps": "(none)"
+  },
+  "gpu_after": {
+    "gpu": "Tesla T4, 13899 MiB, 15360 MiB, 52 %",
+    "compute_apps": "1051938, 13896 MiB, /scratch/pcanaste/venv/bin/python"
+  },
+  "summary": {
+    "random_start_best": 0.29143,
+    "random_start_mean": 0.24113500000000002,
+    "final_best": 0.35241,
+    "final_mean": 0.30667,
+    "final_best_genome": "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+    "final_best_length": 62,
+    "final_best_edit_distance_to_reference": 58,
+    "best_by_generation": [
+      0.29143,
+      0.3111,
+      0.32238,
+      0.32238,
+      0.32238,
+      0.35241,
+      0.35241,
+      0.35241,
+      0.35241,
+      0.35241
+    ],
+    "best_never_decreased": true,
+    "wall_s": 134.7743416717276,
+    "fitness_s": 134.75633844546974,
+    "breed_s": 0.002489074133336544,
+    "other_s": 0.015514152124524117,
+    "fitness_share_of_wall": 0.9998664194828589,
+    "n_evaluations": 80,
+    "n_distinct_genomes_evaluated": 60,
+    "mean_fitness_s_per_evaluation": 1.6844542305683716,
+    "n_llm_requests": 0
+  },
+  "generations": [
+    {
+      "generation": 0,
+      "best_fitness": 0.29143,
+      "mean_fitness": 0.24113500000000002,
+      "min_fitness": 0.17748,
+      "best_genome": "LNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 57,
+      "population_lengths": [
+        54,
+        39,
+        32,
+        33,
+        34,
+        62,
+        65,
+        79
+      ],
+      "fitness_s": 15.349729472771287,
+      "breed_s": 0.00033194292336702347,
+      "population": [
+        "QCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIMDHWII",
+        "VRDDMTSELVLEVMVHYVWLRDYPMWILGHGCYKSDDFF",
+        "DVPTKTIHWQWKRSNDMYESWMHIAKEINGMQ",
+        "EFICWVYDAEHYWEPDNECYAHGESHCAVQYEK",
+        "IDLNQGCTRCYEPHKNSWGHCGGMTKEYRGASQW",
+        "LNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+        "DFAPQMAHAATYEHEYHLKGESPDAKREKFTNEFKACCHKVMNWCYSRQNVGHPWLAFFKMMNDM",
+        "YCCKGFWLNPVFLESICLGTDLPMLQEEVSSMMESESQCLMFGWPDDDHICPAEPVTLRSWHQDNIKWGQHNEDATRHE"
+      ],
+      "fitnesses": [
+        0.24329,
+        0.2563,
+        0.24151,
+        0.22334,
+        0.17748,
+        0.29143,
+        0.2841,
+        0.21163
+      ]
+    },
+    {
+      "generation": 1,
+      "best_fitness": 0.3111,
+      "mean_fitness": 0.27984,
+      "min_fitness": 0.24041,
+      "best_genome": "LNPKFVARDMCVKFISNYLPWYFLPCDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        65,
+        32,
+        62,
+        62,
+        62,
+        65,
+        65
+      ],
+      "fitness_s": 13.422061937861145,
+      "breed_s": 0.00046147406101226807,
+      "population": [
+        "LNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+        "DFAPQMAHAATYEHEYHLKGESPDAKREKFTNEFKACCHKVMNWCYSRQNVGHPWLAFFKMMNDM",
+        "DVPTKTIHWQWKRSNDMYESWMHFAKEINGMQ",
+        "LNPKFVARDMCVKFDSNYLNWYFLPQDAYHMGGIRPWQCPWQCGRDKGRTSVYACSRLSCYH",
+        "LNPKFVARDMCVKFISNYLPWYFLPCDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+        "LNPEFVARDMCVKFHSNYLNWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+        "DFAPQMAHAATYEHEYHLKGESPKAKREKFTNEFKACCHKVMNWCYSRQNVGHPWLAFFKMMNDM",
+        "DFAPQMAHAATYEHEYHLKGESPKAKREKFTNEFKACCHKVMNWCYSRQNVPDPWLAFFKMMNDM"
+      ],
+      "fitnesses": [
+        0.29143,
+        0.2841,
+        0.24041,
+        0.24115,
+        0.3111,
+        0.30926,
+        0.28325,
+        0.27802
+      ]
+    },
+    {
+      "generation": 2,
+      "best_fitness": 0.32238,
+      "mean_fitness": 0.29402375000000003,
+      "min_fitness": 0.25213,
+      "best_genome": "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        64,
+        63
+      ],
+      "fitness_s": 13.378792489878833,
+      "breed_s": 0.0002539735287427902,
+      "population": [
+        "LNPKFVARDMCVKFISNYLPWYFLPCDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+        "LNPEFVARDMCVKFHSNYLNWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+        "LNGEFDARDMCVKFHSNYLCWYFLPQDAYHMGIIFSWQCPWQCGRDKGRTSGYACSMLRCQH",
+        "LNPKFVYRDMCVKFISNYLPWYFLPCDAYHMGIIRPWQFPWQCGRDKGRTMVYACSMLYCQI",
+        "LNPEFVARDMCVKFISWYLPCCMLPCDAYHMGIIRPWQCPWQEGRFKGRTSVYACSMLRCQH",
+        "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+        "DFSPQMAHAATYEHEYHLKGESKKAKREKFTNEFKACPWQCPWTCGRDKIRTSVYACSMLRCQH",
+        "LNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRCHPVMNWCYSRQNVGHPTVAFFKMMNDM"
+      ],
+      "fitnesses": [
+        0.3111,
+        0.30926,
+        0.25213,
+        0.30767,
+        0.25938,
+        0.32238,
+        0.30246,
+        0.28781
+      ]
+    },
+    {
+      "generation": 3,
+      "best_fitness": 0.32238,
+      "mean_fitness": 0.2800725,
+      "min_fitness": 0.21518,
+      "best_genome": "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        63,
+        63,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 13.08172660972923,
+      "breed_s": 0.00022950395941734314,
+      "population": [
+        "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+        "LNPKFVARDMCVKFISNYLPWYFLPCDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+        "LNPKFMARCMCVKFHSNYLTWYDLPQDAFTNEFKACPCQCPWTCGRDKIRTSVYACSMLRAQH",
+        "DRSPQMAHAATTEHEYHTKGPSKKAKREKYHPIIIFPWQCPWQCGRDKGMTEVYACSMLRCQH",
+        "LNPKFVYRDMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTVVYACSMLRCQH",
+        "LNPEFVARDMCVKFHSNYLNWYFLPCDAYHMGIIRPWQFYWQCGRDKGRTMVYECSMLYCQI",
+        "LNPEFVARDFCVKFHSNYLNYYFLPQDAYHMGIIFPWQCPWQCGRDKPRTMVYACSMIRCQN",
+        "LNPEFVARDMCVKFHSNYLNWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTMVYACSMLDCQH"
+      ],
+      "fitnesses": [
+        0.32238,
+        0.3111,
+        0.21898,
+        0.21518,
+        0.32214,
+        0.2838,
+        0.26457,
+        0.30243
+      ]
+    },
+    {
+      "generation": 4,
+      "best_fitness": 0.32238,
+      "mean_fitness": 0.2842425,
+      "min_fitness": 0.22463,
+      "best_genome": "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 13.009984054602683,
+      "breed_s": 0.000270686112344265,
+      "population": [
+        "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+        "LNPKFVYRDMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTVVYACSMLRCQH",
+        "VEPEFVARDMCVKFHSHYLNWYFLPCDAYHMGIIRPWQFYWQCGRDKGRTMVYECSALYCQI",
+        "LNPKFMARCMCVKFHSNYLTWYFMPQDAYHMCIIFPWQCPWQCGFDKGRTMVYACSMLRCQH",
+        "LNPEFVHRDMCVKFHSNYLNWYFLPCDIYHMGIIRPWQFYWQCGMDKGRTSVQACSMQRCQH",
+        "LNPKFVASDMCVKFISNYLPWYILPCDAYHMGIIRPWQCPWQCGRDKGRYEVYECSMLYCQI",
+        "ANPKFVARIMCVKFISNYLNWYFLPQDAYHMGNIFPWQCPWQCGRDKGRTIVYACSMLDCQH",
+        "LNPERVARDMCVKFHDIYLPWYFLPCDACHMGIIRPWQFPWQCGRHKGRTSVYACSMLRCQH"
+      ],
+      "fitnesses": [
+        0.32238,
+        0.32214,
+        0.27022,
+        0.30587,
+        0.22463,
+        0.29284,
+        0.27905,
+        0.25681
+      ]
+    },
+    {
+      "generation": 5,
+      "best_fitness": 0.35241,
+      "mean_fitness": 0.289275,
+      "min_fitness": 0.21559,
+      "best_genome": "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 14.40003643464297,
+      "breed_s": 0.00022547785192728043,
+      "population": [
+        "LNPKFMARCMCVKFHSNYLTWYFLPQDAYHMCIIFPWQCPWQCGRDKGRTMVYACSMLRCQH",
+        "LNPKFVYRDMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTVVYACSMLRCQH",
+        "LNPKFVYRDMCVKFHYNYLHWYFMPQAGYHMCIIFPWQCVWQCGFDKGRTMVYQCFMLRCQH",
+        "LNPKFMARCMCVKFISNYLPWYFLPQDAYHMGIIFPWQAPWQCGRFKGRTQVYPCSMLRCQH",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTVVYACSMLRWQH",
+        "LNPKFNNRDMCVIFISNYLPWYFLPQDAYHRGIIFPWQCPWQCGRDKGRTVVYACSMLRCQH",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "VEPEFVARDMCVKVHSHYLNWYFLPCDAYHMGIIRPWQFYWQCGRDKGRTVVYACSMLRCQH"
+      ],
+      "fitnesses": [
+        0.32238,
+        0.32214,
+        0.22921,
+        0.31381,
+        0.32786,
+        0.21559,
+        0.35241,
+        0.2308
+      ]
+    },
+    {
+      "generation": 6,
+      "best_fitness": 0.35241,
+      "mean_fitness": 0.3029825,
+      "min_fitness": 0.25857,
+      "best_genome": "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 13.06424194574356,
+      "breed_s": 0.0002230098471045494,
+      "population": [
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTVVYACSMLRWQH",
+        "LNPKFVYRDMCVKFISNYLIWYFLPQDAYHMGIIFPWQCPWNCGRHKGRIVVYACSMLRWQH",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDAYHMGIIFPWQCPWSCGRDKGWTVVYACSMLRCQH",
+        "LNPKFMARCMCVDFHSNYLLWYFLPQDAKHMCIIFPWQCPWQCGRDKGRTMVYACSMERWQH",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDAYHMTIIFPWQCPWQCGRDMGRTVVYACSMLRCQH",
+        "LNPKFVYRDECVKFISNMLPWQFLPQDAYHMGIIFPWSCPWQCGRDKGRTVVYACSMLRWQH",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDQYHMGIIFPWQCPWQCGRDRGRTVVMACSMLRGTH"
+      ],
+      "fitnesses": [
+        0.35241,
+        0.32786,
+        0.29617,
+        0.25857,
+        0.28181,
+        0.33444,
+        0.28099,
+        0.29161
+      ]
+    },
+    {
+      "generation": 7,
+      "best_fitness": 0.35241,
+      "mean_fitness": 0.3193675,
+      "min_fitness": 0.23778,
+      "best_genome": "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 13.057430819608271,
+      "breed_s": 0.0002484172582626343,
+      "population": [
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDAYHMTIIFPWQCPWQCGRDMGRTVVYACSMLRCQH",
+        "SNPKFVYRDMCVKFISNMLPWYDLPQCAYHMTVIFPWQCPWQCGRDMGRTVVYACSMLRWQH",
+        "LNPKFVYRDMCAKFISNYLIWYFLPQDAYHMGIIFPWQCPWNCMRQKGRIVVYACSMLRCQH",
+        "LNPKFYYRDMCVVFISNMLPWYFNPQDAYHMTIIFPWQCPWQCGRDKGRTVVYACSMLRWQH",
+        "LNPKFVYRDMCVKAISNMSPWYFLPQDAYHMGIIFPWQCPWQCGRDMGRTVVYACSMLRSQH",
+        "LNPKFVYRDMCVKFISNMLPWYFLPQDAYHMGIIFPWQCPWQCGRDKGRTVVYACSMLRWQH",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI"
+      ],
+      "fitnesses": [
+        0.35241,
+        0.33444,
+        0.30788,
+        0.30551,
+        0.23778,
+        0.33665,
+        0.32786,
+        0.35241
+      ]
+    },
+    {
+      "generation": 8,
+      "best_fitness": 0.35241,
+      "mean_fitness": 0.31285625,
+      "min_fitness": 0.23789,
+      "best_genome": "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 13.023416140116751,
+      "breed_s": 0.00024458859115839005,
+      "population": [
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYIMGIIFPWQCPIQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGDIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPMQCGWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHRCVKFISNYLPWYFLPQDAYHMGIIFPDQCPWQCGRDEGRTMVYECSALCCQI",
+        "YNPKFVYRDMCVKFASNMIPWYWLPQCAYHMTVCFPWQCPWQCGRDMGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFYSNYLPWYFEPQDAYHNGIIFPWQCPWQCGRDEGRTVVYACSMLRWQH"
+      ],
+      "fitnesses": [
+        0.35241,
+        0.35241,
+        0.33259,
+        0.32132,
+        0.28075,
+        0.32363,
+        0.23789,
+        0.30185
+      ]
+    },
+    {
+      "generation": 9,
+      "best_fitness": 0.35241,
+      "mean_fitness": 0.30667,
+      "min_fitness": 0.2498,
+      "best_genome": "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+      "best_length": 62,
+      "best_edit_distance_to_reference": 58,
+      "population_lengths": [
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62,
+        62
+      ],
+      "fitness_s": 12.968918540515006,
+      "breed_s": null,
+      "population": [
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI",
+        "LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFDWQCPWQCGRDECRTMVYECSALYCQI",
+        "LNPKFFYRHMCVKFISNYLPWYFLPQDAYHMGIEFPWQCPWQCGRDEWRTMVYECSALYCQI",
+        "RNPKFVYWHMCVKFISNYLPWYFLPFDAYHMGIIFPWQCPIQCGRDEGRTMVYECSALYCQI",
+        "LNPKFEYRHMCVKFLSNYIPWYFLPQDAWIMGIIFPWQCPWQCGRDEGRTMVYECSATYCQI",
+        "LNPGFVYRHMCVAFISNYLPWYFQPQDAYHMGIIFPWQCPWQCGRDEGRTMLYECSELYCQV",
+        "LNPKFVLRHWCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECFQLYCQI"
+      ],
+      "fitnesses": [
+        0.35241,
+        0.35241,
+        0.29616,
+        0.30539,
+        0.2498,
+        0.31944,
+        0.26292,
+        0.31483
+      ]
+    }
+  ]
+}

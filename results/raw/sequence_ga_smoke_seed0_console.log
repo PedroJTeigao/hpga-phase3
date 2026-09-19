@@ -1,0 +1,139 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-18 22:17:59,218 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+gpu before: {'gpu': 'Tesla T4, 0 MiB, 15360 MiB, 0 %', 'compute_apps': '(none)'}
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<01:44, 43.07it/s]Loading weights:  13%|█▎        | 584/4498 [00:00<00:02, 1388.74it/s]Loading weights:  31%|███▏      | 1411/4498 [00:00<00:00, 3144.97it/s]Loading weights:  49%|████▉     | 2198/4498 [00:00<00:00, 4407.25it/s]Loading weights:  66%|██████▌   | 2948/4498 [00:00<00:00, 5261.31it/s]Loading weights:  87%|████████▋ | 3916/4498 [00:00<00:00, 6511.08it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 4485.82it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.weight | MISSING | 
+esm.contact_head.regression.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-18 22:18:13,525 esmfold.tm_fitness TM=0.24329 aligned_length=31 rmsd=3.84 genome_length=54 predictor_s=3.417 tmalign_s=0.017
+2026-09-18 22:18:15,350 esmfold.tm_fitness TM=0.25630 aligned_length=26 rmsd=2.73 genome_length=39 predictor_s=1.809 tmalign_s=0.015
+2026-09-18 22:18:16,964 esmfold.tm_fitness TM=0.24151 aligned_length=16 rmsd=0.63 genome_length=32 predictor_s=1.602 tmalign_s=0.012
+2026-09-18 22:18:18,561 esmfold.tm_fitness TM=0.22334 aligned_length=26 rmsd=3.59 genome_length=33 predictor_s=1.583 tmalign_s=0.013
+2026-09-18 22:18:20,139 esmfold.tm_fitness TM=0.17748 aligned_length=22 rmsd=3.58 genome_length=34 predictor_s=1.565 tmalign_s=0.013
+2026-09-18 22:18:21,784 esmfold.tm_fitness TM=0.29143 aligned_length=31 rmsd=3.41 genome_length=62 predictor_s=1.626 tmalign_s=0.018
+2026-09-18 22:18:23,501 esmfold.tm_fitness TM=0.28410 aligned_length=27 rmsd=3.25 genome_length=65 predictor_s=1.700 tmalign_s=0.017
+2026-09-18 22:18:25,441 esmfold.tm_fitness TM=0.21163 aligned_length=27 rmsd=3.56 genome_length=79 predictor_s=1.915 tmalign_s=0.024
+model load: 13.2s
+
+gen  0  best=0.29143  mean=0.24114  min=0.17748  best_len=62  edit_dist_to_ref=57  fitness_s=15.35
+2026-09-18 22:18:27,066 esmfold.tm_fitness TM=0.29143 aligned_length=31 rmsd=3.41 genome_length=62 predictor_s=1.606 tmalign_s=0.018
+2026-09-18 22:18:28,768 esmfold.tm_fitness TM=0.28410 aligned_length=27 rmsd=3.25 genome_length=65 predictor_s=1.684 tmalign_s=0.017
+2026-09-18 22:18:30,345 esmfold.tm_fitness TM=0.24041 aligned_length=16 rmsd=0.66 genome_length=32 predictor_s=1.567 tmalign_s=0.010
+2026-09-18 22:18:31,960 esmfold.tm_fitness TM=0.24115 aligned_length=33 rmsd=4.33 genome_length=62 predictor_s=1.596 tmalign_s=0.018
+2026-09-18 22:18:33,636 esmfold.tm_fitness TM=0.31110 aligned_length=31 rmsd=3.44 genome_length=62 predictor_s=1.655 tmalign_s=0.020
+2026-09-18 22:18:35,515 esmfold.tm_fitness TM=0.30926 aligned_length=32 rmsd=3.19 genome_length=62 predictor_s=1.862 tmalign_s=0.017
+2026-09-18 22:18:37,189 esmfold.tm_fitness TM=0.28325 aligned_length=24 rmsd=2.04 genome_length=65 predictor_s=1.659 tmalign_s=0.015
+2026-09-18 22:18:38,865 esmfold.tm_fitness TM=0.27802 aligned_length=29 rmsd=3.48 genome_length=65 predictor_s=1.659 tmalign_s=0.016
+gen  1  best=0.31110  mean=0.27984  min=0.24041  best_len=62  edit_dist_to_ref=58  fitness_s=13.42
+2026-09-18 22:18:40,479 esmfold.tm_fitness TM=0.31110 aligned_length=31 rmsd=3.44 genome_length=62 predictor_s=1.591 tmalign_s=0.021
+2026-09-18 22:18:42,088 esmfold.tm_fitness TM=0.30926 aligned_length=32 rmsd=3.19 genome_length=62 predictor_s=1.592 tmalign_s=0.017
+2026-09-18 22:18:43,688 esmfold.tm_fitness TM=0.25213 aligned_length=35 rmsd=4.32 genome_length=62 predictor_s=1.580 tmalign_s=0.019
+2026-09-18 22:18:45,280 esmfold.tm_fitness TM=0.30767 aligned_length=33 rmsd=3.61 genome_length=62 predictor_s=1.571 tmalign_s=0.020
+2026-09-18 22:18:47,019 esmfold.tm_fitness TM=0.25938 aligned_length=25 rmsd=3.28 genome_length=62 predictor_s=1.723 tmalign_s=0.016
+2026-09-18 22:18:48,894 esmfold.tm_fitness TM=0.32238 aligned_length=37 rmsd=3.46 genome_length=62 predictor_s=1.855 tmalign_s=0.021
+2026-09-18 22:18:50,569 esmfold.tm_fitness TM=0.30246 aligned_length=33 rmsd=3.24 genome_length=64 predictor_s=1.656 tmalign_s=0.019
+2026-09-18 22:18:52,246 esmfold.tm_fitness TM=0.28781 aligned_length=33 rmsd=3.50 genome_length=63 predictor_s=1.659 tmalign_s=0.018
+gen  2  best=0.32238  mean=0.29402  min=0.25213  best_len=62  edit_dist_to_ref=58  fitness_s=13.38
+2026-09-18 22:18:53,840 esmfold.tm_fitness TM=0.32238 aligned_length=37 rmsd=3.46 genome_length=62 predictor_s=1.573 tmalign_s=0.020
+2026-09-18 22:18:55,437 esmfold.tm_fitness TM=0.31110 aligned_length=31 rmsd=3.44 genome_length=62 predictor_s=1.576 tmalign_s=0.020
+2026-09-18 22:18:57,157 esmfold.tm_fitness TM=0.21898 aligned_length=35 rmsd=5.11 genome_length=63 predictor_s=1.702 tmalign_s=0.019
+2026-09-18 22:18:58,908 esmfold.tm_fitness TM=0.21518 aligned_length=24 rmsd=3.71 genome_length=63 predictor_s=1.733 tmalign_s=0.017
+2026-09-18 22:19:00,515 esmfold.tm_fitness TM=0.32214 aligned_length=39 rmsd=4.10 genome_length=62 predictor_s=1.588 tmalign_s=0.019
+2026-09-18 22:19:02,127 esmfold.tm_fitness TM=0.28380 aligned_length=27 rmsd=3.96 genome_length=62 predictor_s=1.595 tmalign_s=0.017
+2026-09-18 22:19:03,730 esmfold.tm_fitness TM=0.26457 aligned_length=30 rmsd=3.92 genome_length=62 predictor_s=1.585 tmalign_s=0.018
+2026-09-18 22:19:05,329 esmfold.tm_fitness TM=0.30243 aligned_length=32 rmsd=3.39 genome_length=62 predictor_s=1.581 tmalign_s=0.017
+gen  3  best=0.32238  mean=0.28007  min=0.21518  best_len=62  edit_dist_to_ref=58  fitness_s=13.08
+2026-09-18 22:19:06,951 esmfold.tm_fitness TM=0.32238 aligned_length=37 rmsd=3.46 genome_length=62 predictor_s=1.600 tmalign_s=0.020
+2026-09-18 22:19:08,559 esmfold.tm_fitness TM=0.32214 aligned_length=39 rmsd=4.10 genome_length=62 predictor_s=1.590 tmalign_s=0.018
+2026-09-18 22:19:10,173 esmfold.tm_fitness TM=0.27022 aligned_length=24 rmsd=3.43 genome_length=62 predictor_s=1.599 tmalign_s=0.015
+2026-09-18 22:19:11,786 esmfold.tm_fitness TM=0.30587 aligned_length=39 rmsd=3.83 genome_length=62 predictor_s=1.595 tmalign_s=0.018
+2026-09-18 22:19:13,393 esmfold.tm_fitness TM=0.22463 aligned_length=30 rmsd=4.01 genome_length=62 predictor_s=1.588 tmalign_s=0.018
+2026-09-18 22:19:15,003 esmfold.tm_fitness TM=0.29284 aligned_length=33 rmsd=3.61 genome_length=62 predictor_s=1.592 tmalign_s=0.018
+2026-09-18 22:19:16,634 esmfold.tm_fitness TM=0.27905 aligned_length=34 rmsd=3.96 genome_length=62 predictor_s=1.607 tmalign_s=0.023
+2026-09-18 22:19:18,341 esmfold.tm_fitness TM=0.25681 aligned_length=25 rmsd=3.18 genome_length=62 predictor_s=1.690 tmalign_s=0.016
+gen  4  best=0.32238  mean=0.28424  min=0.22463  best_len=62  edit_dist_to_ref=58  fitness_s=13.01
+2026-09-18 22:19:20,736 esmfold.tm_fitness TM=0.32238 aligned_length=37 rmsd=3.46 genome_length=62 predictor_s=2.372 tmalign_s=0.020
+2026-09-18 22:19:22,673 esmfold.tm_fitness TM=0.32214 aligned_length=39 rmsd=4.10 genome_length=62 predictor_s=1.918 tmalign_s=0.020
+2026-09-18 22:19:24,309 esmfold.tm_fitness TM=0.22921 aligned_length=30 rmsd=3.79 genome_length=62 predictor_s=1.619 tmalign_s=0.016
+2026-09-18 22:19:25,962 esmfold.tm_fitness TM=0.31381 aligned_length=38 rmsd=3.69 genome_length=62 predictor_s=1.634 tmalign_s=0.018
+2026-09-18 22:19:27,583 esmfold.tm_fitness TM=0.32786 aligned_length=37 rmsd=3.62 genome_length=62 predictor_s=1.603 tmalign_s=0.018
+2026-09-18 22:19:29,280 esmfold.tm_fitness TM=0.21559 aligned_length=28 rmsd=3.96 genome_length=62 predictor_s=1.678 tmalign_s=0.019
+2026-09-18 22:19:31,069 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.768 tmalign_s=0.021
+2026-09-18 22:19:32,743 esmfold.tm_fitness TM=0.23080 aligned_length=32 rmsd=4.05 genome_length=62 predictor_s=1.657 tmalign_s=0.017
+gen  5  best=0.35241  mean=0.28928  min=0.21559  best_len=62  edit_dist_to_ref=58  fitness_s=14.40
+2026-09-18 22:19:34,353 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.588 tmalign_s=0.020
+2026-09-18 22:19:35,976 esmfold.tm_fitness TM=0.32786 aligned_length=37 rmsd=3.62 genome_length=62 predictor_s=1.605 tmalign_s=0.018
+2026-09-18 22:19:37,594 esmfold.tm_fitness TM=0.29617 aligned_length=31 rmsd=3.89 genome_length=62 predictor_s=1.602 tmalign_s=0.016
+2026-09-18 22:19:39,207 esmfold.tm_fitness TM=0.25857 aligned_length=34 rmsd=4.22 genome_length=62 predictor_s=1.596 tmalign_s=0.017
+2026-09-18 22:19:40,860 esmfold.tm_fitness TM=0.28181 aligned_length=32 rmsd=3.45 genome_length=62 predictor_s=1.635 tmalign_s=0.017
+2026-09-18 22:19:42,487 esmfold.tm_fitness TM=0.33444 aligned_length=32 rmsd=3.07 genome_length=62 predictor_s=1.610 tmalign_s=0.017
+2026-09-18 22:19:44,102 esmfold.tm_fitness TM=0.28099 aligned_length=35 rmsd=3.59 genome_length=62 predictor_s=1.598 tmalign_s=0.017
+2026-09-18 22:19:45,809 esmfold.tm_fitness TM=0.29161 aligned_length=29 rmsd=3.32 genome_length=62 predictor_s=1.690 tmalign_s=0.017
+gen  6  best=0.35241  mean=0.30298  min=0.25857  best_len=62  edit_dist_to_ref=58  fitness_s=13.06
+2026-09-18 22:19:47,536 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.705 tmalign_s=0.019
+2026-09-18 22:19:49,146 esmfold.tm_fitness TM=0.33444 aligned_length=32 rmsd=3.07 genome_length=62 predictor_s=1.593 tmalign_s=0.017
+2026-09-18 22:19:50,772 esmfold.tm_fitness TM=0.30788 aligned_length=31 rmsd=3.34 genome_length=62 predictor_s=1.608 tmalign_s=0.017
+2026-09-18 22:19:52,392 esmfold.tm_fitness TM=0.30551 aligned_length=32 rmsd=3.32 genome_length=62 predictor_s=1.604 tmalign_s=0.016
+2026-09-18 22:19:54,016 esmfold.tm_fitness TM=0.23778 aligned_length=29 rmsd=4.01 genome_length=62 predictor_s=1.605 tmalign_s=0.018
+2026-09-18 22:19:55,630 esmfold.tm_fitness TM=0.33665 aligned_length=36 rmsd=3.32 genome_length=62 predictor_s=1.594 tmalign_s=0.019
+2026-09-18 22:19:57,249 esmfold.tm_fitness TM=0.32786 aligned_length=37 rmsd=3.62 genome_length=62 predictor_s=1.601 tmalign_s=0.018
+2026-09-18 22:19:58,868 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.599 tmalign_s=0.020
+gen  7  best=0.35241  mean=0.31937  min=0.23778  best_len=62  edit_dist_to_ref=58  fitness_s=13.06
+2026-09-18 22:20:00,490 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.600 tmalign_s=0.020
+2026-09-18 22:20:02,123 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.613 tmalign_s=0.020
+2026-09-18 22:20:03,743 esmfold.tm_fitness TM=0.33259 aligned_length=35 rmsd=3.39 genome_length=62 predictor_s=1.602 tmalign_s=0.018
+2026-09-18 22:20:05,374 esmfold.tm_fitness TM=0.32132 aligned_length=39 rmsd=4.01 genome_length=62 predictor_s=1.612 tmalign_s=0.019
+2026-09-18 22:20:07,010 esmfold.tm_fitness TM=0.28075 aligned_length=26 rmsd=3.24 genome_length=62 predictor_s=1.621 tmalign_s=0.015
+2026-09-18 22:20:08,641 esmfold.tm_fitness TM=0.32363 aligned_length=38 rmsd=3.62 genome_length=62 predictor_s=1.611 tmalign_s=0.019
+2026-09-18 22:20:10,254 esmfold.tm_fitness TM=0.23789 aligned_length=26 rmsd=4.01 genome_length=62 predictor_s=1.596 tmalign_s=0.017
+2026-09-18 22:20:11,893 esmfold.tm_fitness TM=0.30185 aligned_length=27 rmsd=3.26 genome_length=62 predictor_s=1.624 tmalign_s=0.016
+gen  8  best=0.35241  mean=0.31286  min=0.23789  best_len=62  edit_dist_to_ref=58  fitness_s=13.02
+2026-09-18 22:20:13,523 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.607 tmalign_s=0.020
+2026-09-18 22:20:15,147 esmfold.tm_fitness TM=0.35241 aligned_length=43 rmsd=3.78 genome_length=62 predictor_s=1.605 tmalign_s=0.020
+2026-09-18 22:20:16,773 esmfold.tm_fitness TM=0.29616 aligned_length=29 rmsd=3.43 genome_length=62 predictor_s=1.611 tmalign_s=0.014
+2026-09-18 22:20:18,390 esmfold.tm_fitness TM=0.30539 aligned_length=26 rmsd=2.22 genome_length=62 predictor_s=1.600 tmalign_s=0.018
+2026-09-18 22:20:20,006 esmfold.tm_fitness TM=0.24980 aligned_length=36 rmsd=4.42 genome_length=62 predictor_s=1.598 tmalign_s=0.018
+2026-09-18 22:20:21,634 esmfold.tm_fitness TM=0.31944 aligned_length=39 rmsd=3.87 genome_length=62 predictor_s=1.609 tmalign_s=0.019
+2026-09-18 22:20:23,250 esmfold.tm_fitness TM=0.26292 aligned_length=40 rmsd=4.79 genome_length=62 predictor_s=1.599 tmalign_s=0.018
+2026-09-18 22:20:24,864 esmfold.tm_fitness TM=0.31483 aligned_length=27 rmsd=3.01 genome_length=62 predictor_s=1.598 tmalign_s=0.016
+gen  9  best=0.35241  mean=0.30667  min=0.24980  best_len=62  edit_dist_to_ref=58  fitness_s=12.97
+
+{
+  "random_start_best": 0.29143,
+  "random_start_mean": 0.24113500000000002,
+  "final_best": 0.35241,
+  "final_mean": 0.30667,
+  "final_best_length": 62,
+  "final_best_edit_distance_to_reference": 58,
+  "best_by_generation": [
+    0.29143,
+    0.3111,
+    0.32238,
+    0.32238,
+    0.32238,
+    0.35241,
+    0.35241,
+    0.35241,
+    0.35241,
+    0.35241
+  ],
+  "best_never_decreased": true,
+  "wall_s": 134.7743416717276,
+  "fitness_s": 134.75633844546974,
+  "breed_s": 0.002489074133336544,
+  "other_s": 0.015514152124524117,
+  "fitness_share_of_wall": 0.9998664194828589,
+  "n_evaluations": 80,
+  "n_distinct_genomes_evaluated": 60,
+  "mean_fitness_s_per_evaluation": 1.6844542305683716,
+  "n_llm_requests": 0
+}
+final best genome (62 aa): LNPKFVYRHMCVKFISNYLPWYFLPQDAYHMGIIFPWQCPWQCGRDEGRTMVYECSALYCQI
+reference sequence (63 aa):               SEVKELLEEFLKRNKPVRIHHKNGEEIKVRITHIGEDTVEFELNGRTHRINIKDILDVKEWLE
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_ga_smoke_seed0.json

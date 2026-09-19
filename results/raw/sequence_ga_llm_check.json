@@ -1,0 +1,150 @@
+{
+ "arm": "C-llm-check",
+ "seed": 0,
+ "complete": true,
+ "started": "2026-09-18T23:01:39-0400",
+ "config": {
+  "pop_size": 16,
+  "n_generations": 20,
+  "crossover_rate": 0.9,
+  "mutation_rate": 0.05,
+  "tournament_k": 3,
+  "elitism": 2,
+  "length_bounds": [
+   30,
+   80
+  ],
+  "llm_model": "gemma4:12b",
+  "llm_temperature": 0.7,
+  "llm_styles": {
+   "mutate": "position",
+   "crossover": "segment"
+  },
+  "generations_meaning": "evaluated populations (generation 0 = random start), as Island.run"
+ },
+ "env": {
+  "python": "3.12.11",
+  "torch": "2.11.0+cu128",
+  "transformers": "5.17.0",
+  "tmalign_bin": "/scratch/pcanaste/bin/TMalign",
+  "git_head": "931f9d22530fbc65eaacae73109ee924d0e879d7"
+ },
+ "purpose": "one generation, LLM operators; per-operator fallback rate",
+ "llm_call_log": "results/raw/llm_operator_calls_seqcmp_llmcheck_seed0_1789786899.jsonl",
+ "operators": {
+  "mutate": {
+   "wrapper_calls": 14,
+   "wall_s": 28.299115610308945,
+   "n_llm_calls": 14,
+   "n_llm_requests": 14,
+   "n_retries": 0,
+   "n_failures": 0,
+   "n_skipped_no_op": 0,
+   "total_latency_s": 28.287618721835315,
+   "total_tokens_in": 4115,
+   "total_tokens_out": 347,
+   "style": "position",
+   "fallback_rate": 0.0,
+   "requests_per_call": 1.0,
+   "gated_off_share": 0.0
+  },
+  "crossover": {
+   "wrapper_calls": 7,
+   "wall_s": 24.26886217854917,
+   "n_llm_calls": 7,
+   "n_llm_requests": 7,
+   "n_retries": 0,
+   "n_failures": 0,
+   "n_skipped_no_op": 0,
+   "total_latency_s": 24.261095979250968,
+   "total_tokens_in": 3541,
+   "total_tokens_out": 147,
+   "style": "segment",
+   "fallback_rate": 0.0,
+   "requests_per_call": 1.0,
+   "gated_off_share": 0.0
+  }
+ },
+ "fallback_rate_by_operator": {
+  "mutate": 0.0,
+  "crossover": 0.0
+ },
+ "rule": "skip arm C if any operator's fallback_rate (failures / LLM calls, rate-gated crossovers excluded) > 0.20",
+ "skip_arm_C": false,
+ "fold_phase_s": 33.575964896939695,
+ "breed_s": 52.57181249931455,
+ "swap_s": 24.35584355145693,
+ "children_valid": true,
+ "swap_integrity": {
+  "before": 0.24329,
+  "after": 0.24329,
+  "identical": true
+ },
+ "population_in": [
+  "QCKTSPLSNWHTFLFEYKVYFLEDMSVENQMYHVSRTKCVADPAYSMIMDHWII",
+  "VRDDMTSELVLEVMVHYVWLRDYPMWILGHGCYKSDDFF",
+  "DVPTKTIHWQWKRSNDMYESWMHIAKEINGMQ",
+  "EFICWVYDAEHYWEPDNECYAHGESHCAVQYEK",
+  "IDLNQGCTRCYEPHKNSWGHCGGMTKEYRGASQW",
+  "LNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+  "DFAPQMAHAATYEHEYHLKGESPDAKREKFTNEFKACCHKVMNWCYSRQNVGHPWLAFFKMMNDM",
+  "YCCKGFWLNPVFLESICLGTDLPMLQEEVSSMMESESQCLMFGWPDDDHICPAEPVTLRSWHQDNIKWGQHNEDATRHE",
+  "PKHCHYFEHRPNVFEYSFWPQTSMSSHVYIAMMMCTFKYFPWLSDDTCDIFCLARMGFRNT",
+  "TTCWDTYDQHLVYQSPYWIAAGLTWKMDSKLQPPCGFILMCCSQFSYDFNQCYR",
+  "RCESFACYYFMEVNHPSECYRYMEYLFPLETHCPRNHRNDCCSKATWWHIDTTQ",
+  "LEFQWQDEQDEQFARQQASMKDNDENANNGAINDYFHAHEALNAYIFGRESNKFAHNMSLLV",
+  "MGWDEVWLGPFFIMTIIGLNQCFYAPDDFQLVQFWQLNDIRNTCPQAQMRHNLSDGEKEVYFRPGQQGIR",
+  "TFNRDSHLARYRAHLELVYFQSDSIVPKAEKCAKPTWPREKNLHYDCDKLV",
+  "ETIGDQLLTFWTHVEQVPKLRNWFGEEPPWRFVLNSQHSSTMSCRLFSCYH",
+  "NSPATDDPANCEYAKLIFWLHEQRMPGMQQF"
+ ],
+ "fitnesses_in": [
+  0.24329,
+  0.2563,
+  0.24151,
+  0.22334,
+  0.17748,
+  0.29143,
+  0.2841,
+  0.21163,
+  0.25919,
+  0.30062,
+  0.28855,
+  0.22237,
+  0.23028,
+  0.25542,
+  0.21544,
+  0.25744
+ ],
+ "population_out": [
+  "TTCWDTYDQHLVYQSPYWIAAGLTWKMDSKLQPPCGFILMCCSQFSYDFNQCYR",
+  "LNPKFVARDMCVKFISNYLNWYFLPQDAYHMGIIRPWQCPWQCGRDKGRTSVYACSMLRCQH",
+  "NSPATEDPANCEYAKLGIIRFWQCPWQCGRDKGRTSVYACSMLRCQH",
+  "LNPKFVARDMGVKFISNYLNWYFLPQDAYHMIFWLTEQRMPGMQQF",
+  "DFGPQMAHAAMYEHEYHLKGESPDAKQSDSIVPKAEKCAKGTWPREKNLHYDCDKLV",
+  "TGNRDSHLARYRAHLMLVYFREKFTNEFKACCHKVMNWCYTRQNVGHPWLAFFKMMNDM",
+  "TTGWDTYDQHMVYQSPYWIAAGLTWKMEFKSCCHKVMNWCYSRQNVGHPWLAFFKMMNDM",
+  "DFGPQMAHAATYEHESHLKGESPDAKREKFTNDSKLQPPCWFILMCCSQFSYDFNQCYR",
+  "LNPKFGARDMCVKFITNYLNWYFLPLTWKMHSKLQPPCGFILMCCSQFSYDFNQCYR",
+  "TTGWDTYDQHMVYQSPYWIAAGQDAYHMGIIRPWQCPWQCFRDKGRTSVYACSMLRCQH",
+  "TTMWDTYDQHGVYQSPYWIAAGQSDFIVPKAEKCAKPTWPREKNLHYDCDKLV",
+  "TGNRDSHLARYRAHLMLVYFLTWKMDSKLQPPCGFILMCCLQFSYDFNQCYR",
+  "TTCGDTYDQHLVYQSKYWIAAGYAKLIFWLHEQRMPGMQQF",
+  "NSPAGDDPANCELTWHMDSKLQPPCGFILMCCSQFSYDFNQCYR",
+  "VADDMTSELVGEVMVHYVWLENQMYHVSRTKCVADPAYSMIMDHWII",
+  "QCKTAPLSNWHTGLFEYKVYFLEDMSVRDYPMWILGHGCYKSDDFF"
+ ],
+ "mean_pairwise_edit_in": 50.333333333333336,
+ "mean_pairwise_edit_out": 42.391666666666666,
+ "operator_stats_total": {
+  "n_llm_calls": 21,
+  "n_llm_requests": 21,
+  "n_retries": 0,
+  "n_failures": 0,
+  "n_skipped_no_op": 0,
+  "total_latency_s": 52.54871470108628,
+  "total_tokens_in": 7656,
+  "total_tokens_out": 494
+ },
+ "reference_length": 63
+}
