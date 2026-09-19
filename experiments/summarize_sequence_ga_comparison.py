@@ -270,13 +270,20 @@ def chart(runs: dict, out_png: Path) -> None:
         ax = axes.flat[i]
         ax.set_visible(True)
         ax.set_facecolor(surface)
+        ends = []
         for a in ARMS:
             if (a, s) not in runs:
                 continue
             y = runs[(a, s)]["best_so_far_by_distinct_evaluation"]
             ax.plot(range(1, len(y) + 1), y, drawstyle="steps-post", color=SLOT[a], lw=2.0, label=ARM_NAME[a], solid_capstyle="round")
             ax.plot([len(y)], [y[-1]], "o", color=SLOT[a], ms=6, mec=surface, mew=1.5)
-            ax.annotate(f"{a} {y[-1]:.3f}", (len(y), y[-1]), xytext=(5, 0), textcoords="offset points", color=ink2, fontsize=8, va="center")
+            ends.append([a, len(y), y[-1], y[-1]])  # arm, x, true y, label y
+        ends.sort(key=lambda e: e[2])
+        gap = 0.017  # data units: keeps 8pt end labels from overprinting when final values are close
+        for i in range(1, len(ends)):
+            ends[i][3] = max(ends[i][3], ends[i - 1][3] + gap)
+        for a, x, yv, ly in ends:
+            ax.annotate(f"{a} {yv:.3f}", (x, ly), xytext=(6, 0), textcoords="offset points", color=ink2, fontsize=8, va="center")
         ax.set_title(f"seed {s}", loc="left", color=ink, fontsize=10)
         ax.grid(True, color=grid, lw=0.8)
         ax.set_axisbelow(True)
