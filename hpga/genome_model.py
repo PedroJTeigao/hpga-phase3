@@ -64,12 +64,13 @@ non-str genomes, or -- with no sequence model active -- if it holds str genomes.
 
 Still not dispatched (known scope of the follow-up tasks):
 
-  - agents.py / circles.py: their LLM calls hardcode the 5-letter alphabet
+  - agents.py: its LLM calls hardcode the 5-letter alphabet
     (ops._CHAR_TO_MOVE, ops._genome_to_str, ops._extract_labelled, and the
-    S/L/R/U/D parsers in agents._extract_refine_position and
-    circles._extract_fold_line), and next_generation's agents/circles hooks
-    assume fixed length (`genome_length = len(population[0])`). Sequence mode
-    refuses to enable them rather than run that code.
+    S/L/R/U/D parser agents._extract_refine_position), and its hook assumes
+    fixed length. Sequence mode refuses to enable it rather than run that code.
+    (circles.py IS dispatched now: circles.run_circles hands off to
+    hpga/circles_sequence.py when a sequence model is active; it requires
+    HPGA_OPERATOR_MODE=llm.)
   - agents.mean_pairwise_hamming / log_diversity: zip()-based Hamming, which
     silently truncates on unequal lengths; GenomeModel.distance exists for
     exactly this and isn't used there. Sequence mode refuses

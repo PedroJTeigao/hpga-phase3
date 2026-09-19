@@ -431,7 +431,19 @@ def run_circles(
     genome per slot, no LLM call, mirroring agents.py's identical gen-0
     fallback), and generation 1 has a current fitness but no prior one to
     compare against yet.
+
+    With a sequence GenomeModel active (str genomes) this hands off to
+    hpga/circles_sequence.py, whose proposals are position edits to an existing
+    population member; nothing below runs then, so the lattice path is unchanged.
     """
+    from hpga import operators as _seq_ops
+
+    _seq_model = _seq_ops._sequence_model_or_none()
+    if _seq_model is not None:
+        from hpga import circles_sequence
+
+        return circles_sequence.run_circles(_seq_model, population, fitnesses, pop_size, generation, rng)
+
     from hpga import blackboard as bb
     from hpga import operators as ops
 
