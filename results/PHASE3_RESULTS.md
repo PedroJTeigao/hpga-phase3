@@ -498,10 +498,10 @@ marginal one-generation edge on one seed, counted as a tie;
 fitness-gain-per-1k-tokens a clear loss) plus one aggregate comparison each
 from §6 (mean edges up, 3.33 -> 3.67, but two of three seeds tie exactly;
 counted as a tie, consistent with §6.3's "deliberately not written as a
-win") and this section (a win on the mean, 3.67 -> 4.00, though seed 1 is
-an outright loss) — **circles stands at one win, one outright loss, four
-ties, at roughly 2x the token cost throughout, including on the one
-comparison it won.** That is not a case
+win") and this section (mixed, as §7.2 describes it: mean 3.67 -> 4.00, two
+seeds ahead and one behind; not counted as a win) — **circles stands at no
+clear win, one outright loss, four ties and one mixed result, at roughly 2x
+the token cost throughout.** That is not a case
 for the architecture on this problem. It is also not a case against
 LLM-based search generally, or even against circles specifically at a
 different scale or on a different representation (§8) — it is a case
@@ -534,8 +534,9 @@ The settled negative result (§7.2, §7.3): given the room to matter that
 §6 was built to provide, and then given more than twice the runway that
 room initially offered (§7), circles' diversity advantage did not compound
 into a widening fitness lead. Both arms plateau; `on`'s plateau is
-marginally higher and marginally later, worth one win across
-six comparisons run so far, against one outright loss and four ties, at
+marginally higher and marginally later, worth no clear win across
+six comparisons run so far, against one outright loss, four ties and one
+mixed result, at
 roughly double the token cost throughout. This is no longer the open
 question §6 left it as — it has been tested at two landscape types and two
 horizons, and the answer came back the same each time.

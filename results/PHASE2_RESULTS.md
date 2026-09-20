@@ -638,37 +638,40 @@ small, consistent, monotonic upward trend with P in both tables (never a
 reproducible regression), but every adjacent-P difference is within about
 1 sd of the next, a long way from anything resembling Eq. 11's ideal=P line.
 
-### 7.4 What this establishes: Eq. 11 and two separate substrate limits
+### 7.4 What this establishes: Eq. 11 and two candidate substrate limits
 
 **Eq. 11 predicts capacity and speedup scale by P. On this substrate, at
 every P and every population size tested, observed speedup sits in a
 1.00x-1.23x band against an ideal of 2x-8x** -- not "saturates below P," a
-near-total absence of the predicted scaling. Two mechanisms are responsible,
+near-total absence of the predicted scaling. Two mechanisms are candidates --
+one measured directly, one consistent with the data but not established --
 and they are worth keeping separate because only one of them is inside
 Eq. 11's own domain:
 
-1. **Dynamic contention** (§7.3): concurrent requests share one GPU's
-   compute and memory bandwidth rather than running on independent
-   hardware. This is the regime a queuing/channel model like Eq. 11 is built
-   to describe -- and even so, on this hardware, contention alone flattens
-   the P-curve almost entirely.
-2. **Static memory admission wall** (§7.2): raising the *requested*
-   parallelism reserves KV-cache capacity for all P slots at model-load
-   time, before any request arrives. On a 4GB card that reservation alone
-   can exceed free VRAM and force part of the model onto CPU -- a penalty
-   that then applies to every subsequent request, concurrent or not. This
-   is a load-time capacity effect, not a runtime queuing effect, and **Eq. 11
-   has no term for it**: a NoC channel model has nothing resembling it,
-   because dedicating a channel to a flow doesn't touch a shared, finite
-   on-die resource that every flow's own processing element also needs
-   just to run at all.
+1. **Dynamic contention** (§7.3), consistent with the data but not
+   established: concurrent requests would share one GPU's compute and
+   memory bandwidth rather than running on independent hardware. Contention
+   was not measured directly (§7.3.2). This is the regime a queuing/channel
+   model like Eq. 11 is built to describe; if contention is the cause, it
+   alone would flatten the P-curve almost entirely.
+2. **Static memory admission wall** (§7.2, measured directly): raising the
+   *requested* parallelism reserves KV-cache capacity for all P slots at
+   model-load time, before any request arrives. On a 4GB card that
+   reservation alone can exceed free VRAM and force part of the model onto
+   CPU -- a penalty that then applies to every subsequent request,
+   concurrent or not. This is a load-time capacity effect, not a runtime
+   queuing effect, and **Eq. 11 has no term for it**: a NoC channel model
+   has nothing resembling it, because dedicating a channel to a flow doesn't
+   touch a shared, finite on-die resource that every flow's own processing
+   element also needs just to run at all.
 
 Both are DIBM results. Eq. 11's capacity/speedup-scales-by-P prediction
 assumes the borrowed channels are independent, as they are in a NoC; this
 hardware tests what happens when they are borrowed from one shared,
-memory-constrained GPU instead, and the answer is that the assumption fails
-in two structurally different ways at once. **If this is Phase 4's first
-question, it is answered here** -- on `llama3.2:1b`, used throughout this
+memory-constrained GPU instead, and the data show the predicted scaling
+absent and are consistent with the assumption failing in two structurally
+different ways at once (the memory wall is measured; contention is not).
+**If this is Phase 4's first question, it is answered here** -- on `llama3.2:1b`, used throughout this
 section strictly as a request-issue-and-time instrument, with no operator-
 validity claim attached (§7.0, §7.1).
 
