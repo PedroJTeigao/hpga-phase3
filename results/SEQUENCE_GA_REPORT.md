@@ -415,31 +415,31 @@ None triggered. LLM fallback was 0 in the stage-1 gate. The GPU was never in use
 
 ## 9. Circles (arm D) against random immigrants (arm E) and the earlier arms
 
-*Added later, on branch `circles-sequence`. Arms A, B and C are unchanged from sections 1-8 (same result files). Arm D is GA + LLM operators + circles
+*Added later, on branch `circles-sequence`, and **updated to all five seeds (0-4)** after arm E seed 4 was re-run (section 9.12). Arms A, B and C are unchanged from sections 1-8 (same result files). Arm D is GA + LLM operators + circles
 ported to the sequence genome (`hpga/circles_sequence.py`); arm E is GA + LLM operators + random immigrants, the control. Every table and the chart are generated from the raw files in
 `results/raw/` by `experiments/summarize_sequence_ga_circles.py`; figures quoted in the prose are computed from the same files or read off those tables.
-**Only 4 of the 5 planned seeds are complete for all five arms (0-3): arm E seed 4 failed twice because Ollama stopped loading its model (section 9.12). Seed 4 is excluded from every comparison; D seed 4 is reported only where a D-only figure is meant.**
-The caveats of section 1 apply unchanged: single runs, temperature 0.7, and with 4 seeds the smallest two-sided sign-test p that can be reached is 0.125.*
+The caveats of section 1 apply unchanged: single runs, temperature 0.7, and with 5 seeds the smallest two-sided sign-test p that can be reached is 0.0625, so nothing here can be called statistically significant at 0.05.
+An earlier version of this section covered seeds 0-3 only (E seed 4 had failed when Ollama stopped loading its model); section 9.13 says what changed.*
 
 ### 9.0 The plain statement
 
-Best-so-far TM-score read at the same distinct-fold count per seed (the smallest count reached by any of the five arms, 276-280 folds), mean over seeds 0-3:
-A random search 0.4001, B GA 0.4569, C GA+LLM 0.4988, **D GA+LLM+circles 0.5123**, E GA+LLM+random immigrants 0.4939. The ranges over seeds are wide
-(D 0.3587 - 0.6372, E 0.4164 - 0.6099, C 0.4632 - 0.5434) and much larger than the gaps between the means of C, D and E.
+Best-so-far TM-score read at the same distinct-fold count per seed (the smallest count reached by any of the five arms, 275-280 folds), mean over the 5 seeds:
+A random search 0.4002, B GA 0.4630, C GA+LLM 0.4864, **D GA+LLM+circles 0.4901**, E GA+LLM+random immigrants 0.4848. The ranges over seeds are wide
+(D 0.3587 - 0.6372, E 0.4164 - 0.6099, C 0.4370 - 0.5434) and far larger than the gaps between the means of C, D and E (all within 0.0053).
 
 The rule is the one used for A, B and C: X beats Y only if X is higher in **every** seed.
 
-- **Does D beat C? No.** **NO DEMONSTRATED DIFFERENCE between D and C: D higher in 2, lower in 2, tied in 0 of 4 seeds.** Higher in 2 of 4 seeds; mean difference +0.0135 (range -0.1046 to +0.1627); smallest two-sided sign-test p possible with 4 seeds: 0.125. D is far ahead in seed 1 (0.6372 vs 0.4745) and behind by 0.105 in seed 0.
-- **Does D beat E? No.** **NO DEMONSTRATED DIFFERENCE between D and E: D higher in 1, lower in 3, tied in 0 of 4 seeds.** Higher in 1 of 4 seeds; mean difference +0.0184 (range -0.0577 to +0.1653); smallest two-sided sign-test p possible with 4 seeds: 0.125. The control is at least as good as circles in three of four seeds.
-- **Does E beat C? No.** **NO DEMONSTRATED DIFFERENCE between E and C: E higher in 1, lower in 3, tied in 0 of 4 seeds.** Higher in 1 of 4 seeds; mean difference -0.0049 (range -0.0469 to +0.0665); smallest two-sided sign-test p possible with 4 seeds: 0.125.
+- **Does D beat C? No.** **NO DEMONSTRATED DIFFERENCE between D and C: D higher in 2, lower in 3, tied in 0 of 5 seeds.** Higher in 2 of 5 seeds; mean difference +0.0037 (range -0.1046 to +0.1627); smallest two-sided sign-test p possible with 5 seeds: 0.0625. Per seed (D minus C): seed 0 -0.1046, seed 1 +0.1627, seed 2 -0.0413, seed 3 +0.0373, seed 4 -0.0355.
+- **Does D beat E? No.** **NO DEMONSTRATED DIFFERENCE between D and E: D higher in 1, lower in 4, tied in 0 of 5 seeds.** Higher in 1 of 5 seeds; mean difference +0.0053 (range -0.0577 to +0.1653); smallest two-sided sign-test p possible with 5 seeds: 0.0625. Per seed (D minus E): seed 0 -0.0577, seed 1 +0.1653, seed 2 -0.0047, seed 3 -0.0292, seed 4 -0.0471. The control is ahead of circles in 4 of 5 seeds.
+- **Does E beat C? No.** **NO DEMONSTRATED DIFFERENCE between E and C: E higher in 2, lower in 3, tied in 0 of 5 seeds.** Higher in 2 of 5 seeds; mean difference -0.0016 (range -0.0469 to +0.0665); smallest two-sided sign-test p possible with 5 seeds: 0.0625. Per seed (E minus C): seed 0 -0.0469, seed 1 -0.0026, seed 2 -0.0366, seed 3 +0.0665, seed 4 +0.0115.
 
-**Circles did not demonstrably add anything over plain random injection, or over no injection.** Where D's diversity is higher than C's it did not convert into fitness (section 9.5): both circles and random immigrants raise population diversity, D's is not higher than E's, and neither
-beats C consistently. D has the single best result of the whole study (seed 1, 0.6372) and the single worst of the three LLM arms (seed 0, 0.3587); with four seeds that spread cannot be attributed to circles.
-2 of 4 D runs, 1 of 4 E runs, 2 of 4 C runs and 2 of 4 B runs end above 0.5 at the cut; no A run does. Every final best genome, in every arm, is 52-67 edits from the 63-residue reference (section 9.9): none of these searches gets near the reference sequence.
+**Circles did not demonstrably add anything over plain random injection, or over no injection.** Circles raise population diversity above C's in every seed but not consistently above E's, and that extra diversity did not convert into fitness; across the five seeds the more diversity D gained over C, the worse it did against C (rank correlation -0.90, five points: a description, not a test; section 9.11).
+D has the single best result of the whole study (seed 1, 0.6372) and the single worst of the three LLM arms (seed 0, 0.3587); with five seeds that spread cannot be attributed to circles.
+2 of 5 D runs, 1 of 5 E runs, 2 of 5 C runs and 2 of 5 B runs end above 0.5 at the cut; no A run does. Every final best genome, in every arm, is 52-67 edits from the 63-residue reference (section 9.9): none of these searches gets near the reference sequence.
 
-![Best-so-far TM-score vs distinct evaluations for arms A-E, one panel per complete seed](sequence_ga_circles_best_so_far.png)
+![Best-so-far TM-score vs distinct evaluations for arms A-E, one panel per seed](sequence_ga_circles_best_so_far.png)
 
-*Best-so-far TM-score against distinct evaluations, one panel per complete seed (never pooled). The dotted line is the common cut; D and E ran to 342-358 folds because their injected genomes add folds. Arms share generation 0 per seed, so their curves coincide at the start.*
+*Best-so-far TM-score against distinct evaluations, one panel per seed (never pooled). The dotted line is the common cut; D and E ran to 342-358 folds because their injected genomes add folds. Arms share generation 0 per seed, so their curves coincide at the start.*
 
 ### 9.1 Runs and the common budget
 
@@ -454,11 +454,7 @@ beats C consistently. D has the single best result of the whole study (seed 1, 0
 | 3 | D GA + LLM + circles | 356 | 40 | 396 | 0.5807 | 1 |
 | 3 | E GA + LLM + random immigrants | 356 | 40 | 396 | 0.6146 | 1 |
 | 4 | D GA + LLM + circles | 351 | 45 | 396 | 0.4034 | 1 |
-| 4 | E GA + LLM + random immigrants | not completed |  |  |  |  |
-
-Failed after one retry: E seed 4 (httpx.ReadTimeout: timed out)
-
-Seeds with an incomplete set of arms are excluded from the comparisons below: [4].
+| 4 | E GA + LLM + random immigrants | 358 | 38 | 396 | 0.4486 | 1 |
 
 Distinct folds reached by each arm, and the common cut n_cut (the smallest of the five):
 
@@ -468,36 +464,37 @@ Distinct folds reached by each arm, and the common cut n_cut (the smallest of th
 | 1 | 280 | 276 | 280 | 342 | 358 | 276 |
 | 2 | 281 | 280 | 281 | 355 | 358 | 280 |
 | 3 | 280 | 280 | 280 | 356 | 356 | 280 |
+| 4 | 280 | 275 | 280 | 351 | 358 | 275 |
 
 ### 9.2 Best TM-score at the common distinct-fold count (per seed), and over seeds
 
-| arm (read at n_cut) | seed 0 (n=278) | seed 1 (n=276) | seed 2 (n=280) | seed 3 (n=280) |
-|---|---|---|---|---|
-| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 |
-| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 |
-| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 |
-| D GA + LLM + circles | 0.3587 | 0.6372 | 0.4726 | 0.5807 |
-| E GA + LLM + random immigrants | 0.4164 | 0.4719 | 0.4773 | 0.6099 |
+| arm (read at n_cut) | seed 0 (n=278) | seed 1 (n=276) | seed 2 (n=280) | seed 3 (n=280) | seed 4 (n=275) |
+|---|---|---|---|---|---|
+| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 | 0.4009 |
+| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 | 0.4873 |
+| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 | 0.4370 |
+| D GA + LLM + circles | 0.3587 | 0.6372 | 0.4726 | 0.5807 | 0.4015 |
+| E GA + LLM + random immigrants | 0.4164 | 0.4719 | 0.4773 | 0.6099 | 0.4486 |
 
 Each run's own final best over its full budget (D and E ran further than the cut; A, B, C as before):
 
-| arm (full run) | seed 0 | seed 1 | seed 2 | seed 3 |
-|---|---|---|---|---|
-| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 |
-| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 |
-| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 |
-| D GA + LLM + circles | 0.3639 | 0.6372 | 0.4726 | 0.5807 |
-| E GA + LLM + random immigrants | 0.4599 | 0.4848 | 0.4787 | 0.6146 |
+| arm (full run) | seed 0 | seed 1 | seed 2 | seed 3 | seed 4 |
+|---|---|---|---|---|---|
+| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 | 0.4009 |
+| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 | 0.4873 |
+| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 | 0.4370 |
+| D GA + LLM + circles | 0.3639 | 0.6372 | 0.4726 | 0.5807 | 0.4034 |
+| E GA + LLM + random immigrants | 0.4599 | 0.4848 | 0.4787 | 0.6146 | 0.4486 |
 
 Cross-seed summary at the common cut (the only pooled table; n = complete seeds):
 
 | arm | n seeds | mean best-so-far at n_cut | range (min - max) |
 |---|---|---|---|
-| A random search | 4 | 0.4001 | 0.3859 - 0.4104 |
-| B GA (deterministic ops) | 4 | 0.4569 | 0.4007 - 0.5040 |
-| C GA (LLM ops) | 4 | 0.4988 | 0.4632 - 0.5434 |
-| D GA + LLM + circles | 4 | 0.5123 | 0.3587 - 0.6372 |
-| E GA + LLM + random immigrants | 4 | 0.4939 | 0.4164 - 0.6099 |
+| A random search | 5 | 0.4002 | 0.3859 - 0.4104 |
+| B GA (deterministic ops) | 5 | 0.4630 | 0.4007 - 0.5040 |
+| C GA (LLM ops) | 5 | 0.4864 | 0.4370 - 0.5434 |
+| D GA + LLM + circles | 5 | 0.4901 | 0.3587 - 0.6372 |
+| E GA + LLM + random immigrants | 5 | 0.4848 | 0.4164 - 0.6099 |
 
 ### 9.3 Mean pairwise edit distance within the evaluated population, per generation (per seed)
 
@@ -603,6 +600,31 @@ The evaluated population is 16 genomes at generation 0 and 20 afterwards for D a
 | 18 | 11.8 | 8.1 | 22.6 | 27.7 |
 | 19 | 12.1 | 6.5 | 22.2 | 23.6 |
 
+**Seed 4**
+
+| gen | B | C | D | E |
+|---|---|---|---|---|
+| 0 | 52.2 | 52.2 | 52.2 | 52.2 |
+| 1 | 47.8 | 50.9 | 51.7 | 51.8 |
+| 2 | 47.0 | 48.8 | 49.4 | 48.9 |
+| 3 | 45.9 | 44.7 | 48.9 | 48.7 |
+| 4 | 34.2 | 36.8 | 47.7 | 50.1 |
+| 5 | 33.9 | 28.6 | 48.5 | 48.5 |
+| 6 | 28.4 | 27.5 | 47.2 | 42.6 |
+| 7 | 20.9 | 27.2 | 48.5 | 44.9 |
+| 8 | 22.7 | 27.1 | 45.2 | 41.5 |
+| 9 | 18.6 | 27.5 | 45.7 | 45.3 |
+| 10 | 17.7 | 27.7 | 44.5 | 36.9 |
+| 11 | 9.8 | 26.5 | 47.2 | 33.3 |
+| 12 | 9.2 | 26.2 | 44.0 | 34.9 |
+| 13 | 10.5 | 23.1 | 42.0 | 32.1 |
+| 14 | 14.4 | 15.8 | 42.0 | 31.2 |
+| 15 | 13.4 | 9.6 | 40.2 | 43.2 |
+| 16 | 14.5 | 9.8 | 38.2 | 40.2 |
+| 17 | 13.9 | 8.9 | 42.7 | 37.1 |
+| 18 | 12.9 | 9.1 | 28.8 | 40.8 |
+| 19 | 15.1 | 10.2 | 36.7 | 34.9 |
+
 ### 9.4 Comparisons at the common budget
 
 **D vs C**
@@ -613,8 +635,9 @@ The evaluated population is 16 genomes at generation 0 and 20 afterwards for D a
 | 1 | 276 | 0.6372 | 0.4745 | +0.1627 | D |
 | 2 | 280 | 0.4726 | 0.5138 | -0.0413 | C |
 | 3 | 280 | 0.5807 | 0.5434 | +0.0373 | D |
+| 4 | 275 | 0.4015 | 0.4370 | -0.0355 | C |
 
-Mean difference +0.0135 (range -0.1046 to +0.1627). **NO DEMONSTRATED DIFFERENCE between D and C: D higher in 2, lower in 2, tied in 0 of 4 seeds.** Smallest two-sided sign-test p possible with 4 seeds: 0.1250.
+Mean difference +0.0037 (range -0.1046 to +0.1627). **NO DEMONSTRATED DIFFERENCE between D and C: D higher in 2, lower in 3, tied in 0 of 5 seeds.** Smallest two-sided sign-test p possible with 5 seeds: 0.0625.
 
 **D vs E**
 
@@ -624,8 +647,9 @@ Mean difference +0.0135 (range -0.1046 to +0.1627). **NO DEMONSTRATED DIFFERENCE
 | 1 | 276 | 0.6372 | 0.4719 | +0.1653 | D |
 | 2 | 280 | 0.4726 | 0.4773 | -0.0047 | E |
 | 3 | 280 | 0.5807 | 0.6099 | -0.0292 | E |
+| 4 | 275 | 0.4015 | 0.4486 | -0.0471 | E |
 
-Mean difference +0.0184 (range -0.0577 to +0.1653). **NO DEMONSTRATED DIFFERENCE between D and E: D higher in 1, lower in 3, tied in 0 of 4 seeds.** Smallest two-sided sign-test p possible with 4 seeds: 0.1250.
+Mean difference +0.0053 (range -0.0577 to +0.1653). **NO DEMONSTRATED DIFFERENCE between D and E: D higher in 1, lower in 4, tied in 0 of 5 seeds.** Smallest two-sided sign-test p possible with 5 seeds: 0.0625.
 
 **E vs C**
 
@@ -635,8 +659,9 @@ Mean difference +0.0184 (range -0.0577 to +0.1653). **NO DEMONSTRATED DIFFERENCE
 | 1 | 276 | 0.4719 | 0.4745 | -0.0026 | C |
 | 2 | 280 | 0.4773 | 0.5138 | -0.0366 | C |
 | 3 | 280 | 0.6099 | 0.5434 | +0.0665 | E |
+| 4 | 275 | 0.4486 | 0.4370 | +0.0115 | E |
 
-Mean difference -0.0049 (range -0.0469 to +0.0665). **NO DEMONSTRATED DIFFERENCE between E and C: E higher in 1, lower in 3, tied in 0 of 4 seeds.** Smallest two-sided sign-test p possible with 4 seeds: 0.1250.
+Mean difference -0.0016 (range -0.0469 to +0.0665). **NO DEMONSTRATED DIFFERENCE between E and C: E higher in 2, lower in 3, tied in 0 of 5 seeds.** Smallest two-sided sign-test p possible with 5 seeds: 0.0625.
 
 ### 9.5 Does D's extra diversity, if any, convert into fitness?
 
@@ -646,6 +671,7 @@ Mean difference -0.0049 (range -0.0469 to +0.0665). **NO DEMONSTRATED DIFFERENCE
 | 1 | +11.1 | +18.7 | -7.0 | -8.4 | +0.1627 | +0.1653 |
 | 2 | +21.9 | +23.2 | -3.0 | -1.0 | -0.0413 | -0.0047 |
 | 3 | +17.8 | +15.7 | -1.8 | -1.4 | +0.0373 | -0.0292 |
+| 4 | +18.6 | +26.6 | +2.8 | +1.9 | -0.0355 | -0.0471 |
 
 Diversity differences are in edit-distance units (positive = D more diverse); fitness differences in TM-score at n_cut (positive = D higher). Population diversity is over the evaluated population (16-20 genomes).
 
@@ -657,6 +683,7 @@ Diversity differences are in edit-distance units (positive = D more diverse); fi
 | 1 | 0.2706 | 0.3142 | 0.3791 | 0.2552 | 0.4487 | 0.3256 |
 | 2 | 0.2493 | 0.3568 | 0.3117 | 0.2569 | 0.3696 | 0.3302 |
 | 3 | 0.2538 | 0.3144 | 0.3898 | 0.2514 | 0.3540 | 0.4029 |
+| 4 | 0.2589 | 0.3775 | 0.3038 | 0.2390 | 0.3838 | 0.3232 |
 
 Means over generations 1-19 of the last 4 members of each evaluated population (the injected ones) and of the other members.
 
@@ -676,8 +703,11 @@ Means over generations 1-19 of the last 4 members of each evaluated population (
 | 3 | C GA (LLM ops) | 389 | 406 | 149,333 | 10,820 | 3027 | 623 (20.6%) | 2120 (70.0%) | 271 (9.0%) | in LLM time | 13.0 (0.43%) |
 | 3 | D GA + LLM + circles | 582 | 615 | 245,049 | 17,949 | 4783 | 816 (17.1%) | 3481 (72.8%) | 472 (9.9%) | 210 | 14.5 (0.30%) |
 | 3 | E GA + LLM + random immigrants | 387 | 402 | 148,829 | 10,731 | 3250 | 851 (26.2%) | 1903 (58.5%) | 484 (14.9%) | 236 | 13.1 (0.40%) |
+| 4 | C GA (LLM ops) | 388 | 403 | 153,927 | 11,592 | 3318 | 839 (25.3%) | 2218 (66.9%) | 247 (7.4%) | in LLM time | 13.7 (0.41%) |
+| 4 | D GA + LLM + circles | 577 | 610 | 250,176 | 18,869 | 4922 | 936 (19.0%) | 3479 (70.7%) | 492 (10.0%) | 254 | 15.2 (0.31%) |
+| 4 | E GA + LLM + random immigrants | 389 | 402 | 153,564 | 11,867 | 3491 | 986 (28.2%) | 2069 (59.3%) | 422 (12.1%) | 179 | 14.1 (0.40%) |
 
-Swap = unloading Ollama, moving ESMFold between CPU and GPU, and (D, E) loading the Ollama model, timed separately from the LLM calls. **Arm C was run with different accounting:** its swap time excludes the Ollama reload, which fell inside the first LLM call of each breeding step and is therefore in its LLM time. Estimate of that reload for C (excess latency of the first request after each fold phase over the operator median, from its call log): seed 0: 175 s, seed 1: 139 s, seed 2: 140 s, seed 3: 164 s. D and E carry the measured load in swap time.
+Swap = unloading Ollama, moving ESMFold between CPU and GPU, and (D, E) loading the Ollama model, timed separately from the LLM calls. **Arm C was run with different accounting:** its swap time excludes the Ollama reload, which fell inside the first LLM call of each breeding step and is therefore in its LLM time. Estimate of that reload for C (excess latency of the first request after each fold phase over the operator median, from its call log): seed 0: 175 s, seed 1: 139 s, seed 2: 140 s, seed 3: 164 s, seed 4: 140 s. D and E carry the measured load in swap time.
 
 ### 9.8 Arm D, per operator: calls, fallbacks, requests per call
 
@@ -757,6 +787,11 @@ Blackboard at the end of each D run:
 | 3 | C GA (LLM ops) | 0.5434 | 52 | 57 | 0.5434 | 52 | 57 |
 | 3 | D GA + LLM + circles | 0.5807 | 53 | 57 | 0.5807 | 53 | 57 |
 | 3 | E GA + LLM + random immigrants | 0.6099 | 53 | 59 | 0.6146 | 52 | 59 |
+| 4 | A random search | 0.4009 | 55 | 62 | 0.4009 | 55 | 62 |
+| 4 | B GA (deterministic ops) | 0.4873 | 59 | 62 | 0.4873 | 59 | 62 |
+| 4 | C GA (LLM ops) | 0.4370 | 59 | 69 | 0.4370 | 59 | 69 |
+| 4 | D GA + LLM + circles | 0.4015 | 55 | 63 | 0.4034 | 55 | 64 |
+| 4 | E GA + LLM + random immigrants | 0.4486 | 60 | 69 | 0.4486 | 60 | 69 |
 
 ### 9.10 What the circle proposals did (from the D call logs; accepted responses only)
 
@@ -766,32 +801,56 @@ Blackboard at the end of each D run:
 | 1 | 62 | 181 | 51 | 33 (6%) | 16 | L (25%) | 31/72 |
 | 2 | 73 | 182 | 43 | 23 (8%) | 17 | L (31%) | 38/72 |
 | 3 | 74 | 166 | 40 | 14 (8%) | 14 | L (22%) | 31/72 |
+| 4 | 69 | 188 | 46 | 25 (9%) | 18 | L (29%) | 35/72 |
 
 
 
 ### 9.11 Reading the results
 
-- **Budget.** D and E add 4 genomes per breeding step (19 steps), so they fold more distinct genomes (342-358 vs 276-282). Everything above is cut to the common count, so the extra folds buy no advantage. Read at their full budgets instead, D's finals are 0.3639, 0.6372, 0.4726, 0.5807 and E's 0.4599, 0.4848, 0.4787, 0.6146 (seeds 0-3): the extra ~70 folds change little.
-- **Diversity.** D's population is more diverse than C's in every seed (mean pairwise edit distance, generations 1-19: +21.6, +11.1, +21.9, +17.8; at generation 19: +27.1, +18.7, +23.2, +15.7). It is not more diverse than E's: D minus E is +1.8, -7.0, -3.0, -1.8 (generations 1-19) and -6.2, -8.4, -1.0, -1.4 at generation 19. The extra diversity comes from injecting four outside genomes per step, not from the circles in particular.
-- **Diversity did not convert into fitness.** The seeds where D gained the most diversity over C (0 and 2: +21.6, +21.9) are the two where D was behind C (-0.1046, -0.0413); the two with less (+11.1, +17.8) are the two where D was ahead (+0.1627, +0.0373). E, which is as diverse as D, is ahead of C in 1 of 4 seeds. With four seeds this is a description, not a test, and it shows no sign that more diversity meant a higher score.
-- **What the injected genomes were worth (section 9.6).** Averaged over seeds and generations 1-19, the 4 injected genomes score 0.262 in D (circle proposals) and 0.253 in E (random genomes), against 0.345 and 0.343 for the rest of their populations; the best injected genome anywhere was 0.357 in D and 0.460 in E. The circle proposals are only marginally better than random genomes and far below the population. A circle-agent's proposal beat its own base in only 31-38 of 72 slot-generations (43-53%), which is a coin flip. The final best genome of a run was one of the injected genomes in 0 of 4 D runs and 1 of 4 E runs, so injection did not directly supply the winners in D; in E it did in 1.
-- **Cost (means over seeds 0-3).** D used 578 LLM calls, 250,866 input and 18,721 output tokens per run against 388, 150,388 and 11,350 for C and 384, 149,920 and 11,306 for E: 1.49x the calls, 1.67x the input tokens and 1.65x the output tokens of C. Wall time: C 3194 s, D 4789 s (1.50x C), E 3386 s; time inside LLM calls C 2198, D 3451, E 1990 s; model swapping C 284, D 452, E 456 s. Arm C's swap excludes an Ollama reload that is inside its LLM time (estimated at 139-175 s per run, section 9.7); D and E's swap includes the measured load (184-236 s), so the split is comparable to within that.
-- **Proposal reliability.** In the GA, `propose` fell back 35 times in 380 calls over the 5 completed D runs (9.2%; per seed 11.8%, 18.4%, 3.9%, 2.6%, 9.2%), against 1 in 50 (2%) in the stage-1 probe, at 1.20-1.53 requests per call (the probe: 1.04). It is below the 20% line the probe was gated on, and seed 1 (18.4%) is close to it. A likely reason for the higher rate, not tested: in the GA the context block carries model-written observations and notes, while the probe drew them from a fixed pool. Every other circle operator fell back 0 or 1 times (observe 0/340, consult 0/190, central directive 0/20, curate 1/30).
+- **Budget.** D and E add 4 genomes per breeding step (19 steps), so they fold more distinct genomes (342-358 vs 275-282). Everything above is cut to the common count, so the extra folds buy no advantage. Read at their full budgets instead, D's finals are 0.3639, 0.6372, 0.4726, 0.5807, 0.4034 and E's 0.4599, 0.4848, 0.4787, 0.6146, 0.4486 (seeds 0-4): the extra ~70 folds move D's finals by at most +0.0052 and E's by at most +0.0435.
+- **Diversity.** D's population is more diverse than C's in every seed (mean pairwise edit distance, generations 1-19: +21.6, +11.1, +21.9, +17.8, +18.6; at generation 19: +27.1, +18.7, +23.2, +15.7, +26.6). It is not systematically more diverse than E's: D minus E is +1.8, -7.0, -3.0, -1.8, +2.8 (generations 1-19) and -6.2, -8.4, -1.0, -1.4, +1.9 at generation 19. The extra diversity comes from injecting four outside genomes per step, not from the circles in particular.
+- **Diversity did not convert into fitness, and in these five seeds ran the other way.** Ordered by how much diversity D gained over C, the seeds are 2 (+21.9: fitness -0.0413), 0 (+21.6: fitness -0.1046), 4 (+18.6: fitness -0.0355), 3 (+17.8: fitness +0.0373), 1 (+11.1: fitness +0.1627). The three seeds with the largest gains are the three where D was behind C; the two with the smallest gains are the two where D was ahead. The Spearman rank correlation between diversity gain and fitness difference is -0.90. With five seeds that is a description, not a test, and I would not read it as diversity harming the search, but it shows no sign that more diversity meant a higher score. E, which is as diverse as D, is ahead of C in 2 of 5 seeds.
+- **What the injected genomes were worth (section 9.6).** Averaged over seeds and generations 1-19, the 4 injected genomes score 0.261 in D (circle proposals) and 0.250 in E (random genomes), against 0.337 and 0.339 for the rest of their populations; the best injected genome anywhere was 0.378 in D and 0.460 in E. The circle proposals are only marginally better than random genomes and far below the population. A circle-agent's proposal beat its own base in only 31-38 of 72 slot-generations per run (43%-53%), which is a coin flip. The final best genome of a run was one of the injected genomes in 0 of 5 D runs and 1 of 5 E runs, so injection did not supply the winners in D; in E it did in 1.
+- **Cost (means over the 5 seeds).** D used 578 LLM calls, 250,728 input and 18,751 output tokens per run against 388, 151,096 and 11,398 for C and 385, 150,649 and 11,418 for E: 1.49x the calls, 1.66x the input tokens and 1.65x the output tokens of C. Wall time: C 3219 s, D 4816 s (1.50x C), E 3407 s; time inside LLM calls C 2202, D 3457, E 2006 s; model swapping C 277, D 460, E 449 s. Arm C's swap excludes an Ollama reload that is inside its LLM time (estimated at 139-175 s per run, section 9.7); D and E's swap includes the measured load (179-254 s per run), so the split is comparable to within that.
+- **Proposal reliability.** In the GA, `propose` fell back 35 times in 380 calls over the 5 D runs (9.2%; per seed 11.8%, 18.4%, 3.9%, 2.6%, 9.2%), against 1 in 50 (2%) in the stage-1 probe, at 1.20-1.53 requests per call (the probe: 1.04). It is below the 20% line the probe was gated on, and seed 1 (18.4%) is close to it. A likely reason for the higher rate, not tested: in the GA the context block carries model-written observations and notes, while the probe drew them from a fixed pool. Every other circle operator fell back 0 or 1 times (observe 0/340, consult 0/190, central directive 0/20, curate 1/30).
 
-### 9.12 Incident: Ollama stopped loading the model during E seed 4
+### 9.12 Incident: Ollama stopped loading the model during E seed 4, and the re-run
 
-The driver ran D and E for each seed in turn. D seed 4 finished normally at 18:22. E seed 4 then failed twice, both times with `httpx.ReadTimeout` on the first call to Ollama (the warm-up request, then the first real call), and was skipped by the driver's retry-once-then-skip rule; see `results/raw/sequence_ga_cmp_E_seed4.error.txt`. I diagnosed it, and did **not** work around it:
+**First launch.** The driver ran D and E for each seed in turn. D seed 4 finished normally at 18:22 on 2026-09-19. E seed 4 then failed twice, both times with `httpx.ReadTimeout` on the first call to Ollama (the warm-up request, then the first real call), and was skipped by the driver's retry-once-then-skip rule; see `results/raw/sequence_ga_cmp_E_seed4.error.txt` and `sequence_ga_circles_status_first_launch.json`. I diagnosed it and did not work around it:
 
-- Ollama's server was up (4 days) and its API answered, but a generate request no longer returned within 100-300 s. Given 420 s it did return: one request took 322 s, and a second took 288 s, of which 169 s was model load and 119 s generating 4 tokens. Earlier in this same session a model load took about 10-17 s (the runs' measured load was ~10 s each) and a call 2-4 s. GPU utilisation stayed 0% while the runner held ~8 GB and about 24% CPU; the GPU showed no throttling; a CUDA matmul from Python worked; model-file reads ran at 2.2 GB/s. So the fault is in Ollama's load / inference path, not in the pipeline, the GPU or the disk.
+- Ollama's server was up (4 days) and its API answered, but a generate request no longer returned within 100-300 s. Given 420 s it did return: one request took 322 s, and a second took 288 s, of which 169 s was model load and 119 s generating 4 tokens. Earlier in the same session a model load took about 10-17 s (the runs' measured load was ~10 s each) and a call 2-4 s. GPU utilisation stayed 0% while the runner held ~8 GB and about 24% CPU; the GPU showed no throttling; a CUDA matmul from Python worked; model-file reads ran at 2.2 GB/s. So the fault was in Ollama's load / inference path, not in the pipeline, the GPU or the disk.
 - I found and stopped two of my own processes that I had left running since the first task of this session (a `find /` for the 7UR7 file, run by the harness as `bfs`, plus its `head`; my earlier `pkill` had matched its own shell and never stopped them). Stopping them made no difference to Ollama. No other process was touched.
-- I did not restart `ollama serve`: it is a shared service and I cannot be sure of reproducing its launch environment. I left the model unloaded and the GPU empty. It probably needs a restart; the ~10 diagnostic requests I sent (each of which timed out or was slow) may have added to any backlog.
-- Consequence: seed 4 has no E result, so it is out of every comparison (4 complete seeds, minimum sign-test p 0.125 instead of 0.0625). D seed 4 completed and is in the run table and the D fallback figures: final best 0.4034 over 351 distinct folds.
+- I did not restart `ollama serve`, because it is a shared service; I left the model unloaded and the GPU empty and reported it.
 
-### 9.13 Decisions I made on my own for this task
+**Re-run.** The user restarted `ollama serve`. A single health-check request (`num_predict` 1) then loaded the model in 13.8 s. E seed 4 was re-run detached with the same settings as the other E runs (`run --seeds 4 --arms E`, `PYTHONHASHSEED=0`), launched 21:11 and finished 22:11 on its first attempt in 3491 s: final best 0.4486 over 358 distinct folds, 38 cache hits, no LLM fallback, every swap-integrity check identical, and its generation 0 identical to D seed 4's. The Ollama load averaged 9.4 s per swap (the other E seeds: 9.7-12.4 s), so the server stayed healthy for the whole run. The first attempts' artefacts are kept (the error trace, the first-launch status file, and the two failed attempts' call logs); the re-run has its own log (`sequence_ga_circles_run_e_seed4_rerun.log`), and `sequence_ga_circles_status.json` now describes only the re-run.
+
+### 9.13 What changed from the 4-seed version
+
+**No verdict changed.** All three comparisons were 'no demonstrated difference' with 4 seeds and still are with 5. The rule (X beats Y only if higher in every seed) is unchanged; the 4-seed column is recomputed from the same result files restricted to seeds 0-3.
+
+| comparison | 4 seeds (0-3) | 5 seeds (0-4) | verdict changed? |
+|---|---|---|---|
+| D vs C | no demonstrated difference: D higher in 2 of 4, mean +0.0135 | no demonstrated difference: D higher in 2 of 5, mean +0.0037 | **no** |
+| D vs E | no demonstrated difference: D higher in 1 of 4, mean +0.0184 | no demonstrated difference: D higher in 1 of 5, mean +0.0053 | **no** |
+| E vs C | no demonstrated difference: E higher in 1 of 4, mean -0.0049 | no demonstrated difference: E higher in 2 of 5, mean -0.0016 | **no** |
+
+Mean best-so-far at the common cut, 4 seeds vs 5:
+
+| arm | seeds 0-3 | seeds 0-4 | change |
+|---|---|---|---|
+| A | 0.4001 | 0.4002 | +0.0002 |
+| B | 0.4569 | 0.4630 | +0.0061 |
+| C | 0.4988 | 0.4864 | -0.0123 |
+| D | 0.5123 | 0.4901 | -0.0222 |
+| E | 0.4939 | 0.4848 | -0.0091 |
+
+What seed 4 added: D scored 0.4015 against C's 0.4370 and E's 0.4486, so D was behind both LLM arms there; E was ahead of C (+0.0115). The effect was to pull D's edge over C and E toward zero (D minus C mean +0.0135 to +0.0037; D minus E +0.0184 to +0.0053) and to bring C, D and E to within 0.0053 of one another. The smallest reachable sign-test p fell from 0.125 to 0.0625, which is still above 0.05.
+
+### 9.14 Decisions I made on my own for this task
 
 Ambiguous points were resolved toward the more conservative reading:
 
-1. **Branch and pushes.** `circles-sequence` from `tm-score-fitness`. Pushed code commits only (`421930b` golden fixture, `5ecef19` circles port, `b9a7d81` D/E driver, `1b1b9c2` summariser, `6d1a5f7` summariser fix); the commit holding this section and all raw logs is not pushed. Nothing merged into `main`.
+1. **Branch and pushes.** `circles-sequence` from `tm-score-fitness`. Code commits: `421930b` golden fixture, `5ecef19` circles port, `b9a7d81` D/E driver, `1b1b9c2` summariser, `6d1a5f7` summariser fix. The first results commit (`2f35fdd`) was pushed, and `main` fast-forwarded to it, on the user's instruction; this update (report + E seed 4 + raw logs) is pushed to `circles-sequence` only, on the user's instruction, and `main` is not touched.
 2. **Lattice guard.** Recorded the golden run of lattice circles (stubbed model, ~400 model calls across two configurations) on the untouched tree first; it reproduces byte for byte after the port. The golden pins `PYTHONHASHSEED=0` because `blackboard._extract_curation` iterates a set of string ids, an existing property of the lattice code that makes tombstone order vary by process; I raised the stub's malformed-reply rate so propose / observe / consult fallbacks are exercised. The 1 MB golden file is committed as a test fixture, not a result. Lattice parity against `50de6f8`: 0 divergences in every mode, all 10 mutants detected.
 3. **Where the port lives.** A new module `hpga/circles_sequence.py`; `hpga/circles.py` got one additive dispatch at the top of `run_circles` (12 insertions, 0 deletions), so no lattice line changed. `operators.py`'s sequence-mode guard now lets circles run (LLM operators only) and still raises for agents, diversity logging, and circles with deterministic operators. `agents.py` is not ported and stays refused.
 4. **Proposal format.** k position edits to the slot's current population member, in the position-style prompt and parser that mutate uses, with directive / circle note / observations prepended; k = max(1, round(0.05 x length)) = 2-4 (`HPGA_CIRCLES_SEQ_EDIT_RATE`, default equal to the mutation rate). No RATIONALE line (circles never used it). Observation prompts also list the changed positions, which I added so a one-sentence inference has something concrete to refer to. No prompt names the target structure.
@@ -800,8 +859,8 @@ Ambiguous points were resolved toward the more conservative reading:
 7. **Arm E** injects the same 4 genomes per breeding step as D (19 steps), drawn with `model.random_genome(rng, None)` and appended after `next_generation`; both arms therefore evaluate 20 genomes per generation from generation 1 (16 at generation 0), and diversity is measured over the evaluated population.
 8. **Common budget.** Every comparison is at n_cut = the smallest distinct-fold count among A-E for that seed; the rule (higher in every seed) is unchanged. Arm A's genome at the cut is reconstructed from its deterministic draws (checked against its stored final genome).
 9. **Accounting.** For D and E the driver loads the Ollama model with a tiny request after each swap and counts it as swap time; arm C (already run) has that load inside its LLM time, so I estimated it from C's call logs (excess latency of the first request after each fold phase) instead of re-running C.
-10. **Launch and failures.** One detached process per stage-2 launch (`setsid nohup`, `PYTHONHASHSEED=0`), D then E per seed, one result file per (arm, seed); retry once, then skip and log. That rule skipped E seed 4; I then diagnosed the cause (9.12) but did not start a third attempt, because Ollama could not load the model.
-11. **Seed 4 excluded from comparisons**, kept only in D-only figures. **Not run:** the planned 5-seed comparison.
+10. **Launch and failures.** One detached process per launch (`setsid nohup`, `PYTHONHASHSEED=0`), D then E per seed, one result file per (arm, seed); retry once, then skip and log. That rule skipped E seed 4 in the first launch; I diagnosed the cause (9.12) but did not start a third attempt while Ollama could not load the model. After the user restarted Ollama, I re-ran E seed 4 (same command settings as the other E runs) and it completed on its first attempt.
+11. **Seed 4.** Excluded from the comparisons while E seed 4 was missing; included in all five-seed comparisons now. I preserved the first launch's status file and failed-attempt logs rather than overwriting them.
 12. **Fixes while running:** my monitoring script had a wrong process pattern (a false "process gone" alarm; the job was alive); the summariser's arm-A genome reconstruction and D-only fallback tables were added after testing on partial data. No fix changed a result.
-13. **PHASE3_RESULTS.md** is untouched.
-14. **AFS token.** The last code push failed because my AFS token had expired (the SSH key lives on AFS). I ran `aklog` once, which renews it from the valid Kerberos ticket already in the keyring, then pushed. No credential was created, copied or sent anywhere.
+13. **Updating this section.** I rewrote the section's narrative against the five-seed numbers instead of patching the four-seed text, and computed the four-seed comparison in 9.13 from the same result files, so the "what changed" table cannot drift from the data. `PHASE3_RESULTS.md` is untouched.
+14. **AFS token.** The last code push during the first pass failed because my AFS token had expired (the SSH key lives on AFS). I ran `aklog` once, which renews it from the valid Kerberos ticket already in the keyring, then pushed. No credential was created, copied or sent anywhere. The token was still valid for this update.

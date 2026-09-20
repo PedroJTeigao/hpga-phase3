@@ -1,121 +1,23 @@
 {
  "plan": [
   [
-   "D",
-   0
-  ],
-  [
-   "E",
-   0
-  ],
-  [
-   "D",
-   1
-  ],
-  [
-   "E",
-   1
-  ],
-  [
-   "D",
-   2
-  ],
-  [
-   "E",
-   2
-  ],
-  [
-   "D",
-   3
-  ],
-  [
-   "E",
-   3
-  ],
-  [
-   "D",
-   4
-  ],
-  [
    "E",
    4
   ]
  ],
- "started": "2026-09-19T07:54:11-0400",
+ "started": "2026-09-19T21:11:36-0400",
  "done": [
   {
-   "arm": "D",
-   "seed": 0,
-   "attempt": 1,
-   "seconds": 4657.1947638988495,
-   "final_best": 0.36387
-  },
-  {
-   "arm": "E",
-   "seed": 0,
-   "attempt": 1,
-   "seconds": 3138.7936663627625,
-   "final_best": 0.45989
-  },
-  {
-   "arm": "D",
-   "seed": 1,
-   "attempt": 1,
-   "seconds": 4908.620279312134,
-   "final_best": 0.63723
-  },
-  {
-   "arm": "E",
-   "seed": 1,
-   "attempt": 1,
-   "seconds": 3222.091076850891,
-   "final_best": 0.4848
-  },
-  {
-   "arm": "D",
-   "seed": 2,
-   "attempt": 1,
-   "seconds": 4807.879740715027,
-   "final_best": 0.47258
-  },
-  {
-   "arm": "E",
-   "seed": 2,
-   "attempt": 1,
-   "seconds": 3932.6333248615265,
-   "final_best": 0.47866
-  },
-  {
-   "arm": "D",
-   "seed": 3,
-   "attempt": 1,
-   "seconds": 4783.513855457306,
-   "final_best": 0.58068
-  },
-  {
-   "arm": "E",
-   "seed": 3,
-   "attempt": 1,
-   "seconds": 3250.510686159134,
-   "final_best": 0.61463
-  },
-  {
-   "arm": "D",
-   "seed": 4,
-   "attempt": 1,
-   "seconds": 4922.181096315384,
-   "final_best": 0.40336
-  }
- ],
- "failed": [
-  {
    "arm": "E",
    "seed": 4,
-   "error": "httpx.ReadTimeout: timed out"
+   "attempt": 1,
+   "seconds": 3491.418590068817,
+   "final_best": 0.44855
   }
  ],
+ "failed": [],
  "skipped": [],
  "finished": true,
  "exit_reason": "all planned runs attempted",
- "ended": "2026-09-19T18:32:21-0400"
+ "ended": "2026-09-19T22:11:11-0400"
 }

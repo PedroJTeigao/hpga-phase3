@@ -11,11 +11,7 @@
 | 3 | D GA + LLM + circles | 356 | 40 | 396 | 0.5807 | 1 |
 | 3 | E GA + LLM + random immigrants | 356 | 40 | 396 | 0.6146 | 1 |
 | 4 | D GA + LLM + circles | 351 | 45 | 396 | 0.4034 | 1 |
-| 4 | E GA + LLM + random immigrants | not completed |  |  |  |  |
-
-Failed after one retry: E seed 4 (httpx.ReadTimeout: timed out)
-
-Seeds with an incomplete set of arms are excluded from the comparisons below: [4].
+| 4 | E GA + LLM + random immigrants | 358 | 38 | 396 | 0.4486 | 1 |
 
 Distinct folds reached by each arm, and the common cut n_cut (the smallest of the five):
 
@@ -25,36 +21,37 @@ Distinct folds reached by each arm, and the common cut n_cut (the smallest of th
 | 1 | 280 | 276 | 280 | 342 | 358 | 276 |
 | 2 | 281 | 280 | 281 | 355 | 358 | 280 |
 | 3 | 280 | 280 | 280 | 356 | 356 | 280 |
+| 4 | 280 | 275 | 280 | 351 | 358 | 275 |
 
 ### 9.2 Best TM-score at the common distinct-fold count (per seed), and over seeds
 
-| arm (read at n_cut) | seed 0 (n=278) | seed 1 (n=276) | seed 2 (n=280) | seed 3 (n=280) |
-|---|---|---|---|---|
-| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 |
-| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 |
-| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 |
-| D GA + LLM + circles | 0.3587 | 0.6372 | 0.4726 | 0.5807 |
-| E GA + LLM + random immigrants | 0.4164 | 0.4719 | 0.4773 | 0.6099 |
+| arm (read at n_cut) | seed 0 (n=278) | seed 1 (n=276) | seed 2 (n=280) | seed 3 (n=280) | seed 4 (n=275) |
+|---|---|---|---|---|---|
+| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 | 0.4009 |
+| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 | 0.4873 |
+| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 | 0.4370 |
+| D GA + LLM + circles | 0.3587 | 0.6372 | 0.4726 | 0.5807 | 0.4015 |
+| E GA + LLM + random immigrants | 0.4164 | 0.4719 | 0.4773 | 0.6099 | 0.4486 |
 
 Each run's own final best over its full budget (D and E ran further than the cut; A, B, C as before):
 
-| arm (full run) | seed 0 | seed 1 | seed 2 | seed 3 |
-|---|---|---|---|---|
-| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 |
-| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 |
-| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 |
-| D GA + LLM + circles | 0.3639 | 0.6372 | 0.4726 | 0.5807 |
-| E GA + LLM + random immigrants | 0.4599 | 0.4848 | 0.4787 | 0.6146 |
+| arm (full run) | seed 0 | seed 1 | seed 2 | seed 3 | seed 4 |
+|---|---|---|---|---|---|
+| A random search | 0.3859 | 0.4004 | 0.4104 | 0.4035 | 0.4009 |
+| B GA (deterministic ops) | 0.4203 | 0.5025 | 0.5040 | 0.4007 | 0.4873 |
+| C GA (LLM ops) | 0.4632 | 0.4745 | 0.5138 | 0.5434 | 0.4370 |
+| D GA + LLM + circles | 0.3639 | 0.6372 | 0.4726 | 0.5807 | 0.4034 |
+| E GA + LLM + random immigrants | 0.4599 | 0.4848 | 0.4787 | 0.6146 | 0.4486 |
 
 Cross-seed summary at the common cut (the only pooled table; n = complete seeds):
 
 | arm | n seeds | mean best-so-far at n_cut | range (min - max) |
 |---|---|---|---|
-| A random search | 4 | 0.4001 | 0.3859 - 0.4104 |
-| B GA (deterministic ops) | 4 | 0.4569 | 0.4007 - 0.5040 |
-| C GA (LLM ops) | 4 | 0.4988 | 0.4632 - 0.5434 |
-| D GA + LLM + circles | 4 | 0.5123 | 0.3587 - 0.6372 |
-| E GA + LLM + random immigrants | 4 | 0.4939 | 0.4164 - 0.6099 |
+| A random search | 5 | 0.4002 | 0.3859 - 0.4104 |
+| B GA (deterministic ops) | 5 | 0.4630 | 0.4007 - 0.5040 |
+| C GA (LLM ops) | 5 | 0.4864 | 0.4370 - 0.5434 |
+| D GA + LLM + circles | 5 | 0.4901 | 0.3587 - 0.6372 |
+| E GA + LLM + random immigrants | 5 | 0.4848 | 0.4164 - 0.6099 |
 
 ### 9.3 Mean pairwise edit distance within the evaluated population, per generation (per seed)
 
@@ -160,6 +157,31 @@ The evaluated population is 16 genomes at generation 0 and 20 afterwards for D a
 | 18 | 11.8 | 8.1 | 22.6 | 27.7 |
 | 19 | 12.1 | 6.5 | 22.2 | 23.6 |
 
+**Seed 4**
+
+| gen | B | C | D | E |
+|---|---|---|---|---|
+| 0 | 52.2 | 52.2 | 52.2 | 52.2 |
+| 1 | 47.8 | 50.9 | 51.7 | 51.8 |
+| 2 | 47.0 | 48.8 | 49.4 | 48.9 |
+| 3 | 45.9 | 44.7 | 48.9 | 48.7 |
+| 4 | 34.2 | 36.8 | 47.7 | 50.1 |
+| 5 | 33.9 | 28.6 | 48.5 | 48.5 |
+| 6 | 28.4 | 27.5 | 47.2 | 42.6 |
+| 7 | 20.9 | 27.2 | 48.5 | 44.9 |
+| 8 | 22.7 | 27.1 | 45.2 | 41.5 |
+| 9 | 18.6 | 27.5 | 45.7 | 45.3 |
+| 10 | 17.7 | 27.7 | 44.5 | 36.9 |
+| 11 | 9.8 | 26.5 | 47.2 | 33.3 |
+| 12 | 9.2 | 26.2 | 44.0 | 34.9 |
+| 13 | 10.5 | 23.1 | 42.0 | 32.1 |
+| 14 | 14.4 | 15.8 | 42.0 | 31.2 |
+| 15 | 13.4 | 9.6 | 40.2 | 43.2 |
+| 16 | 14.5 | 9.8 | 38.2 | 40.2 |
+| 17 | 13.9 | 8.9 | 42.7 | 37.1 |
+| 18 | 12.9 | 9.1 | 28.8 | 40.8 |
+| 19 | 15.1 | 10.2 | 36.7 | 34.9 |
+
 ### 9.4 Comparisons at the common budget
 
 **D vs C**
@@ -170,8 +192,9 @@ The evaluated population is 16 genomes at generation 0 and 20 afterwards for D a
 | 1 | 276 | 0.6372 | 0.4745 | +0.1627 | D |
 | 2 | 280 | 0.4726 | 0.5138 | -0.0413 | C |
 | 3 | 280 | 0.5807 | 0.5434 | +0.0373 | D |
+| 4 | 275 | 0.4015 | 0.4370 | -0.0355 | C |
 
-Mean difference +0.0135 (range -0.1046 to +0.1627). **NO DEMONSTRATED DIFFERENCE between D and C: D higher in 2, lower in 2, tied in 0 of 4 seeds.** Smallest two-sided sign-test p possible with 4 seeds: 0.1250.
+Mean difference +0.0037 (range -0.1046 to +0.1627). **NO DEMONSTRATED DIFFERENCE between D and C: D higher in 2, lower in 3, tied in 0 of 5 seeds.** Smallest two-sided sign-test p possible with 5 seeds: 0.0625.
 
 **D vs E**
 
@@ -181,8 +204,9 @@ Mean difference +0.0135 (range -0.1046 to +0.1627). **NO DEMONSTRATED DIFFERENCE
 | 1 | 276 | 0.6372 | 0.4719 | +0.1653 | D |
 | 2 | 280 | 0.4726 | 0.4773 | -0.0047 | E |
 | 3 | 280 | 0.5807 | 0.6099 | -0.0292 | E |
+| 4 | 275 | 0.4015 | 0.4486 | -0.0471 | E |
 
-Mean difference +0.0184 (range -0.0577 to +0.1653). **NO DEMONSTRATED DIFFERENCE between D and E: D higher in 1, lower in 3, tied in 0 of 4 seeds.** Smallest two-sided sign-test p possible with 4 seeds: 0.1250.
+Mean difference +0.0053 (range -0.0577 to +0.1653). **NO DEMONSTRATED DIFFERENCE between D and E: D higher in 1, lower in 4, tied in 0 of 5 seeds.** Smallest two-sided sign-test p possible with 5 seeds: 0.0625.
 
 **E vs C**
 
@@ -192,8 +216,9 @@ Mean difference +0.0184 (range -0.0577 to +0.1653). **NO DEMONSTRATED DIFFERENCE
 | 1 | 276 | 0.4719 | 0.4745 | -0.0026 | C |
 | 2 | 280 | 0.4773 | 0.5138 | -0.0366 | C |
 | 3 | 280 | 0.6099 | 0.5434 | +0.0665 | E |
+| 4 | 275 | 0.4486 | 0.4370 | +0.0115 | E |
 
-Mean difference -0.0049 (range -0.0469 to +0.0665). **NO DEMONSTRATED DIFFERENCE between E and C: E higher in 1, lower in 3, tied in 0 of 4 seeds.** Smallest two-sided sign-test p possible with 4 seeds: 0.1250.
+Mean difference -0.0016 (range -0.0469 to +0.0665). **NO DEMONSTRATED DIFFERENCE between E and C: E higher in 2, lower in 3, tied in 0 of 5 seeds.** Smallest two-sided sign-test p possible with 5 seeds: 0.0625.
 
 ### 9.5 Does D's extra diversity, if any, convert into fitness?
 
@@ -203,6 +228,7 @@ Mean difference -0.0049 (range -0.0469 to +0.0665). **NO DEMONSTRATED DIFFERENCE
 | 1 | +11.1 | +18.7 | -7.0 | -8.4 | +0.1627 | +0.1653 |
 | 2 | +21.9 | +23.2 | -3.0 | -1.0 | -0.0413 | -0.0047 |
 | 3 | +17.8 | +15.7 | -1.8 | -1.4 | +0.0373 | -0.0292 |
+| 4 | +18.6 | +26.6 | +2.8 | +1.9 | -0.0355 | -0.0471 |
 
 Diversity differences are in edit-distance units (positive = D more diverse); fitness differences in TM-score at n_cut (positive = D higher). Population diversity is over the evaluated population (16-20 genomes).
 
@@ -214,6 +240,7 @@ Diversity differences are in edit-distance units (positive = D more diverse); fi
 | 1 | 0.2706 | 0.3142 | 0.3791 | 0.2552 | 0.4487 | 0.3256 |
 | 2 | 0.2493 | 0.3568 | 0.3117 | 0.2569 | 0.3696 | 0.3302 |
 | 3 | 0.2538 | 0.3144 | 0.3898 | 0.2514 | 0.3540 | 0.4029 |
+| 4 | 0.2589 | 0.3775 | 0.3038 | 0.2390 | 0.3838 | 0.3232 |
 
 Means over generations 1-19 of the last 4 members of each evaluated population (the injected ones) and of the other members.
 
@@ -233,8 +260,11 @@ Means over generations 1-19 of the last 4 members of each evaluated population (
 | 3 | C GA (LLM ops) | 389 | 406 | 149,333 | 10,820 | 3027 | 623 (20.6%) | 2120 (70.0%) | 271 (9.0%) | in LLM time | 13.0 (0.43%) |
 | 3 | D GA + LLM + circles | 582 | 615 | 245,049 | 17,949 | 4783 | 816 (17.1%) | 3481 (72.8%) | 472 (9.9%) | 210 | 14.5 (0.30%) |
 | 3 | E GA + LLM + random immigrants | 387 | 402 | 148,829 | 10,731 | 3250 | 851 (26.2%) | 1903 (58.5%) | 484 (14.9%) | 236 | 13.1 (0.40%) |
+| 4 | C GA (LLM ops) | 388 | 403 | 153,927 | 11,592 | 3318 | 839 (25.3%) | 2218 (66.9%) | 247 (7.4%) | in LLM time | 13.7 (0.41%) |
+| 4 | D GA + LLM + circles | 577 | 610 | 250,176 | 18,869 | 4922 | 936 (19.0%) | 3479 (70.7%) | 492 (10.0%) | 254 | 15.2 (0.31%) |
+| 4 | E GA + LLM + random immigrants | 389 | 402 | 153,564 | 11,867 | 3491 | 986 (28.2%) | 2069 (59.3%) | 422 (12.1%) | 179 | 14.1 (0.40%) |
 
-Swap = unloading Ollama, moving ESMFold between CPU and GPU, and (D, E) loading the Ollama model, timed separately from the LLM calls. **Arm C was run with different accounting:** its swap time excludes the Ollama reload, which fell inside the first LLM call of each breeding step and is therefore in its LLM time. Estimate of that reload for C (excess latency of the first request after each fold phase over the operator median, from its call log): seed 0: 175 s, seed 1: 139 s, seed 2: 140 s, seed 3: 164 s. D and E carry the measured load in swap time.
+Swap = unloading Ollama, moving ESMFold between CPU and GPU, and (D, E) loading the Ollama model, timed separately from the LLM calls. **Arm C was run with different accounting:** its swap time excludes the Ollama reload, which fell inside the first LLM call of each breeding step and is therefore in its LLM time. Estimate of that reload for C (excess latency of the first request after each fold phase over the operator median, from its call log): seed 0: 175 s, seed 1: 139 s, seed 2: 140 s, seed 3: 164 s, seed 4: 140 s. D and E carry the measured load in swap time.
 
 ### 9.8 Arm D, per operator: calls, fallbacks, requests per call
 
@@ -314,6 +344,11 @@ Blackboard at the end of each D run:
 | 3 | C GA (LLM ops) | 0.5434 | 52 | 57 | 0.5434 | 52 | 57 |
 | 3 | D GA + LLM + circles | 0.5807 | 53 | 57 | 0.5807 | 53 | 57 |
 | 3 | E GA + LLM + random immigrants | 0.6099 | 53 | 59 | 0.6146 | 52 | 59 |
+| 4 | A random search | 0.4009 | 55 | 62 | 0.4009 | 55 | 62 |
+| 4 | B GA (deterministic ops) | 0.4873 | 59 | 62 | 0.4873 | 59 | 62 |
+| 4 | C GA (LLM ops) | 0.4370 | 59 | 69 | 0.4370 | 59 | 69 |
+| 4 | D GA + LLM + circles | 0.4015 | 55 | 63 | 0.4034 | 55 | 64 |
+| 4 | E GA + LLM + random immigrants | 0.4486 | 60 | 69 | 0.4486 | 60 | 69 |
 
 ### 9.10 What the circle proposals did (from the D call logs; accepted responses only)
 
@@ -323,4 +358,5 @@ Blackboard at the end of each D run:
 | 1 | 62 | 181 | 51 | 33 (6%) | 16 | L (25%) | 31/72 |
 | 2 | 73 | 182 | 43 | 23 (8%) | 17 | L (31%) | 38/72 |
 | 3 | 74 | 166 | 40 | 14 (8%) | 14 | L (22%) | 31/72 |
+| 4 | 69 | 188 | 46 | 25 (9%) | 18 | L (29%) | 35/72 |
 
