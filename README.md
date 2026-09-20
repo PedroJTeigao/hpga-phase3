@@ -5,10 +5,9 @@ Self-contained sibling of `Phase 1/`, structured the same way (`hpga/`,
 untouched and reproducible while Phase 2 substitutes LLM calls for the
 deterministic crossover/mutation operators.
 
-**Not a git repository** — this project has no `.git` at the time of writing,
-so there is no commit to point at. Identity between the two folders is
-recorded below as SHA-256 file hashes instead, taken at the moment `Phase 2/`
-was split out of `Phase 1/` (2026-08-30).
+Identity between the two folders is recorded below as SHA-256 file hashes,
+taken at the moment `Phase 2/` was split out of `Phase 1/` (2026-08-30),
+before this folder was put under version control.
 
 ## What changed vs. Phase 1
 

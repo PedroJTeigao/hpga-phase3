@@ -493,11 +493,15 @@ it.
 ### 7.3 The scoreboard, updated honestly
 
 Across the six fitness comparisons this project has now run — the
-anchor's four (§5: final fitness, generation-reached, and total gain all
-ties; fitness-gain-per-1k-tokens a clear loss) plus one aggregate
-comparison each from §6 and this section (both wins) — **circles stands
-at two wins, one outright loss, three ties, at roughly 2x the token cost
-throughout, including on the two comparisons it won.** That is not a case
+anchor's four (§5: final fitness and total gain ties; generation-reached a
+marginal one-generation edge on one seed, counted as a tie;
+fitness-gain-per-1k-tokens a clear loss) plus one aggregate comparison each
+from §6 (mean edges up, 3.33 -> 3.67, but two of three seeds tie exactly;
+counted as a tie, consistent with §6.3's "deliberately not written as a
+win") and this section (a win on the mean, 3.67 -> 4.00, though seed 1 is
+an outright loss) — **circles stands at one win, one outright loss, four
+ties, at roughly 2x the token cost throughout, including on the one
+comparison it won.** That is not a case
 for the architecture on this problem. It is also not a case against
 LLM-based search generally, or even against circles specifically at a
 different scale or on a different representation (§8) — it is a case
@@ -521,7 +525,7 @@ trap-limited one chosen specifically to have real local optima
 population reaches). It held at 10 generations and at 15. It held when
 mutate/crossover were mostly falling back to the deterministic operator
 and it holds now that they're fixed. Ratios ranged 1.45x-5.95x across
-eight measurements total and never inverted. A candidate causal story for
+seven measurements (six in §2, one in §6.2) and never inverted. A candidate causal story for
 part of the gap — the identical-parent feedback loop — was tested
 directly and did not survive: strong (2.7x) precisely when an operator
 was still broken, a small residual (1.2x) once both were fixed (§3).
@@ -530,8 +534,8 @@ The settled negative result (§7.2, §7.3): given the room to matter that
 §6 was built to provide, and then given more than twice the runway that
 room initially offered (§7), circles' diversity advantage did not compound
 into a widening fitness lead. Both arms plateau; `on`'s plateau is
-marginally higher and marginally later, worth a combined two wins across
-six comparisons run so far, against one outright loss and three ties, at
+marginally higher and marginally later, worth one win across
+six comparisons run so far, against one outright loss and four ties, at
 roughly double the token cost throughout. This is no longer the open
 question §6 left it as — it has been tested at two landscape types and two
 horizons, and the answer came back the same each time.

@@ -627,8 +627,10 @@ at pop_size=32 (15 units/generation, comfortably above every P tested)
 produces the **same flat pattern** (1.00 -> 1.00 -> 1.04 -> 1.08) -- with
 abundant real concurrent work available at every P, parallel dispatch still
 does not scale. The earlier saturation at pop_size=8 was not primarily the
-structural ceiling; it is dominated by contention for the shared substrate,
-confirmed by direct measurement rather than inferred from the arithmetic.
+structural ceiling; it is consistent with contention for the shared
+substrate, though contention itself was never measured directly (the
+pop_size=32 run measures only that removing the structural ceiling did not
+restore scaling).
 
 Read together, both tables also make the honest null case: at n=3 repeats,
 neither config shows a P-effect clearly separable from noise. There is a
