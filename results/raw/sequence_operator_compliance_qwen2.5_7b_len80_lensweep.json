@@ -1,0 +1,106 @@
+{
+  "differences_from_lattice_probe": [
+    "segment prompt has a worked example and percentage boundaries (deliberate; sequence_model.py docstring)",
+    "mutation rate = 1/genome_len so k=1 exactly (one independent observation per call)",
+    "crossover rate 1.0 (every call is a live LLM call)",
+    "variable-length parents; mutate at one fixed genome length",
+    "uniformity computed on LLM-successful calls only",
+    "per-condition sample sizes (mutate/position=400, crossover/segment=100, full styles=30 confirmation runs)"
+  ],
+  "seed": 0,
+  "n_calls": {
+    "mutate/position": 100
+  },
+  "genome_len": 80,
+  "length_bounds": [
+    30,
+    80
+  ],
+  "model": "qwen2.5:7b",
+  "temperature": 0.7,
+  "gpu_before": {
+    "usage": "4661 MiB, 15360 MiB, 0 %",
+    "compute_apps": "3185339, 4658 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "conditions": [
+    {
+      "op": "mutate",
+      "style": "position",
+      "model": "qwen2.5:7b",
+      "n_calls": 100,
+      "genome_len": 80,
+      "stats": {
+        "n_llm_calls": 100,
+        "n_llm_requests": 101,
+        "n_retries": 1,
+        "n_failures": 0,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 117.86997726466507,
+        "total_tokens_in": 29854,
+        "total_tokens_out": 979,
+        "mean_latency_s": 1.167029477867971,
+        "max_latency_s": 2.123124336823821,
+        "min_latency_s": 0.9064357681199908
+      },
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.01,
+      "n_success": 100,
+      "zero_diff_outputs": 0,
+      "success_anomalies": 0,
+      "letter_counts": {
+        "A": 20,
+        "C": 10,
+        "D": 29,
+        "E": 1,
+        "F": 3,
+        "G": 1,
+        "H": 2,
+        "K": 11,
+        "L": 5,
+        "M": 2,
+        "N": 5,
+        "Q": 5,
+        "T": 3,
+        "V": 3
+      },
+      "position_counts": {
+        "0": 28,
+        "3": 1,
+        "4": 2,
+        "10": 67,
+        "20": 2
+      },
+      "letter_uniformity": {
+        "label": "NEW letter over 20",
+        "n": 100,
+        "n_cells": 20,
+        "expected_per_cell": 5.0,
+        "chi2": 214.8,
+        "df": 19,
+        "mc_p_value": 4.999750012499375e-05,
+        "asymptotic_chi2_valid": true,
+        "n_distinct": 14,
+        "top1_share": 0.29,
+        "top3_share": 0.6
+      },
+      "position_uniformity": {
+        "label": "position over 80",
+        "n": 100,
+        "n_cells": 80,
+        "expected_per_cell": 1.25,
+        "chi2": 4125.599999999999,
+        "df": 79,
+        "mc_p_value": 4.999750012499375e-05,
+        "asymptotic_chi2_valid": false,
+        "n_distinct": 5,
+        "top1_share": 0.67,
+        "top3_share": 0.97
+      }
+    }
+  ],
+  "gpu_after": {
+    "usage": "4663 MiB, 15360 MiB, 0 %",
+    "compute_apps": "3185339, 4660 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "complete": true
+}

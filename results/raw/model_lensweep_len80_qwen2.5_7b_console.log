@@ -1,0 +1,13 @@
+model=qwen2.5:7b host=http://localhost:11434 genome_len=80 seed=0 length_bounds=[30,80]
+plan: {'mutate/position': 100}  (total 100 calls, before retries)
+gpu before: 4661 MiB, 15360 MiB, 0 %  compute_apps: 3185339, 4658 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+=== mutate/position (n=100) ===
+  fallback_rate=0.000  requests_per_call=1.01  mean_latency_s=1.167  n_retries=1  n_success=100/100
+  zero_diff_outputs=0/100  anomalies=0
+  NEW letter over 20: n=100 chi2=214.8 (df=19) MC p=0.0000 distinct=14/20 top1=0.29 top3=0.60 exp/cell=5.0
+  position over 80: n=100 chi2=4125.6 (df=79) MC p=0.0000 distinct=5/80 top1=0.67 top3=0.97 exp/cell=1.2 (asymptotic chi2 INVALID)
+
+gpu after: 4663 MiB, 15360 MiB, 0 %  compute_apps: 3185339, 4660 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_operator_compliance_qwen2.5_7b_len80_lensweep.json
