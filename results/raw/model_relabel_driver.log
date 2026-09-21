@@ -1,0 +1,9 @@
+=== gemma4:12b: warm-up load 12.1s
+    normal: rc=0 wall=120s
+    offset100: rc=0 wall=170s
+    offset107: rc=0 wall=260s
+=== qwen2.5:7b: warm-up load 8.0s
+    normal: rc=0 wall=107s
+    offset100: rc=0 wall=124s
+    offset107: rc=0 wall=132s
+done

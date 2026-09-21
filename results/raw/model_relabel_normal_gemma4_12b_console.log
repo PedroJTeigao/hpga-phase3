@@ -1,0 +1,13 @@
+model=gemma4:12b host=http://localhost:11434 genome_len=63 seed=0 length_bounds=[30,80]
+plan: {'mutate/position': 100}  (total 100 calls, before retries)
+gpu before: 8171 MiB, 15360 MiB, 0 %  compute_apps: 3213512, 8168 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+=== mutate/position (n=100) ===
+  fallback_rate=0.000  requests_per_call=1.00  mean_latency_s=1.179  n_retries=0  n_success=100/100
+  zero_diff_outputs=0/100  anomalies=0
+  NEW letter over 20: n=100 chi2=172.8 (df=19) MC p=0.0000 distinct=15/20 top1=0.29 top3=0.51 exp/cell=5.0
+  position over 63: n=100 chi2=1083.1 (df=62) MC p=0.0000 distinct=17/63 top1=0.38 top3=0.62 exp/cell=1.6 (asymptotic chi2 INVALID)
+
+gpu after: 8175 MiB, 15360 MiB, 0 %  compute_apps: 3213512, 8172 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_operator_compliance_gemma4_12b_len63_relabel_normal.json
