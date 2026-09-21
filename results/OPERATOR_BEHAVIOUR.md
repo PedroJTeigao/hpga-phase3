@@ -4,9 +4,11 @@
 
 ## The claim
 
-In this project, a language model is used as the crossover and mutation operator of a genetic algorithm over protein sequences. The claim is that these operators **comply with the output format they are asked for, but the choices they make are not driven by the sequences they are given**. What they choose is set by the prompt's template (a number written in it), by the model's own habit, or by the position index, and not, as far as the tests below can reach, by what is in the sequence.
+In this project, a language model is used as the crossover and mutation operator of a genetic algorithm over protein sequences. The claim is that these operators **comply with the output format they are asked for, but the choices they make are not driven by the sequences they are given**. What they choose is set by numbers written in the prompt (the cut number in the crossover prompt, the position labels in the mutation prompt) and by the model's own habits, and not, as far as the tests below can reach, by what is in the sequence.
 
-Read this as "as far as tested". It is supported for the two operator prompts studied, one main model (`gemma4:12b`) plus three others on some tests, one seed and mostly 100 calls per condition. The limits section says what was not tested.
+The most direct evidence is the relabelling test in Evidence 3. With the genome held fixed, changing only the position numbers shown to the model moved its favourite position, and the position that had been the favourite (genome index 10) received no choices at all under one relabelling, from either of the two models tested. The favourite is a property of the number shown, not of a place in the genome.
+
+Read this as "as far as tested". It is supported for the two operator prompts studied, one main model (`gemma4:12b`) plus three others on some tests, one seed and mostly 100 calls per condition; the relabelling test covers two models and two label offsets. The limits section says what was not tested.
 
 ## Setting, in brief
 
@@ -15,7 +17,7 @@ Read this as "as far as tested". It is supported for the two operator prompts st
 - **Crossover operator, format `segment`.** The model receives two parents of different lengths and answers with a partition into segments, each labelled with a source parent, with boundaries as percentages of length (`SEGMENTS: 0-40:1, 40-100:2`). The prompt contains a worked example (`0-40:1, 40-100:2`) and a prose sentence ("a boundary at 40 falls 40% of the way along Parent 1 and 40% of the way along Parent 2"). Any integer cut from 1 to 99 is valid, so there are 99 possible values.
 - **Fallback.** If the model's reply is invalid after retries (default 2), the operator falls back to the ordinary deterministic operator. "Fallback rate" below is that fraction.
 - **Probe conventions.** Every call uses a fresh uniformly random sequence (mutate) or parent pair (crossover), temperature 0.7, a per-call sampling seed drawn from a seeded random stream (seed 0), `num_ctx` 4096. Models are served by a local Ollama server on one GPU. Models used: `gemma4:12b` (11.9B, the reference), `llama3.2:3b`, `qwen2.5:7b`, `mistral:7b`, all Q4_K_M; `llama3.2:1b` appears once.
-- **Sources.** `PHASE2_RESULTS.md` (earlier operator studies, on a 2D/3D lattice genome), `PHASE3_RESULTS.md` §9 (the first 20-letter probes and a segment-prompt ablation on `gemma4:12b`), `SEQUENCE_GA_REPORT.md` (the five-arm search comparison), `MODEL_HETEROGENEITY_STEP1..4.md` (the cross-model probes), and the raw logs and generated tables in `results/raw/`.
+- **Sources.** `PHASE2_RESULTS.md` (earlier operator studies, on a 2D/3D lattice genome), `PHASE3_RESULTS.md` §9 (the first 20-letter probes and a segment-prompt ablation on `gemma4:12b`), `SEQUENCE_GA_REPORT.md` (the five-arm search comparison), `MODEL_HETEROGENEITY_STEP1..5.md` (the cross-model probes), and the raw logs and generated tables in `results/raw/`.
 
 ## Evidence 1. Format compliance is governed by the output format, not by the wording of the instruction
 
@@ -76,13 +78,13 @@ The prose number carries the effect. Removing the example changes nothing; chang
 
 For "does not condition on the genome": with the prompt as shipped, `qwen2.5:7b` cut at exactly 40 across 100 different parent pairs, and with the prose number changed it cut at 25 across the same pairs. The cut followed the number written in the prompt, not the parents.
 
-## Evidence 3. The mutation position is an absolute index, not a relative one
+## Evidence 3. The mutation position follows the labels shown to the model, not a position in the genome
 
 **A strongly non-uniform choice.** For `mutate/position` at length 63, `gemma4:12b` chose only 20 of 63 positions in 400 calls, one of them (position 10) in 149 of 400 (37.3%), chi-square 4324 on 62 degrees of freedom, p < 5e-5 (`PHASE3_RESULTS.md` §9.2). The same kind of concentration appeared on the lattice genome: 80% of mutations on positions 0 and 1 of 18 and only 7 positions touched, in 40 calls (`PHASE2_RESULTS.md` §4.4). At 100 calls and length 63 the four models differ (`MODEL_HETEROGENEITY_STEP1.md`): `gemma4:12b` 17 distinct positions, mode 10 (38%); `llama3.2:3b` 21, mode 32 (23.7%, 59 successful calls); `qwen2.5:7b` 6, mode 10 (55%); `mistral:7b` 40, mode 48 (6.2%), the closest to uniform though still non-uniform (chi-square 101, p = 0.0016).
 
-**No number in the prompt to copy.** Unlike the crossover prompt, the mutate prompt has no worked example or illustrative index; its only position numbers are the range bounds 0 and 62. The modal positions (10, 32, 10, 48) are none of those.
+**No worked example to copy, but the numbers shown matter.** Unlike the crossover prompt, the mutate prompt has no worked example or illustrative index; its only position numbers are the range bounds 0 and 62 and the labels the model answers with. The modal positions (10, 32, 10, 48) are none of the bounds. The relabelling test below shows that the numbers the prompt presents nevertheless decide the favourite.
 
-**Does the favourite move with length?** `gemma4:12b` and `qwen2.5:7b`, 100 calls at each of three genome lengths (`MODEL_HETEROGENEITY_STEP4.md`):
+**The favourite does not scale with length.** `gemma4:12b` and `qwen2.5:7b`, 100 calls at each of three genome lengths (`MODEL_HETEROGENEITY_STEP4.md`):
 
 | model | length | modal position (share) | choices on a multiple of 10 (uniform would give) |
 |---|---|---|---|
@@ -93,7 +95,24 @@ For "does not condition on the genome": with the prompt as shipped, `qwen2.5:7b`
 | `qwen2.5:7b` | 63 | 10 (49%); position 0 second (25%) | 74% (11%) |
 | `qwen2.5:7b` | 80 | 10 (67%); position 0 second (28%) | 97% (10%) |
 
-A relative-position effect would have moved `gemma4:12b`'s mode to about 6.3 at length 40 and 12.7 at length 80; it stayed at 10. `qwen2.5:7b`'s favourites are positions 0 and 10 at every length; which of the two leads changes (0 at length 40, 10 at 63 and 80), but neither scales with length. Multiples of 10 take 39% to 97% of choices across the six cells, against 10% to 11% under uniform choice. Low indices dominate: at length 80 `gemma4:12b` never chose a position above 34 and `qwen2.5:7b` never above 20.
+A relative-position effect would have moved `gemma4:12b`'s mode to about 6.3 at length 40 and 12.7 at length 80; it stayed at 10. `qwen2.5:7b`'s favourites are positions 0 and 10 at every length; which of the two leads changes (0 at length 40, 10 at 63 and 80), but neither scales with length. Multiples of 10 take 39% to 97% of choices across the six cells, against 10% to 11% under uniform choice. Low indices dominate: at length 80 `gemma4:12b` never chose a position above 34 and `qwen2.5:7b` never above 20. In these runs the favourite is a fixed label; the relabelling test below shows it is the label, not a place in the genome.
+
+**Relabelling the positions with the genome unchanged (the most direct test).** `gemma4:12b` and `qwen2.5:7b`, 100 `mutate/position` calls each at length 63, temperature 0.7, seed 0, in three labellings of the same sequences (`MODEL_HETEROGENEITY_STEP5.md`): the shipped 0-62; 100-162; and 107-169, added so that the round label 110 (genome index 10 under the 100 offset) and the old genome index 10 (label 117 under the 107 offset) could be told apart. The prompt states the range, the format line and the bounds consistently ("positions labelled 100-162, the first letter is position 100", `POSITION: <100-162>`), and the reply is mapped back before it is applied; a reply outside the stated range is rejected and logged.
+
+| model | labels shown | modal label (share) | choices at the label of the old genome index 10 | fallback |
+|---|---|---|---|---|
+| `gemma4:12b` | 0-62 (shipped) | 10 (38%) | 38 of 100 (label 10) | 0/100 |
+| `gemma4:12b` | 100-162 | 101 (25%); 104 18%, 100 16%, 103 16% | 8 of 100 (label 110) | 0/100 |
+| `gemma4:12b` | 107-169 | 107 (20%) tied with 110 (20%) | **0 of 100 (label 117)** | 0/100 |
+| `qwen2.5:7b` | 0-62 (shipped) | 10 (55%) | 55 of 100 (label 10) | 0/100 |
+| `qwen2.5:7b` | 100-162 | 100 (96%); 101 4% | 0 of 100 (label 110) | 0/100 |
+| `qwen2.5:7b` | 107-169 | 108 (99%); 110 1% | **0 of 100 (label 117)** | 0/100 |
+
+**The key fact.** Under the 107-169 labelling the old genome index 10 (label 117) received 0 choices from both models, having taken 38% (`gemma4:12b`) and 55% (`qwen2.5:7b`) under the shipped labelling. The genome and the index were unchanged; only the number shown differed. The favourite is a property of the number shown to the model, not of the position in the genome. Both models also followed the stated labels: 0 of 100 first replies fell outside the stated range in every cell, so there were no unshifted answers such as a bare 10.
+
+**No simple rule covers both labellings.** A preference for the start of the range predicts position 0 under the shipped labelling, but 10 beats 0 there (`gemma4:12b` 38% against 1%, `qwen2.5:7b` 55% against 11%), so it fails under 0-62. A preference for round numbers predicts 110 or 120 under 107-169, but `qwen2.5:7b` goes to 108 (99%, with 110 at 1%), and under 100-162 the round label 110 gets 8% (`gemma4:12b`) and 0% (`qwen2.5:7b`), so it fails under the offsets. A fixed genome index fails because index 10 gets nothing under 107-169. What is observed is that under each offset labelling both models concentrate on a few labels near the start of the stated range (`qwen2.5:7b` puts 96% on 100 under 100-162 and 99% on 108 under 107-169; `gemma4:12b` puts 90% on labels 100-105 under 100-162 and 92% on labels 107-115 under 107-169), but the exact label is not given by a single rule, and the shipped labelling shows 10 rather than 0. One candidate, untested, is that 10 is a habit attached to a 0-based range and low labels play the analogous role in a 100-based range. For `gemma4:12b` under 107-169, label 110 ties for the mode; it is also genome index 3, a favourite under the shipped labelling (12%), so the result does not show a round-number effect, but a round-label contribution for that model cannot be excluded.
+
+What this adds to the claim: relabelling changes nothing about the sequence, yet it changes which position is chosen, and a position that was chosen 38% to 55% of the time under one labelling is chosen never under another. The choice is therefore not driven by the genome, at least for these two models and these two offsets. Together with Evidence 4 (the letter at the chosen position does not predict the choice) this is the mutation-side evidence for the claim.
 
 **Inside the search.** In the five-arm comparison's LLM arm, over 5 seeds, the most-used mutation index was 10 in three seeds (12%, 12%, 13% of changed positions), 3 in one (17%) and 40 in one (12%), on genomes of varying length between 30 and 80, with 26 to 41 distinct positions used per run (`SEQUENCE_GA_REPORT.md` §3 table 9, §4).
 
@@ -127,8 +146,9 @@ What the operator findings add, stated with care:
 ## Limits, stated plainly
 
 - **Single seed, mostly 100 calls per cell.** Except for the earlier `gemma4:12b` runs (400 `mutate/position` calls in `PHASE3_RESULTS.md` §9.2, and 40 to 50 calls per condition in the lattice studies of `PHASE2_RESULTS.md` §4), each condition is one run of about 100 calls at seed 0, temperature 0.7. A rerun of `qwen2.5:7b` at length 63 with the same seed and prompt gave a different position count for position 0 (11 vs 25 of 100) because a single retry shifts the shared random stream; the mode and the set of positions were the same. Differences of that size between runs should not be read as effects.
-- **Round-number and low-index explanations are not separated.** The mutation favourites are absolute indices, but 10 (round) and 0 (round, and the first position) sit alongside 3, 12 and 15 (`gemma4:12b`) and 1, 2, 3 (`qwen2.5:7b`), which are not round. The length sweep cannot tell a taste for round numbers from a bias toward early positions.
-- **The low-index picture is for two models.** The length sweep covered only `gemma4:12b` and `qwen2.5:7b`. At length 63, `llama3.2:3b`'s mode is position 32 and `mistral:7b`'s is 48 with a nearly flat distribution, so the "low indices dominate" description does not apply to them, and their behaviour across lengths was not measured.
+- **Round-number and low-index explanations are now partly resolved, not fully.** The relabelling shows that neither a fixed genome index nor round numbers alone explain the favourite, and that no simple rule covers both the shipped and the offset labellings ("start of the range" fails under 0-62, where 10 beats 0; "round numbers" fails under 107-169, where `qwen2.5:7b` goes to 108). It does not say what does hold in general. For `gemma4:12b` the tie of label 110 with the start label under 107-169 leaves a round-label contribution open.
+- **The low-index picture is for two models.** The length sweep and the relabelling covered only `gemma4:12b` and `qwen2.5:7b`. At length 63, `llama3.2:3b`'s mode is position 32 and `mistral:7b`'s is 48 with a nearly flat distribution, so the "low indices dominate" description does not apply to them, and their behaviour across lengths and under relabelling was not measured.
+- **Relabelling: two models, two offsets, one seed.** Only offsets 100 and 107 with contiguous labels were tried; no other offset, no non-contiguous or shuffled labelling. Three-digit labels also change the numerals in the answer, so a preference for the start of the range cannot be separated from a preference for shorter or lower-valued numerals. 100 calls per cell.
 - **Prose versus example was separated for `qwen2.5:7b` only** (and, by a different route, for `gemma4:12b`). For `llama3.2:3b` and `mistral:7b` the only ablation removed both at once.
 - **Only the values 40 and 25 were tried** for the prose number and only 40 and 70 for the example. Whether the cut follows other numbers, and whether it follows them at 100% or degrades, is unknown.
 - **The letter test covers one thing.** It tests the letter at the chosen position only. It does not test neighbouring letters, local motifs, or the replacement letter the model chooses, and it uses uniformly random sequences. Statistical power is modest at about 5 expected calls per letter (n = 100); the class-level tests and the n = 400 run are the most sensitive and show nothing.
