@@ -1,0 +1,10 @@
+=== llama3.2:3b: warm-up load 9.3s
+    current: rc=0 wall=92s
+    absent_prose25: rc=0 wall=159s
+=== qwen2.5:7b: warm-up load 5.4s
+    current: rc=0 wall=228s
+    absent_prose25: rc=0 wall=262s
+=== mistral:7b: warm-up load 4.6s
+    current: rc=0 wall=468s
+    absent_prose25: rc=0 wall=1642s
+done

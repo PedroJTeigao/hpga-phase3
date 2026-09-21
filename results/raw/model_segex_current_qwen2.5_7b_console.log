@@ -1,0 +1,15 @@
+model=qwen2.5:7b host=http://localhost:11434 genome_len=63 seed=0 length_bounds=[30,80]
+plan: {'crossover/segment': 100}  (total 100 calls, before retries)
+segment example: current
+gpu before: 4655 MiB, 15360 MiB, 0 %  compute_apps: 3089148, 4652 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+=== crossover/segment (n=100) ===
+  fallback_rate=0.000  requests_per_call=1.00  mean_latency_s=2.266  n_retries=0  n_success=100/100
+  echo_outputs=0/100 successful  child_length=[33, 77]
+  segment_structure={'n_valid_declarations': 100, 'segments_per_call': {2: 100}, 'cut_percent_counts': {40: 100}, 'n_distinct_cut_values': 1, 'modal_cut': 40, 'modal_cut_share': 1.0, 'share_cuts_45_to_55': 0.0, 'single_cut_share': 1.0}
+  segment_example=current  check={'n_logged_attempts': 100, 'with_0-40_example': 100, 'with_0-70_example': 0, 'with_any_e.g.': 100, 'with_prose_40': 100, 'with_prose_25': 0, 'with_parent_length_40_in_header': 3, 'with_40_outside_parent_headers': 100}
+  boundary_summary={'n_cuts': 100, 'n_valid_declarations': 100, 'cut_percent_counts': {40: 100}, 'n_distinct_values': 1, 'distinct_values': [40], 'modal_values': [40], 'modal_count': 100, 'modal_share_of_cuts': 1.0}
+
+gpu after: 4665 MiB, 15360 MiB, 99 %  compute_apps: 3089148, 4662 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_operator_compliance_qwen2.5_7b_len63_hetero_segex_current.json

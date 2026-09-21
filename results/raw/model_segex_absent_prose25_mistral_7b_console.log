@@ -1,0 +1,15 @@
+model=mistral:7b host=http://localhost:11434 genome_len=63 seed=0 length_bounds=[30,80]
+plan: {'crossover/segment': 100}  (total 100 calls, before retries)
+segment example: absent_prose25
+gpu before: 4857 MiB, 15360 MiB, 0 %  compute_apps: 3097898, 4854 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+=== crossover/segment (n=100) ===
+  fallback_rate=0.470  requests_per_call=2.24  mean_latency_s=7.321  n_retries=171  n_success=53/100
+  echo_outputs=0/53 successful  child_length=[35, 73]
+  segment_structure={'n_valid_declarations': 53, 'segments_per_call': {3: 1, 4: 51, 5: 1}, 'cut_percent_counts': {25: 53, 45: 4, 48: 1, 49: 2, 50: 40, 52: 1, 53: 1, 55: 3, 60: 1, 65: 1, 70: 2, 75: 28, 80: 22}, 'n_distinct_cut_values': 13, 'modal_cut': 25, 'modal_cut_share': 0.3333333333333333, 'share_cuts_45_to_55': 0.3270440251572327, 'single_cut_share': 0.0}
+  segment_example=absent_prose25  check={'n_logged_attempts': 224, 'with_0-40_example': 0, 'with_0-70_example': 0, 'with_any_e.g.': 0, 'with_prose_40': 0, 'with_prose_25': 224, 'with_parent_length_40_in_header': 8, 'with_40_outside_parent_headers': 0}
+  boundary_summary={'n_cuts': 159, 'n_valid_declarations': 53, 'cut_percent_counts': {25: 53, 45: 4, 48: 1, 49: 2, 50: 40, 52: 1, 53: 1, 55: 3, 60: 1, 65: 1, 70: 2, 75: 28, 80: 22}, 'n_distinct_values': 13, 'distinct_values': [25, 45, 48, 49, 50, 52, 53, 55, 60, 65, 70, 75, 80], 'modal_values': [25], 'modal_count': 53, 'modal_share_of_cuts': 0.3333333333333333}
+
+gpu after: 4859 MiB, 15360 MiB, 95 %  compute_apps: 3097898, 4856 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_operator_compliance_mistral_7b_len63_hetero_segex_absent_prose25.json
