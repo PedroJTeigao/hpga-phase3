@@ -1,0 +1,26 @@
+model=gemma4:12b temperature=0.7 num_ctx=4096 len=63 n=100 k=1 seed=0  llm log: /scratch/pcanaste/projeto/phase2_agent_memory/results/raw/llm_operator_calls_agent_memory_gate.jsonl
+warm-up 19.1s
+=== A: no record ===
+  A: 20/100  fallbacks so far 0
+  A: 40/100  fallbacks so far 0
+  A: 60/100  fallbacks so far 0
+  A: 80/100  fallbacks so far 0
+  A: 100/100  fallbacks so far 0
+=== B: record shown ===
+  B: 20/100  fallbacks so far 0
+  B: 40/100  fallbacks so far 1
+  B: 60/100  fallbacks so far 2
+  B: 80/100  fallbacks so far 2
+  B: 100/100  fallbacks so far 2
+wrote /scratch/pcanaste/projeto/phase2_agent_memory/results/raw/agent_memory_gate.json  (wall 409s)
+
+calls: {'A': 100, 'B': 100}  valid (one edit at one position): {'A': 100, 'B': 98}  pairs both valid: 98
+fallback: {'A': 0, 'B': 2}  requests/call: {'A': 1.0, 'B': 1.12}
+position A: distinct 14, mode 10 (40%), top5 [[10, 40], [12, 13], [3, 10], [4, 7], [14, 6]]
+position B: distinct 24, mode 10 (23%), top5 [[10, 23], [14, 12], [12, 9], [13, 8], [11, 7]]
+position TV 0.382  JS 0.196 bits  paired-perm p=0.0016 (null mean 0.236, p95 0.306)
+same position in pair: 14 (independent-marginals expectation 12.4)
+new letter A: distinct 15 mode G (28%); B: distinct 14 mode L (18%); TV 0.313 p=0.0143
+record use (pairs 98): copy_any A=60 B=55; copy_better A=30 B=8; copy_worse A=30 B=47; revert_latest A=3 B=6; same_as_latest_position A=21 B=24
+
+DECISION: CHANGED  (CHANGED if paired-permutation p(TV over positions) < 0.05; TV 0.378, p 0.0016, null 95th pct 0.306)

@@ -1,0 +1,12 @@
+
+calls: {'A': 100, 'B': 100}  valid (one edit at one position): {'A': 100, 'B': 98}  pairs both valid: 98
+fallback: {'A': 0, 'B': 2}  requests/call: {'A': 1.0, 'B': 1.12}
+position A: distinct 14, mode 10 (40%), top5 [[10, 40], [12, 13], [3, 10], [4, 7], [14, 6]]
+position B: distinct 24, mode 10 (23%), top5 [[10, 23], [14, 12], [12, 9], [13, 8], [11, 7]]
+position TV 0.382  JS 0.196 bits  paired-perm p=0.0016 (null mean 0.236, p95 0.306)
+same position in pair: 14 (independent-marginals expectation 12.4)
+new letter A: distinct 15 mode G (28%); B: distinct 14 mode L (18%); TV 0.313 p=0.0143
+record use (pairs 98): copy_any A=60 B=55; copy_better A=30 B=8; copy_worse A=30 B=47; revert_latest A=3 B=6; same_as_latest_position A=21 B=24
+  post-hoc exact sign test on discordant pairs (A only / B only, p): copy_any 27/22 p=0.5682; copy_better 28/6 p=0.0002; copy_worse 14/31 p=0.0161; revert_latest 3/6 p=0.5078; same_as_latest_position 14/17 p=0.7201
+
+DECISION: CHANGED  (CHANGED if paired-permutation p(TV over positions) < 0.05; TV 0.378, p 0.0016, null 95th pct 0.306)
