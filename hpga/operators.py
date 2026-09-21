@@ -815,18 +815,18 @@ def _check_genome_kind(population: Sequence[Genome], seq) -> None:
     """Fail loudly, before any RNG draw or side effect, where sequence mode
     would otherwise run lattice code. `seq` is _sequence_model_or_none().
 
-    Sequence mode: the population must be all str, and the features whose code
-    is still lattice-only (agents: 5-letter parsers, fixed-length
-    assumptions; HPGA_LOG_DIVERSITY: agents.mean_pairwise_hamming zip()-truncates
+    Sequence mode: the population must be all str, and the feature whose code
+    is still lattice-only (HPGA_LOG_DIVERSITY: agents.mean_pairwise_hamming zip()-truncates
     unequal lengths) must be off, in any operator mode -- a flag that is set but
     silently ignored would be as misleading as one that runs the lattice
-    parser. Circles are ported (hpga/circles_sequence.py) but need the LLM operator mode. Lattice mode: a str population with no sequence model active
+    parser. Circles (hpga/circles_sequence.py) and agents (hpga/agents_sequence.py)
+    are ported but need the LLM operator mode. Lattice mode: a str population with no sequence model active
     (list(str) would split it into characters) is refused; list genomes, the
     only thing lattice mode ever held, never reach either check."""
     if seq is not None:
         if not all(isinstance(g, str) for g in population):
             raise RuntimeError(f"active GenomeModel is {seq.name!r} but the population holds non-str genomes")
-        for flag, what in (("HPGA_AGENTS_ENABLED", "agents"), ("HPGA_LOG_DIVERSITY", "diversity logging")):
+        for flag, what in (("HPGA_LOG_DIVERSITY", "diversity logging"),):
             if os.environ.get(flag, "0") == "1":
                 raise RuntimeError(
                     f"{flag}=1 is not supported with the sequence GenomeModel: {what} is still lattice-only "
@@ -837,6 +837,12 @@ def _check_genome_kind(population: Sequence[Genome], seq) -> None:
             raise RuntimeError(
                 "HPGA_CIRCLES_ENABLED=1 with the sequence GenomeModel needs HPGA_OPERATOR_MODE=llm: circles only "
                 "run alongside the LLM operators (hpga/circles_sequence.py), and a flag that is set but silently "
+                "ignored would be misleading."
+            )
+        if os.environ.get("HPGA_AGENTS_ENABLED", "0") == "1" and _operator_mode() != "llm":
+            raise RuntimeError(
+                "HPGA_AGENTS_ENABLED=1 with the sequence GenomeModel needs HPGA_OPERATOR_MODE=llm: agents only "
+                "run alongside the LLM operators (hpga/agents_sequence.py), and a flag that is set but silently "
                 "ignored would be misleading."
             )
     elif population and isinstance(population[0], str):
@@ -912,10 +918,10 @@ def next_generation(
 
     Sequence mode (an active GenomeModel whose genome_type is str): selection,
     elitism and the deterministic crossover/mutate go through the model
-    (str genomes, variable length). Agents and HPGA_LOG_DIVERSITY raise if
-    enabled; circles run (HPGA_CIRCLES_ENABLED=1 with HPGA_OPERATOR_MODE=llm,
-    via hpga/circles_sequence.py) and raise in deterministic mode -- see
-    _check_genome_kind. With no active model or a lattice one, none of this
+    (str genomes, variable length). HPGA_LOG_DIVERSITY raises if enabled;
+    circles and agents run (HPGA_CIRCLES_ENABLED / HPGA_AGENTS_ENABLED=1 with
+    HPGA_OPERATOR_MODE=llm, via hpga/circles_sequence.py / hpga/agents_sequence.py)
+    and raise in deterministic mode -- see _check_genome_kind. With no active model or a lattice one, none of this
     executes and behaviour is unchanged.
 
     Circles (Phase 3, optional, off by default -- see hpga/circles.py and

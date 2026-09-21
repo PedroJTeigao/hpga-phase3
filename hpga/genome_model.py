@@ -58,16 +58,19 @@ random_population delegates to the active sequence model's random_genome;
 next_generation's deterministic branch calls model.deterministic_crossover /
 deterministic_mutate. With no active model or a lattice one every one of those
 runs the original lattice code unchanged. With a sequence model active,
-next_generation raises (in any operator mode) if HPGA_AGENTS_ENABLED,
-HPGA_CIRCLES_ENABLED or HPGA_LOG_DIVERSITY is 1, if the population holds
-non-str genomes, or -- with no sequence model active -- if it holds str genomes.
+next_generation raises (in any operator mode) if HPGA_LOG_DIVERSITY is 1, and
+in deterministic operator mode if HPGA_AGENTS_ENABLED or HPGA_CIRCLES_ENABLED is
+1; it also raises if the population holds non-str genomes, or -- with no
+sequence model active -- if it holds str genomes.
 
 Still not dispatched (known scope of the follow-up tasks):
 
-  - agents.py: its LLM calls hardcode the 5-letter alphabet
-    (ops._CHAR_TO_MOVE, ops._genome_to_str, ops._extract_labelled, and the
-    S/L/R/U/D parser agents._extract_refine_position), and its hook assumes
-    fixed length. Sequence mode refuses to enable it rather than run that code.
+  - agents.py's explore/refine roles and peer messages: the lattice code
+    hardcodes the 5-letter alphabet (ops._CHAR_TO_MOVE, ops._genome_to_str,
+    ops._extract_labelled, agents._extract_refine_position). agents.run_agents
+    is dispatched now: with a sequence model active it hands off to
+    hpga/agents_sequence.py (position edits to the agent's own slot, optional
+    private record; no roles, no peer messages), LLM operator mode only.
     (circles.py IS dispatched now: circles.run_circles hands off to
     hpga/circles_sequence.py when a sequence model is active; it requires
     HPGA_OPERATOR_MODE=llm.)

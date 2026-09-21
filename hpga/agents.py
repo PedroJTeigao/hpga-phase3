@@ -106,6 +106,9 @@ def reset_agent_state() -> None:
     stored), so this is the only reset needed."""
     global _generation
     _generation = 0
+    from hpga import agents_sequence
+
+    agents_sequence.reset_state()  # the sequence agents' private records; a no-op for the lattice path
 
 
 def tick_generation() -> int:
@@ -493,7 +496,19 @@ def run_agents(
     (operators.next_generation()) after its ordinary fill-to-pop_size loop
     -- additive, not a slot carve-out (see module docstring). Only called
     when HPGA_OPERATOR_MODE=llm and HPGA_AGENTS_ENABLED=1 (checked by the
-    caller, not here)."""
+    caller, not here).
+
+    With a sequence GenomeModel active (str genomes) this hands off to hpga/agents_sequence.py, whose agents
+    propose position edits to their own slot and may keep a private record of past proposals; nothing below
+    runs then, so the lattice path is unchanged."""
+    from hpga import operators as _seq_ops
+
+    _seq_model = _seq_ops._sequence_model_or_none()
+    if _seq_model is not None:
+        from hpga import agents_sequence
+
+        return agents_sequence.run_agents(_seq_model, population, fitnesses, pop_size, generation, rng)
+
     n = _n_agents()
     roles = _resolve_roles(n)
     agent_folds = {}
