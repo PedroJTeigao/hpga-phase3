@@ -1,0 +1,6 @@
+=== qwen2.5:7b: warm-up load 6.0s
+    current: rc=0 wall=99s
+    absent: rc=0 wall=96s
+    prose25_example40: rc=0 wall=174s
+    absent_prose25: rc=0 wall=258s
+done
