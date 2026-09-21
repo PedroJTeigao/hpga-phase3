@@ -1,0 +1,18 @@
+model=qwen2.5:7b host=http://localhost:11434 genome_len=63 seed=0 length_bounds=[30,80]
+plan: {'mutate/position': 100, 'crossover/segment': 100}  (total 200 calls, before retries)
+gpu before: 4655 MiB, 15360 MiB, 0 %  compute_apps: 2688798, 4652 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+=== mutate/position (n=100) ===
+  fallback_rate=0.000  requests_per_call=1.00  mean_latency_s=0.983  n_retries=0  n_success=100/100
+  zero_diff_outputs=0/100  anomalies=0
+  NEW letter over 20: n=100 chi2=213.6 (df=19) MC p=0.0000 distinct=14/20 top1=0.25 top3=0.60 exp/cell=5.0
+  position over 63: n=100 chi2=2102.5 (df=62) MC p=0.0000 distinct=6/63 top1=0.55 top3=0.78 exp/cell=1.6 (asymptotic chi2 INVALID)
+
+=== crossover/segment (n=100) ===
+  fallback_rate=0.000  requests_per_call=1.00  mean_latency_s=2.730  n_retries=0  n_success=100/100
+  echo_outputs=0/100 successful  child_length=[31, 79]
+  segment_structure={'n_valid_declarations': 100, 'segments_per_call': {2: 100}, 'cut_percent_counts': {40: 100}, 'n_distinct_cut_values': 1, 'modal_cut': 40, 'modal_cut_share': 1.0, 'share_cuts_45_to_55': 0.0, 'single_cut_share': 1.0}
+
+gpu after: 4665 MiB, 15360 MiB, 100 %  compute_apps: 2688798, 4662 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_operator_compliance_qwen2.5_7b_len63_hetero.json

@@ -1,0 +1,18 @@
+model=llama3.2:3b host=http://localhost:11434 genome_len=63 seed=0 length_bounds=[30,80]
+plan: {'mutate/position': 100, 'crossover/segment': 100}  (total 200 calls, before retries)
+gpu before: 2563 MiB, 15360 MiB, 0 %  compute_apps: 2676988, 2560 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+=== mutate/position (n=100) ===
+  fallback_rate=0.410  requests_per_call=2.66  mean_latency_s=0.835  n_retries=207  n_success=59/100
+  zero_diff_outputs=13/100  anomalies=0
+  NEW letter over 20: n=59 chi2=61.3 (df=19) MC p=0.0000 distinct=15/20 top1=0.19 top3=0.42 exp/cell=3.0 (asymptotic chi2 INVALID)
+  position over 63: n=59 chi2=294.4 (df=62) MC p=0.0000 distinct=21/63 top1=0.24 top3=0.41 exp/cell=0.9 (asymptotic chi2 INVALID)
+
+=== crossover/segment (n=100) ===
+  fallback_rate=0.020  requests_per_call=1.63  mean_latency_s=1.499  n_retries=65  n_success=98/100
+  echo_outputs=0/98 successful  child_length=[31, 78]
+  segment_structure={'n_valid_declarations': 98, 'segments_per_call': {2: 7, 3: 73, 4: 16, 5: 2}, 'cut_percent_counts': {20: 3, 40: 98, 50: 3, 60: 18, 70: 1, 80: 85, 90: 1}, 'n_distinct_cut_values': 7, 'modal_cut': 40, 'modal_cut_share': 0.4688995215311005, 'share_cuts_45_to_55': 0.014354066985645933, 'single_cut_share': 0.07142857142857142}
+
+gpu after: 2571 MiB, 15360 MiB, 0 %  compute_apps: 2676988, 2568 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server
+
+wrote /scratch/pcanaste/projeto/phase2/results/raw/sequence_operator_compliance_llama3.2_3b_len63_hetero.json

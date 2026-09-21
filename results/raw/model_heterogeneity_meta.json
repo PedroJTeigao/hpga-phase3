@@ -1,0 +1,369 @@
+{
+  "models": {
+    "gemma4:12b": {
+      "model": "gemma4:12b",
+      "info": {
+        "family": "gemma4",
+        "parameter_size": "11.9B",
+        "quantization": "Q4_K_M",
+        "disk_bytes": 7556508396,
+        "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c"
+      },
+      "unloaded_before": [
+        "llama3.2:3b"
+      ],
+      "gpu_before": {
+        "used_total_util": "0, 15360, 2",
+        "compute_apps": "(none)"
+      },
+      "warmup": {
+        "wall_s": 12.653157595545053,
+        "load_duration_s": 10.731315088,
+        "total_duration_s": 12.649232045,
+        "prompt_eval_count": 23,
+        "eval_count": 4
+      },
+      "ps": {
+        "size_bytes": 8063046122,
+        "size_vram_bytes": 8063046122,
+        "context_length": 4096,
+        "fully_on_gpu": true
+      },
+      "gpu_after_load": {
+        "used_total_util": "8171, 15360, 0",
+        "compute_apps": "2672962, 8168 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "gpu_used_mib_delta": 8171,
+      "probe": {
+        "returncode": 0,
+        "wall_s": 495.9697105884552
+      }
+    },
+    "llama3.2:3b": {
+      "model": "llama3.2:3b",
+      "info": {
+        "family": "llama",
+        "parameter_size": "3.2B",
+        "quantization": "Q4_K_M",
+        "disk_bytes": 2019393189,
+        "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72"
+      },
+      "unloaded_before": [
+        "gemma4:12b"
+      ],
+      "gpu_before": {
+        "used_total_util": "0, 15360, 2",
+        "compute_apps": "(none)"
+      },
+      "warmup": {
+        "wall_s": 12.756144234910607,
+        "load_duration_s": 9.901720941,
+        "total_duration_s": 12.751206882,
+        "prompt_eval_count": 32,
+        "eval_count": 2
+      },
+      "ps": {
+        "size_bytes": 2554708622,
+        "size_vram_bytes": 2554708622,
+        "context_length": 4096,
+        "fully_on_gpu": true
+      },
+      "gpu_after_load": {
+        "used_total_util": "2563, 15360, 0",
+        "compute_apps": "2676988, 2560 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "gpu_used_mib_delta": 2563,
+      "probe": {
+        "returncode": 0,
+        "wall_s": 469.3440091609955
+      }
+    },
+    "qwen2.5:7b": {
+      "model": "qwen2.5:7b",
+      "info": {
+        "family": "qwen2",
+        "parameter_size": "7.6B",
+        "quantization": "Q4_K_M",
+        "disk_bytes": 4683087332,
+        "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+      },
+      "unloaded_before": [
+        "llama3.2:3b"
+      ],
+      "gpu_before": {
+        "used_total_util": "0, 15360, 2",
+        "compute_apps": "(none)"
+      },
+      "warmup": {
+        "wall_s": 17.455188763327897,
+        "load_duration_s": 14.704069322,
+        "total_duration_s": 17.451401001,
+        "prompt_eval_count": 36,
+        "eval_count": 2
+      },
+      "ps": {
+        "size_bytes": 4748056984,
+        "size_vram_bytes": 4748056984,
+        "context_length": 4096,
+        "fully_on_gpu": true
+      },
+      "gpu_after_load": {
+        "used_total_util": "4655, 15360, 0",
+        "compute_apps": "2688798, 4652 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "gpu_used_mib_delta": 4655,
+      "probe": {
+        "returncode": 0,
+        "wall_s": 373.2537519931793
+      }
+    },
+    "mistral:7b": {
+      "model": "mistral:7b",
+      "info": {
+        "family": "llama",
+        "parameter_size": "7.2B",
+        "quantization": "Q4_K_M",
+        "disk_bytes": 4372824384,
+        "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf"
+      },
+      "unloaded_before": [
+        "qwen2.5:7b"
+      ],
+      "gpu_before": {
+        "used_total_util": "0, 15360, 1",
+        "compute_apps": "(none)"
+      },
+      "warmup": {
+        "wall_s": 15.294085527770221,
+        "load_duration_s": 13.307610158,
+        "total_duration_s": 15.290095352,
+        "prompt_eval_count": 12,
+        "eval_count": 2
+      },
+      "ps": {
+        "size_bytes": 4950883040,
+        "size_vram_bytes": 4950883040,
+        "context_length": 4096,
+        "fully_on_gpu": true
+      },
+      "gpu_after_load": {
+        "used_total_util": "4847, 15360, 0",
+        "compute_apps": "2773867, 4844 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "gpu_used_mib_delta": 4847,
+      "probe": {
+        "returncode": 0,
+        "wall_s": 807.6799552440643
+      }
+    }
+  },
+  "pairs": [
+    {
+      "pair": [
+        "gemma4:12b",
+        "llama3.2:3b"
+      ],
+      "resident_after_both": [
+        "gemma4:12b",
+        "llama3.2:3b"
+      ],
+      "both_resident": true,
+      "both_fully_on_gpu": true,
+      "sizes": {
+        "llama3.2:3b": {
+          "size_bytes": 2554708622,
+          "size_vram_bytes": 2554708622
+        },
+        "gemma4:12b": {
+          "size_bytes": 8063046122,
+          "size_vram_bytes": 8063046122
+        }
+      },
+      "gpu_used_mib_delta": 10731,
+      "gpu": {
+        "used_total_util": "10731, 15360, 6",
+        "compute_apps": "2780277, 8168 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server\n2780341, 2560 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "retouch_first_load_s": 0.002591896,
+      "resident_after_retouch": [
+        "gemma4:12b",
+        "llama3.2:3b"
+      ],
+      "first_model_evicted": false
+    },
+    {
+      "pair": [
+        "gemma4:12b",
+        "qwen2.5:7b"
+      ],
+      "resident_after_both": [
+        "gemma4:12b",
+        "qwen2.5:7b"
+      ],
+      "both_resident": true,
+      "both_fully_on_gpu": true,
+      "sizes": {
+        "qwen2.5:7b": {
+          "size_bytes": 4748056984,
+          "size_vram_bytes": 4748056984
+        },
+        "gemma4:12b": {
+          "size_bytes": 8063046122,
+          "size_vram_bytes": 8063046122
+        }
+      },
+      "gpu_used_mib_delta": 12823,
+      "gpu": {
+        "used_total_util": "12823, 15360, 40",
+        "compute_apps": "2780732, 8168 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server\n2781173, 4652 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "retouch_first_load_s": 0.002515811,
+      "resident_after_retouch": [
+        "gemma4:12b",
+        "qwen2.5:7b"
+      ],
+      "first_model_evicted": false
+    },
+    {
+      "pair": [
+        "gemma4:12b",
+        "mistral:7b"
+      ],
+      "resident_after_both": [
+        "gemma4:12b",
+        "mistral:7b"
+      ],
+      "both_resident": true,
+      "both_fully_on_gpu": true,
+      "sizes": {
+        "mistral:7b": {
+          "size_bytes": 4950883040,
+          "size_vram_bytes": 4950883040
+        },
+        "gemma4:12b": {
+          "size_bytes": 8063046122,
+          "size_vram_bytes": 8063046122
+        }
+      },
+      "gpu_used_mib_delta": 13015,
+      "gpu": {
+        "used_total_util": "13015, 15360, 27",
+        "compute_apps": "2781356, 8168 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server\n2781405, 4844 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "retouch_first_load_s": 0.002499462,
+      "resident_after_retouch": [
+        "gemma4:12b",
+        "mistral:7b"
+      ],
+      "first_model_evicted": false
+    },
+    {
+      "pair": [
+        "llama3.2:3b",
+        "qwen2.5:7b"
+      ],
+      "resident_after_both": [
+        "llama3.2:3b",
+        "qwen2.5:7b"
+      ],
+      "both_resident": true,
+      "both_fully_on_gpu": true,
+      "sizes": {
+        "qwen2.5:7b": {
+          "size_bytes": 4748056984,
+          "size_vram_bytes": 4748056984
+        },
+        "llama3.2:3b": {
+          "size_bytes": 2554708622,
+          "size_vram_bytes": 2554708622
+        }
+      },
+      "gpu_used_mib_delta": 7215,
+      "gpu": {
+        "used_total_util": "7215, 15360, 31",
+        "compute_apps": "2781548, 2560 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server\n2781779, 4652 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "retouch_first_load_s": 0.002436883,
+      "resident_after_retouch": [
+        "llama3.2:3b",
+        "qwen2.5:7b"
+      ],
+      "first_model_evicted": false
+    },
+    {
+      "pair": [
+        "llama3.2:3b",
+        "mistral:7b"
+      ],
+      "resident_after_both": [
+        "llama3.2:3b",
+        "mistral:7b"
+      ],
+      "both_resident": true,
+      "both_fully_on_gpu": true,
+      "sizes": {
+        "mistral:7b": {
+          "size_bytes": 4950883040,
+          "size_vram_bytes": 4950883040
+        },
+        "llama3.2:3b": {
+          "size_bytes": 2554708622,
+          "size_vram_bytes": 2554708622
+        }
+      },
+      "gpu_used_mib_delta": 7407,
+      "gpu": {
+        "used_total_util": "7407, 15360, 19",
+        "compute_apps": "2782610, 2560 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server\n2782664, 4844 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "retouch_first_load_s": 0.002537592,
+      "resident_after_retouch": [
+        "llama3.2:3b",
+        "mistral:7b"
+      ],
+      "first_model_evicted": false
+    },
+    {
+      "pair": [
+        "qwen2.5:7b",
+        "mistral:7b"
+      ],
+      "resident_after_both": [
+        "mistral:7b",
+        "qwen2.5:7b"
+      ],
+      "both_resident": true,
+      "both_fully_on_gpu": true,
+      "sizes": {
+        "mistral:7b": {
+          "size_bytes": 4950883040,
+          "size_vram_bytes": 4950883040
+        },
+        "qwen2.5:7b": {
+          "size_bytes": 4748056984,
+          "size_vram_bytes": 4748056984
+        }
+      },
+      "gpu_used_mib_delta": 9499,
+      "gpu": {
+        "used_total_util": "9499, 15360, 42",
+        "compute_apps": "2782796, 4652 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server\n2782851, 4844 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+      },
+      "retouch_first_load_s": 0.002457394,
+      "resident_after_retouch": [
+        "mistral:7b",
+        "qwen2.5:7b"
+      ],
+      "first_model_evicted": false
+    }
+  ],
+  "config": {
+    "num_ctx": 4096,
+    "n_calls_per_operator": 100,
+    "seed": 0,
+    "genome_len": 63,
+    "temperature": 0.7,
+    "host": "http://localhost:11434",
+    "server_env_note": "OLLAMA_CONTEXT_LENGTH=8192, OLLAMA_KEEP_ALIVE=-1 on the server; requests set num_ctx=4096, keep_alive=30m"
+  }
+}

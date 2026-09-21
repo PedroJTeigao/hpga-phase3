@@ -1,0 +1,25 @@
+=== gemma4:12b: load/memory measurement
+    load_duration=10.7s  ps={'size_bytes': 8063046122, 'size_vram_bytes': 8063046122, 'context_length': 4096, 'fully_on_gpu': True}  gpu_delta=8171 MiB
+    probe rc=0 wall=496s
+=== llama3.2:3b: load/memory measurement
+    load_duration=9.9s  ps={'size_bytes': 2554708622, 'size_vram_bytes': 2554708622, 'context_length': 4096, 'fully_on_gpu': True}  gpu_delta=2563 MiB
+    probe rc=0 wall=469s
+=== qwen2.5:7b: load/memory measurement
+    load_duration=14.7s  ps={'size_bytes': 4748056984, 'size_vram_bytes': 4748056984, 'context_length': 4096, 'fully_on_gpu': True}  gpu_delta=4655 MiB
+    probe rc=0 wall=373s
+=== mistral:7b: load/memory measurement
+    load_duration=13.3s  ps={'size_bytes': 4950883040, 'size_vram_bytes': 4950883040, 'context_length': 4096, 'fully_on_gpu': True}  gpu_delta=4847 MiB
+    probe rc=0 wall=808s
+=== pair gemma4:12b + llama3.2:3b
+    both_resident=True fully_on_gpu=True delta=10731 MiB retouch_load=0.0s
+=== pair gemma4:12b + qwen2.5:7b
+    both_resident=True fully_on_gpu=True delta=12823 MiB retouch_load=0.0s
+=== pair gemma4:12b + mistral:7b
+    both_resident=True fully_on_gpu=True delta=13015 MiB retouch_load=0.0s
+=== pair llama3.2:3b + qwen2.5:7b
+    both_resident=True fully_on_gpu=True delta=7215 MiB retouch_load=0.0s
+=== pair llama3.2:3b + mistral:7b
+    both_resident=True fully_on_gpu=True delta=7407 MiB retouch_load=0.0s
+=== pair qwen2.5:7b + mistral:7b
+    both_resident=True fully_on_gpu=True delta=9499 MiB retouch_load=0.0s
+done
