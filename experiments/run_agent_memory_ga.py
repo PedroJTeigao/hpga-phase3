@@ -7,17 +7,34 @@ gemma4:12b at temperature 0.7, length bounds [30, 80], same seeds, same generati
   M1  GA + LLM operators + 2 agents, no memory   (HPGA_AGENTS_ENABLED=1, HPGA_AGENTS_MEMORY=0: the record is kept and
                                                   logged, never shown)
   M2  GA + LLM operators + 2 agents, with memory (HPGA_AGENTS_MEMORY=1: each agent's own last 8 entries + tally in its prompt)
+  M2b GA + LLM operators + 2 agents, list memory (HPGA_AGENTS_MEMORY_FORMAT=list: the same real record, rendered as the
+                                                  two explicit lists probe_agent_memory_format.py found the model obeys)
   M3  GA + LLM operators + 2 random immigrants   -- the control, drawn as arm E draws them (model.random_genome(rng, None))
+  O   GA + LLM operators + 2 GREEDY ORACLE SLOTS -- an upper bound, no LLM: at each breeding step each oracle slot tries
+      --oracle-k (default 8) single-position mutations of its own tail-slot genome, scores EACH ONE with the real fitness
+      function through the SAME cache-aware Evaluator.score the rest of the population uses (so every candidate is charged
+      to the same distinct-fold budget -- not free information), and keeps whichever of {its current genome, the k
+      candidates} scores highest (never accepts a worse move -- true greedy hill-climbing; see oracle_candidates()).
+      Everything else (the ordinary fill-to-pop_size via LLM crossover=segment / mutate=position, tournament, elitism) is
+      identical to the other arms; arm O runs with HPGA_AGENTS_ENABLED=0, no hpga/agents_sequence.py involvement at all --
+      the oracle is implemented entirely in this driver, additive to the fill exactly as M3's immigrants are.
 
-M1 and M2 differ in exactly one thing, whether the record block is in the agent's prompt; the agents' proposals are the
-mutate/position call on their own tail slot (hpga/agents_sequence.py). All three ADD 2 genomes to the population after the
-ordinary fill (so the evaluated population is 18 from generation 1), the additive contract agents already have; the budget is
-read at the common distinct-fold count, exactly as for D and E (see summarize_agent_memory.py).
+      The reading this arm is FOR: four operator interventions (M1/M2/M2b/circles, in results/AGENT_MEMORY_STAGE3_TABLES.md,
+      *_STAGE3B_TABLES.md and results/SEQUENCE_GA_REPORT.md sec. 9) changed operator behaviour as predicted and never moved
+      fitness, and random injection (M3/E) matched all of them. If an operator WITH DIRECT ACCESS to the fitness function
+      still cannot beat random injection at equal budget, the limit is the landscape and the budget, not operator design.
+      If it does beat them, the opposite: the operator matters and the LLM was simply choosing badly.
+
+M1, M2 and M2b differ in exactly one thing, whether/how the record block is in the agent's prompt; their proposals are the
+mutate/position call on their own tail slot (hpga/agents_sequence.py). All five arms ADD 2 genomes to the population after
+the ordinary fill (so the evaluated population is 18 from generation 1), the additive contract agents already have; the
+budget is read at the common distinct-fold count, exactly as for D and E (see summarize_agent_memory.py).
 
   (launch with PYTHONHASHSEED=0 for parity with the earlier drivers)
-  run --seeds 0 1 2     for each seed: M1, M2, M3; one result file per (arm, seed), written atomically; each run retried
-                        once, then skipped and logged; finished runs skipped on restart. A partial file with every
-                        generation completed so far is rewritten after each generation (progress and post-mortem, not resume).
+  run --seeds 0 1 2     for each seed: every arm in --arms (default M1 M2 M2b M3 O); one result file per (arm, seed),
+                        written atomically; each run retried once, then skipped and logged; finished runs skipped on
+                        restart. A partial file with every generation completed so far is rewritten after each generation
+                        (progress and post-mortem, not resume).
   run --stub            no GPU, no Ollama: stubbed model and fitness, small population -- checks the pipeline end to end.
 """
 
@@ -45,13 +62,41 @@ from hpga import sequence_model as sm  # noqa: E402
 from hpga.config import HPGAConfig  # noqa: E402
 
 log = logging.getLogger("agmem")
-N_AGENTS = 2
-AGENT_ARMS = ("M1", "M2", "M2b")  # arms with agents.py's record (memory off / prose / list); M3 is the non-agent control
-ARMS = AGENT_ARMS + ("M3",)
+N_AGENTS = 2  # tail slots injected per breeding step, every arm (agents, random immigrants, or oracle slots)
+AGENT_ARMS = ("M1", "M2", "M2b")  # arms with agents.py's record (memory off / prose / list); M3, O are not agent arms
+CONTROL_ARM = "M3"
+ORACLE_ARM = "O"
+ARMS = AGENT_ARMS + (CONTROL_ARM, ORACLE_ARM)
 DESCRIPTION = {"M1": "GA + LLM operators + 2 agents, no memory", "M2": "GA + LLM operators + 2 agents, private record shown (prose)",
                "M2b": "GA + LLM operators + 2 agents, private record shown (explicit avoid/prefer lists)",
-               "M3": "GA + LLM operators + 2 random immigrants (control)"}
+               "M3": "GA + LLM operators + 2 random immigrants (control)",
+               "O": "GA + LLM operators + 2 greedy-oracle slots (real fitness function, no LLM -- upper bound)"}
 MEMORY_FORMAT = {"M2": "prose", "M2b": "list"}  # HPGA_AGENTS_MEMORY_FORMAT for the two memory-shown arms
+
+
+def oracle_candidates(base: str, base_fit: float, k: int, rng: random.Random, score) -> tuple[str, dict]:
+    """Greedy oracle, no LLM: try k DISTINCT-position single mutations of `base` (new letter uniform over the other
+    19), evaluate each with `score` -- the SAME cache-aware Evaluator.score the rest of the population uses, so
+    every candidate is charged to the same distinct-fold budget as everything else, not free information -- and keep
+    whichever of {base, the k candidates} scores highest. Never accepts a worse move: true greedy hill-climbing, not
+    merely 'best of k blind draws' -- this is what makes it an upper bound on a width-k single-position local search,
+    not just a noisier operator. `base_fit` is passed in (already known from this generation's ordinary population
+    evaluation -- re-scoring it would be a cache hit, not a new distinct fold) rather than re-derived, so that
+    free-ness is explicit rather than relying on cache behaviour."""
+    length = len(base)
+    positions = rng.sample(range(length), min(k, length))
+    best_genome, best_fit = base, base_fit
+    tried = []
+    for p in positions:
+        letter = rng.choice([c for c in sm.ALPHABET if c != base[p]])
+        cand = base[:p] + letter + base[p + 1:]
+        f = score(cand)
+        tried.append({"position": p, "new_letter": letter, "fitness": f})
+        if f > best_fit:
+            best_genome, best_fit = cand, f
+    return best_genome, {"base_fitness": base_fit, "k_tried": len(tried), "candidates": tried,
+                         "kept_base": best_genome == base, "best_fitness": best_fit,
+                         "moved": best_genome != base, "gain": best_fit - base_fit}
 
 
 class NoResidency:
@@ -115,10 +160,14 @@ def run_arm(arm: str, seed: int, args, partial_path: Path | None = None) -> dict
                           "agents": {"n_agents": N_AGENTS, "memory": arm in MEMORY_FORMAT, "memory_format": MEMORY_FORMAT.get(arm),
                                      "record_window": 8, "edit_rate": 0.05,
                                      "proposal_format": "position edits to the agent's own tail slot (the mutate/position call)"}
-                          if arm in AGENT_ARMS else None})
+                          if arm in AGENT_ARMS else None,
+                          "oracle": {"n_oracle": N_AGENTS, "k_candidates": args.oracle_k,
+                                     "acceptance": "keep best of {current genome, k single-position candidates}; never accepts a worse move",
+                                     "candidate_evaluations_charged_to_distinct_fold_budget": True}
+                          if arm == ORACLE_ARM else None})
     rng = random.Random(seed)
     population = ops.random_population(cfg.pop_size, None, rng)
-    gens, integrity, breed_s = [], [], 0.0
+    gens, integrity, breed_s, oracle_events = [], [], 0.0, []
     t_start = time.perf_counter()
     try:
         for gen in range(cfg.n_generations):
@@ -141,12 +190,34 @@ def run_arm(arm: str, seed: int, args, partial_path: Path | None = None) -> dict
                   "cache_hits": int(ev.hits - hits_before), "distinct_evaluations_so_far": len(ev.cache), "best_so_far": ev.best,
                   "population": population, "fitnesses": fits, "breed_s": None}
             if gen < cfg.n_generations - 1:
+                # for arm O: capture each oracle slot's CURRENT occupant and its already-known fitness (this
+                # generation's `fits`, a cache hit if re-scored) BEFORE the ordinary fill reassigns `population` --
+                # generation 0 has no tail slot yet, same "no LLM call to make one" convention agents/circles use
+                oracle_bases = None
+                if arm == ORACLE_ARM:
+                    oracle_bases = [
+                        (population[cfg.pop_size + i], fits[cfg.pop_size + i]) if cfg.pop_size + i < len(population)
+                        else (model.random_genome(rng, None), None)
+                        for i in range(N_AGENTS)
+                    ]
                 res.to_llm_phase()
                 t = time.perf_counter()
                 population = ops.next_generation(population, fits, cfg.pop_size, cfg.tournament_k, cfg.crossover_rate,
                                                  cfg.mutation_rate, cfg.elitism, rng)
-                if arm == "M3":  # the control: N_AGENTS random immigrants, drawn as random_population draws them
+                if arm == CONTROL_ARM:  # the control: N_AGENTS random immigrants, drawn as random_population draws them
                     population = population + [model.random_genome(rng, None) for _ in range(N_AGENTS)]
+                elif arm == ORACLE_ARM:
+                    res.to_fold_phase()  # the oracle's candidate evaluations need the real fitness function, i.e. ESMFold
+                    # back on the GPU -- an extra swap `to_llm_phase()` just moved away from; charged to swap_s like any
+                    # other swap, so arm O honestly pays more swap overhead than the other arms for this hybrid step
+                    for i, (base_genome, base_fit) in enumerate(oracle_bases):
+                        if base_fit is None:  # generation 0: nothing evaluated yet, nothing to improve on -- start fresh
+                            new_genome, info = base_genome, {"base_fitness": None, "k_tried": 0, "candidates": [],
+                                                             "kept_base": True, "best_fitness": None, "moved": False, "gain": None}
+                        else:
+                            new_genome, info = oracle_candidates(base_genome, base_fit, args.oracle_k, rng, ev.score)
+                        oracle_events.append({"generation": gen, "oracle_id": i, **info})
+                        population.append(new_genome)
                 rg["breed_s"] = time.perf_counter() - t
                 breed_s += rg["breed_s"]
             gens.append(rg)
@@ -174,6 +245,16 @@ def run_arm(arm: str, seed: int, args, partial_path: Path | None = None) -> dict
             events = [json.loads(line) for line in open(p, encoding="utf-8")]
         extra["agent_state_stats"] = aseq.get_stats()
         extra["agent_events"] = events  # every proposal and every resolved record entry, timestamps included
+    if arm == ORACLE_ARM:
+        n_resolved = [e for e in oracle_events if e["base_fitness"] is not None]
+        extra["oracle_events"] = oracle_events  # every breeding step's k candidates and which one was kept
+        extra["oracle_stats"] = {
+            "n_steps": len(n_resolved), "n_kept_base": sum(e["kept_base"] for e in n_resolved),
+            "n_moved": sum(e["moved"] for e in n_resolved),
+            "mean_gain_when_moved": (statistics.mean(e["gain"] for e in n_resolved if e["moved"])
+                                     if any(e["moved"] for e in n_resolved) else None),
+            "n_candidate_evaluations": sum(e["k_tried"] for e in oracle_events),
+        }
     rec.update({"complete": True, "finished": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "generations": gens,
                 "best_so_far_by_distinct_evaluation": ev.curve, "generation_of_distinct_evaluation": ev.curve_gen,
                 "summary": base.finish_summary(ev, ref, wall, res, llm_s, extra)})
@@ -244,9 +325,10 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("run_cmd", choices=["run"])
     ap.add_argument("--seeds", type=int, nargs="+", required=True)
-    ap.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))  # M1, M2, M2b, M3
+    ap.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))  # M1, M2, M2b, M3, O
     ap.add_argument("--pop-size", type=int, default=16)
     ap.add_argument("--generations", type=int, default=20)
+    ap.add_argument("--oracle-k", type=int, default=8, help="arm O only: candidate single-position mutations tried per oracle slot per breeding step")
     ap.add_argument("--out-dir", type=str, default=str(base.RAW))
     ap.add_argument("--stub", action="store_true")
     args = ap.parse_args()

@@ -1,15 +1,17 @@
 """Tables and chart for the agent-memory GA runs (run_agent_memory_ga.py). Everything in the output is computed from
 results/raw/agent_memory_<arm>_seed<s>.json, arm in M1 (no memory), M2 (prose record), M2b (explicit avoid/prefer
-lists -- results/raw/agent_memory_format.json is the isolated probe that motivated this arm), M3 (random immigrants,
-the control -- every other arm is an "agent arm", see agent_arms()); nothing is typed by hand.
+lists -- results/raw/agent_memory_format.json is the isolated probe that motivated this arm) -- these three are the
+"memory arms", MEMORY_ARMS, agent_arms() -- M3 (random immigrants, the control) and O (greedy oracle, no LLM, direct
+fitness access -- an upper bound; see run_agent_memory_ga.py's module docstring for the reading it's for); nothing
+is typed by hand.
 
   python experiments/summarize_agent_memory.py [--raw DIR] [--seeds 0 1 2] [--arms M1 M2 M3]
                                                [--out-md results/AGENT_MEMORY_STAGE3_TABLES.md]
                                                [--out-png results/agent_memory_stage3.png]
 
 --arms selects and orders which arms to load and report (default M1 M2 M3, unchanged); pass --arms M1 M2 M2b M3
-for a comparison that includes the list-format arm, with separate --out-md/--out-png/--out-json so the original
-Stage 3 files are not overwritten.
+for a comparison that includes the list-format arm, or --arms M1 M3 O for the oracle comparison, with separate
+--out-md/--out-png/--out-json so the original Stage 3 files are not overwritten.
 
 Definitions, fixed before any result was read:
   budget        each seed is read at n_cut = the smallest distinct-fold count reached by any of its arms; "best at the
@@ -46,17 +48,28 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 ARMS = ("M1", "M2", "M3")  # overridable: main() reassigns this global from --arms before calling load/sections/chart
-CONTROL_ARM = "M3"  # the one non-agent arm (random immigrants); every other arm in ARMS is an "agent arm"
+CONTROL_ARM = "M3"  # random immigrants, no memory of any kind, no direct fitness access at breeding time
+ORACLE_ARM = "O"  # greedy oracle, no LLM, DIRECT fitness access at breeding time -- see run_agent_memory_ga.py
+MEMORY_ARMS = {"M1", "M2", "M2b"}  # the arms with agents_sequence.py's private-record mechanism (section 3/4/6 scope)
 NAME = {"M1": "M1 agents, no memory", "M2": "M2 agents, private record (prose)",
-        "M2b": "M2b agents, private record (explicit lists)", "M3": "M3 random immigrants"}
-COLOR = {"M1": "#2a78d6", "M2": "#eb6834", "M2b": "#4a3aa7", "M3": "#1baf7a"}  # reference-palette slots 1,2,7,3: all-pairs validated
+        "M2b": "M2b agents, private record (explicit lists)", "M3": "M3 random immigrants",
+        "O": "O greedy oracle (no LLM, upper bound)"}
+COLOR = {"M1": "#2a78d6", "M2": "#eb6834", "M2b": "#4a3aa7", "M3": "#1baf7a", "O": "#e34948"}  # reference-palette slots 1,2,7,3,8
 WINDOW, SUPPORT, N_NULL, SHOWN = 6, 80, 2000, 8
 
 
 def agent_arms() -> tuple:
-    """Every arm in ARMS except the control -- computed fresh so a CLI --arms override (M1/M2/M2b/M3 in any
-    subset) is honoured without touching the functions below."""
-    return tuple(a for a in ARMS if a != CONTROL_ARM)
+    """The arms with agents_sequence.py's private-record mechanism (M1/M2/M2b, whichever are in ARMS) --
+    computed fresh so a CLI --arms override is honoured without touching the functions below. Neither the
+    random-immigrant control (M3) nor the oracle (O, driver-level, no agents_sequence.py involvement at all)
+    belongs here."""
+    return tuple(a for a in ARMS if a in MEMORY_ARMS)
+
+
+def injected_worth_arms() -> tuple:
+    """Arms whose 'injected genomes' (section 5) have no per-proposal record to draw on -- the control and the
+    oracle both fall through to the same generic 'read the tail slots' fitness table."""
+    return tuple(a for a in ARMS if a not in MEMORY_ARMS)
 
 
 def load(raw: Path, seeds) -> dict:
@@ -275,6 +288,27 @@ def sections(runs, seeds) -> tuple[str, dict]:
         md.append("")
         data["agent_propose_diagnostics"] = {f"{a}_{s}": v for (a, s), v in diag.items()}
 
+    if ORACLE_ARM in ARMS:
+        md.append("### 1c. Oracle diagnostics (arm O): how often it moved, and by how much\n")
+        md.append("A 'step' is one oracle slot at one breeding step with a known base fitness (generation 0 has none -- "
+                  "its slot starts from a fresh random genome, same convention as the agent arms). 'Moved' means at least "
+                  "one of the k candidates beat the base; 'kept base' means none did (never accepts a worse move).\n")
+        md.append("| seed | steps | kept base | moved | mean gain when moved | candidate evaluations |")
+        md.append("|---|---|---|---|---|---|")
+        odiag = {}
+        for s in part:
+            if (ORACLE_ARM, s) not in runs:
+                continue
+            os_ = runs[(ORACLE_ARM, s)]["summary"].get("oracle_stats")
+            if not os_:
+                continue
+            odiag[s] = os_
+            n = os_["n_steps"]
+            gain = f"{os_['mean_gain_when_moved']:.4f}" if os_["mean_gain_when_moved"] is not None else "n/a"
+            md.append(f"| {s} | {n} | {os_['n_kept_base']} ({os_['n_kept_base'] / max(1, n):.0%}) | {os_['n_moved']} ({os_['n_moved'] / max(1, n):.0%}) | {gain} | {os_['n_candidate_evaluations']} |")
+        md.append("")
+        data["oracle_diagnostics"] = odiag
+
     md.append("### 2. Best TM-score at the common distinct-fold count, per seed\n")
     md.append("n_cut = smallest distinct-fold count among the seed's arms: " + ", ".join(f"seed {s}: {cut[s]}" for s in part) + "\n")
     md.append("| seed | n_cut | " + " | ".join(NAME[a] for a in ARMS) + " |")
@@ -398,7 +432,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
             pop = pop_size(r)
             inj = [f for g in r["generations"][1:] for f in g["fitnesses"][pop:]]
             rest = [f for g in r["generations"][1:] for f in g["fitnesses"][:pop]]
-            if a == CONTROL_ARM:
+            if a in injected_worth_arms():
                 md.append(f"| {NAME[a]} | {s} | - | - | - | - | - | - | {np.mean(inj):.4f} | {max(inj):.4f} | {np.mean(rest):.4f} |")
                 continue
             pr = [p for p in proposals(r) if not p["fallback"]]
@@ -407,7 +441,14 @@ def sections(runs, seeds) -> tuple[str, dict]:
             (pm, pc), (lm, lc) = pos.most_common(1)[0], let.most_common(1)[0]
             md.append(f"| {NAME[a]} | {s} | {len(pr)} | {n_pos} | {len(pos)} | {pm} ({pc / n_pos:.0%}) | {len(let)} | {lm} ({lc / n_pos:.0%}) | {np.mean(inj):.4f} | {max(inj):.4f} | {np.mean(rest):.4f} |")
     md.append("")
-    md.append(f"Injected = the last 2 members of each evaluated population from generation 1 (agent proposals in {'/'.join(agent_arms())}, random immigrants in {CONTROL_ARM}).\n")
+    prov = []
+    if agent_arms():
+        prov.append(f"agent proposals in {'/'.join(agent_arms())}")
+    if CONTROL_ARM in ARMS:
+        prov.append(f"random immigrants in {CONTROL_ARM}")
+    if ORACLE_ARM in ARMS:
+        prov.append(f"greedy-oracle proposals in {ORACLE_ARM}")
+    md.append(f"Injected = the last 2 members of each evaluated population from generation 1 ({', '.join(prov)}).\n")
 
     # --- record use
     md.append("### 6. Do the agents act on their record? (per edited position, from generation 2)\n")
@@ -475,7 +516,8 @@ def chart(runs, ctx, out_png: Path) -> None:
             if (a, s) not in runs:
                 continue
             y = runs[(a, s)]["best_so_far_by_distinct_evaluation"][: cut[s]]
-            ax.plot(range(1, len(y) + 1), y, drawstyle="steps-post", color=COLOR[a], lw=2.0, ls="--" if a == CONTROL_ARM else "-", label=NAME[a])
+            ls = "--" if a == CONTROL_ARM else ("-." if a == ORACLE_ARM else "-")
+            ax.plot(range(1, len(y) + 1), y, drawstyle="steps-post", color=COLOR[a], lw=2.0, ls=ls, label=NAME[a])
             ends.append([a, len(y), y[-1], y[-1]])
         ends.sort(key=lambda e: e[2])
         for k in range(1, len(ends)):
@@ -529,7 +571,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--raw", default=str(ROOT / "results" / "raw"))
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
-    ap.add_argument("--arms", nargs="+", default=None, choices=["M1", "M2", "M2b", "M3"],
+    ap.add_argument("--arms", nargs="+", default=None, choices=["M1", "M2", "M2b", "M3", "O"],
                     help="override which arms to load/report, in display order (default: M1 M2 M3)")
     ap.add_argument("--out-md", default=str(ROOT / "results" / "AGENT_MEMORY_STAGE3_TABLES.md"))
     ap.add_argument("--out-png", default=str(ROOT / "results" / "agent_memory_stage3.png"))
