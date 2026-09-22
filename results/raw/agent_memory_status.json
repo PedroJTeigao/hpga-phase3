@@ -1,0 +1,111 @@
+{
+ "plan": [
+  [
+   "M1",
+   0
+  ],
+  [
+   "M2",
+   0
+  ],
+  [
+   "M3",
+   0
+  ],
+  [
+   "M1",
+   1
+  ],
+  [
+   "M2",
+   1
+  ],
+  [
+   "M3",
+   1
+  ],
+  [
+   "M1",
+   2
+  ],
+  [
+   "M2",
+   2
+  ],
+  [
+   "M3",
+   2
+  ]
+ ],
+ "started": "2026-09-21T18:42:10-0400",
+ "done": [
+  {
+   "arm": "M1",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 3270.0210552215576,
+   "final_best": 0.52187
+  },
+  {
+   "arm": "M2",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 3543.1944930553436,
+   "final_best": 0.3781
+  },
+  {
+   "arm": "M3",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 3179.2702136039734,
+   "final_best": 0.39696
+  },
+  {
+   "arm": "M1",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 3443.239770889282,
+   "final_best": 0.46227
+  },
+  {
+   "arm": "M2",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 3487.7849571704865,
+   "final_best": 0.46932
+  },
+  {
+   "arm": "M3",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 3300.0907242298126,
+   "final_best": 0.47313
+  },
+  {
+   "arm": "M1",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 4025.6578137874603,
+   "final_best": 0.53548
+  },
+  {
+   "arm": "M2",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 4165.056571722031,
+   "final_best": 0.56461
+  },
+  {
+   "arm": "M3",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 3365.193965435028,
+   "final_best": 0.59768
+  }
+ ],
+ "failed": [],
+ "skipped": [],
+ "finished": true,
+ "exit_reason": "all planned runs attempted",
+ "ended": "2026-09-22T03:33:10-0400"
+}

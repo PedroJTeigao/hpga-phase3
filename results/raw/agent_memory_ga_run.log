@@ -1,0 +1,202 @@
+2026-09-21 18:42:10,543 agmem plan: [('M1', 0), ('M2', 0), ('M3', 0), ('M1', 1), ('M2', 1), ('M3', 1), ('M1', 2), ('M2', 2), ('M3', 2)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-21 18:42:19,845 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 5/4498 [00:07<1:58:40,  1.58s/it]Loading weights:   0%|          | 15/4498 [00:09<37:01,  2.02it/s] Loading weights:   0%|          | 18/4498 [00:54<5:03:23,  4.06s/it]Loading weights:  12%|█▏        | 530/4498 [00:55<04:30, 14.66it/s] Loading weights:  17%|█▋        | 760/4498 [00:55<02:38, 23.54it/s]Loading weights:  34%|███▍      | 1520/4498 [00:55<00:45, 66.15it/s]Loading weights:  51%|█████▏    | 2306/4498 [00:55<00:17, 128.26it/s]Loading weights:  68%|██████▊   | 3071/4498 [00:55<00:06, 212.94it/s]Loading weights:  86%|████████▌ | 3868/4498 [00:55<00:01, 335.71it/s]Loading weights: 100%|██████████| 4498/4498 [00:55<00:00, 80.41it/s] 
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-21 18:43:30,203 agmem === M1 seed 0 attempt 1 ===
+2026-09-21 18:45:47,491 agmem M1 seed 0 gen  0 n=16 best=0.3006 mean=0.2474 distinct=16 hits=0 div=50.3
+2026-09-21 18:48:01,824 agmem M1 seed 0 gen  1 n=18 best=0.3287 mean=0.2685 distinct=32 hits=2 div=43.8
+2026-09-21 18:50:40,633 agmem M1 seed 0 gen  2 n=18 best=0.3409 mean=0.2790 distinct=48 hits=4 div=38.0
+2026-09-21 18:53:10,814 agmem M1 seed 0 gen  3 n=18 best=0.3667 mean=0.2983 distinct=64 hits=6 div=31.9
+2026-09-21 18:55:47,786 agmem M1 seed 0 gen  4 n=18 best=0.4100 mean=0.3080 distinct=80 hits=8 div=35.0
+2026-09-21 18:58:51,064 agmem M1 seed 0 gen  5 n=18 best=0.4100 mean=0.2926 distinct=96 hits=10 div=34.2
+2026-09-21 19:02:00,383 agmem M1 seed 0 gen  6 n=18 best=0.4100 mean=0.2825 distinct=112 hits=12 div=30.7
+2026-09-21 19:04:38,970 agmem M1 seed 0 gen  7 n=18 best=0.4100 mean=0.2895 distinct=128 hits=14 div=33.7
+2026-09-21 19:07:32,799 agmem M1 seed 0 gen  8 n=18 best=0.4175 mean=0.3047 distinct=144 hits=16 div=30.8
+2026-09-21 19:10:46,186 agmem M1 seed 0 gen  9 n=18 best=0.4195 mean=0.3333 distinct=159 hits=19 div=20.6
+2026-09-21 19:13:52,532 agmem M1 seed 0 gen 10 n=18 best=0.4223 mean=0.3335 distinct=174 hits=22 div=17.3
+2026-09-21 19:17:04,143 agmem M1 seed 0 gen 11 n=18 best=0.4223 mean=0.3338 distinct=190 hits=24 div=20.1
+2026-09-21 19:19:43,017 agmem M1 seed 0 gen 12 n=18 best=0.4223 mean=0.3056 distinct=206 hits=26 div=28.4
+2026-09-21 19:22:34,089 agmem M1 seed 0 gen 13 n=18 best=0.4223 mean=0.3099 distinct=222 hits=28 div=30.6
+2026-09-21 19:25:31,473 agmem M1 seed 0 gen 14 n=18 best=0.5219 mean=0.3361 distinct=238 hits=30 div=27.9
+2026-09-21 19:28:26,232 agmem M1 seed 0 gen 15 n=18 best=0.5219 mean=0.3200 distinct=254 hits=32 div=29.5
+2026-09-21 19:31:21,601 agmem M1 seed 0 gen 16 n=18 best=0.5219 mean=0.3167 distinct=270 hits=34 div=26.7
+2026-09-21 19:34:20,455 agmem M1 seed 0 gen 17 n=18 best=0.5219 mean=0.3475 distinct=286 hits=36 div=26.8
+2026-09-21 19:37:18,909 agmem M1 seed 0 gen 18 n=18 best=0.5219 mean=0.3310 distinct=302 hits=38 div=29.5
+2026-09-21 19:38:00,158 agmem M1 seed 0 gen 19 n=18 best=0.5219 mean=0.3425 distinct=318 hits=40 div=29.4
+2026-09-21 19:38:00,318 agmem === M2 seed 0 attempt 1 ===
+2026-09-21 19:40:42,621 agmem M2 seed 0 gen  0 n=16 best=0.3006 mean=0.2474 distinct=16 hits=0 div=50.3
+2026-09-21 19:43:41,489 agmem M2 seed 0 gen  1 n=18 best=0.3287 mean=0.2685 distinct=32 hits=2 div=43.8
+2026-09-21 19:46:36,023 agmem M2 seed 0 gen  2 n=18 best=0.3409 mean=0.2790 distinct=48 hits=4 div=38.0
+2026-09-21 19:49:33,933 agmem M2 seed 0 gen  3 n=18 best=0.3667 mean=0.3003 distinct=64 hits=6 div=32.0
+2026-09-21 19:52:16,887 agmem M2 seed 0 gen  4 n=18 best=0.3667 mean=0.3023 distinct=80 hits=8 div=36.5
+2026-09-21 19:55:18,934 agmem M2 seed 0 gen  5 n=18 best=0.3667 mean=0.2931 distinct=96 hits=10 div=31.4
+2026-09-21 19:58:35,085 agmem M2 seed 0 gen  6 n=18 best=0.3667 mean=0.2911 distinct=112 hits=12 div=33.0
+2026-09-21 20:01:36,405 agmem M2 seed 0 gen  7 n=18 best=0.3667 mean=0.2892 distinct=128 hits=14 div=30.6
+2026-09-21 20:04:27,736 agmem M2 seed 0 gen  8 n=18 best=0.3667 mean=0.2981 distinct=144 hits=16 div=29.6
+2026-09-21 20:07:26,731 agmem M2 seed 0 gen  9 n=18 best=0.3667 mean=0.3126 distinct=160 hits=18 div=31.7
+2026-09-21 20:10:35,386 agmem M2 seed 0 gen 10 n=18 best=0.3667 mean=0.3068 distinct=176 hits=20 div=31.7
+2026-09-21 20:13:45,325 agmem M2 seed 0 gen 11 n=18 best=0.3667 mean=0.2998 distinct=192 hits=22 div=33.6
+2026-09-21 20:16:39,856 agmem M2 seed 0 gen 12 n=18 best=0.3667 mean=0.2941 distinct=207 hits=25 div=33.5
+2026-09-21 20:20:02,467 agmem M2 seed 0 gen 13 n=18 best=0.3667 mean=0.3000 distinct=222 hits=28 div=33.7
+2026-09-21 20:23:20,925 agmem M2 seed 0 gen 14 n=18 best=0.3667 mean=0.3060 distinct=237 hits=31 div=31.1
+2026-09-21 20:26:32,419 agmem M2 seed 0 gen 15 n=18 best=0.3667 mean=0.2998 distinct=252 hits=34 div=34.0
+2026-09-21 20:29:48,669 agmem M2 seed 0 gen 16 n=18 best=0.3667 mean=0.3046 distinct=267 hits=37 div=32.8
+2026-09-21 20:33:00,578 agmem M2 seed 0 gen 17 n=18 best=0.3781 mean=0.2917 distinct=281 hits=41 div=37.4
+2026-09-21 20:36:20,623 agmem M2 seed 0 gen 18 n=18 best=0.3781 mean=0.2953 distinct=295 hits=45 div=30.5
+2026-09-21 20:37:03,499 agmem M2 seed 0 gen 19 n=18 best=0.3781 mean=0.3106 distinct=309 hits=49 div=33.1
+2026-09-21 20:37:03,605 agmem === M3 seed 0 attempt 1 ===
+2026-09-21 20:39:28,976 agmem M3 seed 0 gen  0 n=16 best=0.3006 mean=0.2474 distinct=16 hits=0 div=50.3
+2026-09-21 20:42:14,868 agmem M3 seed 0 gen  1 n=18 best=0.3287 mean=0.2650 distinct=32 hits=2 div=43.9
+2026-09-21 20:44:41,161 agmem M3 seed 0 gen  2 n=18 best=0.3409 mean=0.2754 distinct=48 hits=4 div=39.1
+2026-09-21 20:47:08,919 agmem M3 seed 0 gen  3 n=18 best=0.3411 mean=0.2872 distinct=64 hits=6 div=36.3
+2026-09-21 20:49:47,915 agmem M3 seed 0 gen  4 n=18 best=0.3597 mean=0.3035 distinct=80 hits=8 div=35.0
+2026-09-21 20:52:35,169 agmem M3 seed 0 gen  5 n=18 best=0.3612 mean=0.3011 distinct=95 hits=11 div=43.4
+2026-09-21 20:55:31,553 agmem M3 seed 0 gen  6 n=18 best=0.3663 mean=0.3003 distinct=111 hits=13 div=42.5
+2026-09-21 20:58:35,745 agmem M3 seed 0 gen  7 n=18 best=0.3663 mean=0.3220 distinct=127 hits=15 div=36.7
+2026-09-21 21:01:22,905 agmem M3 seed 0 gen  8 n=18 best=0.3739 mean=0.3118 distinct=143 hits=17 div=33.4
+2026-09-21 21:04:18,030 agmem M3 seed 0 gen  9 n=18 best=0.3739 mean=0.3160 distinct=159 hits=19 div=38.6
+2026-09-21 21:06:59,530 agmem M3 seed 0 gen 10 n=18 best=0.3846 mean=0.3117 distinct=175 hits=21 div=39.9
+2026-09-21 21:10:08,179 agmem M3 seed 0 gen 11 n=18 best=0.3846 mean=0.2998 distinct=191 hits=23 div=38.8
+2026-09-21 21:13:00,625 agmem M3 seed 0 gen 12 n=18 best=0.3846 mean=0.3116 distinct=207 hits=25 div=36.1
+2026-09-21 21:15:42,254 agmem M3 seed 0 gen 13 n=18 best=0.3846 mean=0.3170 distinct=223 hits=27 div=38.6
+2026-09-21 21:18:27,100 agmem M3 seed 0 gen 14 n=18 best=0.3846 mean=0.3080 distinct=239 hits=29 div=36.2
+2026-09-21 21:21:10,323 agmem M3 seed 0 gen 15 n=18 best=0.3846 mean=0.2938 distinct=255 hits=31 div=34.1
+2026-09-21 21:23:54,946 agmem M3 seed 0 gen 16 n=18 best=0.3846 mean=0.3146 distinct=271 hits=33 div=34.0
+2026-09-21 21:26:33,579 agmem M3 seed 0 gen 17 n=18 best=0.3864 mean=0.3142 distinct=287 hits=35 div=33.4
+2026-09-21 21:29:14,039 agmem M3 seed 0 gen 18 n=18 best=0.3864 mean=0.3278 distinct=303 hits=37 div=27.2
+2026-09-21 21:30:02,869 agmem M3 seed 0 gen 19 n=18 best=0.3970 mean=0.3160 distinct=319 hits=39 div=25.6
+2026-09-21 21:30:02,952 agmem === M1 seed 1 attempt 1 ===
+2026-09-21 21:32:45,122 agmem M1 seed 1 gen  0 n=16 best=0.2959 mean=0.2359 distinct=16 hits=0 div=50.5
+2026-09-21 21:35:43,731 agmem M1 seed 1 gen  1 n=18 best=0.4227 mean=0.2800 distinct=32 hits=2 div=50.3
+2026-09-21 21:38:55,873 agmem M1 seed 1 gen  2 n=18 best=0.4227 mean=0.2814 distinct=48 hits=4 div=48.2
+2026-09-21 21:42:02,396 agmem M1 seed 1 gen  3 n=18 best=0.4337 mean=0.3017 distinct=64 hits=6 div=46.9
+2026-09-21 21:45:10,336 agmem M1 seed 1 gen  4 n=18 best=0.4337 mean=0.2889 distinct=80 hits=8 div=48.7
+2026-09-21 21:48:10,852 agmem M1 seed 1 gen  5 n=18 best=0.4337 mean=0.2885 distinct=96 hits=10 div=45.7
+2026-09-21 21:51:12,239 agmem M1 seed 1 gen  6 n=18 best=0.4337 mean=0.2989 distinct=112 hits=12 div=43.2
+2026-09-21 21:54:02,290 agmem M1 seed 1 gen  7 n=18 best=0.4337 mean=0.3039 distinct=128 hits=14 div=36.7
+2026-09-21 21:57:03,682 agmem M1 seed 1 gen  8 n=18 best=0.4337 mean=0.3342 distinct=144 hits=16 div=33.4
+2026-09-21 22:00:04,313 agmem M1 seed 1 gen  9 n=18 best=0.4486 mean=0.2888 distinct=160 hits=18 div=27.5
+2026-09-21 22:03:01,991 agmem M1 seed 1 gen 10 n=18 best=0.4502 mean=0.3258 distinct=176 hits=20 div=30.8
+2026-09-21 22:06:07,370 agmem M1 seed 1 gen 11 n=18 best=0.4502 mean=0.2953 distinct=192 hits=22 div=27.4
+2026-09-21 22:08:59,878 agmem M1 seed 1 gen 12 n=18 best=0.4502 mean=0.3183 distinct=208 hits=24 div=28.0
+2026-09-21 22:11:49,427 agmem M1 seed 1 gen 13 n=18 best=0.4502 mean=0.3008 distinct=224 hits=26 div=27.0
+2026-09-21 22:14:52,203 agmem M1 seed 1 gen 14 n=18 best=0.4502 mean=0.3490 distinct=240 hits=28 div=27.5
+2026-09-21 22:17:35,413 agmem M1 seed 1 gen 15 n=18 best=0.4502 mean=0.3279 distinct=255 hits=31 div=26.8
+2026-09-21 22:20:41,281 agmem M1 seed 1 gen 16 n=18 best=0.4502 mean=0.3561 distinct=271 hits=33 div=31.8
+2026-09-21 22:23:39,130 agmem M1 seed 1 gen 17 n=18 best=0.4623 mean=0.3005 distinct=287 hits=35 div=28.8
+2026-09-21 22:26:37,677 agmem M1 seed 1 gen 18 n=18 best=0.4623 mean=0.3380 distinct=303 hits=37 div=31.2
+2026-09-21 22:27:26,183 agmem M1 seed 1 gen 19 n=18 best=0.4623 mean=0.3274 distinct=319 hits=39 div=37.7
+2026-09-21 22:27:26,271 agmem === M2 seed 1 attempt 1 ===
+2026-09-21 22:30:07,253 agmem M2 seed 1 gen  0 n=16 best=0.2959 mean=0.2359 distinct=16 hits=0 div=50.5
+2026-09-21 22:33:03,072 agmem M2 seed 1 gen  1 n=18 best=0.4227 mean=0.2800 distinct=32 hits=2 div=50.3
+2026-09-21 22:36:10,347 agmem M2 seed 1 gen  2 n=18 best=0.4227 mean=0.2814 distinct=48 hits=4 div=48.2
+2026-09-21 22:39:10,511 agmem M2 seed 1 gen  3 n=18 best=0.4337 mean=0.3037 distinct=64 hits=6 div=46.9
+2026-09-21 22:42:10,039 agmem M2 seed 1 gen  4 n=18 best=0.4337 mean=0.2955 distinct=80 hits=8 div=48.8
+2026-09-21 22:45:15,099 agmem M2 seed 1 gen  5 n=18 best=0.4337 mean=0.2869 distinct=96 hits=10 div=45.8
+2026-09-21 22:48:23,013 agmem M2 seed 1 gen  6 n=18 best=0.4337 mean=0.2954 distinct=111 hits=13 div=42.6
+2026-09-21 22:51:53,103 agmem M2 seed 1 gen  7 n=18 best=0.4337 mean=0.2998 distinct=125 hits=17 div=36.5
+2026-09-21 22:54:57,429 agmem M2 seed 1 gen  8 n=18 best=0.4337 mean=0.2909 distinct=140 hits=20 div=36.5
+2026-09-21 22:57:55,023 agmem M2 seed 1 gen  9 n=18 best=0.4337 mean=0.3111 distinct=155 hits=23 div=34.4
+2026-09-21 23:00:46,502 agmem M2 seed 1 gen 10 n=18 best=0.4337 mean=0.2867 distinct=169 hits=27 div=33.8
+2026-09-21 23:03:46,045 agmem M2 seed 1 gen 11 n=18 best=0.4337 mean=0.2798 distinct=184 hits=30 div=35.8
+2026-09-21 23:06:41,170 agmem M2 seed 1 gen 12 n=18 best=0.4337 mean=0.2941 distinct=198 hits=34 div=30.7
+2026-09-21 23:09:38,420 agmem M2 seed 1 gen 13 n=18 best=0.4337 mean=0.3238 distinct=212 hits=38 div=27.9
+2026-09-21 23:12:42,492 agmem M2 seed 1 gen 14 n=18 best=0.4471 mean=0.3023 distinct=227 hits=41 div=28.7
+2026-09-21 23:15:39,484 agmem M2 seed 1 gen 15 n=18 best=0.4471 mean=0.3114 distinct=241 hits=45 div=29.6
+2026-09-21 23:18:38,128 agmem M2 seed 1 gen 16 n=18 best=0.4693 mean=0.3168 distinct=255 hits=49 div=26.5
+2026-09-21 23:21:50,672 agmem M2 seed 1 gen 17 n=18 best=0.4693 mean=0.3156 distinct=270 hits=52 div=29.5
+2026-09-21 23:24:52,211 agmem M2 seed 1 gen 18 n=18 best=0.4693 mean=0.3180 distinct=284 hits=56 div=29.4
+2026-09-21 23:25:34,048 agmem M2 seed 1 gen 19 n=18 best=0.4693 mean=0.3163 distinct=298 hits=60 div=24.4
+2026-09-21 23:25:34,132 agmem === M3 seed 1 attempt 1 ===
+2026-09-21 23:28:03,292 agmem M3 seed 1 gen  0 n=16 best=0.2959 mean=0.2359 distinct=16 hits=0 div=50.5
+2026-09-21 23:30:47,404 agmem M3 seed 1 gen  1 n=18 best=0.4227 mean=0.2820 distinct=32 hits=2 div=50.3
+2026-09-21 23:33:18,548 agmem M3 seed 1 gen  2 n=18 best=0.4227 mean=0.2796 distinct=48 hits=4 div=48.4
+2026-09-21 23:36:13,833 agmem M3 seed 1 gen  3 n=18 best=0.4227 mean=0.2786 distinct=64 hits=6 div=45.8
+2026-09-21 23:39:08,457 agmem M3 seed 1 gen  4 n=18 best=0.4227 mean=0.2928 distinct=80 hits=8 div=47.8
+2026-09-21 23:42:41,662 agmem M3 seed 1 gen  5 n=18 best=0.4227 mean=0.2835 distinct=96 hits=10 div=46.8
+2026-09-21 23:45:50,273 agmem M3 seed 1 gen  6 n=18 best=0.4227 mean=0.2735 distinct=112 hits=12 div=45.3
+2026-09-21 23:48:54,227 agmem M3 seed 1 gen  7 n=18 best=0.4227 mean=0.3028 distinct=128 hits=14 div=42.9
+2026-09-21 23:51:48,070 agmem M3 seed 1 gen  8 n=18 best=0.4227 mean=0.3002 distinct=144 hits=16 div=42.8
+2026-09-21 23:54:34,689 agmem M3 seed 1 gen  9 n=18 best=0.4279 mean=0.3330 distinct=160 hits=18 div=43.8
+2026-09-21 23:57:33,289 agmem M3 seed 1 gen 10 n=18 best=0.4684 mean=0.3439 distinct=176 hits=20 div=36.4
+2026-09-22 00:00:20,067 agmem M3 seed 1 gen 11 n=18 best=0.4684 mean=0.3311 distinct=192 hits=22 div=25.9
+2026-09-22 00:03:00,570 agmem M3 seed 1 gen 12 n=18 best=0.4684 mean=0.3370 distinct=208 hits=24 div=31.2
+2026-09-22 00:06:02,570 agmem M3 seed 1 gen 13 n=18 best=0.4684 mean=0.3758 distinct=224 hits=26 div=22.7
+2026-09-22 00:08:39,757 agmem M3 seed 1 gen 14 n=18 best=0.4684 mean=0.3764 distinct=240 hits=28 div=18.9
+2026-09-22 00:11:22,869 agmem M3 seed 1 gen 15 n=18 best=0.4684 mean=0.3748 distinct=256 hits=30 div=19.9
+2026-09-22 00:14:10,875 agmem M3 seed 1 gen 16 n=18 best=0.4731 mean=0.3740 distinct=272 hits=32 div=21.0
+2026-09-22 00:16:55,975 agmem M3 seed 1 gen 17 n=18 best=0.4731 mean=0.3876 distinct=288 hits=34 div=19.5
+2026-09-22 00:19:46,913 agmem M3 seed 1 gen 18 n=18 best=0.4731 mean=0.4051 distinct=304 hits=36 div=20.3
+2026-09-22 00:20:34,216 agmem M3 seed 1 gen 19 n=18 best=0.4731 mean=0.3909 distinct=320 hits=38 div=21.4
+2026-09-22 00:20:34,302 agmem === M1 seed 2 attempt 1 ===
+2026-09-22 00:23:21,350 agmem M1 seed 2 gen  0 n=16 best=0.3353 mean=0.2334 distinct=16 hits=0 div=53.0
+2026-09-22 00:26:36,855 agmem M1 seed 2 gen  1 n=18 best=0.3433 mean=0.2678 distinct=32 hits=2 div=54.1
+2026-09-22 00:29:47,123 agmem M1 seed 2 gen  2 n=18 best=0.3433 mean=0.2718 distinct=48 hits=4 div=49.9
+2026-09-22 00:33:23,272 agmem M1 seed 2 gen  3 n=18 best=0.3433 mean=0.2674 distinct=64 hits=6 div=42.7
+2026-09-22 00:36:54,809 agmem M1 seed 2 gen  4 n=18 best=0.3433 mean=0.2678 distinct=80 hits=8 div=38.5
+2026-09-22 00:40:11,617 agmem M1 seed 2 gen  5 n=18 best=0.4177 mean=0.3064 distinct=96 hits=10 div=33.0
+2026-09-22 00:44:09,160 agmem M1 seed 2 gen  6 n=18 best=0.4209 mean=0.3103 distinct=112 hits=12 div=34.0
+2026-09-22 00:47:36,601 agmem M1 seed 2 gen  7 n=18 best=0.4430 mean=0.3175 distinct=128 hits=14 div=34.1
+2026-09-22 00:51:32,409 agmem M1 seed 2 gen  8 n=18 best=0.4564 mean=0.3330 distinct=144 hits=16 div=24.1
+2026-09-22 00:54:54,705 agmem M1 seed 2 gen  9 n=18 best=0.5355 mean=0.3835 distinct=160 hits=18 div=27.0
+2026-09-22 00:58:38,799 agmem M1 seed 2 gen 10 n=18 best=0.5355 mean=0.3648 distinct=176 hits=20 div=22.9
+2026-09-22 01:02:03,096 agmem M1 seed 2 gen 11 n=18 best=0.5355 mean=0.3712 distinct=192 hits=22 div=20.3
+2026-09-22 01:05:39,873 agmem M1 seed 2 gen 12 n=18 best=0.5355 mean=0.3852 distinct=208 hits=24 div=20.3
+2026-09-22 01:09:19,755 agmem M1 seed 2 gen 13 n=18 best=0.5355 mean=0.3722 distinct=224 hits=26 div=19.9
+2026-09-22 01:12:49,865 agmem M1 seed 2 gen 14 n=18 best=0.5355 mean=0.3712 distinct=239 hits=29 div=20.3
+2026-09-22 01:16:09,796 agmem M1 seed 2 gen 15 n=18 best=0.5355 mean=0.3501 distinct=255 hits=31 div=21.2
+2026-09-22 01:19:32,179 agmem M1 seed 2 gen 16 n=18 best=0.5355 mean=0.3526 distinct=271 hits=33 div=21.3
+2026-09-22 01:22:56,173 agmem M1 seed 2 gen 17 n=18 best=0.5355 mean=0.3691 distinct=287 hits=35 div=21.3
+2026-09-22 01:26:44,456 agmem M1 seed 2 gen 18 n=18 best=0.5355 mean=0.3743 distinct=302 hits=38 div=21.6
+2026-09-22 01:27:39,951 agmem M1 seed 2 gen 19 n=18 best=0.5355 mean=0.3850 distinct=318 hits=40 div=21.9
+2026-09-22 01:27:40,041 agmem === M2 seed 2 attempt 1 ===
+2026-09-22 01:30:19,949 agmem M2 seed 2 gen  0 n=16 best=0.3353 mean=0.2334 distinct=16 hits=0 div=53.0
+2026-09-22 01:33:25,592 agmem M2 seed 2 gen  1 n=18 best=0.3433 mean=0.2678 distinct=32 hits=2 div=54.1
+2026-09-22 01:36:24,807 agmem M2 seed 2 gen  2 n=18 best=0.3433 mean=0.2718 distinct=48 hits=4 div=49.9
+2026-09-22 01:39:50,708 agmem M2 seed 2 gen  3 n=18 best=0.3433 mean=0.2674 distinct=64 hits=6 div=42.8
+2026-09-22 01:43:04,034 agmem M2 seed 2 gen  4 n=18 best=0.3433 mean=0.2656 distinct=80 hits=8 div=38.5
+2026-09-22 01:46:18,690 agmem M2 seed 2 gen  5 n=18 best=0.4177 mean=0.3096 distinct=96 hits=10 div=33.1
+2026-09-22 01:50:11,650 agmem M2 seed 2 gen  6 n=18 best=0.4209 mean=0.3154 distinct=112 hits=12 div=34.1
+2026-09-22 01:54:01,425 agmem M2 seed 2 gen  7 n=18 best=0.4430 mean=0.3225 distinct=128 hits=14 div=33.2
+2026-09-22 01:57:45,466 agmem M2 seed 2 gen  8 n=18 best=0.4430 mean=0.3129 distinct=144 hits=16 div=24.6
+2026-09-22 02:01:56,137 agmem M2 seed 2 gen  9 n=18 best=0.5355 mean=0.3743 distinct=160 hits=18 div=29.5
+2026-09-22 02:05:55,834 agmem M2 seed 2 gen 10 n=18 best=0.5355 mean=0.3900 distinct=176 hits=20 div=22.3
+2026-09-22 02:09:36,272 agmem M2 seed 2 gen 11 n=18 best=0.5645 mean=0.4196 distinct=192 hits=22 div=20.5
+2026-09-22 02:13:36,721 agmem M2 seed 2 gen 12 n=18 best=0.5645 mean=0.3906 distinct=208 hits=24 div=21.2
+2026-09-22 02:17:17,566 agmem M2 seed 2 gen 13 n=18 best=0.5645 mean=0.3938 distinct=224 hits=26 div=21.3
+2026-09-22 02:20:53,940 agmem M2 seed 2 gen 14 n=18 best=0.5645 mean=0.3569 distinct=240 hits=28 div=21.4
+2026-09-22 02:24:29,417 agmem M2 seed 2 gen 15 n=18 best=0.5645 mean=0.3562 distinct=256 hits=30 div=20.4
+2026-09-22 02:28:30,191 agmem M2 seed 2 gen 16 n=18 best=0.5645 mean=0.3827 distinct=272 hits=32 div=20.7
+2026-09-22 02:32:25,851 agmem M2 seed 2 gen 17 n=18 best=0.5645 mean=0.3853 distinct=288 hits=34 div=19.5
+2026-09-22 02:36:10,022 agmem M2 seed 2 gen 18 n=18 best=0.5646 mean=0.4051 distinct=303 hits=37 div=19.8
+2026-09-22 02:37:05,077 agmem M2 seed 2 gen 19 n=18 best=0.5646 mean=0.3932 distinct=318 hits=40 div=19.7
+2026-09-22 02:37:05,221 agmem === M3 seed 2 attempt 1 ===
+2026-09-22 02:39:41,210 agmem M3 seed 2 gen  0 n=16 best=0.3353 mean=0.2334 distinct=16 hits=0 div=53.0
+2026-09-22 02:42:20,192 agmem M3 seed 2 gen  1 n=18 best=0.3433 mean=0.2734 distinct=32 hits=2 div=54.2
+2026-09-22 02:45:03,511 agmem M3 seed 2 gen  2 n=18 best=0.3670 mean=0.2830 distinct=48 hits=4 div=49.8
+2026-09-22 02:47:57,324 agmem M3 seed 2 gen  3 n=18 best=0.4050 mean=0.3089 distinct=64 hits=6 div=42.2
+2026-09-22 02:50:44,513 agmem M3 seed 2 gen  4 n=18 best=0.4304 mean=0.3023 distinct=80 hits=8 div=40.5
+2026-09-22 02:53:49,958 agmem M3 seed 2 gen  5 n=18 best=0.4304 mean=0.3064 distinct=96 hits=10 div=32.6
+2026-09-22 02:56:47,432 agmem M3 seed 2 gen  6 n=18 best=0.4420 mean=0.3014 distinct=112 hits=12 div=27.5
+2026-09-22 02:59:25,562 agmem M3 seed 2 gen  7 n=18 best=0.4420 mean=0.3019 distinct=128 hits=14 div=37.4
+2026-09-22 03:02:25,156 agmem M3 seed 2 gen  8 n=18 best=0.4845 mean=0.3134 distinct=144 hits=16 div=30.9
+2026-09-22 03:05:36,077 agmem M3 seed 2 gen  9 n=18 best=0.4845 mean=0.3155 distinct=160 hits=18 div=33.8
+2026-09-22 03:08:41,374 agmem M3 seed 2 gen 10 n=18 best=0.4915 mean=0.3272 distinct=176 hits=20 div=29.2
+2026-09-22 03:11:25,940 agmem M3 seed 2 gen 11 n=18 best=0.4915 mean=0.3614 distinct=191 hits=23 div=25.3
+2026-09-22 03:14:11,685 agmem M3 seed 2 gen 12 n=18 best=0.5357 mean=0.3630 distinct=207 hits=25 div=23.1
+2026-09-22 03:17:03,468 agmem M3 seed 2 gen 13 n=18 best=0.5357 mean=0.3314 distinct=223 hits=27 div=25.8
+2026-09-22 03:20:14,984 agmem M3 seed 2 gen 14 n=18 best=0.5977 mean=0.3959 distinct=239 hits=29 div=20.7
+2026-09-22 03:23:13,036 agmem M3 seed 2 gen 15 n=18 best=0.5977 mean=0.3767 distinct=255 hits=31 div=21.3
+2026-09-22 03:26:17,902 agmem M3 seed 2 gen 16 n=18 best=0.5977 mean=0.3840 distinct=271 hits=33 div=21.6
+2026-09-22 03:29:22,125 agmem M3 seed 2 gen 17 n=18 best=0.5977 mean=0.3833 distinct=287 hits=35 div=22.1
+2026-09-22 03:32:15,682 agmem M3 seed 2 gen 18 n=18 best=0.5977 mean=0.4083 distinct=303 hits=37 div=21.4
+2026-09-22 03:33:10,409 agmem M3 seed 2 gen 19 n=18 best=0.5977 mean=0.3963 distinct=319 hits=39 div=20.7
+2026-09-22 03:33:10,416 agmem finished: all planned runs attempted
