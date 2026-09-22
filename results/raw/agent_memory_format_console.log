@@ -1,0 +1,43 @@
+model=gemma4:12b temperature=0.7 num_ctx=4096 len=63 n=100 k=1 seed=0  llm log: /scratch/pcanaste/projeto/phase2_agent_memory/results/raw/llm_operator_calls_agent_memory_format.jsonl
+warm-up 18.9s
+=== condition a ===
+  a: 20/100
+  a: 40/100
+  a: 60/100
+  a: 80/100
+  a: 100/100
+=== condition b ===
+  b: 20/100
+  b: 40/100
+  b: 60/100
+  b: 80/100
+  b: 100/100
+=== condition c ===
+  c: 20/100
+  c: 40/100
+  c: 60/100
+  c: 80/100
+  c: 100/100
+=== condition d ===
+  d: 20/100
+  d: 40/100
+  d: 60/100
+  d: 80/100
+  d: 100/100
+wrote /scratch/pcanaste/projeto/phase2_agent_memory/results/raw/agent_memory_format.json  (wall 786s)
+
+| condition | calls | fallback | no-op rate (any attempt) | avoid share | prefer share | distinct pos | mode |
+|---|---|---|---|---|---|---|---|
+| a: no record | 100 | 0/100 = 0% | 0/100 = 0% | 6/100 = 6% | 3/100 = 3% | 14 | 10 (40/100) |
+| b: prose record | 100 | 0/100 = 0% | 2/100 = 2% | 24/100 = 24% | 3/100 = 3% | 47 | 10 (6/100) |
+| c: explicit avoid list | 100 | 0/100 = 0% | 0/100 = 0% | 0/100 = 0% | 5/100 = 5% | 7 | 1 (55/100) |
+| d: explicit prefer list | 100 | 0/100 = 0% | 0/100 = 0% | 0/100 = 0% | 96/100 = 96% | 36 | 10 (9/100) |
+
+paired against condition a (exact sign test on calls valid in both):
+  c_avoid_vs_a: a=6/100  c=0/100  discordant a-only=6 c-only=0  exact sign p=0.0312
+  b_avoid_vs_a: a=6/100  b=24/100  discordant a-only=3 b-only=21  exact sign p=0.0003
+  d_prefer_vs_a: a=3/100  d=96/100  discordant a-only=0 d-only=93  exact sign p=0.0000
+  b_prefer_vs_a: a=3/100  b=3/100  discordant a-only=3 b-only=3  exact sign p=1.0000
+
+DECISION-RELEVANT: avoid share -- a (null) 6/100 = 6%, b (prose) 24/100 = 24%, c (explicit) 0/100 = 0%. prefer share -- a (null) 3/100 = 3%, b (prose) 3/100 = 3%, d (explicit) 96/100 = 96%.
+  avoid: FORMAT: c drops far below a's null (c 0% vs a 6%); b also moved (24/100 = 24%)
