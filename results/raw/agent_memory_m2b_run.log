@@ -1,0 +1,76 @@
+2026-09-22 10:18:36,527 agmem plan: [('M2b', 0), ('M2b', 1), ('M2b', 2)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-22 10:18:45,906 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 13/4498 [00:38<3:39:08,  2.93s/it]Loading weights:   0%|          | 18/4498 [01:00<4:21:56,  3.51s/it]Loading weights:   2%|▏         | 103/4498 [01:01<26:48,  2.73it/s] Loading weights:  19%|█▉        | 847/4498 [01:01<01:49, 33.20it/s]Loading weights:  35%|███▌      | 1587/4498 [01:01<00:38, 76.06it/s]Loading weights:  52%|█████▏    | 2358/4498 [01:01<00:15, 138.98it/s]Loading weights:  72%|███████▏  | 3253/4498 [01:01<00:05, 241.52it/s]Loading weights:  95%|█████████▍| 4271/4498 [01:01<00:00, 404.05it/s]Loading weights: 100%|██████████| 4498/4498 [01:01<00:00, 73.11it/s] 
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-22 10:20:07,885 agmem === M2b seed 0 attempt 1 ===
+2026-09-22 10:22:03,330 agmem M2b seed 0 gen  0 n=16 best=0.3006 mean=0.2474 distinct=16 hits=0 div=50.3
+2026-09-22 10:24:12,525 agmem M2b seed 0 gen  1 n=18 best=0.3287 mean=0.2685 distinct=32 hits=2 div=43.8
+2026-09-22 10:26:29,152 agmem M2b seed 0 gen  2 n=18 best=0.3409 mean=0.2790 distinct=48 hits=4 div=38.0
+2026-09-22 10:28:47,072 agmem M2b seed 0 gen  3 n=18 best=0.3667 mean=0.3001 distinct=64 hits=6 div=32.0
+2026-09-22 10:31:17,381 agmem M2b seed 0 gen  4 n=18 best=0.3667 mean=0.2978 distinct=80 hits=8 div=36.7
+2026-09-22 10:34:05,156 agmem M2b seed 0 gen  5 n=18 best=0.3667 mean=0.2905 distinct=96 hits=10 div=31.7
+2026-09-22 10:36:56,393 agmem M2b seed 0 gen  6 n=18 best=0.3667 mean=0.2858 distinct=112 hits=12 div=32.3
+2026-09-22 10:39:40,771 agmem M2b seed 0 gen  7 n=18 best=0.3667 mean=0.2835 distinct=128 hits=14 div=34.0
+2026-09-22 10:42:18,353 agmem M2b seed 0 gen  8 n=18 best=0.3667 mean=0.2985 distinct=144 hits=16 div=33.5
+2026-09-22 10:45:03,734 agmem M2b seed 0 gen  9 n=18 best=0.3667 mean=0.2964 distinct=160 hits=18 div=33.0
+2026-09-22 10:47:53,361 agmem M2b seed 0 gen 10 n=18 best=0.3667 mean=0.2978 distinct=176 hits=20 div=31.0
+2026-09-22 10:50:45,070 agmem M2b seed 0 gen 11 n=18 best=0.3729 mean=0.2983 distinct=192 hits=22 div=33.1
+2026-09-22 10:53:21,161 agmem M2b seed 0 gen 12 n=18 best=0.3819 mean=0.3116 distinct=208 hits=24 div=30.5
+2026-09-22 10:56:08,043 agmem M2b seed 0 gen 13 n=18 best=0.3819 mean=0.3139 distinct=224 hits=26 div=34.4
+2026-09-22 10:58:48,522 agmem M2b seed 0 gen 14 n=18 best=0.4420 mean=0.3127 distinct=240 hits=28 div=28.6
+2026-09-22 11:01:30,940 agmem M2b seed 0 gen 15 n=18 best=0.4420 mean=0.3181 distinct=256 hits=30 div=22.6
+2026-09-22 11:04:15,321 agmem M2b seed 0 gen 16 n=18 best=0.4573 mean=0.3260 distinct=272 hits=32 div=19.2
+2026-09-22 11:06:54,787 agmem M2b seed 0 gen 17 n=18 best=0.4573 mean=0.3189 distinct=288 hits=34 div=18.6
+2026-09-22 11:09:41,242 agmem M2b seed 0 gen 18 n=18 best=0.4573 mean=0.3379 distinct=304 hits=36 div=16.6
+2026-09-22 11:10:29,450 agmem M2b seed 0 gen 19 n=18 best=0.4573 mean=0.3196 distinct=320 hits=38 div=17.2
+2026-09-22 11:10:29,541 agmem === M2b seed 1 attempt 1 ===
+2026-09-22 11:13:01,213 agmem M2b seed 1 gen  0 n=16 best=0.2959 mean=0.2359 distinct=16 hits=0 div=50.5
+2026-09-22 11:15:47,161 agmem M2b seed 1 gen  1 n=18 best=0.4227 mean=0.2800 distinct=32 hits=2 div=50.3
+2026-09-22 11:18:48,716 agmem M2b seed 1 gen  2 n=18 best=0.4227 mean=0.2814 distinct=48 hits=4 div=48.2
+2026-09-22 11:21:48,322 agmem M2b seed 1 gen  3 n=18 best=0.4337 mean=0.3004 distinct=64 hits=6 div=46.8
+2026-09-22 11:24:41,493 agmem M2b seed 1 gen  4 n=18 best=0.4337 mean=0.2974 distinct=80 hits=8 div=48.6
+2026-09-22 11:27:26,657 agmem M2b seed 1 gen  5 n=18 best=0.4337 mean=0.2920 distinct=96 hits=10 div=45.7
+2026-09-22 11:30:19,971 agmem M2b seed 1 gen  6 n=18 best=0.4337 mean=0.2785 distinct=112 hits=12 div=44.2
+2026-09-22 11:32:58,956 agmem M2b seed 1 gen  7 n=18 best=0.4337 mean=0.2998 distinct=128 hits=14 div=39.0
+2026-09-22 11:35:48,308 agmem M2b seed 1 gen  8 n=18 best=0.4337 mean=0.3006 distinct=144 hits=16 div=31.4
+2026-09-22 11:38:36,289 agmem M2b seed 1 gen  9 n=18 best=0.4791 mean=0.3161 distinct=160 hits=18 div=26.9
+2026-09-22 11:41:28,191 agmem M2b seed 1 gen 10 n=18 best=0.4960 mean=0.3492 distinct=176 hits=20 div=23.9
+2026-09-22 11:44:16,587 agmem M2b seed 1 gen 11 n=18 best=0.4960 mean=0.3230 distinct=192 hits=22 div=25.9
+2026-09-22 11:47:00,140 agmem M2b seed 1 gen 12 n=18 best=0.4960 mean=0.3376 distinct=208 hits=24 div=29.6
+2026-09-22 11:49:44,262 agmem M2b seed 1 gen 13 n=18 best=0.4960 mean=0.3354 distinct=223 hits=27 div=19.6
+2026-09-22 11:52:36,560 agmem M2b seed 1 gen 14 n=18 best=0.4960 mean=0.3448 distinct=239 hits=29 div=19.5
+2026-09-22 11:55:24,977 agmem M2b seed 1 gen 15 n=18 best=0.4960 mean=0.3228 distinct=255 hits=31 div=19.6
+2026-09-22 11:58:10,493 agmem M2b seed 1 gen 16 n=18 best=0.5212 mean=0.3547 distinct=271 hits=33 div=27.4
+2026-09-22 12:01:07,050 agmem M2b seed 1 gen 17 n=18 best=0.5212 mean=0.3425 distinct=287 hits=35 div=25.9
+2026-09-22 12:03:58,299 agmem M2b seed 1 gen 18 n=18 best=0.5212 mean=0.3256 distinct=303 hits=37 div=24.8
+2026-09-22 12:04:44,519 agmem M2b seed 1 gen 19 n=18 best=0.5212 mean=0.3329 distinct=319 hits=39 div=31.3
+2026-09-22 12:04:44,606 agmem === M2b seed 2 attempt 1 ===
+2026-09-22 12:07:25,854 agmem M2b seed 2 gen  0 n=16 best=0.3353 mean=0.2334 distinct=16 hits=0 div=53.0
+2026-09-22 12:10:31,906 agmem M2b seed 2 gen  1 n=18 best=0.3433 mean=0.2678 distinct=32 hits=2 div=54.1
+2026-09-22 12:13:33,195 agmem M2b seed 2 gen  2 n=18 best=0.3433 mean=0.2718 distinct=48 hits=4 div=49.9
+2026-09-22 12:17:01,950 agmem M2b seed 2 gen  3 n=18 best=0.3433 mean=0.2675 distinct=64 hits=6 div=42.7
+2026-09-22 12:20:28,205 agmem M2b seed 2 gen  4 n=18 best=0.3433 mean=0.2688 distinct=80 hits=8 div=38.4
+2026-09-22 12:23:47,133 agmem M2b seed 2 gen  5 n=18 best=0.4177 mean=0.3085 distinct=96 hits=10 div=32.9
+2026-09-22 12:27:29,710 agmem M2b seed 2 gen  6 n=18 best=0.4209 mean=0.3156 distinct=112 hits=12 div=33.9
+2026-09-22 12:30:58,851 agmem M2b seed 2 gen  7 n=18 best=0.4430 mean=0.3190 distinct=128 hits=14 div=34.1
+2026-09-22 12:34:46,228 agmem M2b seed 2 gen  8 n=18 best=0.4564 mean=0.3352 distinct=144 hits=16 div=23.9
+2026-09-22 12:38:12,203 agmem M2b seed 2 gen  9 n=18 best=0.5355 mean=0.3886 distinct=160 hits=18 div=26.9
+2026-09-22 12:42:10,592 agmem M2b seed 2 gen 10 n=18 best=0.5355 mean=0.3651 distinct=176 hits=20 div=22.8
+2026-09-22 12:45:50,709 agmem M2b seed 2 gen 11 n=18 best=0.5355 mean=0.3711 distinct=192 hits=22 div=20.2
+2026-09-22 12:49:29,508 agmem M2b seed 2 gen 12 n=18 best=0.5355 mean=0.3846 distinct=208 hits=24 div=20.1
+2026-09-22 12:53:26,746 agmem M2b seed 2 gen 13 n=18 best=0.5355 mean=0.3764 distinct=224 hits=26 div=19.9
+2026-09-22 12:56:50,503 agmem M2b seed 2 gen 14 n=18 best=0.5355 mean=0.3712 distinct=240 hits=28 div=20.2
+2026-09-22 13:00:03,823 agmem M2b seed 2 gen 15 n=18 best=0.5355 mean=0.3472 distinct=256 hits=30 div=21.2
+2026-09-22 13:03:27,759 agmem M2b seed 2 gen 16 n=18 best=0.5355 mean=0.3548 distinct=272 hits=32 div=21.0
+2026-09-22 13:07:00,616 agmem M2b seed 2 gen 17 n=18 best=0.5355 mean=0.3734 distinct=288 hits=34 div=21.0
+2026-09-22 13:10:57,639 agmem M2b seed 2 gen 18 n=18 best=0.5355 mean=0.3735 distinct=304 hits=36 div=21.4
+2026-09-22 13:11:54,511 agmem M2b seed 2 gen 19 n=18 best=0.5355 mean=0.3837 distinct=320 hits=38 div=21.8
+2026-09-22 13:11:54,534 agmem finished: all planned runs attempted
