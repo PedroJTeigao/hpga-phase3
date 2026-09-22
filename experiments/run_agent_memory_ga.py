@@ -46,9 +46,12 @@ from hpga.config import HPGAConfig  # noqa: E402
 
 log = logging.getLogger("agmem")
 N_AGENTS = 2
-ARMS = ("M1", "M2", "M3")
-DESCRIPTION = {"M1": "GA + LLM operators + 2 agents, no memory", "M2": "GA + LLM operators + 2 agents, private record shown",
+AGENT_ARMS = ("M1", "M2", "M2b")  # arms with agents.py's record (memory off / prose / list); M3 is the non-agent control
+ARMS = AGENT_ARMS + ("M3",)
+DESCRIPTION = {"M1": "GA + LLM operators + 2 agents, no memory", "M2": "GA + LLM operators + 2 agents, private record shown (prose)",
+               "M2b": "GA + LLM operators + 2 agents, private record shown (explicit avoid/prefer lists)",
                "M3": "GA + LLM operators + 2 random immigrants (control)"}
+MEMORY_FORMAT = {"M2": "prose", "M2b": "list"}  # HPGA_AGENTS_MEMORY_FORMAT for the two memory-shown arms
 
 
 class NoResidency:
@@ -84,12 +87,15 @@ def run_arm(arm: str, seed: int, args, partial_path: Path | None = None) -> dict
     assert arm in ARMS
     rec = base.base_record(arm, seed, args)
     base.clean_env()
-    for v in ("HPGA_AGENTS_MEMORY", "HPGA_N_AGENTS", "HPGA_AGENT_MEMORY_LOG_PATH", "HPGA_AGENTS_SEQ_EDIT_RATE", "HPGA_AGENTS_MEMORY_WINDOW"):
+    for v in ("HPGA_AGENTS_MEMORY", "HPGA_AGENTS_MEMORY_FORMAT", "HPGA_N_AGENTS", "HPGA_AGENT_MEMORY_LOG_PATH",
+              "HPGA_AGENTS_SEQ_EDIT_RATE", "HPGA_AGENTS_MEMORY_WINDOW"):
         os.environ.pop(v, None)
     os.environ.update({"HPGA_OPERATOR_MODE": "llm", "HPGA_CIRCLES_ENABLED": "0"})
-    if arm in ("M1", "M2"):
+    if arm in AGENT_ARMS:
         os.environ.update({"HPGA_AGENTS_ENABLED": "1", "HPGA_N_AGENTS": str(N_AGENTS),
-                           "HPGA_AGENTS_MEMORY": "1" if arm == "M2" else "0"})
+                           "HPGA_AGENTS_MEMORY": "1" if arm in MEMORY_FORMAT else "0"})
+        if arm in MEMORY_FORMAT:
+            os.environ["HPGA_AGENTS_MEMORY_FORMAT"] = MEMORY_FORMAT[arm]
     else:
         os.environ["HPGA_AGENTS_ENABLED"] = "0"
     cfg = HPGAConfig(genome_model="sequence", pop_size=args.pop_size, n_generations=args.generations, seed=seed)
@@ -104,11 +110,12 @@ def run_arm(arm: str, seed: int, args, partial_path: Path | None = None) -> dict
     ops.reset_operator_stats(); agents.reset_agent_state(); circles.reset_circle_state(); bb.reset_blackboard()
     circ.install(tally)
     rec["llm_call_log"] = base.rel(ops._log_path())
-    rec["agent_memory_log"] = base.rel(aseq._log_path()) if arm in ("M1", "M2") else None
+    rec["agent_memory_log"] = base.rel(aseq._log_path()) if arm in AGENT_ARMS else None
     rec["config"].update({"arm_description": DESCRIPTION[arm], "injected_per_breeding_step": N_AGENTS, "llm_styles": base.STYLES,
-                          "agents": {"n_agents": N_AGENTS, "memory": arm == "M2", "record_window": 8, "edit_rate": 0.05,
+                          "agents": {"n_agents": N_AGENTS, "memory": arm in MEMORY_FORMAT, "memory_format": MEMORY_FORMAT.get(arm),
+                                     "record_window": 8, "edit_rate": 0.05,
                                      "proposal_format": "position edits to the agent's own tail slot (the mutate/position call)"}
-                          if arm in ("M1", "M2") else None})
+                          if arm in AGENT_ARMS else None})
     rng = random.Random(seed)
     population = ops.random_population(cfg.pop_size, None, rng)
     gens, integrity, breed_s = [], [], 0.0
@@ -160,7 +167,7 @@ def run_arm(arm: str, seed: int, args, partial_path: Path | None = None) -> dict
              "fallback_rate_all_llm_calls": (sum(t["n_failures"] for t in ops_summary.values()) / n_calls) if n_calls else None,
              "requests_per_call_all_llm_calls": (sum(t["n_llm_requests"] for t in ops_summary.values()) / n_calls) if n_calls else None,
              "injected_total": N_AGENTS * (cfg.n_generations - 1)}
-    if arm in ("M1", "M2"):
+    if arm in AGENT_ARMS:
         events = []
         p = aseq._log_path()
         if p.exists():
@@ -237,7 +244,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("run_cmd", choices=["run"])
     ap.add_argument("--seeds", type=int, nargs="+", required=True)
-    ap.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))
+    ap.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))  # M1, M2, M2b, M3
     ap.add_argument("--pop-size", type=int, default=16)
     ap.add_argument("--generations", type=int, default=20)
     ap.add_argument("--out-dir", type=str, default=str(base.RAW))

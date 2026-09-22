@@ -1,8 +1,15 @@
 """Tables and chart for the agent-memory GA runs (run_agent_memory_ga.py). Everything in the output is computed from
-results/raw/agent_memory_M{1,2,3}_seed{s}.json; nothing is typed by hand.
+results/raw/agent_memory_<arm>_seed<s>.json, arm in M1 (no memory), M2 (prose record), M2b (explicit avoid/prefer
+lists -- results/raw/agent_memory_format.json is the isolated probe that motivated this arm), M3 (random immigrants,
+the control -- every other arm is an "agent arm", see agent_arms()); nothing is typed by hand.
 
-  python experiments/summarize_agent_memory.py [--raw DIR] [--out-md results/AGENT_MEMORY_STAGE3_TABLES.md]
-                                               [--out-png results/agent_memory_stage3.png] [--seeds 0 1 2]
+  python experiments/summarize_agent_memory.py [--raw DIR] [--seeds 0 1 2] [--arms M1 M2 M3]
+                                               [--out-md results/AGENT_MEMORY_STAGE3_TABLES.md]
+                                               [--out-png results/agent_memory_stage3.png]
+
+--arms selects and orders which arms to load and report (default M1 M2 M3, unchanged); pass --arms M1 M2 M2b M3
+for a comparison that includes the list-format arm, with separate --out-md/--out-png/--out-json so the original
+Stage 3 files are not overwritten.
 
 Definitions, fixed before any result was read:
   budget        each seed is read at n_cut = the smallest distinct-fold count reached by any of its arms; "best at the
@@ -28,7 +35,9 @@ Definitions, fixed before any result was read:
 """
 
 import argparse
+import itertools
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -36,10 +45,18 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-ARMS = ("M1", "M2", "M3")
-NAME = {"M1": "M1 agents, no memory", "M2": "M2 agents, private record", "M3": "M3 random immigrants"}
-COLOR = {"M1": "#2a78d6", "M2": "#eb6834", "M3": "#1baf7a"}  # slots 1-3 of the reference palette, validated all-pairs
+ARMS = ("M1", "M2", "M3")  # overridable: main() reassigns this global from --arms before calling load/sections/chart
+CONTROL_ARM = "M3"  # the one non-agent arm (random immigrants); every other arm in ARMS is an "agent arm"
+NAME = {"M1": "M1 agents, no memory", "M2": "M2 agents, private record (prose)",
+        "M2b": "M2b agents, private record (explicit lists)", "M3": "M3 random immigrants"}
+COLOR = {"M1": "#2a78d6", "M2": "#eb6834", "M2b": "#4a3aa7", "M3": "#1baf7a"}  # reference-palette slots 1,2,7,3: all-pairs validated
 WINDOW, SUPPORT, N_NULL, SHOWN = 6, 80, 2000, 8
+
+
+def agent_arms() -> tuple:
+    """Every arm in ARMS except the control -- computed fresh so a CLI --arms override (M1/M2/M2b/M3 in any
+    subset) is honoured without touching the functions below."""
+    return tuple(a for a in ARMS if a != CONTROL_ARM)
 
 
 def load(raw: Path, seeds) -> dict:
@@ -178,6 +195,47 @@ def fmt(x, nd=4):
     return "n/a" if x is None or (isinstance(x, float) and np.isnan(x)) else f"{x:.{nd}f}"
 
 
+_POSITION_PAIR = re.compile(r"POSITION\s*:\s*(\d+)\s*,\s*NEW\s*:\s*([A-Za-z])", re.IGNORECASE)
+
+
+def agent_propose_diagnostics(run) -> dict:
+    """Fallback rate and NO-OP RATE for this run's agent_propose calls, read post-hoc from the raw LLM call log --
+    the same method used to diagnose the M2 arm's fallbacks (a call's no-op flag is set if ANY of its attempts'
+    parsed POSITION/NEW pairs proposed the letter already at that position in the base genome, read from that
+    call's first prompt -- the mechanism experiments/probe_agent_memory_format.py isolated: the model tries to
+    act on the record but reproduces the current state, and the parser correctly rejects that as no change)."""
+    log_path = Path(run["llm_call_log"])
+    log_path = log_path if log_path.is_absolute() else ROOT / log_path
+    if not log_path.exists():
+        return {"n_calls": 0, "fallback": 0, "fallback_rate": None, "no_op": 0, "no_op_rate": None}
+    groups: dict = {}
+    for line in open(log_path, encoding="utf-8"):
+        r = json.loads(line)
+        if r.get("op") != "agent_propose":
+            continue
+        groups.setdefault((r.get("agent_id"), r.get("generation")), []).append(r)
+    n_fallback = n_no_op = 0
+    for recs in groups.values():
+        attempts = [r for r in recs if "attempt" in r]
+        n_fallback += any(r.get("event") == "fallback_to_deterministic" for r in recs)
+        base = None
+        for r in attempts:
+            m = re.search(r"Sequence \(0-indexed positions 0-\d+\): ([A-Z ]+)", r.get("prompt", ""))
+            if m:
+                base = "".join(m.group(1).split())
+                break
+        same_letter = False
+        if base:
+            for r in attempts:
+                for pos_s, letter in _POSITION_PAIR.findall(r.get("response") or ""):
+                    if int(pos_s) < len(base) and letter.upper() == base[int(pos_s)]:
+                        same_letter = True
+        n_no_op += same_letter
+    n = len(groups)
+    return {"n_calls": n, "fallback": n_fallback, "fallback_rate": n_fallback / n if n else None,
+            "no_op": n_no_op, "no_op_rate": n_no_op / n if n else None}
+
+
 def sections(runs, seeds) -> tuple[str, dict]:
     md, data = [], {}
     have = [s for s in seeds if all((a, s) in runs for a in ARMS)]
@@ -196,6 +254,26 @@ def sections(runs, seeds) -> tuple[str, dict]:
             fb = f"{ap['n_failures']}/{ap['n_llm_calls']}" if ap else "-"
             md.append(f"| {s} | {NAME[a]} | {sm_['n_distinct_evaluations']} | {sm_['n_cache_hits']} | {fmt(sm_['final_best'])} | {sm_['wall_s']:.0f} | {sm_['n_llm_calls_total']} | {fb} | {r.get('attempt')} |")
     md.append("")
+
+    aa = agent_arms()
+    if aa:
+        md.append("### 1b. Agent-propose diagnostics: fallback rate and NO-OP RATE\n")
+        md.append("No-op rate: share of agent-propose calls where at least one attempt proposed the letter already at that position "
+                  "(read from the raw call log; see agent_propose_diagnostics's docstring).\n")
+        md.append("| arm | seed | agent-propose calls | fallback | no-op (any attempt) |")
+        md.append("|---|---|---|---|---|")
+        diag = {}
+        for a in aa:
+            for s in part:
+                if (a, s) not in runs:
+                    continue
+                d = agent_propose_diagnostics(runs[(a, s)])
+                diag[(a, s)] = d
+                fb_pct = f"{d['fallback_rate']:.0%}" if d['fallback_rate'] is not None else "n/a"
+                no_op_pct = f"{d['no_op_rate']:.0%}" if d['no_op_rate'] is not None else "n/a"
+                md.append(f"| {NAME[a]} | {s} | {d['n_calls']} | {d['fallback']}/{d['n_calls']} ({fb_pct}) | {d['no_op']}/{d['n_calls']} ({no_op_pct}) |")
+        md.append("")
+        data["agent_propose_diagnostics"] = {f"{a}_{s}": v for (a, s), v in diag.items()}
 
     md.append("### 2. Best TM-score at the common distinct-fold count, per seed\n")
     md.append("n_cut = smallest distinct-fold count among the seed's arms: " + ", ".join(f"seed {s}: {cut[s]}" for s in part) + "\n")
@@ -220,7 +298,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
             md.append(f"| {NAME[a]} | {np.mean(v):.4f} | {min(v):.4f} - {max(v):.4f} |")
         md.append("")
         md.append(f"Rule: X beats Y only if higher in every seed; with {len(have)} seeds the smallest two-sided sign-test p is {2 / 2 ** len(have):.3g}, so nothing here can be called significant at 0.05.\n")
-        for x, y in (("M2", "M1"), ("M2", "M3"), ("M1", "M3")):
+        for x, y in itertools.combinations(ARMS, 2):  # every pair, in ARMS's own order
             d = [at[(x, s)] - at[(y, s)] for s in have]
             hi, lo = sum(v > 0 for v in d), sum(v < 0 for v in d)
             verdict = f"{x} BEATS {y} under the pre-set rule" if hi == len(d) else f"NO DEMONSTRATED DIFFERENCE between {x} and {y}"
@@ -231,14 +309,14 @@ def sections(runs, seeds) -> tuple[str, dict]:
 
     # --- improvement rate
     md.append("### 3. Improvement rate: how often an agent's proposal beats its own base genome\n")
-    P = {(a, s): proposals(runs[(a, s)]) for a in ("M1", "M2") for s in part if (a, s) in runs}
+    P = {(a, s): proposals(runs[(a, s)]) for a in agent_arms() for s in part if (a, s) in runs}
     if P:
         G = max(p["gen"] for v in P.values() for p in v)
         bins = thirds(G)
         md.append("Per third of the run (gens " + ", ".join(f"{lo}-{hi}" for lo, hi in bins) + "), improved / valid proposals (2 agents per seed):\n")
         md.append("| arm | seed | " + " | ".join(f"gens {lo}-{hi}" for lo, hi in bins) + " | all | fallbacks | trend (Spearman, gen vs improved) |")
         md.append("|---|---|" + "---|" * len(bins) + "---|---|---|")
-        for a in ("M1", "M2"):
+        for a in agent_arms():
             for s in part:
                 if (a, s) not in P:
                     continue
@@ -254,7 +332,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
         md.append("| arm | " + " | ".join(f"gens {lo}-{hi}" for lo, hi in bins) + " | all | trend (Spearman) |")
         md.append("|---|" + "---|" * len(bins) + "---|---|")
         pooled = {}
-        for a in ("M1", "M2"):
+        for a in agent_arms():
             v = [p for s in part if (a, s) in P for p in P[(a, s)] if p["valid"]]
             pooled[a] = v
             cells = []
@@ -264,11 +342,11 @@ def sections(runs, seeds) -> tuple[str, dict]:
             md.append(f"| {NAME[a]} | " + " | ".join(cells) + f" | {sum(p['improved'] for p in v)}/{len(v)} = {sum(p['improved'] for p in v) / max(1, len(v)):.0%} | {fmt(spearman([p['gen'] for p in v], [p['improved'] for p in v]), 2)} |")
         md.append("")
         md.append("Per generation, pooled (improved/valid):\n")
-        md.append("| gen | " + " | ".join(NAME[a] for a in ("M1", "M2")) + " |")
-        md.append("|---|---|---|")
+        md.append("| gen | " + " | ".join(NAME[a] for a in agent_arms()) + " |")
+        md.append("|---|" + "---|" * len(agent_arms()))
         for g in range(1, G + 1):
             cells = []
-            for a in ("M1", "M2"):
+            for a in agent_arms():
                 w = [p for p in pooled[a] if p["gen"] == g]
                 cells.append(f"{sum(p['improved'] for p in w)}/{len(w)}")
             md.append(f"| {g} | " + " | ".join(cells) + " |")
@@ -277,7 +355,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
 
     # --- divergence
     md.append("### 4. Divergence: distance between the two agents' proposal distributions\n")
-    D = {(a, s): divergence(runs[(a, s)], s) for a in ("M1", "M2") for s in part if (a, s) in runs}
+    D = {(a, s): divergence(runs[(a, s)], s) for a in agent_arms() for s in part if (a, s) in runs}
     if D:
         Gd = max(len(v) for v in D.values()) - 1
         marks = [g for g in (3, 6, 9, 12, 15, 18) if g <= Gd] or [Gd]
@@ -285,7 +363,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
                   f"{WINDOW} generations, at selected generations. Null = two samples of the same sizes from the pooled histogram; excess near 0 means the agents are indistinguishable from one distribution.\n")
         md.append("| arm | seed | kind | " + " | ".join(f"gen {g}" for g in marks) + " | mean excess over gens 3-" + str(Gd) + " |")
         md.append("|---|---|---|" + "---|" * len(marks) + "---|")
-        for a in ("M1", "M2"):
+        for a in agent_arms():
             for s in part:
                 if (a, s) not in D:
                     continue
@@ -298,7 +376,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
         md.append("Mean over the seeds present of the excess TV, by third of the run:\n")
         md.append("| arm | kind | " + " | ".join(f"gens {lo}-{hi}" for lo, hi in thirds(Gd)) + " |")
         md.append("|---|---|" + "---|" * 3)
-        for a in ("M1", "M2"):
+        for a in agent_arms():
             for kind in ("cum", "win"):
                 cells = []
                 for lo, hi in thirds(Gd):
@@ -309,7 +387,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
         data["divergence"] = {f"{a}_{s}": D[(a, s)] for (a, s) in D}
 
     # --- what the proposals did
-    md.append("### 5. What the agents' proposals were (M1, M2) and what the injected genomes were worth (M1, M2, M3)\n")
+    md.append(f"### 5. What the agents' proposals were ({', '.join(agent_arms())}) and what the injected genomes were worth ({', '.join(ARMS)})\n")
     md.append("| arm | seed | proposals (valid edit) | edited positions | distinct positions | most-edited position (share) | distinct new letters | most-used letter (share) | injected: mean TM | injected: best | rest of population: mean TM |")
     md.append("|---|---|---|---|---|---|---|---|---|---|---|")
     for a in ARMS:
@@ -320,7 +398,7 @@ def sections(runs, seeds) -> tuple[str, dict]:
             pop = pop_size(r)
             inj = [f for g in r["generations"][1:] for f in g["fitnesses"][pop:]]
             rest = [f for g in r["generations"][1:] for f in g["fitnesses"][:pop]]
-            if a == "M3":
+            if a == CONTROL_ARM:
                 md.append(f"| {NAME[a]} | {s} | - | - | - | - | - | - | {np.mean(inj):.4f} | {max(inj):.4f} | {np.mean(rest):.4f} |")
                 continue
             pr = [p for p in proposals(r) if not p["fallback"]]
@@ -329,21 +407,21 @@ def sections(runs, seeds) -> tuple[str, dict]:
             (pm, pc), (lm, lc) = pos.most_common(1)[0], let.most_common(1)[0]
             md.append(f"| {NAME[a]} | {s} | {len(pr)} | {n_pos} | {len(pos)} | {pm} ({pc / n_pos:.0%}) | {len(let)} | {lm} ({lc / n_pos:.0%}) | {np.mean(inj):.4f} | {max(inj):.4f} | {np.mean(rest):.4f} |")
     md.append("")
-    md.append("Injected = the last 2 members of each evaluated population from generation 1 (agent proposals in M1/M2, random immigrants in M3).\n")
+    md.append(f"Injected = the last 2 members of each evaluated population from generation 1 (agent proposals in {'/'.join(agent_arms())}, random immigrants in {CONTROL_ARM}).\n")
 
     # --- record use
     md.append("### 6. Do the agents act on their record? (per edited position, from generation 2)\n")
     md.append("| arm | seed | edited positions | in the agent's last-8 record | latest entry better | latest entry worse |")
     md.append("|---|---|---|---|---|---|")
-    tot = {a: Counter() for a in ("M1", "M2")}
-    for a in ("M1", "M2"):
+    tot = {a: Counter() for a in agent_arms()}
+    for a in agent_arms():
         for s in part:
             if (a, s) not in runs:
                 continue
             c = Counter(record_use(runs[(a, s)]))
             tot[a].update(c)
             md.append(f"| {NAME[a]} | {s} | {c['edits']} | {c['in_record']} ({c['in_record'] / max(1, c['edits']):.0%}) | {c['better']} ({c['better'] / max(1, c['edits']):.0%}) | {c['worse']} ({c['worse'] / max(1, c['edits']):.0%}) |")
-    for a in ("M1", "M2"):
+    for a in agent_arms():
         c = tot[a]
         md.append(f"| **{NAME[a]}** | all | {c['edits']} | {c['in_record']} ({c['in_record'] / max(1, c['edits']):.0%}) | {c['better']} ({c['better'] / max(1, c['edits']):.0%}) | {c['worse']} ({c['worse'] / max(1, c['edits']):.0%}) |")
     md.append("")
@@ -397,7 +475,7 @@ def chart(runs, ctx, out_png: Path) -> None:
             if (a, s) not in runs:
                 continue
             y = runs[(a, s)]["best_so_far_by_distinct_evaluation"][: cut[s]]
-            ax.plot(range(1, len(y) + 1), y, drawstyle="steps-post", color=COLOR[a], lw=2.0, ls="--" if a == "M3" else "-", label=NAME[a])
+            ax.plot(range(1, len(y) + 1), y, drawstyle="steps-post", color=COLOR[a], lw=2.0, ls="--" if a == CONTROL_ARM else "-", label=NAME[a])
             ends.append([a, len(y), y[-1], y[-1]])
         ends.sort(key=lambda e: e[2])
         for k in range(1, len(ends)):
@@ -410,7 +488,7 @@ def chart(runs, ctx, out_png: Path) -> None:
 
     G = max((len(v) for v in D.values()), default=1) - 1
     ax = fig.add_subplot(gs[1, 0])
-    for a in ("M1", "M2"):
+    for a in agent_arms():
         rates = []
         for g in range(1, G + 1):
             w = [p for s in part if (a, s) in P for p in P[(a, s)] if p["valid"] and p["gen"] == g]
@@ -428,7 +506,7 @@ def chart(runs, ctx, out_png: Path) -> None:
 
     for col, (kind, title) in enumerate((("cum", "Divergence, cumulative"), ("win", f"Divergence, trailing {WINDOW}-gen window")), start=1):
         ax = fig.add_subplot(gs[1, col])
-        for a in ("M1", "M2"):
+        for a in agent_arms():
             vals = []
             for g in range(0, G + 1):
                 v = [D[(a, s)][g][kind]["excess"] for s in part if (a, s) in D and g < len(D[(a, s)]) and not np.isnan(D[(a, s)][g][kind]["excess"])]
@@ -451,10 +529,15 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--raw", default=str(ROOT / "results" / "raw"))
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
+    ap.add_argument("--arms", nargs="+", default=None, choices=["M1", "M2", "M2b", "M3"],
+                    help="override which arms to load/report, in display order (default: M1 M2 M3)")
     ap.add_argument("--out-md", default=str(ROOT / "results" / "AGENT_MEMORY_STAGE3_TABLES.md"))
     ap.add_argument("--out-png", default=str(ROOT / "results" / "agent_memory_stage3.png"))
     ap.add_argument("--out-json", default=str(ROOT / "results" / "raw" / "agent_memory_stage3_summary.json"))
     a = ap.parse_args()
+    if a.arms:
+        global ARMS
+        ARMS = tuple(a.arms)
     runs = load(Path(a.raw), a.seeds)
     if not runs:
         raise SystemExit("no complete result files found")

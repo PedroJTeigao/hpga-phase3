@@ -78,6 +78,15 @@ def memory_window() -> int:
     return int(os.environ.get("HPGA_AGENTS_MEMORY_WINDOW", "8"))
 
 
+def memory_format() -> str:
+    """'prose' (default, render_record) or 'list' (render_record_as_lists) -- read fresh, like every other
+    env-var switch here. Added after the GA runs (results/AGENT_MEMORY_STAGE3_TABLES.md, arm M2) found the prose
+    record pulling proposals TOWARD positions it had just called worse, and
+    experiments/probe_agent_memory_format.py found an explicit list obeyed almost perfectly in both directions
+    on the same model; 'list' lets a GA arm use that format instead."""
+    return os.environ.get("HPGA_AGENTS_MEMORY_FORMAT", "prose")
+
+
 def edit_rate() -> float:
     return float(os.environ.get("HPGA_AGENTS_SEQ_EDIT_RATE", "0.05"))
 
@@ -141,6 +150,43 @@ def render_record(entries: Sequence[dict], window: int | None = None) -> str:
     )
 
 
+def render_record_as_lists(entries: Sequence[dict], window: int | None = None) -> str:
+    """List-format alternative to render_record, in the exact wording probe_agent_memory_format.py measured:
+    'Do not change these positions: x, y, z.' / 'These positions improved before: x, y, z.' -- against the null
+    (no list shown) that probe found an explicit avoid list drops the avoided share from 6% to 0% and an explicit
+    prefer list raises the preferred share from 3% to 96%, while the prose format instead RAISED the share on
+    positions it had just called worse, from 6% to 24% (results/raw/agent_memory_format.json).
+
+    Only the LATEST entry touching a given position, within the window, decides that position's list (an agent
+    may edit the same position more than once; using every entry would let an old 'better' and a new 'worse' on
+    the same position both count). A position whose latest entry was a tie (fitness_after == base_fitness) is in
+    neither list. Positions are sorted ascending. Empty string when there is nothing to show, same as
+    render_record."""
+    window = memory_window() if window is None else window
+    valid = [e for e in entries if not e["no_edit"]]
+    if not valid:
+        return ""
+    shown = valid[-window:]
+    latest: dict[int, str] = {}
+    for e in shown:  # oldest first, so a later entry overwrites an earlier one at the same position
+        outcome = _outcome(e["base_fitness"], e["fitness_after"])
+        for pos, _old, _new in e["changes"]:
+            if outcome == "same":
+                latest.pop(pos, None)
+            else:
+                latest[pos] = outcome
+    avoid = sorted(p for p, o in latest.items() if o == "worse")
+    prefer = sorted(p for p, o in latest.items() if o == "better")
+    if not avoid and not prefer:
+        return ""
+    text = ""
+    if avoid:
+        text += f"Do not change these positions: {', '.join(map(str, avoid))}.\n"
+    if prefer:
+        text += f"These positions improved before: {', '.join(map(str, prefer))}.\n"
+    return text + "Take this into account if it is useful.\n\n"
+
+
 # --- one proposal ------------------------------------------------------------------------------------
 
 def propose(agent_id: int, genome: str, entries: Sequence[dict], generation: int, rng: random.Random,
@@ -155,7 +201,8 @@ def propose(agent_id: int, genome: str, entries: Sequence[dict], generation: int
     k = n_edits(length)
     plan = sm.plan_llm_mutate("position", genome, k)  # the mutate/position call, unchanged
     show = memory_enabled() if show_record is None else show_record
-    context = render_record(entries) if show else ""
+    fmt = memory_format()
+    context = (render_record_as_lists(entries) if fmt == "list" else render_record(entries)) if show else ""
     n_shown = len([e for e in entries if not e["no_edit"]][-memory_window():]) if context else 0
 
     return ops._run_llm_op(
@@ -163,7 +210,8 @@ def propose(agent_id: int, genome: str, entries: Sequence[dict], generation: int
         build_prompt=lambda retry_hint: context + plan.build_prompt(retry_hint), parse=plan.parse, rng=rng,
         num_predict=plan.num_predict, fallback=lambda: genome, retry_hint_text=plan.retry_hint_text,
         extra_log_fields={"agent_id": agent_id, "generation": generation, "call_kind": "useful",
-                          "n_edits_requested": k, "memory_enabled": bool(show), "record_entries_shown": n_shown},
+                          "n_edits_requested": k, "memory_enabled": bool(show), "memory_format": fmt if show else None,
+                          "record_entries_shown": n_shown},
     )
 
 

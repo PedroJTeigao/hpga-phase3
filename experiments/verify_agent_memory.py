@@ -18,6 +18,9 @@ golden_lattice_agents.py.
   9  reset          agents.reset_agent_state() empties the records
   10 loud failures  agents with deterministic operators raises; diversity logging still raises; prompts never name
                     the target structure
+  11 list format    render_record_as_lists: only the LATEST entry per position decides its list, a tie is in
+                    neither list, exact wording; HPGA_AGENTS_MEMORY_FORMAT=list produces prompt ==
+                    render_record_as_lists(entries so far) + the plain prompt, every agent call
 Exit status 0 only if every check passes.
 """
 
@@ -80,13 +83,14 @@ def make_stub(all_bad=False):
     return stub, calls
 
 
-def setup(tmp: str, memory: bool, n_agents: int = 2, mode: str = "llm", seed: int = 0, tag: str = ""):
+def setup(tmp: str, memory: bool, n_agents: int = 2, mode: str = "llm", seed: int = 0, tag: str = "", fmt: str = "prose"):
     for k in ("HPGA_CIRCLES_ENABLED", "HPGA_LOG_DIVERSITY", "HPGA_GA_DISPATCH_P", "HPGA_AGENTS_SEQ_EDIT_RATE",
               "HPGA_AGENTS_MEMORY_WINDOW", "HPGA_LLM_PROMPT_STYLE"):
         os.environ.pop(k, None)
     os.environ.update({
         "HPGA_OPERATOR_MODE": mode, "HPGA_AGENTS_ENABLED": "1", "HPGA_N_AGENTS": str(n_agents),
-        "HPGA_AGENTS_MEMORY": "1" if memory else "0", "HPGA_RUN_ID": f"vam-{seed}{tag}", "HPGA_LLM_MAX_RETRIES": "2",
+        "HPGA_AGENTS_MEMORY": "1" if memory else "0", "HPGA_AGENTS_MEMORY_FORMAT": fmt,
+        "HPGA_RUN_ID": f"vam-{seed}{tag}", "HPGA_LLM_MAX_RETRIES": "2",
         "HPGA_LLM_LOG_PATH": str(Path(tmp) / f"llm{seed}{tag}.jsonl"),
         "HPGA_AGENT_MEMORY_LOG_PATH": str(Path(tmp) / f"mem{seed}{tag}.jsonl"),
     })
@@ -114,8 +118,8 @@ def read_jsonl(path):
     return [json.loads(line) for line in open(path, encoding="utf-8")] if Path(path).exists() else []
 
 
-def run(tmp, memory, n_agents=2, seed=0, all_bad=False, tag=""):
-    setup(tmp, memory, n_agents, seed=seed, tag=tag)
+def run(tmp, memory, n_agents=2, seed=0, all_bad=False, tag="", fmt="prose"):
+    setup(tmp, memory, n_agents, seed=seed, tag=tag, fmt=fmt)
     stub, calls = make_stub(all_bad)
     real, undo = ops._call_ollama, style_wrappers()
     ops._call_ollama = stub
@@ -267,6 +271,43 @@ def main() -> None:
             check("diversity logging still raises in sequence mode", "HPGA_LOG_DIVERSITY" in str(e))
         bad = [c for c in R["llm"] + Roff["llm"] if "prompt" in c and re.search(r"7UR7|\btarget\b", c["prompt"] + c.get("system", ""), re.IGNORECASE)]
         check("prompts never name the target structure", not bad)
+
+        print("11. list format")
+
+        def entry(gen, pos, old, new, f0, f1):
+            return {"agent_id": 0, "generation": gen, "base_fitness": f0, "changes": [[pos, old, new]],
+                    "fitness_after": f1, "no_edit": False, "improved": f1 > f0}
+
+        e = [entry(1, 5, "A", "C", 0.30, 0.25), entry(2, 9, "A", "D", 0.30, 0.35),
+             entry(3, 5, "C", "E", 0.30, 0.34),  # position 5 re-edited -- LATEST outcome (better) should win, not the first (worse)
+             entry(4, 20, "A", "F", 0.30, 0.30)]  # a tie -- neither list
+        text = aseq.render_record_as_lists(e, window=8)
+        check("latest entry per position wins (position 5: worse then better -> shown as prefer, not avoid)",
+              "Do not change these positions: 5" not in text and re.search(r"These positions improved before: 5, 9\.", text) is not None,
+              repr(text))
+        check("a tied entry (fitness unchanged) is in neither list", "20" not in text, repr(text))
+        check("empty when there is nothing to show", aseq.render_record_as_lists([]) == "")
+        check("empty when every entry is a tie", aseq.render_record_as_lists([entry(1, 3, "A", "B", 0.3, 0.3)]) == "")
+
+        Rlist = run(tmp, memory=True, n_agents=n_agents, seed=0, tag="list", fmt="list")
+        res2 = [e for e in Rlist["mem"] if e["event"] == "resolved"]
+        agl = [c for c in Rlist["llm"] if c.get("op") == "agent_propose" and "prompt" in c and c["attempt"] == 0]
+        entries_before2, seen2 = {}, {i: [] for i in range(n_agents)}
+        for gen in range(GENS):
+            for i in range(n_agents):
+                seen2[i] += [x for x in res2 if x["agent_id"] == i and x["resolved_at_generation"] == gen]
+                entries_before2[(i, gen)] = [dict(x) for x in seen2[i]]
+        exp_ok2 = True
+        for c in agl:
+            i, g = c["agent_id"], c["generation"]
+            ents = entries_before2[(i, g)]
+            base = [x for x in Rlist["mem"] if x["event"] == "proposal" and x["agent_id"] == i and x["generation"] == g][0]["base"]
+            exp_ok2 &= c["prompt"] == aseq.render_record_as_lists(ents) + plain_prompt(base)
+            if c.get("memory_enabled"):
+                exp_ok2 &= c.get("memory_format") == "list"
+        check("prompt == render_record_as_lists(this agent's entries so far) + plain prompt, every agent call, "
+              "and memory_format='list' is logged", exp_ok2 and len(agl) > 0)
+        check("no prose block ('Your own record') leaks into the list-format prompts", not any("Your own record" in c["prompt"] for c in agl))
         gm.set_active(None)
 
     print(f"\n{'ALL CHECKS PASSED' if not FAILS else str(len(FAILS)) + ' CHECK(S) FAILED: ' + '; '.join(FAILS)}")
