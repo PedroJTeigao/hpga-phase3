@@ -1,0 +1,13 @@
+=== qwen2.5:7b: warm-up load 8.5s
+    prose10: rc=0 wall=100s
+    prose25: rc=0 wall=127s
+    prose37: rc=0 wall=195s
+    prose60: rc=0 wall=227s
+    prose90: rc=0 wall=263s
+=== gemma4:12b: warm-up load 11.4s
+    prose10: rc=0 wall=484s
+    prose25: rc=0 wall=500s
+    prose37: rc=0 wall=473s
+    prose60: rc=0 wall=470s
+    prose90: rc=0 wall=475s
+done

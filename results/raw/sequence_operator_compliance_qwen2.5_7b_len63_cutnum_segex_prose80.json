@@ -1,0 +1,114 @@
+{
+  "differences_from_lattice_probe": [
+    "segment prompt has a worked example and percentage boundaries (deliberate; sequence_model.py docstring)",
+    "mutation rate = 1/genome_len so k=1 exactly (one independent observation per call)",
+    "crossover rate 1.0 (every call is a live LLM call)",
+    "variable-length parents; mutate at one fixed genome length",
+    "uniformity computed on LLM-successful calls only",
+    "per-condition sample sizes (mutate/position=400, crossover/segment=100, full styles=30 confirmation runs)"
+  ],
+  "seed": 0,
+  "n_calls": {
+    "crossover/segment": 100
+  },
+  "genome_len": 63,
+  "length_bounds": [
+    30,
+    80
+  ],
+  "model": "qwen2.5:7b",
+  "temperature": 0.7,
+  "gpu_before": {
+    "usage": "4665 MiB, 15360 MiB, 0 %",
+    "compute_apps": "3612778, 4662 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "segment_example": "prose80",
+  "unvaried_anchors": [
+    "prose sentence changed to use 80 instead of 40 (80 is the only illustrative number)",
+    "worked example removed from the prompt and the retry hint",
+    "template line \"SEGMENTS: <start>-<end>:<parent>, ...\" (no numbers; every setting)"
+  ],
+  "conditions": [
+    {
+      "op": "crossover",
+      "style": "segment",
+      "model": "qwen2.5:7b",
+      "n_calls": 100,
+      "stats": {
+        "n_llm_calls": 100,
+        "n_llm_requests": 102,
+        "n_retries": 2,
+        "n_failures": 0,
+        "n_skipped_no_op": 0,
+        "total_latency_s": 247.39366152882576,
+        "total_tokens_in": 49725,
+        "total_tokens_out": 2176,
+        "mean_latency_s": 2.425428054204174,
+        "max_latency_s": 3.4980495860800147,
+        "min_latency_s": 1.8240472804754972
+      },
+      "fallback_rate": 0.0,
+      "requests_per_call": 1.02,
+      "n_success": 100,
+      "echo_outputs": 0,
+      "child_length_min": 33,
+      "child_length_max": 79,
+      "segment_structure": {
+        "n_valid_declarations": 100,
+        "segments_per_call": {
+          "2": 96,
+          "3": 4
+        },
+        "cut_percent_counts": {
+          "20": 1,
+          "25": 1,
+          "40": 49,
+          "80": 53
+        },
+        "n_distinct_cut_values": 4,
+        "modal_cut": 80,
+        "modal_cut_share": 0.5096153846153846,
+        "share_cuts_45_to_55": 0.0,
+        "single_cut_share": 0.96
+      },
+      "segment_example": "prose80",
+      "segment_example_check": {
+        "n_logged_attempts": 102,
+        "with_0-40_example": 0,
+        "with_0-70_example": 0,
+        "with_any_e.g.": 0,
+        "with_prose_40": 0,
+        "with_prose_25": 0,
+        "with_parent_length_40_in_header": 6,
+        "with_40_outside_parent_headers": 0
+      },
+      "boundary_summary": {
+        "n_cuts": 104,
+        "n_valid_declarations": 100,
+        "cut_percent_counts": {
+          "20": 1,
+          "25": 1,
+          "40": 49,
+          "80": 53
+        },
+        "n_distinct_values": 4,
+        "distinct_values": [
+          20,
+          25,
+          40,
+          80
+        ],
+        "modal_values": [
+          80
+        ],
+        "modal_count": 53,
+        "modal_share_of_cuts": 0.5096153846153846
+      }
+    }
+  ],
+  "gpu_after": {
+    "usage": "4665 MiB, 15360 MiB, 96 %",
+    "compute_apps": "3612778, 4662 MiB, /scratch/pcanaste/ollama/lib/ollama/llama-server"
+  },
+  "complete": true
+}

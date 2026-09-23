@@ -1,6 +1,6 @@
 # LLM genetic operators comply with the requested format but do not condition on the genome
 
-*A standalone account of one claim, the evidence for it, and its limits. Written to be read without the rest of the repository; source files are named so each number can be checked. No new runs were made for this document: everything below comes from experiments already committed on this branch or on `main`.*
+*A standalone account of one claim, the evidence for it, and its limits. Written to be read without the rest of the repository; source files are named so each number can be checked. No new runs were made for this document: everything below comes from experiments already committed on this branch or on `main` (the latest is `MODEL_HETEROGENEITY_STEP6.md`).*
 
 ## The claim
 
@@ -63,7 +63,7 @@ Every model's most-used cut is 40, which is the number in the prompt's worked ex
 
 (`gemma4:12b` row from `PHASE3_RESULTS.md` §9.3; other rows from `MODEL_HETEROGENEITY_STEP2_SEGEX.md`. `mistral:7b`'s second setting rests on 53 valid declarations because 47 of 100 calls fell back.)
 
-Three things follow. No model keeps 40 when no 40 is in the prompt; that includes the calls in which a parent of length 40 is printed as data, none of which produced a 40 cut. In the three models other than `gemma4:12b`, 25, the number now left in the prose, appears in every valid declaration (96/96, 100/100, 53/53), exactly as 40 did before. And `gemma4:12b` behaves differently: it ignores the illustrative number and puts the cut at the midpoint, 50, in 100 of 100 calls, never 25. Its midpoint habit is not caused by a number: the earlier lattice segment prompt contained no illustrative cut value either, and there `gemma4:12b` cut at or one position from the exact midpoint in 40 of 40 calls (`PHASE2_RESULTS.md` §4.4, `PHASE3_RESULTS.md` §9.4).
+Three things follow. No model keeps 40 when the prose says 25 and no 40 is in the prompt; that includes the calls in which a parent of length 40 is printed as data, none of which produced a 40 cut. (A small residual of 40 does return in the step-6 sweep below, in cells where the prose number is not followed.) In the three models other than `gemma4:12b`, 25, the number now left in the prose, appears in every valid declaration (96/96, 100/100, 53/53), exactly as 40 did before. And `gemma4:12b` behaves differently: it ignores the illustrative number and puts the cut at the midpoint, 50, in 100 of 100 calls, never 25. Its midpoint habit is not caused by a number: the earlier lattice segment prompt contained no illustrative cut value either, and there `gemma4:12b` cut at or one position from the exact midpoint in 40 of 40 calls (`PHASE2_RESULTS.md` §4.4, `PHASE3_RESULTS.md` §9.4).
 
 **Which piece of the prompt carries the number (`qwen2.5:7b` only).** The setting above changes two things at once. With `qwen2.5:7b`, which has no fallbacks, a 2×2 separates them (`MODEL_HETEROGENEITY_STEP3.md`, 100 calls per cell, all cells 0/100 fallback):
 
@@ -75,6 +75,18 @@ Three things follow. No model keeps 40 when no 40 is in the prompt; that include
 | 25 | removed | 25×100, 75×11, 50×1 |
 
 The prose number carries the effect. Removing the example changes nothing; changing only the prose number to 25 moves the cut to 25 in 97 of 100 calls. The example keeps a small residual pull (3 of 100 calls stay at 40 when it contradicts the prose). For `gemma4:12b` the same conclusion was reached by a different route: moving the example to 70 left the mode at 40 (74%) and removing it left 40 (77%), while changing the prose number moved it (`PHASE3_RESULTS.md` §9.3, 100 calls per setting). The prose-versus-example split was not separated for `llama3.2:3b` or `mistral:7b`.
+
+**Varying the prose number (step 6, `MODEL_HETEROGENEITY_STEP6.md`).** The 2×2 used only 40 and 25. `qwen2.5:7b` and `gemma4:12b`, 100 calls per model per value, example removed in every setting so only the prose number varies, same length, bounds, temperature and seed. Share of cuts equal to the prose number N (fallback 0/100 in all ten cells):
+
+| prose N | `qwen2.5:7b`: cut = N | modal cut | `gemma4:12b`: cut = N | modal cut |
+|---|---|---|---|---|
+| 10 | 1 of 107 | 30 (67%) | 0 of 100 | 50 (96%) |
+| 25 | 100 of 112 (all 100 calls) | 25 (89%) | 0 of 100 | 50 (100%) |
+| 37 | 100 of 100 | 37 (100%) | 27 of 100 | 50 (73%) |
+| 60 | 97 of 100 | 60 (97%) | 90 of 100 | 60 (90%) |
+| 90 | 31 of 120 | 30 (59%) | 0 of 100 | 50 (100%) |
+
+The prose number carries the cut over part of the range, not all of it. `qwen2.5:7b` follows it at 25, 37 and 60 (the non-round 37 in 100 of 100 calls, so it is not specific to round numbers) and breaks at both extremes: at 10 it names 10 in one call and 30 in 72, and at 90 it names 90 in 31 calls and 30 in 71. The 30 is the lower length bound printed elsewhere in the prompt ("between 30 and 80 letters long"); that as the reason was not tested. `gemma4:12b` does sometimes follow the number, at 60 in 90 of 100 calls and at 37 in 27 of 100, but never at 10, 25 or 90, where it goes to the midpoint (50) in 96 to 100 of 100 calls. The values it follows are within 13 of the midpoint and the ones it ignores are 25 or more away, which fits a window around 50 whose edge these five values do not locate. Where the prose number is ignored, a cut of 40 returns in 3% to 8% of cuts (20 calls in all, only one with a parent of length 40) although no 40 is in the prompt.
 
 For "does not condition on the genome": with the prompt as shipped, `qwen2.5:7b` cut at exactly 40 across 100 different parent pairs, and with the prose number changed it cut at 25 across the same pairs. The cut followed the number written in the prompt, not the parents.
 
@@ -141,7 +153,7 @@ What the operator findings add, stated with care:
 - It does not explain why the LLM-operator arm beat random search either. The five-arm report notes that its improvement over random search cannot be attributed to any operator (no ablation of selection, crossover or mutation), and that remains true.
 - It does not show that the LLM operators are worse than deterministic ones, and it does not show that no model or prompt could condition on the genome. Everything was measured on one prompt family.
 - The circle-agent proposals in the variant with circles use the same position-edit format but were not tested here for dependence on the genome. Their positions were more spread (40 to 51 distinct indices per run, most-used index 6% to 9%) and a proposal beat its own base genome in 43% to 53% of slots, which the report itself reads as a coin flip (`SEQUENCE_GA_REPORT.md` §9.10, §9.11). This document's claim is about `mutate/position` and `crossover/segment`.
-- The cut result suggests a specific, untested consequence: because the cut follows the number in the prompt, varying that number would vary the cut. That has not been tried.
+- The cut result had a specific consequence, tested in step 6: varying the prose number varies the cut over part of the range (`qwen2.5:7b` 25 to 60, `gemma4:12b` 37 and 60), not over all of it. Outside that range the cut goes to 30 (`qwen2.5:7b`) or to the midpoint (`gemma4:12b`), still without reading the parents. A search that used a different prose number would therefore steer the cut only inside that range, per model.
 
 ## Limits, stated plainly
 
@@ -150,7 +162,7 @@ What the operator findings add, stated with care:
 - **The low-index picture is for two models.** The length sweep and the relabelling covered only `gemma4:12b` and `qwen2.5:7b`. At length 63, `llama3.2:3b`'s mode is position 32 and `mistral:7b`'s is 48 with a nearly flat distribution, so the "low indices dominate" description does not apply to them, and their behaviour across lengths and under relabelling was not measured.
 - **Relabelling: two models, two offsets, one seed.** Only offsets 100 and 107 with contiguous labels were tried; no other offset, no non-contiguous or shuffled labelling. Three-digit labels also change the numerals in the answer, so a preference for the start of the range cannot be separated from a preference for shorter or lower-valued numerals. 100 calls per cell.
 - **Prose versus example was separated for `qwen2.5:7b` only** (and, by a different route, for `gemma4:12b`). For `llama3.2:3b` and `mistral:7b` the only ablation removed both at once.
-- **Only the values 40 and 25 were tried** for the prose number and only 40 and 70 for the example. Whether the cut follows other numbers, and whether it follows them at 100% or degrades, is unknown.
+- **The prose number was tried at 40, 25, and (step 6) 10, 37, 60, 90, on two models; the example at 40 and 70 only.** The result is a range, not a rule: `qwen2.5:7b` follows the number at 25, 37 and 60 (89% to 100% of cuts) and not at 10 (1%) or 90 (26%); `gemma4:12b` follows 60 (90%) and partly 37 (27%) and not 10, 25 or 90 (0%). Not located: where between 60 and 90 `qwen2.5:7b` starts to fail, where between 25 and 37 and between 60 and 90 `gemma4:12b`'s window ends, and whether extremes fail because they are extreme or because they are far from 50 (10 and 90 confound the two). Why `qwen2.5:7b` goes to 30 at the extremes (a candidate: 30 is the length bound in the prompt) and where `gemma4:12b`'s residual 40 comes from were not tested. `llama3.2:3b` and `mistral:7b` were not swept. Single seed, 100 calls per cell, same 100 parent pairs in every cell of a model.
 - **The letter test covers one thing.** It tests the letter at the chosen position only. It does not test neighbouring letters, local motifs, or the replacement letter the model chooses, and it uses uniformly random sequences. Statistical power is modest at about 5 expected calls per letter (n = 100); the class-level tests and the n = 400 run are the most sensitive and show nothing.
 - **Crossover conditioning on the parents was not tested directly.** The evidence is that the cut follows a number in the prompt. Whether, for example, `gemma4:12b`'s choice between 40 and 50 depends on the parents' lengths was not analysed.
 - **One prompt family, one temperature, one task.** All prompts are the project's own (`position`, `segment`), at temperature 0.7, on random uniform sequences; no other prompt design, temperature or sequence distribution was tried. Models are small to mid-size quantised open models (3B to 12B).
