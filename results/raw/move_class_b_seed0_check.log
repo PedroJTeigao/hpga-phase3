@@ -1,0 +1,35 @@
+2026-09-23 15:11:26,681 moveclass plan: [('B', 0)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-23 15:11:30,006 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<04:08, 18.05it/s]Loading weights:  12%|█▏        | 534/4498 [00:01<00:05, 662.26it/s]Loading weights:  19%|█▉        | 861/4498 [00:01<00:03, 1058.11it/s]Loading weights:  39%|███▊      | 1732/4498 [00:01<00:01, 2421.10it/s]Loading weights:  58%|█████▊    | 2600/4498 [00:01<00:00, 3690.36it/s]Loading weights:  78%|███████▊  | 3509/4498 [00:01<00:00, 4902.36it/s]Loading weights:  98%|█████████▊| 4390/4498 [00:01<00:00, 5850.44it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 2789.61it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-23 15:11:40,935 moveclass === B seed 0 attempt 1 ===
+2026-09-23 15:12:08,930 moveclass B seed 0 gen  0 best=0.3006 mean=0.2474 distinct=16 hits=0 len=52.0
+2026-09-23 15:12:34,997 moveclass B seed 0 gen  1 best=0.3150 mean=0.2639 distinct=30 hits=2 len=51.4
+2026-09-23 15:12:57,060 moveclass B seed 0 gen  2 best=0.3392 mean=0.2826 distinct=43 hits=5 len=57.9
+2026-09-23 15:13:19,114 moveclass B seed 0 gen  3 best=0.3392 mean=0.2915 distinct=56 hits=8 len=59.1
+2026-09-23 15:13:42,921 moveclass B seed 0 gen  4 best=0.3392 mean=0.2992 distinct=70 hits=10 len=59.2
+2026-09-23 15:14:05,072 moveclass B seed 0 gen  5 best=0.3457 mean=0.3051 distinct=83 hits=13 len=59.1
+2026-09-23 15:14:29,560 moveclass B seed 0 gen  6 best=0.3605 mean=0.3134 distinct=97 hits=15 len=59.1
+2026-09-23 15:14:53,792 moveclass B seed 0 gen  7 best=0.4003 mean=0.3303 distinct=111 hits=17 len=59.0
+2026-09-23 15:15:19,242 moveclass B seed 0 gen  8 best=0.4003 mean=0.3423 distinct=125 hits=19 len=59.0
+2026-09-23 15:15:43,719 moveclass B seed 0 gen  9 best=0.4003 mean=0.3415 distinct=139 hits=21 len=59.0
+2026-09-23 15:16:12,245 moveclass B seed 0 gen 10 best=0.4003 mean=0.3282 distinct=153 hits=23 len=59.0
+2026-09-23 15:16:40,899 moveclass B seed 0 gen 11 best=0.4003 mean=0.3418 distinct=167 hits=25 len=59.0
+2026-09-23 15:17:05,764 moveclass B seed 0 gen 12 best=0.4003 mean=0.3391 distinct=181 hits=27 len=59.0
+2026-09-23 15:17:30,862 moveclass B seed 0 gen 13 best=0.4003 mean=0.3326 distinct=195 hits=29 len=59.0
+2026-09-23 15:17:56,830 moveclass B seed 0 gen 14 best=0.4109 mean=0.3477 distinct=209 hits=31 len=59.0
+2026-09-23 15:18:24,927 moveclass B seed 0 gen 15 best=0.4203 mean=0.3292 distinct=223 hits=33 len=59.0
+2026-09-23 15:18:53,518 moveclass B seed 0 gen 16 best=0.4203 mean=0.3395 distinct=237 hits=35 len=59.0
+2026-09-23 15:19:20,211 moveclass B seed 0 gen 17 best=0.4203 mean=0.3418 distinct=250 hits=38 len=59.0
+2026-09-23 15:19:51,841 moveclass B seed 0 gen 18 best=0.4203 mean=0.3310 distinct=264 hits=40 len=59.0
+2026-09-23 15:20:25,400 moveclass B seed 0 gen 19 best=0.4203 mean=0.2967 distinct=278 hits=42 len=59.0
+2026-09-23 15:27:04,263 moveclass B seed 0 done: best=0.4203 distinct=278 moves=266 measurement folds=168 (397s) ref_match=True
+2026-09-23 15:27:04,265 moveclass finished: all planned runs attempted

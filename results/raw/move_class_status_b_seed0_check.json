@@ -1,0 +1,23 @@
+{
+ "plan": [
+  [
+   "B",
+   0
+  ]
+ ],
+ "started": "2026-09-23T15:11:26-0400",
+ "done": [
+  {
+   "arm": "B",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 923.3302719593048,
+   "final_best": 0.42026
+  }
+ ],
+ "failed": [],
+ "skipped": [],
+ "finished": true,
+ "exit_reason": "all planned runs attempted",
+ "ended": "2026-09-23T15:27:04-0400"
+}
