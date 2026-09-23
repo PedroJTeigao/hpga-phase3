@@ -1,45 +1,44 @@
 {
  "plan": [
   [
-   "M2b",
+   "O",
    0
   ],
   [
-   "M2b",
+   "O",
    1
   ],
   [
-   "M2b",
+   "O",
    2
   ]
  ],
- "started": "2026-09-22T10:18:36-0400",
+ "started": "2026-09-22T15:04:27-0400",
  "done": [
   {
-   "arm": "M2b",
+   "arm": "O",
    "seed": 0,
    "attempt": 1,
-   "seconds": 3021.574378967285,
-   "final_best": 0.4573
+   "seconds": 4035.7993211746216,
+   "final_best": 0.42761
   },
   {
-   "arm": "M2b",
+   "arm": "O",
    "seed": 1,
    "attempt": 1,
-   "seconds": 3254.9872641563416,
-   "final_best": 0.52122
-  },
-  {
-   "arm": "M2b",
-   "seed": 2,
-   "attempt": 1,
-   "seconds": 4029.927139043808,
-   "final_best": 0.53548
+   "seconds": 3911.191976547241,
+   "final_best": 0.47601
   }
  ],
- "failed": [],
+ "failed": [
+  {
+   "arm": "O",
+   "seed": 2,
+   "error": "httpx.ReadTimeout: timed out"
+  }
+ ],
  "skipped": [],
  "finished": true,
  "exit_reason": "all planned runs attempted",
- "ended": "2026-09-22T13:11:54-0400"
+ "ended": "2026-09-22T18:11:14-0400"
 }
