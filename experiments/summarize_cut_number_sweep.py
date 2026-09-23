@@ -11,8 +11,15 @@ Definitions (100 crossover/segment calls per cell; a call is one operator invoca
   within +-5 of N    cuts with |cut - N| <= 5 / all cuts.   midpoint 45-55: cuts in 45..55 / all cuts.
   first attempt      the same cut counts taken from the FIRST attempt of every call (valid or not) in the call log, so a
                      retry that moved the answer cannot hide a first reply.
+
+Usage:  python experiments/summarize_cut_number_sweep.py                                  # step 6 values, model_cutnum_tables.md
+        python experiments/summarize_cut_number_sweep.py --numbers 33,45,70,80 --out model_cutnum_step7_tables.md --combined
+--combined appends the compliance-window table over every value with data (step 6 and step 7).  Window criterion, fixed
+before the step-7 data were seen: a value is FOLLOWED in a model if at least 50% of that cell's cuts equal N, and CLOSELY
+followed if at least 90% do.  A window edge is reported as the pair of tested values it falls between.
 """
 
+import argparse
 import json
 import re
 from collections import Counter
@@ -21,6 +28,8 @@ from pathlib import Path
 RAW = Path(__file__).resolve().parent.parent / "results" / "raw"
 MODELS = ["qwen2.5:7b", "gemma4:12b"]
 NUMBERS = [10, 25, 37, 60, 90]
+ALL_NUMBERS = [10, 25, 33, 37, 45, 60, 70, 80, 90]
+BOUNDS = (30, 80)  # printed in the prompt as "between 30 and 80 letters long"
 SEG = re.compile(r"(\d+)\s*-\s*(\d+)\s*:\s*([12])")
 
 
@@ -74,7 +83,8 @@ def stats(m, n):
         hdr = [l for l in lines if l.startswith(("Parent 1 (length", "Parent 2 (length"))]
         p_hdr += any(f"length {n})" in l for l in hdr)
         body = "\n".join(l for l in lines if l not in hdr)
-        p_extra += len(nb.findall(body)) != 3  # expected exactly the three N's of the prose sentence (at N, N%, and N%)
+        # expected: the three N's of the prose sentence (at N, N%, and N%), plus one if N is a length bound in the prompt
+        p_extra += len(nb.findall(body)) != 3 + (n in BOUNDS)
     return {
         "n_calls": cond["n_calls"], "fell_back": cond["stats"]["n_failures"], "rpc": cond["requests_per_call"],
         "n_valid": len(valid), "segs": cond["segment_structure"]["segments_per_call"], "cnt": cnt, "tot": tot,
@@ -85,49 +95,95 @@ def stats(m, n):
     }
 
 
-def main():
+def window(share, hi):
+    """share: {N: share of cuts equal to N} for the tested N, ascending.  Returns a description of the followed values."""
+    ns = sorted(share)
+    fol = [n for n in ns if share[n] >= hi]
+    if not fol:
+        return "none"
+    lo_i, hi_i = ns.index(fol[0]), ns.index(fol[-1])
+    holes = [n for n in ns[lo_i:hi_i + 1] if n not in fol]
+    below = ns[lo_i - 1] if lo_i > 0 else None
+    above = ns[hi_i + 1] if hi_i + 1 < len(ns) else None
+    edge = lambda a, b: "not reached (tested down to %d)" % b if a is None else f"between {a} (not followed) and {b} (followed)"  # noqa: E731
+    lo_txt = edge(below, fol[0])
+    hi_txt = ("not reached (tested up to %d)" % fol[-1]) if above is None else f"between {fol[-1]} (followed) and {above} (not followed)"
+    return f"followed at {fol}; starts {lo_txt}; ends {hi_txt}" + (f"; NOT followed inside it at {holes}" if holes else "")
+
+
+def combined(out):
+    P = out.append
+    P("\n## Compliance window over every tested prose number (step 6 and step 7)\n")
+    P("Share of the cell's cuts equal to N, then a mark: `**` = closely followed (>= 90%), `*` = followed (>= 50%), blank = not followed. "
+      "N=80 is also the upper length bound printed in the prompt, so a hit there cannot be told apart from falling back to the bound.\n")
+    P("| prose N | " + " | ".join(MODELS) + " |")
+    P("|---|" + "---|" * len(MODELS))
+    shares = {m: {} for m in MODELS}
+    for n in ALL_NUMBERS:
+        row = []
+        for m in MODELS:
+            s = stats(m, n)
+            sh = s["at_n"] / s["tot"]
+            shares[m][n] = sh
+            row.append(f"{s['at_n']} of {s['tot']} ({pct(sh)}){'**' if sh >= .9 else '*' if sh >= .5 else ''}")
+        P(f"| {n} | " + " | ".join(row) + " |")
+    P("")
+    for m in MODELS:
+        P(f"- **{m}**, majority criterion (>= 50%): {window(shares[m], .5)}")
+        P(f"- **{m}**, close criterion (>= 90%): {window(shares[m], .9)}")
+
+
+def main(numbers, out_name, do_combined):
     out = []
     P = out.append
     P("100 crossover/segment calls per cell, genome length 63, bounds [30, 80], temperature 0.7, seed 0, worked example "
       "removed in every setting, prose sentence 'a boundary at N falls N% of the way ...' with N as shown. 99 possible cuts.\n")
-    S = {(m, n): stats(m, n) for m in MODELS for n in NUMBERS}
+    S = {(m, n): stats(m, n) for m in MODELS for n in numbers}
     for m in MODELS:
         P(f"## {m}\n")
         P("| prose N | fell back | requests/call | valid declarations | segments per call | distinct cuts (of 99) | modal cut (share of cuts) | "
           "cuts = N (share of cuts) | calls containing N (of 100) | calls whose only cut is N (of 100) | cuts within +-5 of N | cuts in 45-55 |")
         P("|---|---|---|---|---|---|---|---|---|---|---|---|")
-        for n in NUMBERS:
+        for n in numbers:
             s = S[m, n]
             P(f"| {n} | {s['fell_back']}/{s['n_calls']} | {s['rpc']:.2f} | {s['n_valid']} | {s['segs']} | {s['distinct']} | "
               f"{'/'.join(map(str, s['modal']))} ({pct(s['top'] / s['tot'])}) | {s['at_n']} of {s['tot']} ({pct(s['at_n'] / s['tot'])}) | "
               f"{s['calls_with_n']} | {s['calls_only_n']} | {pct(s['near'] / s['tot'])} | {pct(s['mid'] / s['tot'])} |")
         P("\nFull cut distribution (value x count), most used first:\n")
-        for n in NUMBERS:
+        for n in numbers:
             P(f"- **N={n}**: {dist_str(S[m, n]['cnt'])}")
         P("\nFirst-attempt cuts (every call's first reply, valid or not), most used first:\n")
-        for n in NUMBERS:
+        for n in numbers:
             P(f"- **N={n}**: {dist_str(S[m, n]['first'])}")
         P("")
     P("## Prompt check (from the logged prompts, every attempt, both models)\n")
     P("| model | prose N | logged attempts | prose sentence with N | 'e.g.' present | attempts with N anywhere but the 3 prose slots | parent length N printed in a header (data) |")
     P("|---|---|---|---|---|---|---|")
     for m in MODELS:
-        for n in NUMBERS:
+        for n in numbers:
             s = S[m, n]
             P(f"| {m} | {n} | {s['n_attempts']} | {s['p_prose']} | {s['p_eg']} | {s['p_extra']} | {s['p_hdr']} |")
-    P("\n## Replication against earlier runs (same model, seed, prompt)\n")
-    for m, ref in (("qwen2.5:7b", "sequence_operator_compliance_qwen2.5_7b_len63_hetero_segex_absent_prose25.json"),
-                   ("gemma4:12b", None)):
-        new = dict(S[m, 25]["cnt"])
-        if ref and (RAW / ref).exists():
-            old = {int(k): v for k, v in json.load(open(RAW / ref))["conditions"][0]["boundary_summary"]["cut_percent_counts"].items()}
-            P(f"- {m} N=25: step 2 `absent_prose25` {old} vs this run {new} -> {'identical' if old == new else 'DIFFERENT'}")
-        else:
-            P(f"- {m} N=25: this run {new} (no earlier file with this exact setting on disk; PHASE3_RESULTS.md 9.3 reports 50x100)")
+    if 25 in numbers:
+        P("\n## Replication against earlier runs (same model, seed, prompt)\n")
+        for m, ref in (("qwen2.5:7b", "sequence_operator_compliance_qwen2.5_7b_len63_hetero_segex_absent_prose25.json"),
+                       ("gemma4:12b", None)):
+            new = dict(S[m, 25]["cnt"])
+            if ref and (RAW / ref).exists():
+                old = {int(k): v for k, v in json.load(open(RAW / ref))["conditions"][0]["boundary_summary"]["cut_percent_counts"].items()}
+                P(f"- {m} N=25: step 2 `absent_prose25` {old} vs this run {new} -> {'identical' if old == new else 'DIFFERENT'}")
+            else:
+                P(f"- {m} N=25: this run {new} (no earlier file with this exact setting on disk; PHASE3_RESULTS.md 9.3 reports 50x100)")
+    if do_combined:
+        combined(out)
     text = "\n".join(out) + "\n"
-    (RAW / "model_cutnum_tables.md").write_text(text)
+    (RAW / out_name).write_text(text)
     print(text)
 
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--numbers", default=",".join(map(str, NUMBERS)))
+    ap.add_argument("--out", default="model_cutnum_tables.md")
+    ap.add_argument("--combined", action="store_true")
+    a = ap.parse_args()
+    main([int(x) for x in a.numbers.split(",")], a.out, a.combined)

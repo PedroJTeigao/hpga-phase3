@@ -19,7 +19,8 @@ main().
 Outputs (results/raw): sequence_operator_compliance_<tag>_len63_cutnum_segex_prose<N>.json,
 llm_operator_calls_cutnum_prose<N>_<tag>.jsonl, model_cutnum_prose<N>_<tag>_console.log, model_cutnum_driver.log.
 
-  python experiments/run_cut_number_sweep.py                      # outer: both models, all N, one subprocess each
+  python experiments/run_cut_number_sweep.py                      # outer: both models, step-6 values, one subprocess each
+  python experiments/run_cut_number_sweep.py --numbers 33,45,70,80  # outer: step-7 values (same everything else)
   python experiments/run_cut_number_sweep.py --inner prose37      # one setting in this process (model from HPGA_LLM_MODEL)
   python experiments/run_cut_number_sweep.py --check-equivalence  # offline: prose25 prompt == probe's absent_prose25 prompt
 """
@@ -35,8 +36,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 RAW = ROOT / "results" / "raw"
 MODELS = ["qwen2.5:7b", "gemma4:12b"]
-NUMBERS = [10, 25, 37, 60, 90]
-SETTINGS = [f"prose{n}" for n in NUMBERS]
+NUMBERS = [10, 25, 37, 60, 90]  # step 6 (the default for the outer run)
+STEP7_NUMBERS = [33, 45, 70, 80]  # step 7: fill the gaps; 33 replaces 30, which is the length bound printed in the prompt
+SETTINGS = [f"prose{n}" for n in sorted(NUMBERS + STEP7_NUMBERS)]
 
 
 def install(probe, n: int) -> None:
@@ -105,7 +107,7 @@ def check_equivalence() -> None:
     if ref != new:
         raise SystemExit("prose25 differs from absent_prose25")
     sm._crossover_segment_prompt, sm._RETRY_HINT_SEGMENT = orig
-    for n in NUMBERS:
+    for n in NUMBERS + STEP7_NUMBERS:
         install(probe, n)
         text = sm._crossover_segment_prompt(*args(), sm._RETRY_HINT_SEGMENT)
         print(f"N={n}: 'boundary at {n} falls {n}%' x{text.count(f'boundary at {n} falls {n}%')}, 'e.g.' x{text.count('e.g.')}, "
@@ -113,7 +115,7 @@ def check_equivalence() -> None:
         sm._crossover_segment_prompt, sm._RETRY_HINT_SEGMENT = orig
 
 
-def outer() -> None:
+def outer(numbers: list[int]) -> None:
     sys.path.insert(0, str(HERE))
     import run_model_heterogeneity_probe as h
 
@@ -122,7 +124,7 @@ def outer() -> None:
         h.unload_all()
         w = h.warm(m)
         print(f"=== {m}: warm-up load {w['load_duration_s']:.1f}s", flush=True)
-        for s in SETTINGS:
+        for s in [f"prose{n}" for n in numbers]:
             env = dict(os.environ, HPGA_LLM_MODEL=m, HPGA_RUN_ID=f"cutnum_{s}_{tag}", HPGA_LLM_NUM_CTX=str(h.NUM_CTX))
             env.pop("HPGA_LLM_LOG_PATH", None)
             t0 = time.time()
@@ -137,6 +139,7 @@ def outer() -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--inner", choices=SETTINGS, default=None)
+    ap.add_argument("--numbers", default=",".join(map(str, NUMBERS)), help="outer run: comma-separated prose numbers")
     ap.add_argument("--n-calls", type=int, default=100)
     ap.add_argument("--out-dir", default=None)
     ap.add_argument("--check-equivalence", action="store_true")
@@ -146,4 +149,4 @@ if __name__ == "__main__":
     elif a.inner:
         inner(a.inner, a.n_calls, a.out_dir)
     else:
-        outer()
+        outer([int(x) for x in a.numbers.split(",")])
