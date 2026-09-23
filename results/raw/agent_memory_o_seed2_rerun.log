@@ -1,0 +1,34 @@
+2026-09-22 21:41:39,815 agmem plan: [('O', 2)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-22 21:41:49,321 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/4498 [00:00<?, ?it/s]Loading weights:   0%|          | 18/4498 [00:00<03:56, 18.97it/s]Loading weights:  13%|█▎        | 584/4498 [00:01<00:05, 742.58it/s]Loading weights:  19%|█▉        | 877/4498 [00:01<00:03, 1081.30it/s]Loading weights:  37%|███▋      | 1658/4498 [00:01<00:01, 2300.28it/s]Loading weights:  54%|█████▎    | 2415/4498 [00:01<00:00, 3383.65it/s]Loading weights:  71%|███████   | 3201/4498 [00:01<00:00, 4398.66it/s]Loading weights:  89%|████████▉ | 3992/4498 [00:01<00:00, 5257.65it/s]Loading weights: 100%|██████████| 4498/4498 [00:01<00:00, 2762.63it/s]
+[transformers] [1mEsmForProteinFolding LOAD REPORT[0m from: facebook/esmfold_v1
+Key                                | Status  | 
+-----------------------------------+---------+-
+esm.contact_head.regression.bias   | MISSING | 
+esm.contact_head.regression.weight | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+2026-09-22 21:42:10,682 agmem === O seed 2 attempt 1 ===
+2026-09-22 21:44:09,977 agmem O seed 2 gen  0 n=16 best=0.3353 mean=0.2334 distinct=16 hits=0 div=53.0
+2026-09-22 21:46:50,678 agmem O seed 2 gen  1 n=18 best=0.3353 mean=0.2633 distinct=48 hits=2 div=52.5
+2026-09-22 21:49:24,057 agmem O seed 2 gen  2 n=18 best=0.3353 mean=0.2668 distinct=78 hits=6 div=50.0
+2026-09-22 21:52:10,456 agmem O seed 2 gen  3 n=18 best=0.3600 mean=0.2973 distinct=108 hits=10 div=42.3
+2026-09-22 21:55:09,499 agmem O seed 2 gen  4 n=18 best=0.3600 mean=0.2962 distinct=137 hits=15 div=41.6
+2026-09-22 21:58:03,566 agmem O seed 2 gen  5 n=18 best=0.3899 mean=0.2888 distinct=167 hits=19 div=40.9
+2026-09-22 22:01:06,078 agmem O seed 2 gen  6 n=18 best=0.3899 mean=0.3057 distinct=197 hits=23 div=36.3
+2026-09-22 22:03:50,427 agmem O seed 2 gen  7 n=18 best=0.3899 mean=0.2996 distinct=227 hits=27 div=35.6
+2026-09-22 22:06:39,980 agmem O seed 2 gen  8 n=18 best=0.4057 mean=0.3501 distinct=256 hits=32 div=18.7
+2026-09-22 22:09:49,894 agmem O seed 2 gen  9 n=18 best=0.4171 mean=0.3364 distinct=285 hits=37 div=30.4
+2026-09-22 22:12:37,125 agmem O seed 2 gen 10 n=18 best=0.4171 mean=0.3255 distinct=314 hits=42 div=35.6
+2026-09-22 22:15:35,524 agmem O seed 2 gen 11 n=18 best=0.4308 mean=0.3371 distinct=344 hits=46 div=33.8
+2026-09-22 22:18:18,283 agmem O seed 2 gen 12 n=18 best=0.4308 mean=0.3215 distinct=373 hits=51 div=27.6
+2026-09-22 22:21:21,624 agmem O seed 2 gen 13 n=18 best=0.4308 mean=0.2945 distinct=403 hits=55 div=28.2
+2026-09-22 22:24:08,979 agmem O seed 2 gen 14 n=18 best=0.4308 mean=0.3094 distinct=431 hits=61 div=23.8
+2026-09-22 22:27:00,118 agmem O seed 2 gen 15 n=18 best=0.4416 mean=0.3178 distinct=460 hits=66 div=21.0
+2026-09-22 22:29:50,417 agmem O seed 2 gen 16 n=18 best=0.4416 mean=0.3398 distinct=490 hits=70 div=28.3
+2026-09-22 22:32:36,522 agmem O seed 2 gen 17 n=18 best=0.4416 mean=0.2891 distinct=520 hits=74 div=28.0
+2026-09-22 22:35:38,812 agmem O seed 2 gen 18 n=18 best=0.4416 mean=0.3162 distinct=550 hits=78 div=22.5
+2026-09-22 22:36:07,278 agmem O seed 2 gen 19 n=18 best=0.4416 mean=0.3123 distinct=564 hits=82 div=20.3
+2026-09-22 22:36:07,287 agmem finished: all planned runs attempted

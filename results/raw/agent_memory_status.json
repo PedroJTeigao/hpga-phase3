@@ -2,43 +2,22 @@
  "plan": [
   [
    "O",
-   0
-  ],
-  [
-   "O",
-   1
-  ],
-  [
-   "O",
    2
   ]
  ],
- "started": "2026-09-22T15:04:27-0400",
+ "started": "2026-09-22T21:41:39-0400",
  "done": [
   {
    "arm": "O",
-   "seed": 0,
-   "attempt": 1,
-   "seconds": 4035.7993211746216,
-   "final_best": 0.42761
-  },
-  {
-   "arm": "O",
-   "seed": 1,
-   "attempt": 1,
-   "seconds": 3911.191976547241,
-   "final_best": 0.47601
-  }
- ],
- "failed": [
-  {
-   "arm": "O",
    "seed": 2,
-   "error": "httpx.ReadTimeout: timed out"
+   "attempt": 1,
+   "seconds": 3236.604574203491,
+   "final_best": 0.44164
   }
  ],
+ "failed": [],
  "skipped": [],
  "finished": true,
  "exit_reason": "all planned runs attempted",
- "ended": "2026-09-22T18:11:14-0400"
+ "ended": "2026-09-22T22:36:07-0400"
 }
