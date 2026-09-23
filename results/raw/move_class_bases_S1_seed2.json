@@ -1,0 +1,4534 @@
+{
+ "arm": "S1",
+ "seed": 2,
+ "run_file": "results/raw/move_class_S1_seed2.json",
+ "note": "measurement only: these folds never entered the run's selection, distinct count or best-so-far curve",
+ "n_measurement_folds": 144,
+ "measurement_fold_s": 355.3135435488075,
+ "ga_fold_s": 702.7846408858895,
+ "measurement_share_of_fold_time": 0.33580394407220204,
+ "moves": [
+  {
+   "step": 0,
+   "base": "QQTAWWCQTWGESNATEYNLNLAQEELHARCQSRHWYDALANLDISHEWNPRFNPEKYTWMPLVYDNLPSGKNR",
+   "child": "QQTAWWCQTWGESNATEYNLNLAQEELHLRCQSRHWYDALANLDISHEWNPRFNPEKYTWMPLVYDNLPSGKNR",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.27892,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27194,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.006979999999999986
+  },
+  {
+   "step": 0,
+   "base": "TFTDLCIRVITKCEEPNHMNDMRNGSRLRFRHKMGEISHNGNFFIKVPPMKEEDYMPHEAYSCSLNRFNK",
+   "child": "TFTALCIRVITKCEEPNHMNDMRNGSRLRFRHKMGEISHNGNFFIKVPPMKEEDYMPHEAYSCSLNRFNK",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    3
+   ],
+   "base_fitness": 0.19938,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.24449,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.04511000000000001
+  },
+  {
+   "step": 0,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQALFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    18
+   ],
+   "base_fitness": 0.28465,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29838,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.013729999999999964
+  },
+  {
+   "step": 0,
+   "base": "MEASIMGYKSLLTVTTYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "child": "MEASIMGYKSLLTVTTYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNEIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.30704,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29866,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.008379999999999999
+  },
+  {
+   "step": 0,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    34
+   ],
+   "base_fitness": 0.29438,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33709,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.042710000000000026
+  },
+  {
+   "step": 0,
+   "base": "MEARFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "child": "MEAWFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    3
+   ],
+   "base_fitness": 0.31127,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30733,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.003939999999999999
+  },
+  {
+   "step": 0,
+   "base": "RCSIDSFVAFTVCCHVATMTIFNSAFVEIERHCYHPMYPTTGTEFHGPHLMQFQFPCKPYFSID",
+   "child": "RCSIDSFVAFTVCCHVATMTIFNSAFVEIERHCYHPMYPTTGTEFHLPHLMQFQFPCKPYFSID",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    46
+   ],
+   "base_fitness": 0.24828,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.22742,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02085999999999999
+  },
+  {
+   "step": 0,
+   "base": "DACANKFGGTAPWCIFCANYELMSALRVYMLEVESKLTSKIQFV",
+   "child": "DACANKFGGTAPWCIFCANYELMSALRVYMMEVESKLTSKIQFV",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.22293,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.22295,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 2.0000000000020002e-05
+  },
+  {
+   "step": 0,
+   "base": "MEARFTWPSTMFMKKYQAVFCKCFGGDRLHGMKTWDQQCRLEKAHQMKVPWTHQFGRRNPSYKYHWSRHSWM",
+   "child": "MEARFTWPSTMFMKKYQAVFCKCFGGDRLHGMKTWDQQCRLEKAHQMKVPWTHQFGRRNPSYKYHWSRCSWM",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    68
+   ],
+   "base_fitness": 0.26431,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.24892,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.015389999999999987
+  },
+  {
+   "step": 0,
+   "base": "EAYVHHHPWCFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    9
+   ],
+   "base_fitness": 0.28399,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34797,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.06397999999999998
+  },
+  {
+   "step": 0,
+   "base": "DGRSIMGYKSLLTVTTYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "child": "DGRSIMGYKSLLTVTTYWQLHSTNYDMAHECWCKWIENFKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    37
+   ],
+   "base_fitness": 0.28991,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.2946,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.004689999999999972
+  },
+  {
+   "step": 0,
+   "base": "WVNYSIYWFLHVLEAAHMCMVKMRDQSALWWFHFGYPDWRKDSSIFWLI",
+   "child": "WVNYSIYWFLHVLEAAHMCMVKMRDQSALWWFHFGYPDWRKDSGIFWLI",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    43
+   ],
+   "base_fitness": 0.25864,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27908,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.020440000000000014
+  },
+  {
+   "step": 0,
+   "base": "EAYVHHHPWCFAKSVCIFYMCHEFVGDRLHGMKTWDQQCRLEKAHQMKVPWTHQFGRRNPSYKYFSID",
+   "child": "EAYVHHHPWCFAKSVCIFYMCHEFVGDRLHGMKTWDQQCRLEKAHQMKVPWDHQFGRRNPSYKYFSID",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    51
+   ],
+   "base_fitness": 0.18006,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.20452,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.02446000000000001
+  },
+  {
+   "step": 0,
+   "base": "DACANKFGGTAPWCIFCANYELMSALRVYCKPYHWSRHSWM",
+   "child": "DACANKFGGTAPWCIFCANYELMEALRVYCKPYHWSRHSWM",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    23
+   ],
+   "base_fitness": 0.22605,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.20293,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02312
+  },
+  {
+   "step": 1,
+   "base": "QQTAWWMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "QQTAWWMGYKSLLTVTTCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    35
+   ],
+   "base_fitness": 0.33911,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29979,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03932000000000002
+  },
+  {
+   "step": 1,
+   "base": "WVRSICQTWGESNATEYNLNLAQEELHLRCQSRHWYDALANLDISHEWNPRFNPEKYTWMPLVYDNLPSGKNR",
+   "child": "WVRSICQTWGESNATEYNLNLAQEELHLCCQSRHWYDALANLDISHEWNPRFNPEKYTWMPLVYDNLPSGKNR",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.23833,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30859,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.07025999999999999
+  },
+  {
+   "step": 1,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.33709,
+   "base_source": "run_cache",
+   "child_fitness": 0.33991,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.002819999999999989
+  },
+  {
+   "step": 1,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLTVTTCFGGERIVCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    23
+   ],
+   "base_fitness": 0.33709,
+   "base_source": "run_cache",
+   "child_fitness": 0.30805,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02904000000000001
+  },
+  {
+   "step": 1,
+   "base": "WVRSIMGYPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "child": "WVRSIMGYPSTMFMKKYQAVFCFYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.30898,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31289,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.003910000000000025
+  },
+  {
+   "step": 1,
+   "base": "MEAWFTWKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "MELWFTWKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    2
+   ],
+   "base_fitness": 0.26622,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.247,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.019220000000000015
+  },
+  {
+   "step": 1,
+   "base": "MEASIMGYKSLLTVTTYWQLHSTMRDQSALWWFHFGYPDWRKDSGIFWLI",
+   "child": "MEASIMGYKSLLTVTTYWQLHSTMRDQSAHWWFHFGYPDWRKDSGIFWLI",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    29
+   ],
+   "base_fitness": 0.20268,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.23666,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.03398000000000001
+  },
+  {
+   "step": 1,
+   "base": "WVNYSIYWFLHVLEAAHMCMVKNYDMAHECWCKWIETFKIHCQCCNNEIAD",
+   "child": "WVNYSIYWFLHVLEAAHMCMVKNYDMARECWCKWIETFKIHCQCCNNEIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    27
+   ],
+   "base_fitness": 0.30974,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31967,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.009929999999999994
+  },
+  {
+   "step": 1,
+   "base": "DGRSIMGYKSLLTVTTYWQLHSTNYDMAHECWCKWIENFKIHCQCCNNGIAD",
+   "child": "DGRSIMGYKSLLTVTTYWQLHSTNYAMAHECWCKWIENFKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.2946,
+   "base_source": "run_cache",
+   "child_fitness": 0.30159,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.006990000000000052
+  },
+  {
+   "step": 1,
+   "base": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETMIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    54
+   ],
+   "base_fitness": 0.34797,
+   "base_source": "run_cache",
+   "child_fitness": 0.21724,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.13073
+  },
+  {
+   "step": 1,
+   "base": "MEARFTWPSTMFMKKYQALFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "MEARFTWPSTMFMKKYQALFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEPGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.28802,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.2617,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02632000000000001
+  },
+  {
+   "step": 1,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    66
+   ],
+   "base_fitness": 0.28465,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34167,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.05701999999999996
+  },
+  {
+   "step": 1,
+   "base": "MEAWFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "child": "MEAWFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHPQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.30733,
+   "base_source": "run_cache",
+   "child_fitness": 0.30707,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.00025999999999998247
+  },
+  {
+   "step": 1,
+   "base": "MEAWFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "child": "MEAWFTWPSTMFMKKYQAVFCKYWQLESTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.30733,
+   "base_source": "run_cache",
+   "child_fitness": 0.29756,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.009770000000000001
+  },
+  {
+   "step": 2,
+   "base": "DGRSIMGYKSLLTVTTYWQLHSTNYAMAHECWFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "DGRSIMGYKSLLTVTTYWQLHSTNYAMAHDCWFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    29
+   ],
+   "base_fitness": 0.25157,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.18381,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06776000000000001
+  },
+  {
+   "step": 2,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENFKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    47
+   ],
+   "base_fitness": 0.33101,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34622,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.015210000000000001
+  },
+  {
+   "step": 2,
+   "base": "WVNYSIYWMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHPQCCNNGIAD",
+   "child": "WVNYSIYWMFMKKYGAVFCKYWQLHSTNYDMAHECWCKWIETFKIHPQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    14
+   ],
+   "base_fitness": 0.2877,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30803,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.020330000000000015
+  },
+  {
+   "step": 2,
+   "base": "MEAWFTWPSTFLHVLEAAHMCMVKNYDMARECWCKWIETFKIHCQCCNNEIAD",
+   "child": "MEAWFTWPSTFLHVLEAAHMCMVKNYSMARECWCKWIETFKIHCQCCNNEIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.33461,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29332,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04128999999999999
+  },
+  {
+   "step": 2,
+   "base": "MEAWFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHECWCKWIETFKIHPQCCNNGIAD",
+   "child": "MEAWFTWPSTMFMKKYQAVFCKYWQLHSTNYDMAHEQWCKWIETFKIHPQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.30707,
+   "base_source": "run_cache",
+   "child_fitness": 0.31443,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.007359999999999978
+  },
+  {
+   "step": 2,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    38
+   ],
+   "base_fitness": 0.33991,
+   "base_source": "run_cache",
+   "child_fitness": 0.35772,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.017809999999999993
+  },
+  {
+   "step": 2,
+   "base": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EPYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    1
+   ],
+   "base_fitness": 0.34797,
+   "base_source": "run_cache",
+   "child_fitness": 0.25331,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.09466000000000002
+  },
+  {
+   "step": 2,
+   "base": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    41
+   ],
+   "base_fitness": 0.34797,
+   "base_source": "run_cache",
+   "child_fitness": 0.31721,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03076000000000001
+  },
+  {
+   "step": 2,
+   "base": "QQTAWWMGYKSLLTVTTCFGGERITCIIRDKDIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "QQTAWWMGYKSLLTVTTCFGGERITCIIRDSDIYSNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.33936,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34171,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0023500000000000187
+  },
+  {
+   "step": 2,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    12
+   ],
+   "base_fitness": 0.31925,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.36481,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.045560000000000045
+  },
+  {
+   "step": 2,
+   "base": "EQTAWWMGYKSLLTVTTCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EQTAWWMGYKSLLTVTTCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDITEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    51
+   ],
+   "base_fitness": 0.3115,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.32197,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.01046999999999998
+  },
+  {
+   "step": 2,
+   "base": "QAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "TAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.35069,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34614,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0045499999999999985
+  },
+  {
+   "step": 2,
+   "base": "WVRSIMGYPSTMFMKKYQAVFCFYWQLHSTNYDMAHECWCKWIETFKIHEHATRRLVPHH",
+   "child": "WVRSIMGYPSTMFMKKYQAVFCFYWQLHSTNYDMAHTCWCKWIETFKIHEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.30504,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29477,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.010270000000000001
+  },
+  {
+   "step": 2,
+   "base": "WVRSIMGYKSLLTVTTCFGGERIVCIIRDKDWIYSNKQKTAFCPQGETDIEEAGICQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERIVCIIRDKDWIYSNKQKTAFCPQGETDIEEAGICQCCKNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    59
+   ],
+   "base_fitness": 0.32275,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.26188,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06086999999999998
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQKIHCQCCNNGIAH",
+   "child": "WVRSIMGYKSLITVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQKIHCQCCNNGIAH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    11
+   ],
+   "base_fitness": 0.32062,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30882,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.011800000000000033
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHD",
+   "child": "WVRSIMGYKSLLAVTTCFGGERITCIIRIKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.32367,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31871,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.00496000000000002
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCTIRDKDWIYSNKQKTACKWIENQKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.34622,
+   "base_source": "run_cache",
+   "child_fitness": 0.3094,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03682000000000002
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    47
+   ],
+   "base_fitness": 0.34622,
+   "base_source": "run_cache",
+   "child_fitness": 0.37759,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.031369999999999953
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQAGIEHATRRLVPHH",
+   "child": "WVRSIMGYHSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENQAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    8
+   ],
+   "base_fitness": 0.2896,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.2881,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0015000000000000013
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    27
+   ],
+   "base_fitness": 0.37743,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.38035,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0029200000000000337
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVASIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    2
+   ],
+   "base_fitness": 0.36521,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3349,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.030310000000000004
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTFCPQGFTDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    46
+   ],
+   "base_fitness": 0.40639,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33145,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.07493999999999995
+  },
+  {
+   "step": 3,
+   "base": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EAYVHHHPWWFAKSVCIFYMCHGFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.34797,
+   "base_source": "run_cache",
+   "child_fitness": 0.25246,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.09550999999999998
+  },
+  {
+   "step": 3,
+   "base": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.36481,
+   "base_source": "run_cache",
+   "child_fitness": 0.35758,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.007230000000000014
+  },
+  {
+   "step": 3,
+   "base": "TAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "TAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRRMVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    67
+   ],
+   "base_fitness": 0.34614,
+   "base_source": "run_cache",
+   "child_fitness": 0.2562,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08994000000000002
+  },
+  {
+   "step": 3,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRSLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCPQGETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.34167,
+   "base_source": "run_cache",
+   "child_fitness": 0.34169,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 2.0000000000020002e-05
+  },
+  {
+   "step": 3,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRSLVPHH",
+   "child": "WVRRFMWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKTAFCPQGETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    5
+   ],
+   "base_fitness": 0.34167,
+   "base_source": "run_cache",
+   "child_fitness": 0.30074,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.040929999999999966
+  },
+  {
+   "step": 3,
+   "base": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.31721,
+   "base_source": "run_cache",
+   "child_fitness": 0.32499,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.007780000000000009
+  },
+  {
+   "step": 4,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTCPQGETDIEEAGIEHETRRLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQAVFCKCFFGERITCIIRDKAWIYYNKQKTCPQGETDIEEAGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    24
+   ],
+   "base_fitness": 0.26484,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.24824,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01660000000000003
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFAFCPQGETDIEEAGIEHATRSLVPHH",
+   "child": "WVRSIMGYKSLLAVTTCFGGERITCIIRAKDWWIYYNKQKTAFAFCPQGETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.3407,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.25957,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08112999999999998
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAFCPQGETDIEEAIHCQCCNNGIAD",
+   "child": "WVRSIMYYKSLLTVTTCPGGERITCIIRDKDWIYSNKQLTAFCPQGETDIEEAIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    17
+   ],
+   "base_fitness": 0.36794,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.2625,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.10543999999999998
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKGIEHATRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    8
+   ],
+   "base_fitness": 0.30979,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35399,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.04420000000000002
+  },
+  {
+   "step": 4,
+   "base": "WVASIMYYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVASIMYYKWLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    9
+   ],
+   "base_fitness": 0.35039,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.28851,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06187999999999999
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMFYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.33327,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35071,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.01744000000000001
+  },
+  {
+   "step": 4,
+   "base": "EAYVHIMYYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "EAYVHIMYYKSLLTVTTCFEGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    19
+   ],
+   "base_fitness": 0.34079,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34917,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.008379999999999999
+  },
+  {
+   "step": 4,
+   "base": "WVRSHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHATRRLVPHH",
+   "child": "DVRSHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.3175,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31386,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.003640000000000032
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCATRRLVPHH",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYFNKQKTACKWIENNKIHCQCATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    34
+   ],
+   "base_fitness": 0.27299,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29555,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.02255999999999997
+  },
+  {
+   "step": 4,
+   "base": "EAYVHHHPWWFAKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHCNNGIAD",
+   "child": "EAYVHHHPWWFKKSVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    11
+   ],
+   "base_fitness": 0.31628,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.24757,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06871
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMYYKSLLTVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHATRRLVPHH",
+   "child": "WVRSNMYYKSLLTVCIFYMCHEFVGERITCIIRDKDWIYYMKQKTAFCPQGETDIEEDGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    4
+   ],
+   "base_fitness": 0.2549,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31719,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.06229000000000001
+  },
+  {
+   "step": 4,
+   "base": "EAYVHHHPWWFAKSVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "EAYVHHHPWWFAKSVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKTHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    54
+   ],
+   "base_fitness": 0.3278,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31119,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.016609999999999958
+  },
+  {
+   "step": 4,
+   "base": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQPQGETDIEEAGIEHATRSLVPHH",
+   "child": "WVRSIMGYKSLLAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQPQFETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.32409,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34717,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.02307999999999999
+  },
+  {
+   "step": 4,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGETDIEEAGIEHETRRLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGETDKEEAGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.3651,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.32994,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03515999999999997
+  },
+  {
+   "step": 5,
+   "base": "EAYVHIMYYKSLLTVTTCFEGERITCIIADKDWIYSNKQLTAFCPQGEIENNKIHCQCCNNGIAD",
+   "child": "EAYVHIMYYKSLLTVTTCFEGEHITCIIADKDWIYSNKQLTAFCPQGEIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.35457,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33056,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.024009999999999976
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWTDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACDWTDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    42
+   ],
+   "base_fitness": 0.36201,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3083,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.05370999999999998
+  },
+  {
+   "step": 5,
+   "base": "EAYVHIMYYKSLLTVTTCFEGERITCIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "EAYVHIMYYKSLLMVTTCFEGERITCIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    13
+   ],
+   "base_fitness": 0.35649,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35806,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0015700000000000158
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMFYKSLLTVTTCFGGERITCIIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMFYKSLLTVTTCFGGERITCIIIACKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    29
+   ],
+   "base_fitness": 0.34297,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3039,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.039069999999999994
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMGYKSLLTVTTFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTFGGERITCIIADKDMIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.31309,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.26578,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04730999999999996
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMYYKSLLTVTTCCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMYYKSLLTVTTCCFGGERITCIKRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    27
+   ],
+   "base_fitness": 0.28779,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29684,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.009050000000000002
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMGYKSAVTTCFGGERITCIIRDKDWWIYYNKQKTAFCPQPQFETDIEEAGIEHATRSLVPHH",
+   "child": "WVRSIMGYKSAVTTCFGGEEITCIIRDKDWWIYYNKQKTAFCPQPQFETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    19
+   ],
+   "base_fitness": 0.3456,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33468,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01092000000000004
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMGYKSLLLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLLLTVTTCFGGERITCIIRDKDWIYSNKQKLACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    41
+   ],
+   "base_fitness": 0.31521,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3243,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.009089999999999987
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITRIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    24
+   ],
+   "base_fitness": 0.38035,
+   "base_source": "run_cache",
+   "child_fitness": 0.35856,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02179000000000003
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "HVRSIMYYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.38035,
+   "base_source": "run_cache",
+   "child_fitness": 0.34377,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03658
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.2919,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3853,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.09339999999999998
+  },
+  {
+   "step": 5,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGETDKEEAIEHATRRLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGETDKEEAIEHATRRLVLHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    66
+   ],
+   "base_fitness": 0.31152,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31241,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0008900000000000019
+  },
+  {
+   "step": 5,
+   "base": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGETDKEEAGIEHATRRLVPHH",
+   "child": "WVRRFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGHTDKEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    50
+   ],
+   "base_fitness": 0.3638,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3366,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.027200000000000002
+  },
+  {
+   "step": 5,
+   "base": "WVRSIMFYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEAGIEHETRRLVPHH",
+   "child": "WVRSIMFYKSLLTVTTCFGGERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.33862,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34667,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.008050000000000002
+  },
+  {
+   "step": 6,
+   "base": "WVRRFTWPSTMFMKKYQACFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRRFTWPSTMFMKKYQACFGGERITYIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.25142,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27498,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.023560000000000025
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYKSLLTVTTVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGHTDKEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLTVTTVFCKCFGGERITCIIRDKAWIYYNKQKTAFCGHTDKEEAGIEDATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.28891,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27679,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01212000000000002
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMYYKSAVTTCFGGEEITCIIRDKDWWIYYNKQKTAFCPQPQFETDIEEAGIEHATRSLVPHH",
+   "child": "WVRSIMYYKSAVTTCFGGEEITCIIRDKIWWIYYNKQKTAFCPQPQFETDIEEAGIEHATRSLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.38468,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35151,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03317000000000003
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITRIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITRIIADKDWIYSNKQLTAFCPQGETDIEEKIHGQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    55
+   ],
+   "base_fitness": 0.32295,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29745,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.025500000000000023
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMFYKSLLTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    11
+   ],
+   "base_fitness": 0.31374,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35632,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.04258000000000001
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRWIYSNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "child": "WVRSIMGYKSLLTVTTCFGGERIICIIRWIYSNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    23
+   ],
+   "base_fitness": 0.30696,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30289,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.004070000000000018
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSQLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    10
+   ],
+   "base_fitness": 0.37759,
+   "base_source": "run_cache",
+   "child_fitness": 0.31859,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.059
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    50
+   ],
+   "base_fitness": 0.37759,
+   "base_source": "run_cache",
+   "child_fitness": 0.3121,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06548999999999999
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYKSLLLLTVTTCFGGERITCIIRDKDWIYSNAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMGYKSLLLLTVTTCFAGERITCIIRDKDWIYSNAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    20
+   ],
+   "base_fitness": 0.29912,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.21252,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08660000000000001
+  },
+  {
+   "step": 6,
+   "base": "EAYVHIMYYKSLLMVTTCFEGERITCIRDKDWIYSNKQLTAKQKLACKWIENNKIHCQCCNNGIAD",
+   "child": "EAYVHIMYYKSLLMVTTCFEGERITCIRDKDWIYSNKQLTAKQKLACKWIEVNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    51
+   ],
+   "base_fitness": 0.35052,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30288,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.047640000000000016
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMGYRSLLTVTTCFERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "child": "WVRSISGYRSLLTVTTCFERITCIIRDKDWIYSNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    5
+   ],
+   "base_fitness": 0.25596,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.25568,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.00028000000000000247
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMFYKSLLTVTTCFGGGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMFYKSLLTVTTCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    42
+   ],
+   "base_fitness": 0.34658,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31141,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03516999999999998
+  },
+  {
+   "step": 6,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWCYSNKQLTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    32
+   ],
+   "base_fitness": 0.35491,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.36154,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.006629999999999969
+  },
+  {
+   "step": 6,
+   "base": "EAYVHIMYYKSLLMVTTCFEGERITCIRDKDWIYSNKQLTAAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "EAYVHIMYYKSLLMVTTCFEGERITCIRDKDWIYSNKQLTACFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    41
+   ],
+   "base_fitness": 0.34266,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34068,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0019800000000000373
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYDNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    37
+   ],
+   "base_fitness": 0.35632,
+   "base_source": "run_cache",
+   "child_fitness": 0.34989,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.006430000000000047
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMFYKSLLTVTTCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMFYKSLLTVTTCFGGGGCRITCIIRDKDWIYSNIQKTHCKWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.31141,
+   "base_source": "run_cache",
+   "child_fitness": 0.25239,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.05902000000000002
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMGYKSQLTVTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSQLTYTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    13
+   ],
+   "base_fitness": 0.31859,
+   "base_source": "run_cache",
+   "child_fitness": 0.31917,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0005800000000000249
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWCYSNKQLTAFCPQGETDIEEAGIEHATRRLVPHH",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWCYSNKQLTAFCPQGETDIEEAGIEHATRQLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    60
+   ],
+   "base_fitness": 0.36154,
+   "base_source": "run_cache",
+   "child_fitness": 0.36587,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0043300000000000005
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWIYYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRFIMYYKSLLTVTTCFGGERITCIIADKDWIYYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    3
+   ],
+   "base_fitness": 0.35277,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31541,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03735999999999995
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWISNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRLIMGYRSLLTVTTCFGGERITCIIRDKDWISNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    3
+   ],
+   "base_fitness": 0.33651,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31679,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01971999999999996
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACGWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    42
+   ],
+   "base_fitness": 0.3853,
+   "base_source": "run_cache",
+   "child_fitness": 0.33262,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.05267999999999995
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIARDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.3853,
+   "base_source": "run_cache",
+   "child_fitness": 0.31681,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06849
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMGYKSLLTVTTCFFEGERITCIRDKDWIYSNKQLTACFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFFEGERITCIRDKYWIYSNKQLTACFCPQGETDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.26794,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34306,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.07511999999999996
+  },
+  {
+   "step": 7,
+   "base": "EAYVHIMYYKSLLMVTTCGGERIICIIRWIYSNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "child": "EAYVHIMYYKSLLMVTTCGGERIICIIRWIYCNKQLTAAFCPQGETDIEEMGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    31
+   ],
+   "base_fitness": 0.31936,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27449,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.044869999999999965
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCRLVPHH",
+   "child": "GVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.37666,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34251,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.034150000000000014
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMFYKSLLTVTTCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGIEHETRNNGIAD",
+   "child": "WVRSIMFYKSLLTVTYCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGIEHETRNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    15
+   ],
+   "base_fitness": 0.34256,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31792,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.024639999999999995
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    40
+   ],
+   "base_fitness": 0.35627,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.38822,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.031950000000000034
+  },
+  {
+   "step": 7,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNKQKKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMGYKSLLTVTTCFGGERITCIIRDKDWIYSNIQKKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.31694,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30524,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.011699999999999988
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    14
+   ],
+   "base_fitness": 0.38822,
+   "base_source": "run_cache",
+   "child_fitness": 0.33875,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.049470000000000014
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWCYSNKQLTAFCPQGETDIEEAGIEHATRQLVPHH",
+   "child": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWCYSNKQLNAFCPQGETDIEEAGIEHATRQLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    39
+   ],
+   "base_fitness": 0.36587,
+   "base_source": "run_cache",
+   "child_fitness": 0.36069,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.005179999999999962
+  },
+  {
+   "step": 8,
+   "base": "GVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCRLVPHH",
+   "child": "GVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKQKTACKWIENNKIHCQCCRLTPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    60
+   ],
+   "base_fitness": 0.34251,
+   "base_source": "run_cache",
+   "child_fitness": 0.29508,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04742999999999997
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    42
+   ],
+   "base_fitness": 0.3853,
+   "base_source": "run_cache",
+   "child_fitness": 0.40626,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.020960000000000034
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMGYKSQLTYTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIIEHETRNNGIAD",
+   "child": "WVRSIMGYKSQLTYTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIIEHETRNNGIWD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    60
+   ],
+   "base_fitness": 0.31637,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.28419,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.032179999999999986
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMFYKSLLTVTYCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGHCQCCNNGIAD",
+   "child": "WVRSIMFYKSLLTVTYCFGGGGEIITCIIRDKDWIYSNIQKTHCKWIENNKGGHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    23
+   ],
+   "base_fitness": 0.34288,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.32032,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.022560000000000024
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMYYKSLPTVTTCFGGERITCIIRDKDDKDWIYDNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMYYKSLPTVTTCFGGERITTIIRDKDDKDWIYDNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    24
+   ],
+   "base_fitness": 0.3574,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29993,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.05747000000000002
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMFYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGETDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMFYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGEVDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    47
+   ],
+   "base_fitness": 0.37351,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35479,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.018720000000000014
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMGYSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMGYSLPTVTTCFGGERITCIIRDKDDKDWIYSKKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    37
+   ],
+   "base_fitness": 0.32503,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27887,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04615999999999998
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMFYKKSQLTYTTCFGGERITCIIRDKDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "child": "WVRSIMFYKKSQLTYTTCFGGERITCIIRDNDWIYSNKQKTACKWIENNKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.35222,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33057,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.021650000000000003
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRVKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.3853,
+   "base_source": "run_cache",
+   "child_fitness": 0.33561,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.049689999999999956
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.3853,
+   "base_source": "run_cache",
+   "child_fitness": 0.36874,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.016559999999999964
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.38822,
+   "base_source": "run_cache",
+   "child_fitness": 0.39601,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.007789999999999964
+  },
+  {
+   "step": 8,
+   "base": "WVRSIMFYKSLLTVTYCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGIEHETRNNGIAD",
+   "child": "WVRSIMFYKSLLTVTYCFGGGGERITCIIRDKDWIYSNIQKTHCKWIENNKGGIVHETRNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    54
+   ],
+   "base_fitness": 0.31792,
+   "base_source": "run_cache",
+   "child_fitness": 0.3245,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.00658000000000003
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNHGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.38822,
+   "base_source": "run_cache",
+   "child_fitness": 0.36386,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.024359999999999993
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKKQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.38822,
+   "base_source": "run_cache",
+   "child_fitness": 0.35557,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03265000000000001
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFGKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    7
+   ],
+   "base_fitness": 0.39601,
+   "base_source": "run_cache",
+   "child_fitness": 0.26802,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.12799
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENLKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    49
+   ],
+   "base_fitness": 0.39601,
+   "base_source": "run_cache",
+   "child_fitness": 0.36961,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02639999999999998
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGEVDIEEKIHCQCCNNGIAD",
+   "child": "EVRSIMFYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCPQGEVDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.35479,
+   "base_source": "run_cache",
+   "child_fitness": 0.34079,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.014000000000000012
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCSNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    57
+   ],
+   "base_fitness": 0.33875,
+   "base_source": "run_cache",
+   "child_fitness": 0.34321,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0044600000000000195
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSKMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    4
+   ],
+   "base_fitness": 0.38822,
+   "base_source": "run_cache",
+   "child_fitness": 0.35458,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03364
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCKNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    57
+   ],
+   "base_fitness": 0.39601,
+   "base_source": "run_cache",
+   "child_fitness": 0.35728,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03872999999999999
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMYYKSLLTVTTCFGGERITCIIADKDWCWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYKSLLTVKTCFGGERITCIIADKDWCWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    14
+   ],
+   "base_fitness": 0.38472,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27489,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.10982999999999998
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDYSNKQLNAFCPQGETDIEEAGIEHATRQLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFNGERITCIIRDKDYSNKQLNAFCPQGETDIEEAGIEHATRQLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    18
+   ],
+   "base_fitness": 0.3089,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.2973,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0116
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTCFGGERITCNIRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.36743,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.37773,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.010300000000000031
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMGYKSLLTVTTCFGGERITCIIADKDWCYSNKQLNAFCPQGETDIEEAGIEHATRQLVPHH",
+   "child": "WVRSIMGRKSLLTVTTCFGGERITCIIADKDWCYSNKQLNAFCPQGETDIEEAGIEHATRQLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    7
+   ],
+   "base_fitness": 0.31667,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.28911,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.02756000000000003
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHECRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    55
+   ],
+   "base_fitness": 0.3853,
+   "base_source": "run_cache",
+   "child_fitness": 0.37005,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.015249999999999986
+  },
+  {
+   "step": 9,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRVKDWIYSNIQKTACKWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRVKDWIYSNIQKTACKWIENNKGVIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    50
+   ],
+   "base_fitness": 0.33561,
+   "base_source": "run_cache",
+   "child_fitness": 0.3165,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.019110000000000016
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCRRLVPHH",
+   "child": "WVRSIMFYKSLPTVTGCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    15
+   ],
+   "base_fitness": 0.30781,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33951,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.031700000000000006
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHECCNNGIAD",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHECKNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    56
+   ],
+   "base_fitness": 0.39132,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.358,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.033320000000000016
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHECCNNGIAD",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNICKTACFWIENNKGGIEHECCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    37
+   ],
+   "base_fitness": 0.43005,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.26141,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.16864
+  },
+  {
+   "step": 10,
+   "base": "WVRSKMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQTRRLVPHH",
+   "child": "WVRSKMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTAGKWIENNKIKCQTRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    43
+   ],
+   "base_fitness": 0.26304,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.24959,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01344999999999999
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNNNKIKCQCCNNGIAD",
+   "child": "WVRSIMGYRSLGTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNNNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    11
+   ],
+   "base_fitness": 0.34946,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3482,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0012599999999999834
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIEKGGIEHETRRLVPHH",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDPKDWIWSNKFTACKWIEKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    31
+   ],
+   "base_fitness": 0.37904,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.36337,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.015669999999999962
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTKTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    13
+   ],
+   "base_fitness": 0.39601,
+   "base_source": "run_cache",
+   "child_fitness": 0.32515,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.07085999999999998
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNHGIAD",
+   "child": "WVRIIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNHGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    3
+   ],
+   "base_fitness": 0.36386,
+   "base_source": "run_cache",
+   "child_fitness": 0.25231,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.11155000000000004
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCSNGIAD",
+   "child": "WVLSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCSNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    2
+   ],
+   "base_fitness": 0.34321,
+   "base_source": "run_cache",
+   "child_fitness": 0.34317,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -4.0000000000040004e-05
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCNIRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.37773,
+   "base_source": "run_cache",
+   "child_fitness": 0.39488,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.01715
+  },
+  {
+   "step": 10,
+   "base": "EVRSIMFYKSLLTVTTCFGGERITCIIADKDWIYSNKQLTAFCCKWIENNKGGIEHECRRLVPHH",
+   "child": "EVRSIMFYKSLLTVTTCFGGERMTCIIADKDWIYSNKQLTAFCCKWIENNKGGIEHECRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.26596,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33842,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.07246000000000002
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTAPQGEVDIEEKIHCQCCNNGIAD",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKFAPQGEVDIEEKIHCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    39
+   ],
+   "base_fitness": 0.29891,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.326,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.027090000000000003
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSNTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIYSKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    38
+   ],
+   "base_fitness": 0.35849,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.27381,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08467999999999998
+  },
+  {
+   "step": 10,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKKFTACKWIENNKIKCQCCNHGIAD",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKKQTACKWIENNKIKCQCCNHGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    40
+   ],
+   "base_fitness": 0.36818,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29862,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06956000000000001
+  },
+  {
+   "step": 11,
+   "base": "WVLSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVLSIMFYKSLPTVYTCFGGERITCIIRDKDDKDWIYSNKFTACKWIENNKIKCQCCNNGIND",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    61
+   ],
+   "base_fitness": 0.34602,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34112,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0049000000000000155
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCSNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKMIENNKIKCQCCSNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    45
+   ],
+   "base_fitness": 0.37702,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.28324,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.09378000000000003
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNNNKIKCQCCNNGIAD",
+   "child": "SVRSIMFYKSLPTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNNNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.36082,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33882,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.021999999999999964
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMGYRSLGTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMGYRSLGTVTTCFGGERITCFIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.29775,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29543,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0023199999999999887
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMLYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.39601,
+   "base_source": "run_cache",
+   "child_fitness": 0.2808,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.11520999999999998
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKCQCCNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDDKDWIWSNKFTACKWIENNKIKLQCCNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.39601,
+   "base_source": "run_cache",
+   "child_fitness": 0.31916,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.07684999999999997
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.39488,
+   "base_source": "run_cache",
+   "child_fitness": 0.37732,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01756000000000002
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENYIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    47
+   ],
+   "base_fitness": 0.39488,
+   "base_source": "run_cache",
+   "child_fitness": 0.33062,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06425999999999998
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDPKDWIWSNKFTACKWIEKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDPKDWIWSNKFTACKWIEAGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.3022,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30973,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.007529999999999981
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMFYKSLPTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHECKNNGIAD",
+   "child": "WVRSIMFYKSLPTVTTAFGGERITCIIRDKDWIYSNIQKTACKWIENNKGGIEHECKNNGIAD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    16
+   ],
+   "base_fitness": 0.39516,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.39741,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0022499999999999742
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    5
+   ],
+   "base_fitness": 0.40626,
+   "base_source": "run_cache",
+   "child_fitness": 0.42166,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.01539999999999997
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTCFGGERMTCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.39488,
+   "base_source": "run_cache",
+   "child_fitness": 0.37698,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.017900000000000027
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIGHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    52
+   ],
+   "base_fitness": 0.40626,
+   "base_source": "run_cache",
+   "child_fitness": 0.31119,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.09506999999999999
+  },
+  {
+   "step": 11,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    16
+   ],
+   "base_fitness": 0.39488,
+   "base_source": "run_cache",
+   "child_fitness": 0.38194,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.012940000000000007
+  },
+  {
+   "step": 12,
+   "base": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRWVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.38194,
+   "base_source": "run_cache",
+   "child_fitness": 0.3595,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.022440000000000015
+  },
+  {
+   "step": 12,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLTVTTCFGGERITCNVRDRDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    29
+   ],
+   "base_fitness": 0.37732,
+   "base_source": "run_cache",
+   "child_fitness": 0.39634,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.019020000000000037
+  },
+  {
+   "step": 12,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCNVRDKYWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.29712,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.29807,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0009500000000000064
+  },
+  {
+   "step": 12,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "AVRSIRYYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    5
+   ],
+   "base_fitness": 0.33235,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34474,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.012390000000000012
+  },
+  {
+   "step": 12,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKWIENNIGGIEWETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.37425,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31018,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06407000000000002
+  },
+  {
+   "step": 12,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLTVTTCFGGERIQCNVRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    23
+   ],
+   "base_fitness": 0.35817,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.32156,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.036609999999999976
+  },
+  {
+   "step": 12,
+   "base": "WVRSIMYYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WLRSIMYYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    1
+   ],
+   "base_fitness": 0.35639,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35868,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0022900000000000142
+  },
+  {
+   "step": 12,
+   "base": "WVRSIMGYRSLLTVTTCFGGERMTCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERMTCNVRDKDWIYSNIQKTACKWIENNIGGICHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    52
+   ],
+   "base_fitness": 0.28859,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.37863,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.09004000000000001
+  },
+  {
+   "step": 12,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWLYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    32
+   ],
+   "base_fitness": 0.42166,
+   "base_source": "run_cache",
+   "child_fitness": 0.31554,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.10611999999999999
+  },
+  {
+   "step": 12,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    38
+   ],
+   "base_fitness": 0.42166,
+   "base_source": "run_cache",
+   "child_fitness": 0.43091,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.009250000000000036
+  },
+  {
+   "step": 12,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLGVTTCFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    12
+   ],
+   "base_fitness": 0.29712,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34407,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.04694999999999999
+  },
+  {
+   "step": 12,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLTVTTCFGGLRITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    20
+   ],
+   "base_fitness": 0.33235,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35896,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.026610000000000023
+  },
+  {
+   "step": 12,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIGHETRRLVPHH",
+   "child": "WVRSIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIGHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.31119,
+   "base_source": "run_cache",
+   "child_fitness": 0.37443,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.06323999999999996
+  },
+  {
+   "step": 12,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.42166,
+   "base_source": "run_cache",
+   "child_fitness": 0.37807,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04358999999999996
+  },
+  {
+   "step": 13,
+   "base": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRWVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQKTACKQIENNIGGIEHETRRWVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    43
+   ],
+   "base_fitness": 0.3595,
+   "base_source": "run_cache",
+   "child_fitness": 0.36771,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.008209999999999995
+  },
+  {
+   "step": 13,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCNVRDRDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLTVTTCFGGERITCNVRDRDWIYSNIQKTACKWIENNIGGIERETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.39634,
+   "base_source": "run_cache",
+   "child_fitness": 0.35821,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03813000000000005
+  },
+  {
+   "step": 13,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCTIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.40626,
+   "base_source": "run_cache",
+   "child_fitness": 0.40223,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0040300000000000336
+  },
+  {
+   "step": 13,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQQTACFWILNNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    45
+   ],
+   "base_fitness": 0.43091,
+   "base_source": "run_cache",
+   "child_fitness": 0.32772,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.10319
+  },
+  {
+   "step": 13,
+   "base": "WVRSIWGYRSLLTVTTCFGGLRITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGLRITCIIRDKDWIYSNIQKTACFSIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    43
+   ],
+   "base_fitness": 0.34597,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3482,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0022300000000000098
+  },
+  {
+   "step": 13,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLTVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHEPRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    55
+   ],
+   "base_fitness": 0.37871,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.32113,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.057579999999999965
+  },
+  {
+   "step": 13,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIGHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIGHETRRLVRHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    60
+   ],
+   "base_fitness": 0.38846,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30589,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08257000000000003
+  },
+  {
+   "step": 13,
+   "base": "WVRSIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRDIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    3
+   ],
+   "base_fitness": 0.36976,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.42403,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.05427000000000004
+  },
+  {
+   "step": 13,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "AVRSIMYYRSLLDVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    12
+   ],
+   "base_fitness": 0.37871,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.30308,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.07562999999999998
+  },
+  {
+   "step": 13,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNVRDRDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "child": "WVRSIWVYRSLLTVTTCFGGERITCNVRDRDWIYSNIQKTACKWIENNIGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.29704,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.37912,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.08207999999999999
+  },
+  {
+   "step": 13,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGLRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    7
+   ],
+   "base_fitness": 0.42166,
+   "base_source": "run_cache",
+   "child_fitness": 0.33201,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08964999999999995
+  },
+  {
+   "step": 13,
+   "base": "WLRSIMYYRSLLTVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WLRSIMYYRSLLTVTTCFGGERITCIERDKDWISSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    33
+   ],
+   "base_fitness": 0.3775,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.37998,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0024799999999999822
+  },
+  {
+   "step": 13,
+   "base": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQKTACKWIENNIGGIEHETRRWVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGERITCNVVDKDWIYSNIQKTACKWIENNIGGIEHETRRWVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    27
+   ],
+   "base_fitness": 0.3595,
+   "base_source": "run_cache",
+   "child_fitness": 0.37395,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.014450000000000018
+  },
+  {
+   "step": 13,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.37807,
+   "base_source": "run_cache",
+   "child_fitness": 0.42785,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.04977999999999999
+  },
+  {
+   "step": 14,
+   "base": "WVRDIMKYRSLLTVTTCFGGERITCTIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRDIMKYRSLLTVTTCFGGERITCTIRDKDWIYSNIQKTARFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    41
+   ],
+   "base_fitness": 0.41861,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.33725,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08135999999999999
+  },
+  {
+   "step": 14,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFCIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    43
+   ],
+   "base_fitness": 0.40626,
+   "base_source": "run_cache",
+   "child_fitness": 0.4094,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.003139999999999976
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGLEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    51
+   ],
+   "base_fitness": 0.42785,
+   "base_source": "run_cache",
+   "child_fitness": 0.41645,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.011400000000000021
+  },
+  {
+   "step": 14,
+   "base": "WVRDIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRDIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFFIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    43
+   ],
+   "base_fitness": 0.42403,
+   "base_source": "run_cache",
+   "child_fitness": 0.34324,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08079000000000003
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWTENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    44
+   ],
+   "base_fitness": 0.42785,
+   "base_source": "run_cache",
+   "child_fitness": 0.39093,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03692000000000001
+  },
+  {
+   "step": 14,
+   "base": "WVRDIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "VVRDIMKYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    0
+   ],
+   "base_fitness": 0.42403,
+   "base_source": "run_cache",
+   "child_fitness": 0.39038,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03365000000000001
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACKQIENNIGGIEHETRRWVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGRERITCIIRDKDWIYSNIQKTACKQIENNIGGIEHETRRWVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    19
+   ],
+   "base_fitness": 0.33663,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.36052,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.023890000000000022
+  },
+  {
+   "step": 14,
+   "base": "WVRSIMYYRSLLTVTTLFGGERITCNVRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGGRITCNVRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    20
+   ],
+   "base_fitness": 0.36224,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.37956,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.017320000000000002
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    24
+   ],
+   "base_fitness": 0.43091,
+   "base_source": "run_cache",
+   "child_fitness": 0.45986,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.028949999999999976
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    57
+   ],
+   "base_fitness": 0.42785,
+   "base_source": "run_cache",
+   "child_fitness": 0.42159,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.006259999999999988
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNVVDKDWIYSNIQKTACKWIENNIGGIEHETRRWVPHH",
+   "child": "WVRSIWLYRSLLTVTTCFGGERITCNVVDKDWIYSNIQKTACKWIENNIGGIEHETRRWVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.32721,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35475,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.02754000000000001
+  },
+  {
+   "step": 14,
+   "base": "WVRSIMYYRSLLTVTTLFGGERITCIIRDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGERITCIIEDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    27
+   ],
+   "base_fitness": 0.34636,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.34372,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0026399999999999757
+  },
+  {
+   "step": 14,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNVRDRDWIYSNIQKTACKWIENNIGGIERETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCNVRDRIWIYSNIQKTACKWIENNIGGIERETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.37268,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.32609,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04659000000000002
+  },
+  {
+   "step": 14,
+   "base": "AVRSIMYYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "AVRSFMYYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    4
+   ],
+   "base_fitness": 0.36808,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35828,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.009800000000000031
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFCIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCHGGERITCIIRDKDWIYSNIQKTACFCIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    17
+   ],
+   "base_fitness": 0.4148,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35842,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.056379999999999986
+  },
+  {
+   "step": 15,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCGERVKDWIYSNIQKTACFWIENNKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    28
+   ],
+   "base_fitness": 0.42371,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.42139,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0023199999999999887
+  },
+  {
+   "step": 15,
+   "base": "WVRSIMYYRSLLTVTTLFGGGRITCIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTILFGGGRITCIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    15
+   ],
+   "base_fitness": 0.37968,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.3751,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0045800000000000285
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNVRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCNVRDKDWIYSNIQQTACFWIENNKGGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    53
+   ],
+   "base_fitness": 0.42877,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.42982,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0010499999999999954
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGLEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGEVDKDWIYSNIQKTACFWIENNKGGLEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    27
+   ],
+   "base_fitness": 0.41645,
+   "base_source": "run_cache",
+   "child_fitness": 0.3861,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.030349999999999988
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWTENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACSWTENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    42
+   ],
+   "base_fitness": 0.39093,
+   "base_source": "run_cache",
+   "child_fitness": 0.36383,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.027100000000000013
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGLEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWQENNKGGLEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    44
+   ],
+   "base_fitness": 0.41645,
+   "base_source": "run_cache",
+   "child_fitness": 0.3475,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06895000000000001
+  },
+  {
+   "step": 15,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQKTACFCIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQPTACFCIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    38
+   ],
+   "base_fitness": 0.4094,
+   "base_source": "run_cache",
+   "child_fitness": 0.33774,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.07166
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHD",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    62
+   ],
+   "base_fitness": 0.42785,
+   "base_source": "run_cache",
+   "child_fitness": 0.41214,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.015710000000000002
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWTENNKGGIEHETRRLVPHH",
+   "child": "WVRSISGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWTENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    5
+   ],
+   "base_fitness": 0.39093,
+   "base_source": "run_cache",
+   "child_fitness": 0.34015,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.05077999999999999
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    47
+   ],
+   "base_fitness": 0.42159,
+   "base_source": "run_cache",
+   "child_fitness": 0.44149,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.019899999999999973
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCNERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    25
+   ],
+   "base_fitness": 0.42785,
+   "base_source": "run_cache",
+   "child_fitness": 0.33046,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.09739000000000003
+  },
+  {
+   "step": 15,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYVSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    8
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.41076,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04909999999999998
+  },
+  {
+   "step": 15,
+   "base": "WVRSIMYYRSLLTVTTLFGGGRITCNVRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIMYYRSLLTVTTLFGGGRITCNVRDKDWIYSNIQQFACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    39
+   ],
+   "base_fitness": 0.37956,
+   "base_source": "run_cache",
+   "child_fitness": 0.29859,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.08096999999999999
+  },
+  {
+   "step": 16,
+   "base": "WVRSIMGYRSLLTVTTCFGGERITCGERVKDWIYSNIQKTACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSQMGYRSLLTVTTCFGGERITCGERVKDWIYSNIQKTACFWIENNKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    4
+   ],
+   "base_fitness": 0.42139,
+   "base_source": "run_cache",
+   "child_fitness": 0.38213,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03925999999999996
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYVSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYVSLLTVTTCFGGERITHIIRDKDWIYRNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    34
+   ],
+   "base_fitness": 0.41076,
+   "base_source": "run_cache",
+   "child_fitness": 0.40551,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.005250000000000032
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCNIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRGLLTVTTCFGGERITCNIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    9
+   ],
+   "base_fitness": 0.39753,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.31939,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.07813999999999999
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKGGIEKETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    49
+   ],
+   "base_fitness": 0.46513,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.47891,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.013780000000000014
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGMRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    7
+   ],
+   "base_fitness": 0.42785,
+   "base_source": "run_cache",
+   "child_fitness": 0.397,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03084999999999999
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQQTACFWIENPKGGIEHETRGLVPHH",
+   "child": "WVISIWGYRSLLTVTTCFGGERITCIIRDKDWIYSNIQQTACFWIENPKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    2
+   ],
+   "base_fitness": 0.31968,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.35921,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.039529999999999954
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYWSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    8
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.42284,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03702
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    15
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.44487,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.014990000000000003
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLYTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    11
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.33951,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.12035000000000001
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRGLVPHH",
+   "child": "WVRSIWGYRSLLTVTDCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    15
+   ],
+   "base_fitness": 0.44149,
+   "base_source": "run_cache",
+   "child_fitness": 0.40568,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03581000000000001
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    39
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.4645,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.004640000000000033
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWKYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.41897,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04088999999999998
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGSRITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    20
+   ],
+   "base_fitness": 0.42135,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.41476,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.006589999999999985
+  },
+  {
+   "step": 16,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKSWIYSNIQQTACFWIENNKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    30
+   ],
+   "base_fitness": 0.46046,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.4207,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03975999999999996
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWAYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    6
+   ],
+   "base_fitness": 0.44487,
+   "base_source": "run_cache",
+   "child_fitness": 0.33148,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.11338999999999999
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHRTRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    54
+   ],
+   "base_fitness": 0.44487,
+   "base_source": "run_cache",
+   "child_fitness": 0.43966,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.005209999999999992
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERPTHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    22
+   ],
+   "base_fitness": 0.47891,
+   "base_source": "run_cache",
+   "child_fitness": 0.35198,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.12693
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHF",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    62
+   ],
+   "base_fitness": 0.4645,
+   "base_source": "run_cache",
+   "child_fitness": 0.46137,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0031300000000000217
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSIWGYRSLLTVTACFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    15
+   ],
+   "base_fitness": 0.45239,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.44496,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.007429999999999992
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETLRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    56
+   ],
+   "base_fitness": 0.42135,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.44666,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.02531
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIVRDGDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    29
+   ],
+   "base_fitness": 0.47891,
+   "base_source": "run_cache",
+   "child_fitness": 0.35859,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.12031999999999998
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNYWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.47891,
+   "base_source": "run_cache",
+   "child_fitness": 0.46399,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.014919999999999989
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGEGITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    21
+   ],
+   "base_fitness": 0.46544,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.43553,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.029910000000000048
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTDCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTDCFGGERITCGERDKDWIYSNYQKTACFWIENPKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.32773,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.38729,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.05956
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKEHRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    55
+   ],
+   "base_fitness": 0.47891,
+   "base_source": "run_cache",
+   "child_fitness": 0.48156,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0026499999999999857
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSDWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    4
+   ],
+   "base_fitness": 0.44487,
+   "base_source": "run_cache",
+   "child_fitness": 0.44875,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.0038799999999999946
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYWSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYWSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNTGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    48
+   ],
+   "base_fitness": 0.42284,
+   "base_source": "run_cache",
+   "child_fitness": 0.43542,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.01257999999999998
+  },
+  {
+   "step": 17,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWAYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    32
+   ],
+   "base_fitness": 0.45986,
+   "base_source": "run_cache",
+   "child_fitness": 0.40837,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.05148999999999998
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWAYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWAYSNIQQTACFWIENNKGGIEHETRRKVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    58
+   ],
+   "base_fitness": 0.40837,
+   "base_source": "run_cache",
+   "child_fitness": 0.33934,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.06903000000000004
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNYWGIEKETRRLVPHH",
+   "child": "WVRSIWGYRALLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNYWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    9
+   ],
+   "base_fitness": 0.46399,
+   "base_source": "run_cache",
+   "child_fitness": 0.47689,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.012899999999999967
+  },
+  {
+   "step": 18,
+   "base": "WVRSDWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKWGIEKEHRRLVPHH",
+   "child": "WVRSDWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKWGPEKEHRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    51
+   ],
+   "base_fitness": 0.42733,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.43311,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.005780000000000007
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIMRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    26
+   ],
+   "base_fitness": 0.43535,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.41752,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.017830000000000013
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKTGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    49
+   ],
+   "base_fitness": 0.4645,
+   "base_source": "run_cache",
+   "child_fitness": 0.47473,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": true,
+   "gain": 0.010229999999999961
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHF",
+   "child": "WVRSIWGYGSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHF",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    8
+   ],
+   "base_fitness": 0.46137,
+   "base_source": "run_cache",
+   "child_fitness": 0.4119,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.049470000000000014
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTACFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTACFGGERITHIIRDKDWIYSNIQQTSCFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    40
+   ],
+   "base_fitness": 0.42731,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.42697,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.00034000000000000696
+  },
+  {
+   "step": 18,
+   "base": "WVRSDWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENNKGGIEHETRGLVPHH",
+   "child": "WVRSDWGYRSLLTVTICFGGERITHIIRDKDWIYSNIQQTACFWIENCKGGIEHETRGLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    47
+   ],
+   "base_fitness": 0.45349,
+   "base_source": "measurement_fold",
+   "child_fitness": 0.41916,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.03433000000000003
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIEHETLRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITCGERDKDWIYSNIQKTACFWIENPKGGIWHETLRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    52
+   ],
+   "base_fitness": 0.44666,
+   "base_source": "run_cache",
+   "child_fitness": 0.44439,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.0022699999999999942
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIEINKWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    46
+   ],
+   "base_fitness": 0.47891,
+   "base_source": "run_cache",
+   "child_fitness": 0.45943,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.019479999999999997
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKEHRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKSHRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    54
+   ],
+   "base_fitness": 0.48156,
+   "base_source": "run_cache",
+   "child_fitness": 0.46933,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.012229999999999963
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKEHRRLVPHH",
+   "child": "WVRSIWGYRSLLTLTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKEHRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    13
+   ],
+   "base_fitness": 0.48156,
+   "base_source": "run_cache",
+   "child_fitness": 0.43684,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.04471999999999998
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "child": "WCRSIWGYRSLLTVTTCFGGERITHIVRDKDWIYSNIQQTACFWIENNKWGIEKETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    1
+   ],
+   "base_fitness": 0.47891,
+   "base_source": "run_cache",
+   "child_fitness": 0.46583,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.01307999999999998
+  },
+  {
+   "step": 18,
+   "base": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNIQQSACFWIENNKGGIEHETRRLVPHH",
+   "child": "WVRSIWGYRSLLTVTTCFGGERITHIIRDKDWIYSNNQQSACFWIENNKGGIEHETRRLVPHH",
+   "kind": "sub",
+   "n_changed": 1,
+   "positions": [
+    36
+   ],
+   "base_fitness": 0.4645,
+   "base_source": "run_cache",
+   "child_fitness": 0.44353,
+   "child_source": "run_cache",
+   "no_op": false,
+   "improved": false,
+   "gain": -0.020970000000000044
+  }
+ ]
+}

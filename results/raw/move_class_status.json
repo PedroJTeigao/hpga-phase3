@@ -1,0 +1,176 @@
+{
+ "plan": [
+  [
+   "S1",
+   0
+  ],
+  [
+   "S2",
+   0
+  ],
+  [
+   "S3",
+   0
+  ],
+  [
+   "S4",
+   0
+  ],
+  [
+   "B",
+   0
+  ],
+  [
+   "S1",
+   1
+  ],
+  [
+   "S2",
+   1
+  ],
+  [
+   "S3",
+   1
+  ],
+  [
+   "S4",
+   1
+  ],
+  [
+   "B",
+   1
+  ],
+  [
+   "S1",
+   2
+  ],
+  [
+   "S2",
+   2
+  ],
+  [
+   "S3",
+   2
+  ],
+  [
+   "S4",
+   2
+  ],
+  [
+   "B",
+   2
+  ]
+ ],
+ "started": "2026-09-23T15:27:27-0400",
+ "done": [
+  {
+   "arm": "S1",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 801.499584197998,
+   "final_best": 0.40311
+  },
+  {
+   "arm": "S2",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 1025.1615357398987,
+   "final_best": 0.41067
+  },
+  {
+   "arm": "S3",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 1000.8645627498627,
+   "final_best": 0.39103
+  },
+  {
+   "arm": "S4",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 1183.6029422283173,
+   "final_best": 0.43793
+  },
+  {
+   "arm": "S1",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 1240.1482179164886,
+   "final_best": 0.38754
+  },
+  {
+   "arm": "S2",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 1140.9052062034607,
+   "final_best": 0.6522
+  },
+  {
+   "arm": "S3",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 980.0755839347839,
+   "final_best": 0.41931
+  },
+  {
+   "arm": "S4",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 1142.3262441158295,
+   "final_best": 0.49591
+  },
+  {
+   "arm": "B",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 1109.0708937644958,
+   "final_best": 0.50254
+  },
+  {
+   "arm": "S1",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 1064.3030769824982,
+   "final_best": 0.48156
+  },
+  {
+   "arm": "S2",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 1268.420159816742,
+   "final_best": 0.41749
+  },
+  {
+   "arm": "S3",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 1180.6475658416748,
+   "final_best": 0.52653
+  },
+  {
+   "arm": "S4",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 1374.447641134262,
+   "final_best": 0.47501
+  },
+  {
+   "arm": "B",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 1386.9082589149475,
+   "final_best": 0.50402
+  }
+ ],
+ "failed": [],
+ "skipped": [
+  {
+   "arm": "B",
+   "seed": 0,
+   "reason": "result file already complete"
+  }
+ ],
+ "finished": true,
+ "exit_reason": "all planned runs attempted",
+ "ended": "2026-09-23T19:52:47-0400"
+}
