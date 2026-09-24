@@ -21,7 +21,7 @@ Two quantities per move:
 | | definition | defined for |
 |---|---|---|
 | **Δlogit** | sum over the positions the move **changed** of `logit(new) − logit(old)`, read from the **base** genome's masked context | the substitution arms only: S1, S2, S3, B (3,192 moves) |
-| **ΔPLL** | `PLL(child) − PLL(base)`, where `PLL(s) = Σᵢ log p(s[i] | s masked at i)` | **every** arm, including S4 (all 3,990 moves) |
+| **ΔPLL** | `PLL(child) − PLL(base)`, where `PLL(s) = Σᵢ log p(s[i] \| s masked at i)` | **every** arm, including S4 (all 3,990 moves) |
 
 Δlogit is the decision-relevant one: it is what an operator would consult when deciding whether to propose a substitution, with the context held fixed at the genome it is mutating. The softmax normaliser cancels in the difference, so the canonical restriction does not affect it.
 
