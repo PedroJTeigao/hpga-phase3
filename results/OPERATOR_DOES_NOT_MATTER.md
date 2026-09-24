@@ -74,7 +74,7 @@ O's own within-step search record explains why direct fitness access did not hel
 | 1 | 36 | 22 (61%) | 14 (39%) | +0.0075 TM |
 | 2 | 36 | 19 (53%) | 17 (47%) | +0.0114 TM |
 
-(STAGE3C_TABLES.md §1c, computed from `results/raw/agent_memory_O_seed{0,1,2}.json`.) In 53–61% of steps, *none* of 8 candidate single-position substitutions beat the genome already held — the oracle, with a real fitness readout on every try, found nothing worth taking. When it did find something, the gain was small: 0.0075 to 0.0206 TM-score, against a scale where the final best fitnesses across every arm and every seed in this study sit between 0.38 and 0.60. A move class this weak cannot be rescued by better *choosing* among its own candidates — the ceiling on what one single-position edit can buy, even chosen by an oracle, is low relative to what the search needs.
+(STAGE3C_TABLES.md §1c, computed from `results/raw/agent_memory_O_seed{0,1,2}.json`.) In 53–61% of steps, *none* of 8 candidate single-position substitutions beat the genome already held — the oracle, with a real fitness readout on every try, found nothing worth taking. When it did find something, the gain was small: 0.0075 to 0.0206 TM-score, against a scale where the best fitness at the common evaluation count, across every arm and every seed in Evidence 1–3, sits between 0.3587 (`results/raw/sequence_ga_cmp_D_seed0.json`) and 0.6372 (`results/raw/sequence_ga_cmp_D_seed1.json`). A move class this weak cannot be rescued by better *choosing* among its own candidates — the ceiling on what one single-position edit can buy, even chosen by an oracle, is low relative to what the search needs.
 
 ## Evidence 5. The budget argument: search-within-a-step is not free, and it did not pay for itself
 

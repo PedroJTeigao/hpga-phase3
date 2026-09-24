@@ -80,7 +80,7 @@ Each seed is read at `n_cut`, the smallest distinct-fold count any of the five a
 
 **Only one pair is ordered in every seed: B beats S1** (0.4203 > 0.4031, 0.5025 > 0.3875, 0.5040 > 0.4816). No move class beats any other move class in every seed. The best arm changes with the seed: S4 in seed 0, S2 in seed 1, S3 in seed 2.
 
-S2's lead in the mean comes from one seed. Seed 1's 0.6522 is above every final best cited in `OPERATOR_DOES_NOT_MATTER.md` (0.38–0.60). It is a sustained climb in four steps over generations 8–18, not a single lucky fold: the population best goes 0.39 → 0.52 (generation 8) → 0.56 (11) → 0.62 (14) → 0.65 (18). The best genome is 55 edits from the native sequence. The largest single step was one 4-position S2 move at step 13 that took a 0.3515 base to 0.6162. In seeds 0 and 2, S2 is below B.
+S2's lead in the mean comes from one seed. Seed 1's 0.6522 is the highest best fitness of any run in `results/raw/`, but only 0.015 above `sequence_ga_cmp_D_seed1.json` (0.6372, arm D of the five-arm sequence comparison). It does not stand apart from earlier runs. It is a sustained climb in four steps over generations 8–18, not a single lucky fold: the population best goes 0.39 → 0.52 (generation 8) → 0.56 (11) → 0.62 (14) → 0.65 (18). The best genome is 55 edits from the native sequence. The largest single step was one 4-position S2 move at step 13 that took a 0.3515 base to 0.6162. In seeds 0 and 2, S2 is below B.
 
 ## 2. Fitness trajectory, mean over seeds, against evaluations spent
 
@@ -203,13 +203,13 @@ Two qualifications, both from the per-seed thirds in section 4:
 - **S4 leads over the whole run in every seed and, pooled over seeds, in every third, but not in every third of every seed.** Against B it is higher in 8 of 9 seed-by-third cells; the exception is early seed 1 (B 40/84, S4 34/84). Against all four other arms it is strictly highest in only 5 of 9, and tied for highest in a sixth.
 - **S2's lead over B does not reach the late third.** Late, S2 is tied with B in seed 0 (29/98 each) and below it in seeds 1 (27/98 against 28/98) and 2 (30/98 against 32/98).
 
-Single-position substitution is the weakest move class on per-move payoff, and the per-site baseline B beats S1 on final fitness in every seed. That fits Evidence 4's reading that single-position edits are a weak move here. It also shows the weakness is not unique to the oracle's setting: one random substitution to a crossover child is the least productive move tested.
+On expected gain per move (hit rate × mean gain when improved), pooled over seeds, single-position substitution (S1) is the lowest of the five arms: 0.0067 against 0.0092–0.0118. It is lowest in seeds 0 and 1 but not in seed 2, where S3 is lower (0.0074 against S1's 0.0078). S1 does not have the lowest hit rate: S3's pooled rate is lower (226/798 against 245/798). Its gain when it improves is the lowest of the four move classes in every seed. The per-site baseline B beats S1 on final fitness in every seed. That fits Evidence 4's reading that single-position edits are a weak move here. It is also consistent with the weakness not being unique to the oracle's setting: pooled, one random substitution to a crossover child is the least productive move tested.
 
 **It did not turn into a fitness ordering among move classes.** S4 improves more often than every other arm in all three seeds, and S2 more often than S1, S3 and B in all three seeds. Yet on best fitness at the common budget, no arm beats another in every seed except B > S1, and neither S4 nor S2 is in that pair. A higher share of improving moves did not turn into higher final fitness at this budget.
 
 *Interpretation, not a demonstrated fact:* the move class changes the hit rate without changing the outcome. That is consistent with the evaluation budget (about 280 folds per run), not the quality of the move, being the binding constraint on final fitness here. Three seeds cannot establish this. The same pattern would also arise if the pooled hit-rate differences behind those orderings (2.9 to 9.8 percentage points) are simply too small to show through seed-to-seed variance in three runs. The data here cannot tell these two readings apart.
 
-Per-move payoff is one input into search quality. The best at n_cut also depends on the rare large jumps (S2 seed 1's +0.265 move), which three seeds cannot average out. The difference between the best and worst per-move expected gain (0.0118 vs 0.0067 TM per move) is small next to the between-seed spread of final fitness (0.39–0.65).
+Per-move payoff is one input into search quality. The best at n_cut also depends on the rare large jumps (S2 seed 1's +0.265 move), which three seeds cannot average out.
 
 **Caveats specific to this design:**
 
