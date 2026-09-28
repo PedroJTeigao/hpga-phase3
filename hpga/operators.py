@@ -689,8 +689,17 @@ _LEGACY_LATTICE = genome_model.LatticeGenomeModel()
 
 def _llm_crossover(
     parent1: Genome, parent2: Genome, rate: float, rng: random.Random, generation: int | None = None,
+    fitness=None,
 ) -> tuple[Genome, Genome]:
-    """`generation`, when given, is logged (with `identical_parents`) on
+    """`fitness`, when given, is an opaque fitness context from the active
+    model (hpga/sequence_model_fitness.CrossoverFitness) that adds the
+    parents' fitnesses to the prompt; its log_fields() are merged into every
+    log record this call produces. Optional and defaulting to None like
+    `generation` below: at None the plan is requested with the same three
+    arguments as before and no log field is added, so every existing arm's
+    prompt bytes and log record keys are unchanged.
+
+    `generation`, when given, is logged (with `identical_parents`) on
     every attempt this call makes -- diagnostic for the population-
     convergence mechanism documented in PHASE2_RESULTS.md sec 4.1 and
     re-observed in Phase 3: once two selected parents are literally
@@ -712,7 +721,7 @@ def _llm_crossover(
         return model.copy(parent1), model.copy(parent2)
 
     style = _prompt_style()
-    plan = model.plan_llm_crossover(style, parent1, parent2)
+    plan = model.plan_llm_crossover(style, parent1, parent2, **({} if fitness is None else {"fitness": fitness}))
 
     def fallback():
         return model.deterministic_crossover(parent1, parent2, rate, rng)
@@ -721,7 +730,8 @@ def _llm_crossover(
         op="crossover", style=style, system=plan.system, build_prompt=plan.build_prompt,
         parse=plan.parse, rng=rng, num_predict=plan.num_predict, fallback=fallback,
         retry_hint_text=plan.retry_hint_text,
-        extra_log_fields={"generation": generation, "identical_parents": identical_parents},
+        extra_log_fields={"generation": generation, "identical_parents": identical_parents,
+                          **({} if fitness is None else fitness.log_fields())},
     )
 
 
@@ -789,14 +799,22 @@ def _lattice_mutate_plan(style: str, genome: Genome, length: int, k: int) -> LLM
     )
 
 
-def _llm_mutate(genome: Genome, rate: float, rng: random.Random) -> Genome:
+def _llm_mutate(genome: Genome, rate: float, rng: random.Random, fitness=None) -> Genome:
     """Prompt building and response parsing come from the active GenomeModel
-    (see _model_for); retries, fallback, logging and stats are unchanged."""
+    (see _model_for); retries, fallback, logging and stats are unchanged.
+
+    `fitness`, when given, is an opaque fitness context from the active model
+    (hpga/sequence_model_fitness.MutateFitness) that adds a fitness line to
+    the prompt; its log_fields() are merged into every log record this call
+    produces. At the default None the plan is requested with the same three
+    arguments as before and _run_llm_op receives extra_log_fields=None, which
+    it already treats as {} -- so every existing arm's prompt bytes and log
+    record keys are unchanged."""
     model = _model_for(genome)
     length = len(genome)
     style = _prompt_style()
     k = max(1, round(rate * length))
-    plan = model.plan_llm_mutate(style, genome, k)
+    plan = model.plan_llm_mutate(style, genome, k, **({} if fitness is None else {"fitness": fitness}))
 
     def fallback():
         return model.deterministic_mutate(genome, rate, rng)
@@ -805,6 +823,7 @@ def _llm_mutate(genome: Genome, rate: float, rng: random.Random) -> Genome:
         op="mutate", style=style, system=plan.system, build_prompt=plan.build_prompt,
         parse=plan.parse, rng=rng, num_predict=plan.num_predict, fallback=fallback,
         retry_hint_text=plan.retry_hint_text,
+        extra_log_fields=None if fitness is None else fitness.log_fields(),
     )
 
 
@@ -952,6 +971,24 @@ def next_generation(
     seq = _sequence_model_or_none()
     _check_genome_kind(population, seq)
 
+    # Fitness-aware prompts (hpga/sequence_model_fitness.py): only a model that
+    # declares wants_fitness_context gets a fitness map built and fitness
+    # contexts passed to the two LLM operators. No other GenomeModel defines
+    # that attribute, so getattr() is False for every existing arm and their
+    # path below -- RNG draw order, prompt bytes, log record keys -- is
+    # untouched. The map is keyed on the genome string, which is sound because
+    # fitness is a deterministic function of the genome: duplicate members of
+    # the population share one entry and one value. Built only when wanted,
+    # since a lattice population holds unhashable list genomes.
+    wants_fitness = bool(getattr(seq, "wants_fitness_context", False))
+    fit_by_genome = dict(zip(population, fitnesses)) if wants_fitness else None
+
+    def crossover_ctx(p1, p2):
+        return seq.crossover_fitness_context(p1, p2, fit_by_genome) if wants_fitness else None
+
+    def mutate_ctx(child, p1, p2):
+        return seq.mutate_fitness_context(child, p1, p2, fit_by_genome) if wants_fitness else None
+
     gen = agents.tick_generation()
 
     if os.environ.get("HPGA_LOG_DIVERSITY", "0") == "1" and population:
@@ -971,9 +1008,10 @@ def next_generation(
         def run_job(job):
             p1, p2, seed = job
             job_rng = random.Random(seed)
-            c1, c2 = _llm_crossover(p1, p2, crossover_rate, job_rng, generation=gen)
-            c1 = _llm_mutate(c1, mutation_rate, job_rng)
-            c2 = _llm_mutate(c2, mutation_rate, job_rng)
+            c1, c2 = _llm_crossover(p1, p2, crossover_rate, job_rng, generation=gen,
+                                    fitness=crossover_ctx(p1, p2))
+            c1 = _llm_mutate(c1, mutation_rate, job_rng, fitness=mutate_ctx(c1, p1, p2))
+            c2 = _llm_mutate(c2, mutation_rate, job_rng, fitness=mutate_ctx(c2, p1, p2))
             return c1, c2
 
         with ThreadPoolExecutor(max_workers=P) as pool:
@@ -986,9 +1024,10 @@ def next_generation(
             p1 = tournament_select(population, fitnesses, tournament_k, rng)
             p2 = tournament_select(population, fitnesses, tournament_k, rng)
             if use_llm:
-                c1, c2 = _llm_crossover(p1, p2, crossover_rate, rng, generation=gen)
-                c1 = _llm_mutate(c1, mutation_rate, rng)
-                c2 = _llm_mutate(c2, mutation_rate, rng)
+                c1, c2 = _llm_crossover(p1, p2, crossover_rate, rng, generation=gen,
+                                        fitness=crossover_ctx(p1, p2))
+                c1 = _llm_mutate(c1, mutation_rate, rng, fitness=mutate_ctx(c1, p1, p2))
+                c2 = _llm_mutate(c2, mutation_rate, rng, fitness=mutate_ctx(c2, p1, p2))
             elif seq is not None:
                 c1, c2 = seq.deterministic_crossover(p1, p2, crossover_rate, rng)
                 c1 = seq.deterministic_mutate(c1, mutation_rate, rng)

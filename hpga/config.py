@@ -39,12 +39,18 @@ class HPGAConfig:
     # hpga/sequence_model.py, matching how operators.py already keeps
     # LLM-operator config (HPGA_LLM_MODEL etc.) out of this dataclass rather
     # than growing it with fields most runs don't use.
+    # "sequence_fitness" is "sequence" with the two fitness-aware operator
+    # prompts (hpga/sequence_model_fitness.py) -- the same genome type, fitness
+    # function and deterministic operators, so everything keyed on
+    # genome_type is str treats it identically to "sequence".
     genome_model: str = "lattice"
 
+    GENOME_MODELS = ("lattice", "sequence", "sequence_fitness")
+
     def __post_init__(self) -> None:
-        if self.genome_model not in ("lattice", "sequence"):
+        if self.genome_model not in self.GENOME_MODELS:
             raise ValueError(
-                f"genome_model must be 'lattice' or 'sequence', got {self.genome_model!r}"
+                f"genome_model must be one of {self.GENOME_MODELS}, got {self.genome_model!r}"
             )
         if self.genome_model == "lattice" and len(self.sequence) < 4:
             raise ValueError("sequence must have at least 4 residues")

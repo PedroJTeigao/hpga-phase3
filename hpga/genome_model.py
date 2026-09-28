@@ -299,6 +299,13 @@ def build_genome_model(config: HPGAConfig) -> GenomeModel:
         return LatticeGenomeModel(config)
     if config.genome_model == "sequence":
         return SequenceGenomeModel(config)
+    if config.genome_model == "sequence_fitness":
+        # Lazy: hpga/sequence_model_fitness.py imports SequenceGenomeModel from
+        # this module, so a module-level import here would be circular. Same
+        # reason LatticeGenomeModel's methods import operators.py inside the call.
+        from hpga.sequence_model_fitness import FitnessAwareSequenceGenomeModel
+
+        return FitnessAwareSequenceGenomeModel(config)
     raise ValueError(f"unknown genome_model: {config.genome_model!r}")
 
 
