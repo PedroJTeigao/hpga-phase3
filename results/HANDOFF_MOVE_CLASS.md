@@ -178,6 +178,33 @@ No number in the report disagreed with the raw files. These claims were correcte
 
 **Open design caveat, stated in the report:** move bases are not matched across arms, since each arm mutates its own population. A matched-base test was not run.
 
+**Ollama model-load degradation has now cost two runs (arm E seed 4 on 2026-09-19, arm F seed 0 on 2026-09-28). Restarting `ollama serve` did NOT fix it on 2026-09-28. Check load time before every LLM launch.**
+
+Symptom both times: `httpcore.ReadTimeout` / `httpx.ReadTimeout` out of an operator call, killing the run mid-GA. It is NOT a dead server and NOT a code fault — `ollama serve` stays alive and the model finishes loading *after* the client has given up. The client timeout is `HPGA_LLM_TIMEOUT_S`, default **120 s** (`hpga/operators.py:114`, applied at `:191`).
+
+Measured on 2026-09-28, same machine, same model (`gemma4:12b`, 6.9 GB blob), same day:
+
+| when | node | unload/reload wall | `load_duration` |
+|---|---|---|---|
+| 15:00, after a fresh `ollama serve` | 2 users | 7.2 / 8.3 s | 7.0 / 8.0 s |
+| 16:30, after ~14 generations of ESMFold swaps | 4 users | 285 / 321 / 297 s | 195 / 225 / 221 s |
+| 17:47–18:11, after a fresh `ollama serve` restart | 4 users | 356 (first load) / 351 / 351 / 348 s | 255 / 255 / 255 / 252 s |
+
+A ~40x degradation. Ruled out as causes: disk (`dd` on the blob gave **3.6 GB/s**, it is page-cached), free memory (28 GB free, 27 GB cache), and GPU contention (`nvidia-smi` showed only this user's `llama-server`). What did change is the node filling up with other users' EDA jobs — 2 users at 15:00, 4 at 16:35, 6 by 17:46 (`aryllp` running `dve.exe`/`simv`, `wblanken` running `virtuoso`/`vds`). The load path is CPU-side, so this correlation is the leading explanation, but it is a correlation on two data points, not a proven cause. **We do not control this node's other tenants.**
+
+**The restart did not help this time.** Four loads after a fresh restart took 348–356 s wall (252–255 s `load_duration`), slightly *worse* than the 285–321 s before the restart. That contradicts the 2026-09-19 precedent below, where a restart brought loads back to 13.8 s. So "restart ollama" is no longer a reliable fix. Whatever degrades the load survives a server restart, which fits the node-contention explanation rather than a state leak inside `ollama serve`.
+
+Arm F is more exposed than arms C–E. It swaps ESMFold and Ollama every generation, ~39 loads per seed, so a slow load is paid ~39 times rather than a few. At the measured ~350 s per load that is ~3.8 h of pure model loading per seed, against the ~1 h/seed the design assumes, and each of those loads is a chance to exceed the client timeout.
+
+**Keeping the model resident is not an option on this card.** gemma4:12b takes ~7.9 GiB of GPU memory when loaded: 7,024 MiB weights + 544 MiB KV cache + 127 MiB compute buffer + ~354 MiB vision projector, per Ollama's load log of 2026-09-28. ESMFold takes ~13.8 GB (the figure used in `ESM2_LIKELIHOOD_SCREEN.md`). The Tesla T4 has 15,360 MiB. The two do not fit together, which is why the arms swap them in the first place.
+
+Before any LLM launch:
+1. a timed unload/reload measured at **under ~20 s** (restarting `ollama serve` first is fine, but on its own it does not prove anything), and
+2. if it is slow, do not launch and do not count on a restart to fix it; the run will either time out or cost 10x.
+3. Consider `HPGA_LLM_TIMEOUT_S=600` as margin regardless. It changes no measurement (load time already lands in `llm_s`), it only stops the client giving up on a load that would have finished.
+
+The 2026-09-19 precedent is in `results/SEQUENCE_GA_REPORT.md:823-825`: restarting `ollama serve` brought the load back to 13.8 s. That did not repeat on 2026-09-28 (see the table above). Note that report calls Ollama "a shared service"; on 2026-09-28 it was this user's own process on `localhost:11434`, so restarting it disturbed nobody.
+
 **Pre-existing defect in `experiments/verify_llm_operator_parity.py` (found 2026-09-28, not caused by the change that found it).** In `check` and `active` modes the harness reports **355 of 4410 direct-call cases diverged even when the working tree IS the baseline** — running it in a clean checkout at the same commit gives the identical 355 case IDs and identical coverage counts. So its absolute pass/fail is not trustworthy: a genuinely inert change still shows 355 divergences, and a real regression of that size would be indistinguishable from the floor. `next_generation` specs (13) and the namespace check are clean; only direct calls are affected, and every diverging case is `op=crossover, style=full` — the lattice style gated by `_crossover_sufficiently_mixed`, which reads the module-global `CROSSOVER_MIN_DIFF` that the harness patches per case. The likely cause is that the patch reaches one of the two module objects (baseline loaded from the git blob vs. the imported working tree) and not the other, so the two sides run different mix-gate thresholds. `self` mode is clean (0 diverged), which is why this went unnoticed.
   - **Usable workaround until it is fixed:** run the harness twice, once in a clean checkout at the baseline commit and once in the working tree, and diff the full outputs. Byte-identical output means the change is inert. That is how the arm-F shared edits to `operators.py` were cleared.
   - Fixing it properly means making the harness patch `CROSSOVER_MIN_DIFF` on both module objects (or asserting HEAD-vs-HEAD is clean as a self-test before comparing anything, which would have caught this at the time).
@@ -187,6 +214,7 @@ No number in the report disagreed with the raw files. These claims were correcte
   - Six `<defunct>` bash zombies are listed under this user. Five have parent PID 3680190 and one (3612654) has parent PID 3515874; both parents are older, still-open `claude` sessions.
   - They are harmless and hold no resources.
   - The five with parent 3680190 are the shells killed in the first half of the session. The sixth predates this session.
+- **Arm F seed 0 failed attempt (2026-09-28 15:34–16:17).** Its partial JSON, error file, log and two LLM call logs were moved out of `results/raw/`; they are not results. `results/raw/fitness_prompt_status.json` from that attempt is left untracked and will be overwritten by the next launch. A stuck waiter loop from that session (pid 276722, a `pgrep -f keep_alive` loop that matched its own command line) was killed; it remains a zombie under its dead parent.
 - **GPU exclusivity during the runs** was checked with `nvidia-smi` before both launches. That output is in the session transcript, not a file. `grep -cE "GPU held|Ollama runner still"` returns 0 on both driver logs.
 
 ## 6. Next steps
@@ -210,6 +238,31 @@ The merge into `main` is done, so step 1 of the previous handoff is complete. Wh
    - Any new seeds also mean updating `results/MOVE_CLASS.md`, `PROJECT_SUMMARY.md` §3.7 and findings 22–25.
 3. **Before any launch:** confirm `nvidia-smi --query-compute-apps=pid,process_name --format=csv,noheader` is empty, and use `/scratch/pcanaste/venv/bin/python`.
 
+### To resume arm F (seeds 0–2) when the node is quiet
+
+**1. Measure the reload.** Accept only if every `wall` is **under ~20 s**:
+```
+cd /scratch/pcanaste/projeto/phase2_agent_memory && /scratch/pcanaste/venv/bin/python -u - <<'EOF'
+import time, ollama
+c = ollama.Client(host="http://localhost:11434", timeout=900)
+for i in (1, 2, 3):
+    c.generate(model="gemma4:12b", prompt="", keep_alive=0)
+    time.sleep(8)
+    t0 = time.perf_counter()
+    r = c.generate(model="gemma4:12b", prompt="ok", options={"num_predict": 1})
+    print(f"reload #{i}: wall={time.perf_counter()-t0:7.2f}s  load_duration={r.get('load_duration',0)/1e9:7.2f}s")
+EOF
+```
+If `ollama serve` is not running, start it first with the same `PATH`, `LD_LIBRARY_PATH` and `OLLAMA_MODELS` as below.
+
+**2.** Confirm `nvidia-smi --query-compute-apps=pid,process_name --format=csv,noheader` shows nothing but Ollama's own runner.
+
+**3. Launch.** The driver skips finished runs, and `HPGA_LLM_TIMEOUT_S=600` adds margin without changing any measurement:
+```
+cd /scratch/pcanaste/projeto/phase2_agent_memory && export XDG_CACHE_HOME=/scratch/pcanaste/cache HF_HOME=/scratch/pcanaste/cache/huggingface TORCH_HOME=/scratch/pcanaste/cache/torch HF_HUB_OFFLINE=1 PATH=/scratch/pcanaste/ollama/bin:$PATH LD_LIBRARY_PATH=/scratch/pcanaste/ollama/lib:$LD_LIBRARY_PATH OLLAMA_MODELS=/scratch/pcanaste/ollama-models PYTHONHASHSEED=0 HPGA_LLM_TIMEOUT_S=600 && setsid nohup /scratch/pcanaste/venv/bin/python experiments/run_fitness_prompt_ga.py run --arms F --seeds 0 1 2 > results/raw/fitness_prompt_run_F_seeds012.log 2>&1 < /dev/null &
+```
+Progress goes to `results/raw/fitness_prompt_status.json` and to the log, one line per generation.
+
 ## Commits this session
 
 All on `move-class`. `main` was fast-forwarded from `76a5fe4` to `62c3fd5`.
@@ -222,4 +275,6 @@ All on `move-class`. `main` was fast-forwarded from `76a5fe4` to `62c3fd5`.
 | `f63efd7` | MOVE_CLASS.md: corrections — counts, per-seed tables, fold time not GPU time, sign-test floor in conclusion | yes |
 | `cdd8173` | MOVE_CLASS.md conclusion and §1 fixes; OPERATOR_DOES_NOT_MATTER.md: correct fitness range to 0.3587–0.6372 | yes |
 | `62c3fd5` | PROJECT_SUMMARY.md: §3.7 move class, findings 22–25, limits/questions/reproducibility/abstract updates | yes, on `move-class` and `main` |
-| (this update) | not yet committed | no |
+| `e85eab3` | Fitness-aware operator prompts (arm F): new module, optional kwargs, driver, verifier | yes |
+| `f99ffd5` | HANDOFF_MOVE_CLASS.md: record the verify_llm_operator_parity.py check-mode defect | yes |
+| (this update) | Ollama load degradation survives a restart; arm F seed 0 attempt cleaned up; resume steps | see `git log` |
