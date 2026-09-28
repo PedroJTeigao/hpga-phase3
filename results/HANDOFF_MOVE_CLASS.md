@@ -178,6 +178,10 @@ No number in the report disagreed with the raw files. These claims were correcte
 
 **Open design caveat, stated in the report:** move bases are not matched across arms, since each arm mutates its own population. A matched-base test was not run.
 
+**Pre-existing defect in `experiments/verify_llm_operator_parity.py` (found 2026-09-28, not caused by the change that found it).** In `check` and `active` modes the harness reports **355 of 4410 direct-call cases diverged even when the working tree IS the baseline** — running it in a clean checkout at the same commit gives the identical 355 case IDs and identical coverage counts. So its absolute pass/fail is not trustworthy: a genuinely inert change still shows 355 divergences, and a real regression of that size would be indistinguishable from the floor. `next_generation` specs (13) and the namespace check are clean; only direct calls are affected, and every diverging case is `op=crossover, style=full` — the lattice style gated by `_crossover_sufficiently_mixed`, which reads the module-global `CROSSOVER_MIN_DIFF` that the harness patches per case. The likely cause is that the patch reaches one of the two module objects (baseline loaded from the git blob vs. the imported working tree) and not the other, so the two sides run different mix-gate thresholds. `self` mode is clean (0 diverged), which is why this went unnoticed.
+  - **Usable workaround until it is fixed:** run the harness twice, once in a clean checkout at the baseline commit and once in the working tree, and diff the full outputs. Byte-identical output means the change is inert. That is how the arm-F shared edits to `operators.py` were cleared.
+  - Fixing it properly means making the harness patch `CROSSOVER_MIN_DIFF` on both module objects (or asserting HEAD-vs-HEAD is clean as a self-test before comparing anything, which would have caught this at the time).
+
 **Other notes:**
 - **Environment:**
   - Six `<defunct>` bash zombies are listed under this user. Five have parent PID 3680190 and one (3612654) has parent PID 3515874; both parents are older, still-open `claude` sessions.
