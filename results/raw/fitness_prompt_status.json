@@ -1,0 +1,45 @@
+{
+ "plan": [
+  [
+   "F",
+   0
+  ],
+  [
+   "F",
+   1
+  ],
+  [
+   "F",
+   2
+  ]
+ ],
+ "started": "2026-09-28T19:04:52-0400",
+ "done": [
+  {
+   "arm": "F",
+   "seed": 0,
+   "attempt": 1,
+   "seconds": 3262.475912809372,
+   "final_best": 0.37392
+  },
+  {
+   "arm": "F",
+   "seed": 1,
+   "attempt": 1,
+   "seconds": 3587.8822371959686,
+   "final_best": 0.41164
+  },
+  {
+   "arm": "F",
+   "seed": 2,
+   "attempt": 1,
+   "seconds": 3578.9595646858215,
+   "final_best": 0.52807
+  }
+ ],
+ "failed": [],
+ "skipped": [],
+ "finished": true,
+ "exit_reason": "all planned runs attempted",
+ "ended": "2026-09-28T21:58:54-0400"
+}
