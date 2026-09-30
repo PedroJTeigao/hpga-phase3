@@ -15,6 +15,11 @@ build. It changes nothing in the driver: it wraps two module-level functions of 
                (HPGA_LLM_LOG_PATH), instead of results/raw/llm_operator_calls_seqcmp_C_seed<n>_*.jsonl, which does not
                carry the model name and would sit next to the gemma logs.
 
+Ollama load times: the Ollama client's generate() is wrapped to record each response's load_duration (>= 1 s counts as
+a load), because arm C's accounting hides reloads inside LLM time. Every load goes to --out-dir/ollama_loads.jsonl and
+to rec["provenance"]["ollama_loads"] for its seed. On exit, normal or not, --out-dir/RUN_NOTES.md is written with the
+per-seed load range and every seed that failed twice and was skipped.
+
 Refuses anything but arm C, and refuses --out-dir = results/raw: there the driver would skip every seed, because the gemma
 files sequence_ga_cmp_C_seed<n>.json already exist and are complete, and it would overwrite the committed
 sequence_ga_comparison_status.json.
@@ -83,6 +88,76 @@ def snapshot() -> dict:
     return snap
 
 
+# --- Ollama load times --------------------------------------------------------------------------------------------
+# Arm C's accounting puts each Ollama reload inside the first LLM call of a breeding step, and operators._call_ollama
+# keeps only that call's total latency, so the reload itself is not recorded anywhere (SEQUENCE_GA_REPORT.md sec 9.7
+# had to estimate it). Ollama reports it per response as load_duration. The client's generate() is wrapped to record
+# that field and return the response untouched: same calls, same order, same return values.
+
+LOAD_EVENT_MIN_S = 1.0  # a request against an already-resident model reports a load_duration of milliseconds
+_load_events: list[dict] = []
+_current_seed: int | None = None
+_loads_path: Path | None = None
+_orig_get_client = ops._get_client
+
+
+def _get_client():
+    client = _orig_get_client()
+    if not getattr(client, "_armc_load_recorder", False):
+        orig_generate = client.generate
+
+        def generate(*a, **k):
+            resp = orig_generate(*a, **k)
+            unload = k.get("keep_alive") == 0
+            load_s = (getattr(resp, "load_duration", None) or 0) / 1e9
+            if not unload and load_s >= LOAD_EVENT_MIN_S:
+                ev = {"time": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "seed": _current_seed, "load_s": round(load_s, 2),
+                      "total_s": round((getattr(resp, "total_duration", None) or 0) / 1e9, 2)}
+                _load_events.append(ev)
+                if _loads_path is not None:
+                    with open(_loads_path, "a", encoding="utf-8") as f:
+                        f.write(json.dumps(ev) + "\n")
+            return resp
+
+        client.generate = generate
+        client._armc_load_recorder = True
+    return client
+
+
+def _load_summary(events: list[dict]) -> dict:
+    s = [e["load_s"] for e in events]
+    return {"n_loads": len(s), "min_s": min(s) if s else None, "max_s": max(s) if s else None,
+            "total_s": round(sum(s), 1), "threshold_s": LOAD_EVENT_MIN_S, "events": events}
+
+
+def write_run_notes(out_dir: Path) -> None:
+    """RUN_NOTES.md in --out-dir: Ollama load times per seed and any failed or skipped seed, so the wall-time caveat
+    travels with the files."""
+    status_p = out_dir / "sequence_ga_comparison_status.json"
+    status = json.load(open(status_p)) if status_p.exists() else {}
+    lines = [f"# Run notes: arm C on {ops.LLM_MODEL} (written by experiments/run_arm_c_model.py)", "",
+             f"Exit reason: {status.get('exit_reason')!r}. Done: {[(d['seed'], d['attempt']) for d in status.get('done', [])]}. "
+             f"Skipped (already complete): {[d['seed'] for d in status.get('skipped', [])]}.", ""]
+    if status.get("failed"):
+        lines += ["**FAILED SEEDS (failed on both attempts; the driver skipped them and moved on):**", ""]
+        lines += [f"- seed {f['seed']}: {f['error']}" for f in status["failed"]] + [""]
+    lines += ["## Ollama model loads (load_duration from each Ollama response; >= 1 s counts as a load)", "",
+              "Wall time and llm_s in these runs include these loads. Loads on 2026-09-30 took 127-181 s against "
+              "14.7 s on 2026-09-21, so wall time here is not comparable with any earlier run; the budget (distinct "
+              "folds) and every fitness and behaviour measure are unaffected.", "",
+              "| seed | loads | min s | max s | total s |", "|---|---|---|---|---|"]
+    by_seed: dict = {}
+    for e in _load_events:
+        by_seed.setdefault(e["seed"], []).append(e)
+    for seed, evs in sorted(by_seed.items(), key=lambda kv: (kv[0] is None, kv[0])):
+        s = _load_summary(evs)
+        lines.append(f"| {seed if seed is not None else 'outside a run'} | {s['n_loads']} | {s['min_s']} | {s['max_s']} | {s['total_s']} |")
+    allv = [e["load_s"] for e in _load_events]
+    lines += ["", f"Observed range over all loads: {min(allv) if allv else None} - {max(allv) if allv else None} s "
+                  f"({len(allv)} loads). Every event: ollama_loads.jsonl."]
+    (out_dir / "RUN_NOTES.md").write_text("\n".join(lines) + "\n")
+
+
 _orig_base_record, _orig_run_ga = base.base_record, base.run_ga
 
 
@@ -93,14 +168,18 @@ def base_record(arm, seed, args):
 
 
 def run_ga(arm, seed, args, llm):
+    global _current_seed
     log_path = Path(args.out_dir) / f"llm_operator_calls_armC_{ops.LLM_MODEL.replace(':', '_')}_seed{seed}_{int(time.time())}.jsonl"
     os.environ["HPGA_LLM_LOG_PATH"] = str(log_path)
+    _current_seed, n_before = seed, len(_load_events)
     try:
         rec = _orig_run_ga(arm, seed, args, llm)
     finally:
         os.environ.pop("HPGA_LLM_LOG_PATH", None)
+        _current_seed = None
     end = snapshot()
     prov = rec["provenance"]
+    prov["ollama_loads"] = _load_summary(_load_events[n_before:])
     prov["at_end"] = end
     prov["digest_unchanged"] = prov["at_start"].get("model_digest") == end.get("model_digest")
     prov["ollama_version_unchanged"] = prov["at_start"].get("ollama_version") == end.get("ollama_version")
@@ -121,9 +200,16 @@ def main() -> None:
         raise SystemExit("this wrapper runs arm C only: use `run --arms C --seeds ... --out-dir DIR`")
     if not known.out_dir or Path(known.out_dir).resolve() == base.RAW.resolve():
         raise SystemExit("--out-dir must be given and must not be results/raw (the gemma arm C files live there)")
-    Path(known.out_dir).mkdir(parents=True, exist_ok=True)
+    global _loads_path
+    out_dir = Path(known.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    _loads_path = out_dir / "ollama_loads.jsonl"
     base.base_record, base.run_ga = base_record, run_ga
-    base.main()
+    ops._get_client = _get_client
+    try:
+        base.main()
+    finally:
+        write_run_notes(out_dir)
 
 
 if __name__ == "__main__":
