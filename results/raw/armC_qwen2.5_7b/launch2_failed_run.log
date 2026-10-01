@@ -1,0 +1,42 @@
+2026-09-30 18:29:48,498 seqcmp plan: [('C', 0), ('C', 1), ('C', 2), ('C', 3), ('C', 4)]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-30 18:30:00,417 huggingface_hub.utils._http Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Traceback (most recent call last):
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/experiments/run_arm_c_model.py", line 216, in <module>
+    main()
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/experiments/run_arm_c_model.py", line 210, in main
+    base.main()
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/experiments/run_sequence_ga_comparison.py", line 591, in main
+    sys.exit(cmd_run(args))
+             ^^^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/experiments/run_sequence_ga_comparison.py", line 520, in cmd_run
+    sm._get_fitness()  # load ESMFold once; kept warm for every run below
+    ^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/hpga/sequence_model.py", line 107, in _get_fitness
+    _fitness = get_default()
+               ^^^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/esmfold/tm_fitness.py", line 145, in get_default
+    _default = TMFitness()
+               ^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/esmfold/tm_fitness.py", line 89, in __init__
+    predictor = ESMFoldFitness()  # loads ESMFold once, here
+                ^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/projeto/phase2_agent_memory/esmfold/fitness.py", line 49, in __init__
+    self.model = EsmForProteinFolding.from_pretrained(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/transformers/modeling_utils.py", line 4313, in from_pretrained
+    loading_info, disk_offload_index = cls._load_pretrained_model(model, state_dict, checkpoint_files, load_config)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/transformers/modeling_utils.py", line 4452, in _load_pretrained_model
+    merged_state_dict.update(load_state_dict(ckpt_file, disable_mmap=load_config.disable_mmap))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/transformers/modeling_utils.py", line 366, in load_state_dict
+    return torch.load(checkpoint_path, map_location=map_location, weights_only=weights_only, **extra_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/serialization.py", line 1537, in load
+    with _open_zipfile_reader(opened_file) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/pcanaste/venv/lib64/python3.12/site-packages/torch/serialization.py", line 807, in __init__
+    super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory. This is an internal miniz error. If you are seeing this error, there is a high likelihood that your checkpoint file is corrupted. This can happen if the checkpoint was not saved properly, was transferred incorrectly, or the file was modified after saving.
