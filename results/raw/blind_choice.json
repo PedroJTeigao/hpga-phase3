@@ -1,0 +1,646 @@
+{
+ "first_attempts": {
+  "gemma4:12b arm C": {
+   "pooled": {
+    "attempts": 1330,
+    "lines": 4311,
+    "observed": 74,
+    "observed_rate": 0.01716539086058919,
+    "marginal_expected": 321.3379726281605,
+    "marginal_rate": 0.07453907970961737,
+    "ratio_marginal": 0.23028713162894648,
+    "shuffle_rate": 0.08311237432982914,
+    "shuffle_rate_95": [
+     0.07494697148244167,
+     0.09101626974770101
+    ],
+    "ratio_shuffle": 0.20653231241438025
+   },
+   "per_seed": {
+    "0": {
+     "attempts": 266,
+     "lines": 792,
+     "observed": 11,
+     "observed_rate": 0.013888888888888888,
+     "marginal_expected": 66.06565656565657,
+     "marginal_rate": 0.08341623303744516,
+     "ratio_marginal": 0.16650103203119027,
+     "shuffle_rate": 0.09313977224081003,
+     "shuffle_rate_95": [
+      0.07711757269279393,
+      0.10998735777496839
+     ],
+     "ratio_shuffle": 0.1491187765950253
+    },
+    "1": {
+     "attempts": 266,
+     "lines": 804,
+     "observed": 3,
+     "observed_rate": 0.0037313432835820895,
+     "marginal_expected": 54.49626865671642,
+     "marginal_rate": 0.06778142867750798,
+     "ratio_marginal": 0.05504964053406368,
+     "shuffle_rate": 0.0876780883449635,
+     "shuffle_rate_95": [
+      0.06965174129353234,
+      0.10709838107098381
+     ],
+     "ratio_shuffle": 0.04255730655191035
+    },
+    "2": {
+     "attempts": 266,
+     "lines": 1032,
+     "observed": 30,
+     "observed_rate": 0.029069767441860465,
+     "marginal_expected": 93.93798449612403,
+     "marginal_rate": 0.09102517877531398,
+     "ratio_marginal": 0.31935963030203,
+     "shuffle_rate": 0.13123301822251768,
+     "shuffle_rate_95": [
+      0.11392405063291139,
+      0.14897760467380722
+     ],
+     "ratio_shuffle": 0.22151260281593155
+    },
+    "3": {
+     "attempts": 266,
+     "lines": 801,
+     "observed": 17,
+     "observed_rate": 0.02122347066167291,
+     "marginal_expected": 67.28838951310861,
+     "marginal_rate": 0.0840054800413341,
+     "ratio_marginal": 0.25264388288990314,
+     "shuffle_rate": 0.1078767182892949,
+     "shuffle_rate_95": [
+      0.08875,
+      0.12625
+     ],
+     "ratio_shuffle": 0.19673819335843673
+    },
+    "4": {
+     "attempts": 266,
+     "lines": 882,
+     "observed": 13,
+     "observed_rate": 0.01473922902494331,
+     "marginal_expected": 59.50340136054422,
+     "marginal_rate": 0.06746417387816804,
+     "ratio_marginal": 0.2184749056819481,
+     "shuffle_rate": 0.09071459766093297,
+     "shuffle_rate_95": [
+      0.07175398633257403,
+      0.10946408209806158
+     ],
+     "ratio_shuffle": 0.16247913130844308
+    }
+   }
+  },
+  "gemma4:12b arm F": {
+   "pooled": {
+    "attempts": 798,
+    "lines": 2387,
+    "observed": 112,
+    "observed_rate": 0.0469208211143695,
+    "marginal_expected": 201.6883116883117,
+    "marginal_rate": 0.08449447494273636,
+    "ratio_marginal": 0.5553122987765614,
+    "shuffle_rate": 0.09414176746536786,
+    "shuffle_rate_95": [
+     0.08340353833192923,
+     0.10568421052631578
+    ],
+    "ratio_shuffle": 0.49840599319138945
+   },
+   "per_seed": {
+    "0": {
+     "attempts": 266,
+     "lines": 779,
+     "observed": 43,
+     "observed_rate": 0.055198973042362,
+     "marginal_expected": 59.6418485237484,
+     "marginal_rate": 0.07656206485718665,
+     "ratio_marginal": 0.7209702761455844,
+     "shuffle_rate": 0.12985441359694874,
+     "shuffle_rate_95": [
+      0.1095360824742268,
+      0.15186615186615188
+     ],
+     "ratio_shuffle": 0.42508353403906973
+    },
+    "1": {
+     "attempts": 266,
+     "lines": 802,
+     "observed": 26,
+     "observed_rate": 0.032418952618453865,
+     "marginal_expected": 72.05735660847881,
+     "marginal_rate": 0.08984707806543493,
+     "ratio_marginal": 0.36082367191555625,
+     "shuffle_rate": 0.10376298482773663,
+     "shuffle_rate_95": [
+      0.0885286783042394,
+      0.1198501872659176
+     ],
+     "ratio_shuffle": 0.31243272995928734
+    },
+    "2": {
+     "attempts": 266,
+     "lines": 806,
+     "observed": 43,
+     "observed_rate": 0.05334987593052109,
+     "marginal_expected": 68.94416873449131,
+     "marginal_rate": 0.08553867088646565,
+     "ratio_marginal": 0.6236930662779607,
+     "shuffle_rate": 0.1051085214422368,
+     "shuffle_rate_95": [
+      0.08571428571428572,
+      0.12686567164179105
+     ],
+     "ratio_shuffle": 0.5075694643829609
+    }
+   }
+  },
+  "qwen2.5:7b arm C": {
+   "pooled": {
+    "attempts": 1330,
+    "lines": 4228,
+    "observed": 458,
+    "observed_rate": 0.10832544938505204,
+    "marginal_expected": 325.67265846736046,
+    "marginal_rate": 0.07702759187969736,
+    "ratio_marginal": 1.4063200827339384,
+    "shuffle_rate": 0.10135427700675867,
+    "shuffle_rate_95": [
+     0.09284284284284285,
+     0.10919108439769597
+    ],
+    "ratio_shuffle": 1.068780248689737
+   },
+   "per_seed": {
+    "0": {
+     "attempts": 266,
+     "lines": 791,
+     "observed": 138,
+     "observed_rate": 0.17446270543615677,
+     "marginal_expected": 80.1668773704172,
+     "marginal_rate": 0.10134877037979419,
+     "ratio_marginal": 1.7214091969974137,
+     "shuffle_rate": 0.19087430477825432,
+     "shuffle_rate_95": [
+      0.16859716859716858,
+      0.21181001283697048
+     ],
+     "ratio_shuffle": 0.9140188127408584
+    },
+    "1": {
+     "attempts": 266,
+     "lines": 1026,
+     "observed": 91,
+     "observed_rate": 0.08869395711500974,
+     "marginal_expected": 78.19200779727095,
+     "marginal_rate": 0.07621053391546875,
+     "ratio_marginal": 1.1638018074166407,
+     "shuffle_rate": 0.10953605048825246,
+     "shuffle_rate_95": [
+      0.09279368213228036,
+      0.12265084075173097
+     ],
+     "ratio_shuffle": 0.8097238919940974
+    },
+    "2": {
+     "attempts": 266,
+     "lines": 809,
+     "observed": 66,
+     "observed_rate": 0.0815822002472188,
+     "marginal_expected": 69.53028430160693,
+     "marginal_rate": 0.0859459632899962,
+     "ratio_marginal": 0.9492266666666667,
+     "shuffle_rate": 0.11380945129994387,
+     "shuffle_rate_95": [
+      0.09390862944162437,
+      0.13595933926302414
+     ],
+     "ratio_shuffle": 0.7168315049003231
+    },
+    "3": {
+     "attempts": 266,
+     "lines": 803,
+     "observed": 123,
+     "observed_rate": 0.15317559153175592,
+     "marginal_expected": 82.72976338729764,
+     "marginal_rate": 0.10302585726936193,
+     "ratio_marginal": 1.4867684248554913,
+     "shuffle_rate": 0.15228600018698063,
+     "shuffle_rate_95": [
+      0.1286624203821656,
+      0.17609254498714652
+     ],
+     "ratio_shuffle": 1.0058415832294698
+    },
+    "4": {
+     "attempts": 266,
+     "lines": 799,
+     "observed": 40,
+     "observed_rate": 0.05006257822277847,
+     "marginal_expected": 66.8360450563204,
+     "marginal_rate": 0.08364961834332967,
+     "ratio_marginal": 0.5984794576982135,
+     "shuffle_rate": 0.1177948526285995,
+     "shuffle_rate_95": [
+      0.09871794871794871,
+      0.1367741935483871
+     ],
+     "ratio_shuffle": 0.424998012269882
+    }
+   }
+  },
+  "gemma4:12b probe": {
+   "pooled": {
+    "attempts": 300,
+    "lines": 300,
+    "observed": 1,
+    "observed_rate": 0.0033333333333333335,
+    "marginal_expected": 14.74,
+    "marginal_rate": 0.049133333333333334,
+    "ratio_marginal": 0.06784260515603799,
+    "shuffle_rate": 0.048799999999999996,
+    "shuffle_rate_95": [
+     0.03,
+     0.07333333333333333
+    ],
+    "ratio_shuffle": 0.06830601092896176
+   }
+  },
+  "qwen2.5:7b probe": {
+   "pooled": {
+    "attempts": 300,
+    "lines": 326,
+    "observed": 2,
+    "observed_rate": 0.006134969325153374,
+    "marginal_expected": 16.52760736196319,
+    "marginal_rate": 0.05069818209191163,
+    "ratio_marginal": 0.1210096510764662,
+    "shuffle_rate": 0.05032208588957055,
+    "shuffle_rate_95": [
+     0.027607361963190184,
+     0.0736196319018405
+    ],
+    "ratio_shuffle": 0.121914050594331
+   }
+  },
+  "mistral:7b probe": {
+   "pooled": {
+    "attempts": 100,
+    "lines": 126,
+    "observed": 7,
+    "observed_rate": 0.05555555555555555,
+    "marginal_expected": 6.682539682539683,
+    "marginal_rate": 0.05303602922650542,
+    "ratio_marginal": 1.0475059382422802,
+    "shuffle_rate": 0.04984126984126984,
+    "shuffle_rate_95": [
+     0.015873015873015872,
+     0.07936507936507936
+    ],
+    "ratio_shuffle": 1.1146496815286624
+   }
+  },
+  "llama3.2:3b probe": {
+   "pooled": {
+    "attempts": 100,
+    "lines": 200,
+    "observed": 4,
+    "observed_rate": 0.02,
+    "marginal_expected": 10.13,
+    "marginal_rate": 0.05065,
+    "ratio_marginal": 0.3948667324777887,
+    "shuffle_rate": 0.047625,
+    "shuffle_rate_95": [
+     0.02,
+     0.08
+    ],
+    "ratio_shuffle": 0.4199475065616798
+   }
+  }
+ },
+ "all_attempts": {
+  "gemma4:12b arm C": {
+   "pooled": {
+    "attempts": 1402,
+    "lines": 4558,
+    "observed": 80,
+    "observed_rate": 0.017551557700745943,
+    "marginal_expected": 340.87187362878456,
+    "marginal_rate": 0.07478540448196239,
+    "ratio_marginal": 0.23469228818544707,
+    "shuffle_rate": 0.0841065914322195,
+    "shuffle_rate_95": [
+     0.07663176654043216,
+     0.09266322638546107
+    ],
+    "ratio_shuffle": 0.20868230898276902
+   },
+   "per_seed": {
+    "0": {
+     "attempts": 275,
+     "lines": 819,
+     "observed": 11,
+     "observed_rate": 0.013431013431013432,
+     "marginal_expected": 68.11843711843711,
+     "marginal_rate": 0.0831726948943066,
+     "ratio_marginal": 0.1614834465575651,
+     "shuffle_rate": 0.09285985810168276,
+     "shuffle_rate_95": [
+      0.07701711491442542,
+      0.11260709914320685
+     ],
+     "ratio_shuffle": 0.1446374537456895
+    },
+    "1": {
+     "attempts": 269,
+     "lines": 813,
+     "observed": 3,
+     "observed_rate": 0.0036900369003690036,
+     "marginal_expected": 54.58794587945879,
+     "marginal_rate": 0.06714384487018302,
+     "ratio_marginal": 0.05495718792248761,
+     "shuffle_rate": 0.08611993254794635,
+     "shuffle_rate_95": [
+      0.06642066420664207,
+      0.1070110701107011
+     ],
+     "ratio_shuffle": 0.04284765200338046
+    },
+    "2": {
+     "attempts": 294,
+     "lines": 1143,
+     "observed": 30,
+     "observed_rate": 0.026246719160104987,
+     "marginal_expected": 104.45319335083114,
+     "marginal_rate": 0.09138512104184703,
+     "ratio_marginal": 0.2872099840857693,
+     "shuffle_rate": 0.13268381691355016,
+     "shuffle_rate_95": [
+      0.11687170474516696,
+      0.14899211218229624
+     ],
+     "ratio_shuffle": 0.19781401960425948
+    },
+    "3": {
+     "attempts": 283,
+     "lines": 852,
+     "observed": 21,
+     "observed_rate": 0.02464788732394366,
+     "marginal_expected": 71.81220657276995,
+     "marginal_rate": 0.08428662743282858,
+     "ratio_marginal": 0.2924293933054393,
+     "shuffle_rate": 0.10764135246289656,
+     "shuffle_rate_95": [
+      0.09165687426556991,
+      0.1245593419506463
+     ],
+     "ratio_shuffle": 0.2289815833783737
+    },
+    "4": {
+     "attempts": 281,
+     "lines": 931,
+     "observed": 15,
+     "observed_rate": 0.01611170784103115,
+     "marginal_expected": 62.63480128893663,
+     "marginal_rate": 0.06727690793655922,
+     "ratio_marginal": 0.2394834770977312,
+     "shuffle_rate": 0.09225063278856656,
+     "shuffle_rate_95": [
+      0.07335490830636461,
+      0.11003236245954692
+     ],
+     "ratio_shuffle": 0.1746514615022567
+    }
+   }
+  },
+  "gemma4:12b arm F": {
+   "pooled": {
+    "attempts": 900,
+    "lines": 2692,
+    "observed": 124,
+    "observed_rate": 0.04606240713224369,
+    "marginal_expected": 230.7916047548291,
+    "marginal_rate": 0.08573239403968391,
+    "ratio_marginal": 0.537281241801346,
+    "shuffle_rate": 0.09603712235853078,
+    "shuffle_rate_95": [
+     0.08721580320536712,
+     0.10775540641312453
+    ],
+    "ratio_shuffle": 0.4796312717521993
+   },
+   "per_seed": {
+    "0": {
+     "attempts": 304,
+     "lines": 892,
+     "observed": 48,
+     "observed_rate": 0.053811659192825115,
+     "marginal_expected": 70.33520179372198,
+     "marginal_rate": 0.07885112308713227,
+     "ratio_marginal": 0.6824463252522354,
+     "shuffle_rate": 0.1335729819842141,
+     "shuffle_rate_95": [
+      0.11473565804274466,
+      0.15168539325842698
+     ],
+     "ratio_shuffle": 0.40286335150610525
+    },
+    "1": {
+     "attempts": 296,
+     "lines": 892,
+     "observed": 30,
+     "observed_rate": 0.033632286995515695,
+     "marginal_expected": 80.3822869955157,
+     "marginal_rate": 0.09011467151963644,
+     "ratio_marginal": 0.37321655207040344,
+     "shuffle_rate": 0.10448791025423318,
+     "shuffle_rate_95": [
+      0.08754208754208755,
+      0.1210762331838565
+     ],
+     "ratio_shuffle": 0.32187730536177633
+    },
+    "2": {
+     "attempts": 300,
+     "lines": 908,
+     "observed": 46,
+     "observed_rate": 0.05066079295154185,
+     "marginal_expected": 78.90859030837004,
+     "marginal_rate": 0.08690373381979079,
+     "ratio_marginal": 0.5829530070203353,
+     "shuffle_rate": 0.10575012925585407,
+     "shuffle_rate_95": [
+      0.0861878453038674,
+      0.12251655629139073
+     ],
+     "ratio_shuffle": 0.4790612863363227
+    }
+   }
+  },
+  "qwen2.5:7b arm C": {
+   "pooled": {
+    "attempts": 1871,
+    "lines": 5952,
+    "observed": 703,
+    "observed_rate": 0.11811155913978495,
+    "marginal_expected": 473.37550403225805,
+    "marginal_rate": 0.0795321747366025,
+    "ratio_marginal": 1.4850789574276202,
+    "shuffle_rate": 0.10981510042506011,
+    "shuffle_rate_95": [
+     0.1031166518254675,
+     0.11739594450373532
+    ],
+    "ratio_shuffle": 1.0755493432379684
+   },
+   "per_seed": {
+    "0": {
+     "attempts": 430,
+     "lines": 1282,
+     "observed": 222,
+     "observed_rate": 0.1731669266770671,
+     "marginal_expected": 138.05070202808113,
+     "marginal_rate": 0.10768385493610073,
+     "ratio_marginal": 1.608104824811703,
+     "shuffle_rate": 0.21152032996349912,
+     "shuffle_rate_95": [
+      0.19382911392405064,
+      0.22644497228820268
+     ],
+     "ratio_shuffle": 0.8186774609653339
+    },
+    "1": {
+     "attempts": 366,
+     "lines": 1422,
+     "observed": 126,
+     "observed_rate": 0.08860759493670886,
+     "marginal_expected": 109.62517580872012,
+     "marginal_rate": 0.07709224740416323,
+     "ratio_marginal": 1.1493710187507618,
+     "shuffle_rate": 0.1096766363131601,
+     "shuffle_rate_95": [
+      0.09493219129193434,
+      0.12482168330955777
+     ],
+     "ratio_shuffle": 0.8078985453538826
+    },
+    "2": {
+     "attempts": 350,
+     "lines": 1065,
+     "observed": 100,
+     "observed_rate": 0.09389671361502347,
+     "marginal_expected": 92.85915492957747,
+     "marginal_rate": 0.08719169476955631,
+     "ratio_marginal": 1.0768997421507658,
+     "shuffle_rate": 0.12063477931141664,
+     "shuffle_rate_95": [
+      0.10434782608695652,
+      0.14148219441770934
+     ],
+     "ratio_shuffle": 0.7783552483867915
+    },
+    "3": {
+     "attempts": 412,
+     "lines": 1243,
+     "observed": 201,
+     "observed_rate": 0.16170555108608206,
+     "marginal_expected": 131.23893805309734,
+     "marginal_rate": 0.10558241194939448,
+     "ratio_marginal": 1.5315576534052597,
+     "shuffle_rate": 0.16503496640973836,
+     "shuffle_rate_95": [
+      0.14958677685950414,
+      0.18271604938271604
+     ],
+     "ratio_shuffle": 0.9798260005374241
+    },
+    "4": {
+     "attempts": 313,
+     "lines": 940,
+     "observed": 54,
+     "observed_rate": 0.0574468085106383,
+     "marginal_expected": 82.56914893617021,
+     "marginal_rate": 0.08783952014486192,
+     "ratio_marginal": 0.6539972943374348,
+     "shuffle_rate": 0.12472169019713895,
+     "shuffle_rate_95": [
+      0.1037117903930131,
+      0.14647577092511013
+     ],
+     "ratio_shuffle": 0.4605999840110898
+    }
+   }
+  },
+  "gemma4:12b probe": {
+   "pooled": {
+    "attempts": 301,
+    "lines": 301,
+    "observed": 1,
+    "observed_rate": 0.0033222591362126247,
+    "marginal_expected": 14.747508305647841,
+    "marginal_rate": 0.0489950442048101,
+    "ratio_marginal": 0.06780806487947735,
+    "shuffle_rate": 0.04835548172757475,
+    "shuffle_rate_95": [
+     0.029900332225913623,
+     0.07641196013289037
+    ],
+    "ratio_shuffle": 0.06870491240123669
+   }
+  },
+  "qwen2.5:7b probe": {
+   "pooled": {
+    "attempts": 326,
+    "lines": 352,
+    "observed": 2,
+    "observed_rate": 0.005681818181818182,
+    "marginal_expected": 17.420454545454547,
+    "marginal_rate": 0.04948992768595042,
+    "ratio_marginal": 0.11480756686236138,
+    "shuffle_rate": 0.05048295454545454,
+    "shuffle_rate_95": [
+     0.028409090909090908,
+     0.07386363636363637
+    ],
+    "ratio_shuffle": 0.11254924029262804
+   }
+  },
+  "mistral:7b probe": {
+   "pooled": {
+    "attempts": 138,
+    "lines": 176,
+    "observed": 7,
+    "observed_rate": 0.03977272727272727,
+    "marginal_expected": 9.136363636363637,
+    "marginal_rate": 0.05191115702479339,
+    "ratio_marginal": 0.7661691542288557,
+    "shuffle_rate": 0.05090909090909091,
+    "shuffle_rate_95": [
+     0.017045454545454544,
+     0.08522727272727272
+    ],
+    "ratio_shuffle": 0.78125
+   }
+  },
+  "llama3.2:3b probe": {
+   "pooled": {
+    "attempts": 266,
+    "lines": 479,
+    "observed": 8,
+    "observed_rate": 0.016701461377870562,
+    "marginal_expected": 22.227557411273487,
+    "marginal_rate": 0.046404086453598094,
+    "ratio_marginal": 0.3599135906828214,
+    "shuffle_rate": 0.045542797494780796,
+    "shuffle_rate_95": [
+     0.027139874739039668,
+     0.06680584551148225
+    ],
+    "ratio_shuffle": 0.36672014668805863
+   }
+  }
+ }
+}
