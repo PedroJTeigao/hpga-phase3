@@ -5,6 +5,12 @@
 ## Run notes
 
 - **Four launches.** The driver refuses to load a model while another user's process is on the GPU. That happened three times, between gemma and qwen, between qwen and mistral, and between mistral and llama. Each time the run stopped cleanly before the next model, and was resumed for the remaining models once the GPU was free.
+  - **Correction, added 2026-10-02 (the sentence above is left as originally written, 2026-10-01):** the three stops were very likely **not** another user's process. They were very likely our own Ollama runner, still shutting down after the previous model was unloaded.
+    - The driver checked the GPU immediately after unloading a model. It recognised our runner by `nvidia-smi`'s process-name field, which reads `[No data]` for an exiting runner. All three stops recorded exactly that: an unnamed `[No data]` process (`run_part*.log`).
+    - The same false alarm stopped the numbered-display probe on 2026-10-02 at 15:34. The process it flagged (PID 3812868) had been listed 2 hours earlier as our own `/scratch/pcanaste/ollama/lib/ollama/llama-server`.
+    - The behaviour was then reproduced live through three load/unload cycles: during unload, `nvidia-smi` shows our runner as `[No data]` and its executable link is unreadable.
+    - The check was fixed in `experiments/probe_mutate_numbered.py` (commit `af74fb9`). The gate's own driver, `probe_mutate_oldfield.py`, still has the old check; it is not being run again.
+    - **No measurement was affected.** Every stop fell between models, after one model's last cell had finished and before the next model's first call. No cell was interrupted, repeated or split across launches. The only cost was the delay before each resume.
 - **No cell was interrupted or repeated.** Each model ran all six of its cells in one process.
 - **Logs and metadata** for each part are kept: `run_part1_gemma.log` … `run_part4.log`, and `oldfield_meta_part*.json` plus the final `oldfield_meta.json`.
 - **Model builds:** gemma `4eb23ef187e2…`, qwen `845dbda0ea48…`, mistral `6577803aa9a0…`, llama `a80c4f17acd5…`. Ollama 0.34.0.
