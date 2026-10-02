@@ -92,6 +92,56 @@ def run_model(out: Path) -> None:
     os.environ.pop("HPGA_LLM_LOG_PATH", None)
 
 
+OWN_RUNNER_PREFIX = "/scratch/pcanaste/ollama/"
+
+
+def gpu_processes() -> list[dict]:
+    """Every compute process on the GPU, classified by owner and executable path from /proc, NOT by nvidia-smi's
+    process-name field, which reads "[No data]" for our own Ollama runner while it shuts down. That misreading stopped
+    this driver once (2026-10-02) and very likely the OLD-slot gate three times. own = owned by this user AND its
+    executable lies under OWN_RUNNER_PREFIX. A process that has already exited is dropped; one whose /proc entry
+    cannot be read (another user's) counts as foreign."""
+    out = subprocess.run(["nvidia-smi", "--query-compute-apps=pid", "--format=csv,noheader"],
+                         capture_output=True, text=True).stdout.split()
+    procs = []
+    for tok in out:
+        if not tok.strip().isdigit():
+            continue
+        pid = int(tok)
+        try:
+            uid = os.stat(f"/proc/{pid}").st_uid
+        except FileNotFoundError:
+            continue  # exited between nvidia-smi and now
+        try:
+            exe = os.readlink(f"/proc/{pid}/exe")
+        except (PermissionError, FileNotFoundError, OSError):
+            exe = None
+        # an exiting runner of ours keeps its owner but its exe link becomes unreadable (seen in testing, 2026-10-02):
+        # owned by this user with no readable exe is ours too; owned by this user with a different exe is not
+        own = uid == os.getuid() and (exe is None or exe.startswith(OWN_RUNNER_PREFIX))
+        procs.append({"pid": pid, "uid": uid, "exe": exe, "own": own})
+    return procs
+
+
+def foreign_processes(confirm_s: float = 10.0) -> list[dict]:
+    """Foreign GPU processes that are still present after confirm_s: a process seen once and gone a few seconds
+    later is not a reason to stop the run."""
+    first = [p for p in gpu_processes() if not p["own"]]
+    if not first:
+        return []
+    time.sleep(confirm_s)
+    still = {p["pid"] for p in gpu_processes() if not p["own"]}
+    return [p for p in first if p["pid"] in still]
+
+
+def wait_for_own_runner_to_leave(timeout_s: float = 120.0) -> float:
+    """After an unload, wait until no runner of ours holds the GPU (at most timeout_s). Returns the seconds waited."""
+    t0 = time.time()
+    while time.time() - t0 < timeout_s and any(p["own"] for p in gpu_processes()):
+        time.sleep(2)
+    return time.time() - t0
+
+
 def cmd_all(out: Path, models) -> None:
     out.mkdir(parents=True, exist_ok=True)
     meta_p = out / "numbered_meta.json"
@@ -101,14 +151,17 @@ def cmd_all(out: Path, models) -> None:
                              "env": {k: os.environ.get(k) for k in ("HPGA_LLM_TIMEOUT_S", "PYTHONHASHSEED")}})
     tags = {m["name"]: m for m in gate._http("/api/tags")["models"]}
     for m in models:
-        apps = subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name", "--format=csv,noheader"],
-                              capture_output=True, text=True).stdout.strip()
-        if apps and "/scratch/pcanaste/ollama" not in apps:
-            meta["launches"][-1]["stopped"] = f"GPU in use by another process before {m}: {apps}"
-            json.dump(meta, open(meta_p, "w"), indent=1)
-            raise SystemExit(f"GPU in use by another process: {apps}")
         for resident in gate._http("/api/ps").get("models", []):
             gate._http("/api/generate", {"model": resident["name"], "prompt": "", "keep_alive": 0})
+        waited = wait_for_own_runner_to_leave()
+        foreign = foreign_processes()
+        procs = gpu_processes()
+        if foreign:
+            meta["launches"][-1]["stopped"] = f"GPU held by another user's process before {m}: {foreign}"
+            json.dump(meta, open(meta_p, "w"), indent=1)
+            raise SystemExit(f"GPU held by another user's process: {foreign}")
+        if any(p["own"] for p in procs):
+            print(f"WARNING: our runner still on the GPU after {waited:.0f}s before {m}: {procs}", flush=True)
         warm = gate._http("/api/generate", {"model": m, "prompt": "Reply with OK.", "stream": False, "think": False,
                                             "options": {"num_ctx": 4096, "num_predict": 4, "temperature": 0}, "keep_alive": "30m"})
         meta["models"][m] = {"digest": tags[m]["digest"], "warmup_load_s": round(warm.get("load_duration", 0) / 1e9, 2),
@@ -118,6 +171,7 @@ def cmd_all(out: Path, models) -> None:
                             env={**os.environ, "HPGA_LLM_MODEL": m}, cwd=ROOT).returncode
         meta["models"][m].update({"returncode": rc, "end": time.strftime("%Y-%m-%dT%H:%M:%S")})
         gate._http("/api/generate", {"model": m, "prompt": "", "keep_alive": 0})
+        meta["models"][m]["runner_exit_wait_s"] = round(wait_for_own_runner_to_leave(), 1)
         json.dump(meta, open(meta_p, "w"), indent=1)
         print(f"MODEL DONE {m} rc={rc}", flush=True)
     meta["launches"][-1]["finished"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
