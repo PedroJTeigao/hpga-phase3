@@ -1,0 +1,6 @@
+llama3.2:3b C1 old: 100 calls, 41 fallbacks, 111s
+llama3.2:3b C1 new: 100 calls, 86 fallbacks, 583s
+llama3.2:3b C2 old: 200 calls, 5 fallbacks, 361s
+llama3.2:3b C2 new: 200 calls, 199 fallbacks, 1262s
+llama3.2:3b C3 old: 200 calls, 11 fallbacks, 394s
+llama3.2:3b C3 new: 200 calls, 200 fallbacks, 1363s

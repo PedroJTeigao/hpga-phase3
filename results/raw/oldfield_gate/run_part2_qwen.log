@@ -1,0 +1,7 @@
+qwen2.5:7b C1 old: 100 calls, 0 fallbacks, 56s
+qwen2.5:7b C1 new: 100 calls, 13 fallbacks, 436s
+qwen2.5:7b C2 old: 200 calls, 2 fallbacks, 810s
+qwen2.5:7b C2 new: 200 calls, 199 fallbacks, 2978s
+qwen2.5:7b C3 old: 200 calls, 5 fallbacks, 914s
+qwen2.5:7b C3 new: 200 calls, 199 fallbacks, 3135s
+GPU in use by another process: 180788, [No data]

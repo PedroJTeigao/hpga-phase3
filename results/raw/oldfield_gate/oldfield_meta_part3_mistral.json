@@ -1,0 +1,30 @@
+{
+ "started": "2026-10-01T16:48:10-0400",
+ "ollama_version": "0.34.0",
+ "models": {
+  "mistral:7b": {
+   "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "7.2B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 4096
+   },
+   "warmup_load_s": 213.48,
+   "start": "16:53:27",
+   "returncode": 0,
+   "end": "20:15:33"
+  }
+ },
+ "env": {
+  "HPGA_LLM_TIMEOUT_S": "600",
+  "HPGA_LLM_TEMPERATURE": null,
+  "HPGA_LLM_NUM_CTX": null
+ }
+}

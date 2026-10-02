@@ -1,0 +1,101 @@
+{
+ "model": "qwen2.5:7b",
+ "cells": {
+  "C1_old": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 100,
+    "n_retries": 0,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 55.32722770603141,
+    "total_tokens_in": 27800,
+    "total_tokens_out": 957,
+    "mean_latency_s": 0.5532722770603141,
+    "max_latency_s": 0.6460793659789488,
+    "min_latency_s": 0.45717166300164536
+   },
+   "wall_s": 55.92986178398132
+  },
+  "C1_new": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 208,
+    "n_retries": 121,
+    "n_failures": 13,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 435.8025694517419,
+    "total_tokens_in": 66276,
+    "total_tokens_out": 3978,
+    "mean_latency_s": 2.095204660825682,
+    "max_latency_s": 6.262389342999086,
+    "min_latency_s": 0.5901456659776159
+   },
+   "wall_s": 435.93017053604126
+  },
+  "C2_old": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 216,
+    "n_retries": 18,
+    "n_failures": 2,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 809.5327528404887,
+    "total_tokens_in": 60992,
+    "total_tokens_out": 6393,
+    "mean_latency_s": 3.747836818705966,
+    "max_latency_s": 4.224588544049766,
+    "min_latency_s": 3.1575165119720623
+   },
+   "wall_s": 809.6644043922424
+  },
+  "C2_new": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 598,
+    "n_retries": 597,
+    "n_failures": 199,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 2977.521595109196,
+    "total_tokens_in": 195706,
+    "total_tokens_out": 24836,
+    "mean_latency_s": 4.979133102189291,
+    "max_latency_s": 5.661920754995663,
+    "min_latency_s": 4.389948723022826
+   },
+   "wall_s": 2977.9196677207947
+  },
+  "C3_old": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 230,
+    "n_retries": 35,
+    "n_failures": 5,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 913.8114993054769,
+    "total_tokens_in": 65616,
+    "total_tokens_out": 7309,
+    "mean_latency_s": 3.9730934752412037,
+    "max_latency_s": 5.394435608002823,
+    "min_latency_s": 2.6447719970019534
+   },
+   "wall_s": 913.9554040431976
+  },
+  "C3_new": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 600,
+    "n_retries": 599,
+    "n_failures": 199,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 3134.2175819824915,
+    "total_tokens_in": 196202,
+    "total_tokens_out": 26681,
+    "mean_latency_s": 5.223695969970819,
+    "max_latency_s": 7.1536279619904235,
+    "min_latency_s": 2.9372866339981556
+   },
+   "wall_s": 3134.644939661026
+  }
+ }
+}

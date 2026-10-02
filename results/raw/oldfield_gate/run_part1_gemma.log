@@ -1,0 +1,7 @@
+gemma4:12b C1 old: 100 calls, 0 fallbacks, 124s
+gemma4:12b C1 new: 100 calls, 2 fallbacks, 388s
+gemma4:12b C2 old: 200 calls, 1 fallbacks, 1508s
+gemma4:12b C2 new: 200 calls, 126 fallbacks, 4925s
+gemma4:12b C3 old: 200 calls, 0 fallbacks, 1515s
+gemma4:12b C3 new: 200 calls, 136 fallbacks, 5395s
+GPU in use by another process: 1708231, [No data]

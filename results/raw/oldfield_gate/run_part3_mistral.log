@@ -1,0 +1,7 @@
+mistral:7b C1 old: 100 calls, 4 fallbacks, 100s
+mistral:7b C1 new: 100 calls, 85 fallbacks, 688s
+mistral:7b C2 old: 200 calls, 200 fallbacks, 2178s
+mistral:7b C2 new: 200 calls, 199 fallbacks, 3376s
+mistral:7b C3 old: 200 calls, 199 fallbacks, 2278s
+mistral:7b C3 new: 200 calls, 199 fallbacks, 3505s
+GPU in use by another process: 134457, [No data]

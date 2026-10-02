@@ -1,0 +1,827 @@
+{
+ "cells": {
+  "gemma4:12b|C1|old": {
+   "calls": 100,
+   "attempts": 100,
+   "invalid": 0,
+   "fallbacks": 0,
+   "kinds": {},
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 100,
+    "same": 0,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0,
+    "old_accuracy": null,
+    "invalid": 0
+   },
+   "all": {
+    "attempts": 100,
+    "lines": 100,
+    "same": 0,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0,
+    "old_accuracy": null,
+    "invalid": 0
+   }
+  },
+  "gemma4:12b|C1|new": {
+   "calls": 100,
+   "attempts": 134,
+   "invalid": 36,
+   "fallbacks": 2,
+   "kinds": {
+    "OLD wrong (NEW differs)": 35,
+    "NEW equals the current letter": 1
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 100,
+    "same": 0,
+    "old_present": 100,
+    "old_correct": 72,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0,
+    "old_accuracy": 0.72,
+    "invalid": 28
+   },
+   "all": {
+    "attempts": 134,
+    "lines": 134,
+    "same": 1,
+    "old_present": 134,
+    "old_correct": 98,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.007462686567164179,
+    "old_accuracy": 0.7313432835820896,
+    "invalid": 36
+   }
+  },
+  "gemma4:12b|C2|old": {
+   "calls": 200,
+   "attempts": 207,
+   "invalid": 8,
+   "fallbacks": 1,
+   "kinds": {
+    "NEW equals the current letter": 8
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 5,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.008333333333333333,
+    "old_accuracy": null,
+    "invalid": 5
+   },
+   "all": {
+    "attempts": 207,
+    "lines": 621,
+    "same": 8,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.01288244766505636,
+    "old_accuracy": null,
+    "invalid": 8
+   }
+  },
+  "gemma4:12b|C2|new": {
+   "calls": 200,
+   "attempts": 520,
+   "invalid": 446,
+   "fallbacks": 126,
+   "kinds": {
+    "OLD wrong (NEW differs)": 430,
+    "NEW equals the current letter": 16
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 5,
+    "old_present": 600,
+    "old_correct": 370,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.008333333333333333,
+    "old_accuracy": 0.6166666666666667,
+    "invalid": 175
+   },
+   "all": {
+    "attempts": 520,
+    "lines": 1560,
+    "same": 16,
+    "old_present": 1560,
+    "old_correct": 988,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.010256410256410256,
+    "old_accuracy": 0.6333333333333333,
+    "invalid": 446
+   }
+  },
+  "gemma4:12b|C3|old": {
+   "calls": 200,
+   "attempts": 203,
+   "invalid": 3,
+   "fallbacks": 0,
+   "kinds": {
+    "NEW equals the current letter": 3
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 3,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0046875,
+    "old_accuracy": null,
+    "invalid": 3
+   },
+   "all": {
+    "attempts": 203,
+    "lines": 650,
+    "same": 3,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.004615384615384616,
+    "old_accuracy": null,
+    "invalid": 3
+   }
+  },
+  "gemma4:12b|C3|new": {
+   "calls": 200,
+   "attempts": 548,
+   "invalid": 484,
+   "fallbacks": 136,
+   "kinds": {
+    "OLD wrong (NEW differs)": 461,
+    "NEW equals the current letter": 23
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 8,
+    "old_present": 640,
+    "old_correct": 371,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0125,
+    "old_accuracy": 0.5796875,
+    "invalid": 186
+   },
+   "all": {
+    "attempts": 548,
+    "lines": 1763,
+    "same": 23,
+    "old_present": 1763,
+    "old_correct": 1090,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.013045944412932501,
+    "old_accuracy": 0.6182643221781055,
+    "invalid": 484
+   }
+  },
+  "qwen2.5:7b|C1|old": {
+   "calls": 100,
+   "attempts": 100,
+   "invalid": 0,
+   "fallbacks": 0,
+   "kinds": {},
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 100,
+    "same": 0,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0,
+    "old_accuracy": null,
+    "invalid": 0
+   },
+   "all": {
+    "attempts": 100,
+    "lines": 100,
+    "same": 0,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0,
+    "old_accuracy": null,
+    "invalid": 0
+   }
+  },
+  "qwen2.5:7b|C1|new": {
+   "calls": 100,
+   "attempts": 208,
+   "invalid": 121,
+   "fallbacks": 13,
+   "kinds": {
+    "OLD wrong (NEW differs)": 68,
+    "wrong number of lines": 43,
+    "NEW equals the current letter": 10
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 174,
+    "same": 9,
+    "old_present": 174,
+    "old_correct": 92,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05172413793103448,
+    "old_accuracy": 0.5287356321839081,
+    "invalid": 82
+   },
+   "all": {
+    "attempts": 208,
+    "lines": 282,
+    "same": 12,
+    "old_present": 282,
+    "old_correct": 161,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0425531914893617,
+    "old_accuracy": 0.5709219858156028,
+    "invalid": 121
+   }
+  },
+  "qwen2.5:7b|C2|old": {
+   "calls": 200,
+   "attempts": 216,
+   "invalid": 18,
+   "fallbacks": 2,
+   "kinds": {
+    "NEW equals the current letter": 18
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 14,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.023333333333333334,
+    "old_accuracy": null,
+    "invalid": 12
+   },
+   "all": {
+    "attempts": 216,
+    "lines": 648,
+    "same": 20,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.030864197530864196,
+    "old_accuracy": null,
+    "invalid": 18
+   }
+  },
+  "qwen2.5:7b|C2|new": {
+   "calls": 200,
+   "attempts": 598,
+   "invalid": 597,
+   "fallbacks": 199,
+   "kinds": {
+    "OLD wrong (NEW differs)": 508,
+    "NEW equals the current letter": 89
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 34,
+    "old_present": 600,
+    "old_correct": 96,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.056666666666666664,
+    "old_accuracy": 0.16,
+    "invalid": 199
+   },
+   "all": {
+    "attempts": 598,
+    "lines": 1794,
+    "same": 93,
+    "old_present": 1794,
+    "old_correct": 295,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.051839464882943144,
+    "old_accuracy": 0.16443701226309923,
+    "invalid": 597
+   }
+  },
+  "qwen2.5:7b|C3|old": {
+   "calls": 200,
+   "attempts": 230,
+   "invalid": 35,
+   "fallbacks": 5,
+   "kinds": {
+    "NEW equals the current letter": 35
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 26,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.040625,
+    "old_accuracy": null,
+    "invalid": 23
+   },
+   "all": {
+    "attempts": 230,
+    "lines": 736,
+    "same": 39,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05298913043478261,
+    "old_accuracy": null,
+    "invalid": 35
+   }
+  },
+  "qwen2.5:7b|C3|new": {
+   "calls": 200,
+   "attempts": 600,
+   "invalid": 599,
+   "fallbacks": 199,
+   "kinds": {
+    "OLD wrong (NEW differs)": 506,
+    "NEW equals the current letter": 93
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 35,
+    "old_present": 640,
+    "old_correct": 81,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0546875,
+    "old_accuracy": 0.1265625,
+    "invalid": 200
+   },
+   "all": {
+    "attempts": 600,
+    "lines": 1920,
+    "same": 100,
+    "old_present": 1920,
+    "old_correct": 248,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.052083333333333336,
+    "old_accuracy": 0.12916666666666668,
+    "invalid": 599
+   }
+  },
+  "mistral:7b|C1|old": {
+   "calls": 100,
+   "attempts": 138,
+   "invalid": 42,
+   "fallbacks": 4,
+   "kinds": {
+    "wrong number of lines": 38,
+    "NEW equals the current letter": 4
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 126,
+    "same": 7,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05555555555555555,
+    "old_accuracy": null,
+    "invalid": 30
+   },
+   "all": {
+    "attempts": 138,
+    "lines": 176,
+    "same": 7,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.03977272727272727,
+    "old_accuracy": null,
+    "invalid": 42
+   }
+  },
+  "mistral:7b|C1|new": {
+   "calls": 100,
+   "attempts": 284,
+   "invalid": 269,
+   "fallbacks": 85,
+   "kinds": {
+    "wrong number of lines": 109,
+    "OLD wrong (NEW differs)": 158,
+    "NEW equals the current letter": 2
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 165,
+    "same": 5,
+    "old_present": 165,
+    "old_correct": 14,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.030303030303030304,
+    "old_accuracy": 0.08484848484848485,
+    "invalid": 95
+   },
+   "all": {
+    "attempts": 284,
+    "lines": 393,
+    "same": 13,
+    "old_present": 393,
+    "old_correct": 30,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.03307888040712468,
+    "old_accuracy": 0.07633587786259542,
+    "invalid": 269
+   }
+  },
+  "mistral:7b|C2|old": {
+   "calls": 200,
+   "attempts": 600,
+   "invalid": 600,
+   "fallbacks": 200,
+   "kinds": {
+    "wrong number of lines": 600
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 400,
+    "same": 17,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0425,
+    "old_accuracy": null,
+    "invalid": 200
+   },
+   "all": {
+    "attempts": 600,
+    "lines": 1200,
+    "same": 65,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05416666666666667,
+    "old_accuracy": null,
+    "invalid": 600
+   }
+  },
+  "mistral:7b|C2|new": {
+   "calls": 200,
+   "attempts": 598,
+   "invalid": 597,
+   "fallbacks": 199,
+   "kinds": {
+    "OLD wrong (NEW differs)": 532,
+    "NEW equals the current letter": 65
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 18,
+    "old_present": 600,
+    "old_correct": 49,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.03,
+    "old_accuracy": 0.08166666666666667,
+    "invalid": 199
+   },
+   "all": {
+    "attempts": 598,
+    "lines": 1794,
+    "same": 71,
+    "old_present": 1794,
+    "old_correct": 145,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.039576365663322184,
+    "old_accuracy": 0.08082497212931995,
+    "invalid": 597
+   }
+  },
+  "mistral:7b|C3|old": {
+   "calls": 200,
+   "attempts": 598,
+   "invalid": 597,
+   "fallbacks": 199,
+   "kinds": {
+    "wrong number of lines": 597
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 441,
+    "same": 24,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05442176870748299,
+    "old_accuracy": null,
+    "invalid": 199
+   },
+   "all": {
+    "attempts": 598,
+    "lines": 1319,
+    "same": 68,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05155420773313116,
+    "old_accuracy": null,
+    "invalid": 597
+   }
+  },
+  "mistral:7b|C3|new": {
+   "calls": 200,
+   "attempts": 599,
+   "invalid": 598,
+   "fallbacks": 199,
+   "kinds": {
+    "OLD wrong (NEW differs)": 511,
+    "NEW equals the current letter": 87
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 29,
+    "old_present": 640,
+    "old_correct": 53,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0453125,
+    "old_accuracy": 0.0828125,
+    "invalid": 200
+   },
+   "all": {
+    "attempts": 599,
+    "lines": 1917,
+    "same": 92,
+    "old_present": 1917,
+    "old_correct": 164,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.047991653625456446,
+    "old_accuracy": 0.08555033907146584,
+    "invalid": 598
+   }
+  },
+  "llama3.2:3b|C1|old": {
+   "calls": 100,
+   "attempts": 266,
+   "invalid": 207,
+   "fallbacks": 41,
+   "kinds": {
+    "wrong number of lines": 206,
+    "NEW equals the current letter": 1
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 200,
+    "same": 4,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.02,
+    "old_accuracy": null,
+    "invalid": 100
+   },
+   "all": {
+    "attempts": 266,
+    "lines": 479,
+    "same": 8,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.016701461377870562,
+    "old_accuracy": null,
+    "invalid": 207
+   }
+  },
+  "llama3.2:3b|C1|new": {
+   "calls": 100,
+   "attempts": 286,
+   "invalid": 272,
+   "fallbacks": 86,
+   "kinds": {
+    "wrong number of lines": 249,
+    "other": 1,
+    "OLD wrong (NEW differs)": 21,
+    "NEW equals the current letter": 1
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 100,
+    "lines": 300,
+    "same": 3,
+    "old_present": 300,
+    "old_correct": 77,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.01,
+    "old_accuracy": 0.25666666666666665,
+    "invalid": 96
+   },
+   "all": {
+    "attempts": 286,
+    "lines": 798,
+    "same": 11,
+    "old_present": 798,
+    "old_correct": 207,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.013784461152882205,
+    "old_accuracy": 0.2593984962406015,
+    "invalid": 272
+   }
+  },
+  "llama3.2:3b|C2|old": {
+   "calls": 200,
+   "attempts": 254,
+   "invalid": 59,
+   "fallbacks": 5,
+   "kinds": {
+    "other": 32,
+    "NEW equals the current letter": 27
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 24,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.04,
+    "old_accuracy": null,
+    "invalid": 40
+   },
+   "all": {
+    "attempts": 254,
+    "lines": 762,
+    "same": 30,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.03937007874015748,
+    "old_accuracy": null,
+    "invalid": 59
+   }
+  },
+  "llama3.2:3b|C2|new": {
+   "calls": 200,
+   "attempts": 599,
+   "invalid": 598,
+   "fallbacks": 199,
+   "kinds": {
+    "OLD wrong (NEW differs)": 532,
+    "NEW equals the current letter": 65,
+    "other": 1
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 600,
+    "same": 26,
+    "old_present": 600,
+    "old_correct": 55,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.043333333333333335,
+    "old_accuracy": 0.09166666666666666,
+    "invalid": 200
+   },
+   "all": {
+    "attempts": 599,
+    "lines": 1797,
+    "same": 68,
+    "old_present": 1797,
+    "old_correct": 180,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.037840845854201444,
+    "old_accuracy": 0.1001669449081803,
+    "invalid": 598
+   }
+  },
+  "llama3.2:3b|C3|old": {
+   "calls": 200,
+   "attempts": 265,
+   "invalid": 76,
+   "fallbacks": 11,
+   "kinds": {
+    "other": 39,
+    "NEW equals the current letter": 37
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 32,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.05,
+    "old_accuracy": null,
+    "invalid": 47
+   },
+   "all": {
+    "attempts": 265,
+    "lines": 865,
+    "same": 40,
+    "old_present": 0,
+    "old_correct": 0,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.046242774566473986,
+    "old_accuracy": null,
+    "invalid": 76
+   }
+  },
+  "llama3.2:3b|C3|new": {
+   "calls": 200,
+   "attempts": 600,
+   "invalid": 600,
+   "fallbacks": 200,
+   "kinds": {
+    "OLD wrong (NEW differs)": 527,
+    "NEW equals the current letter": 73
+   },
+   "errors": 0,
+   "first": {
+    "attempts": 200,
+    "lines": 640,
+    "same": 27,
+    "old_present": 640,
+    "old_correct": 49,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.0421875,
+    "old_accuracy": 0.0765625,
+    "invalid": 200
+   },
+   "all": {
+    "attempts": 600,
+    "lines": 1920,
+    "same": 76,
+    "old_present": 1920,
+    "old_correct": 178,
+    "old_correct_and_new_eq_old": 0,
+    "same_rate": 0.03958333333333333,
+    "old_accuracy": 0.09270833333333334,
+    "invalid": 600
+   }
+  }
+ },
+ "c1_old_reproduces_step1": {
+  "gemma4:12b": {
+   "compared": 100,
+   "identical": 100,
+   "first_mismatch": null,
+   "lengths": [
+    100,
+    100
+   ]
+  },
+  "qwen2.5:7b": {
+   "compared": 100,
+   "identical": 100,
+   "first_mismatch": null,
+   "lengths": [
+    100,
+    100
+   ]
+  },
+  "mistral:7b": {
+   "compared": 138,
+   "identical": 138,
+   "first_mismatch": null,
+   "lengths": [
+    138,
+    138
+   ]
+  },
+  "llama3.2:3b": {
+   "compared": 266,
+   "identical": 266,
+   "first_mismatch": null,
+   "lengths": [
+    266,
+    266
+   ]
+  }
+ }
+}
