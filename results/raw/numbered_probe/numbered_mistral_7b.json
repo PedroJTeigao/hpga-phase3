@@ -1,0 +1,85 @@
+{
+ "model": "mistral:7b",
+ "cells": {
+  "C1_drift": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 138,
+    "n_retries": 42,
+    "n_failures": 4,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 245.8775695480872,
+    "total_tokens_in": 44660,
+    "total_tokens_out": 2067,
+    "mean_latency_s": 1.7817215184644,
+    "max_latency_s": 3.746722305950243,
+    "min_latency_s": 0.7823222129954956
+   },
+   "wall_s": 246.4941439628601
+  },
+  "C2_num": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 600,
+    "n_retries": 600,
+    "n_failures": 200,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 2150.7506825739983,
+    "total_tokens_in": 354400,
+    "total_tokens_out": 18000,
+    "mean_latency_s": 3.584584470956664,
+    "max_latency_s": 8.035534833034035,
+    "min_latency_s": 1.49261693097651
+   },
+   "wall_s": 2151.1719949245453
+  },
+  "C2_numold": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 353,
+    "n_retries": 184,
+    "n_failures": 31,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 2065.9847701164545,
+    "total_tokens_in": 207119,
+    "total_tokens_out": 16944,
+    "mean_latency_s": 5.85264807398429,
+    "max_latency_s": 7.744544706016313,
+    "min_latency_s": 4.8216001960099675
+   },
+   "wall_s": 2066.2385210990906
+  },
+  "C3_num": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 599,
+    "n_retries": 598,
+    "n_failures": 199,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 2331.617605608655,
+    "total_tokens_in": 352963,
+    "total_tokens_out": 19184,
+    "mean_latency_s": 3.8925168707990903,
+    "max_latency_s": 28.5537873969879,
+    "min_latency_s": 1.9086634750128724
+   },
+   "wall_s": 2332.0177195072174
+  },
+  "C3_numold": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 380,
+    "n_retries": 226,
+    "n_failures": 46,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 2295.115070833126,
+    "total_tokens_in": 223565,
+    "total_tokens_out": 19489,
+    "mean_latency_s": 6.039776502192437,
+    "max_latency_s": 9.612930158968084,
+    "min_latency_s": 3.33728900301503
+   },
+   "wall_s": 2295.3692359924316
+  }
+ }
+}

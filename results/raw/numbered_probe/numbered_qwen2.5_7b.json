@@ -1,0 +1,85 @@
+{
+ "model": "qwen2.5:7b",
+ "cells": {
+  "C1_drift": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 100,
+    "n_retries": 0,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 42.85732883802848,
+    "total_tokens_in": 27800,
+    "total_tokens_out": 957,
+    "mean_latency_s": 0.4285732883802848,
+    "max_latency_s": 0.5649300419609062,
+    "min_latency_s": 0.38273499900242314
+   },
+   "wall_s": 43.77614641189575
+  },
+  "C2_num": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 202,
+    "n_retries": 2,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 484.69252453686204,
+    "total_tokens_in": 96833,
+    "total_tokens_out": 5914,
+    "mean_latency_s": 2.3994679432517922,
+    "max_latency_s": 4.9835863769985735,
+    "min_latency_s": 0.9504277830128558
+   },
+   "wall_s": 484.83786511421204
+  },
+  "C2_numold": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 333,
+    "n_retries": 159,
+    "n_failures": 26,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 1581.8145490229363,
+    "total_tokens_in": 170589,
+    "total_tokens_out": 13758,
+    "mean_latency_s": 4.750193840909718,
+    "max_latency_s": 5.370619200984947,
+    "min_latency_s": 4.222410754009616
+   },
+   "wall_s": 1582.0483152866364
+  },
+  "C3_num": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 200,
+    "n_retries": 0,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 840.7185579973739,
+    "total_tokens_in": 95875,
+    "total_tokens_out": 6218,
+    "mean_latency_s": 4.203592789986869,
+    "max_latency_s": 6.427469719026703,
+    "min_latency_s": 2.2646106029860675
+   },
+   "wall_s": 840.8621878623962
+  },
+  "C3_numold": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 304,
+    "n_retries": 122,
+    "n_failures": 18,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 1597.4575400078902,
+    "total_tokens_in": 155546,
+    "total_tokens_out": 13536,
+    "mean_latency_s": 5.254794539499639,
+    "max_latency_s": 10.811584486044012,
+    "min_latency_s": 2.9904874449712224
+   },
+   "wall_s": 1597.658099412918
+  }
+ }
+}

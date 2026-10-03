@@ -2,7 +2,12 @@
 
 *A standalone account of one claim, written 2026-10-02. No new model calls were made for this document. Every number comes from `experiments/analyse_position_reading.py`, run over files already committed: the OLD-slot gate in `results/raw/oldfield_gate/` (committed `41ec2b6`, pre-registered `bab55af`, scored in `results/PREREGISTERED_OLDFIELD_SCORED.md`) and the GA call logs of arms C (gemma4:12b and qwen2.5:7b) and F (gemma4:12b). The generated tables are `results/raw/position_reading_tables.md`.*
 
-## The claim
+> **Addendum, 2026-10-02, after the pre-registered intervention test (`results/PREREGISTERED_NUMBERED_SCORED.md`).** The text below is left as written. As a universal claim it was **FALSIFIED** under that test's pre-registered rules. It holds for two of the four models and not for the other two.
+>
+> - **gemma4:12b and qwen2.5:7b.** Labelling every position in the sequence (`0:A 1:C …`), with the response format unchanged, removed the repeats: 0/640 lines for each in C3. For these two models the failure is a locating failure, now shown by intervention, not only by observation.
+> - **mistral:7b and llama3.2:3b.** With the same display they could read the letter (0.79 and 0.96 when asked to state it). Yet in the normal response format they still repeated it at or above chance (5.5–8.2% of lines). Only a response format that made them state the current letter stopped them: llama fell to 0.2% of lines, mistral to 3.1%.
+> - So for these two models the failure is not locating but **not consulting** the letter unless the format requires it.
+> - **"When a model has stated the letter correctly, it never repeats it" still holds without exception:** 0 of 4,440 more lines.
 
 The mutate operator's format (`mutate/position`) asks for lines `POSITION: <n>, NEW: <letter>`, with a prose rule that NEW must differ from the letter already at that position. Every invalid mutate attempt in this project's GA runs broke that rule (790 of 790 over three arms). The natural reading was that the model ignores the prose rule.
 

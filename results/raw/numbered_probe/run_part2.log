@@ -1,0 +1,18 @@
+16:11:02 qwen2.5:7b C1_drift: 100 calls, 100 requests, 0 fallbacks, 44s
+16:19:07 qwen2.5:7b C2_num: 200 calls, 202 requests, 0 fallbacks, 485s
+16:45:29 qwen2.5:7b C2_numold: 200 calls, 333 requests, 26 fallbacks, 1582s
+16:59:30 qwen2.5:7b C3_num: 200 calls, 200 requests, 0 fallbacks, 841s
+17:26:08 qwen2.5:7b C3_numold: 200 calls, 304 requests, 18 fallbacks, 1598s
+MODEL DONE qwen2.5:7b rc=0
+17:30:29 mistral:7b C1_drift: 100 calls, 138 requests, 4 fallbacks, 246s
+18:06:20 mistral:7b C2_num: 200 calls, 600 requests, 200 fallbacks, 2151s
+18:40:47 mistral:7b C2_numold: 200 calls, 353 requests, 31 fallbacks, 2066s
+19:19:39 mistral:7b C3_num: 200 calls, 599 requests, 199 fallbacks, 2332s
+19:57:54 mistral:7b C3_numold: 200 calls, 380 requests, 46 fallbacks, 2295s
+MODEL DONE mistral:7b rc=0
+20:02:18 llama3.2:3b C1_drift: 100 calls, 266 requests, 41 fallbacks, 237s
+20:08:46 llama3.2:3b C2_num: 200 calls, 276 requests, 6 fallbacks, 387s
+20:20:35 llama3.2:3b C2_numold: 200 calls, 359 requests, 30 fallbacks, 710s
+20:27:33 llama3.2:3b C3_num: 200 calls, 280 requests, 9 fallbacks, 417s
+20:39:36 llama3.2:3b C3_numold: 200 calls, 345 requests, 35 fallbacks, 723s
+MODEL DONE llama3.2:3b rc=0

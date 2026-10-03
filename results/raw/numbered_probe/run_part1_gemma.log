@@ -1,0 +1,7 @@
+13:36:26 gemma4:12b C1_drift: 100 calls, 100 requests, 0 fallbacks, 122s
+13:58:52 gemma4:12b C2_num: 200 calls, 202 requests, 0 fallbacks, 1345s
+14:33:18 gemma4:12b C2_numold: 200 calls, 206 requests, 0 fallbacks, 2066s
+14:58:55 gemma4:12b C3_num: 200 calls, 200 requests, 0 fallbacks, 1537s
+15:34:09 gemma4:12b C3_numold: 200 calls, 202 requests, 0 fallbacks, 2114s
+MODEL DONE gemma4:12b rc=0
+GPU in use by another process: 3812868, [No data]

@@ -1,0 +1,66 @@
+{
+ "launches": [
+  {
+   "started": "2026-10-02T13:34:06-0400",
+   "models": [
+    "gemma4:12b",
+    "qwen2.5:7b",
+    "mistral:7b",
+    "llama3.2:3b"
+   ],
+   "ollama_version": "0.34.0",
+   "env": {
+    "HPGA_LLM_TIMEOUT_S": "600",
+    "PYTHONHASHSEED": "0"
+   },
+   "stopped": "GPU in use by another process before qwen2.5:7b: 3812868, [No data]"
+  },
+  {
+   "started": "2026-10-02T16:10:12-0400",
+   "models": [
+    "qwen2.5:7b",
+    "mistral:7b",
+    "llama3.2:3b"
+   ],
+   "ollama_version": "0.34.0",
+   "env": {
+    "HPGA_LLM_TIMEOUT_S": "600",
+    "PYTHONHASHSEED": "0"
+   },
+   "finished": "2026-10-02T20:39:40-0400"
+  }
+ ],
+ "models": {
+  "gemma4:12b": {
+   "digest": "4eb23ef187e2c5462566d6a1d3bbbc2f1346d0b4327cbb66d58fffbcc9b2b05c",
+   "warmup_load_s": 15.61,
+   "start": "2026-10-02T13:34:24",
+   "returncode": 0,
+   "end": "2026-10-02T15:34:09"
+  },
+  "qwen2.5:7b": {
+   "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+   "warmup_load_s": 5.83,
+   "start": "2026-10-02T16:10:18",
+   "returncode": 0,
+   "end": "2026-10-02T17:26:08",
+   "runner_exit_wait_s": 2.2
+  },
+  "mistral:7b": {
+   "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+   "warmup_load_s": 9.94,
+   "start": "2026-10-02T17:26:22",
+   "returncode": 0,
+   "end": "2026-10-02T19:57:54",
+   "runner_exit_wait_s": 2.1
+  },
+  "llama3.2:3b": {
+   "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+   "warmup_load_s": 23.47,
+   "start": "2026-10-02T19:58:21",
+   "returncode": 0,
+   "end": "2026-10-02T20:39:36",
+   "runner_exit_wait_s": 4.1
+  }
+ }
+}
