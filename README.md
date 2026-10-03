@@ -1,3 +1,28 @@
+## Start here (added 2026-10-03)
+
+LLMs used as the crossover/mutation operators of a genetic algorithm. It began on an HP lattice and now runs on protein sequences scored by ESMFold + TM-score against 7UR7.
+
+- **Live branch: `move-class`.** `main` stops at 2026-09-24 and lacks the fitness-prompt arm, the qwen arm and all operator probes below.
+- **Overview, findings and sources:** [results/PROJECT_SUMMARY.md](results/PROJECT_SUMMARY.md)
+- **Operator results:** [OPERATOR_BEHAVIOUR.md](results/OPERATOR_BEHAVIOUR.md) (main account), extended by [BLIND_CHOICE.md](results/BLIND_CHOICE.md), [INDEXING_NOT_INSTRUCTION.md](results/INDEXING_NOT_INSTRUCTION.md) (with its dated addendum) and [MISREAD_COLLISIONS.md](results/MISREAD_COLLISIONS.md).
+- **Search outcome:** [OPERATOR_DOES_NOT_MATTER.md](results/OPERATOR_DOES_NOT_MATTER.md)
+- **Pre-registered**, each committed before its first call, with a separate scoring file: [QWEN](results/PREREGISTERED_QWEN.md) → [scored](results/PREREGISTERED_QWEN_SCORED.md); [OLDFIELD](results/PREREGISTERED_OLDFIELD.md) → [scored](results/PREREGISTERED_OLDFIELD_SCORED.md); [NUMBERED](results/PREREGISTERED_NUMBERED.md) → [scored](results/PREREGISTERED_NUMBERED_SCORED.md).
+- **Post hoc / observational:** BLIND_CHOICE, INDEXING_NOT_INSTRUCTION (its universal claim was falsified for 2 of 4 models by the numbered probe), MISREAD_COLLISIONS, [NUMBERED_POSTHOC_DESCRIPTIVE.md](results/NUMBERED_POSTHOC_DESCRIPTIVE.md).
+- **Data:** every raw call log and result file is tracked in [results/raw/](results/raw) (about 70 MB, 616 files). No GPU or LLM is needed to re-derive the operator numbers. With Python 3.12 (as used; 3.10+ is required for the type syntax), run from the repo root:
+  ```
+  python experiments/analyse_blind_choice.py
+  python experiments/analyse_position_reading.py
+  python experiments/analyse_misread_collisions.py
+  python experiments/probe_mutate_oldfield.py summarize --out-dir results/raw/oldfield_gate
+  python experiments/probe_mutate_numbered.py summarize --out-dir results/raw/numbered_probe
+  python experiments/summarize_arm_c_model.py --model-dir results/raw/armC_qwen2.5_7b --out-md /tmp/armC.md
+  ```
+  Each one writes the tables that its results file cites.
+
+*The rest of this README is the original Phase 2 document (lattice operators, 2026-08-30), kept as written.*
+
+---
+
 # Phase 2 — LLM-Based Genetic Operators
 
 Self-contained sibling of `Phase 1/`, structured the same way (`hpga/`,
