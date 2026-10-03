@@ -98,6 +98,7 @@ To see why, here is each cell's repeat rate against shuffle chance (`BLIND_CHOIC
   - mistral's numbered/base cells kept failing on line count (200/200 and 199/200 fallbacks; it answers 2 lines when asked for 3), as in the gate.
 - **qwen with the numbered display repeats more with the OLD slot than without it** (1.3–2.2% vs 0.0–0.3% of lines). Its reading is imperfect (0.83–0.87), and the misread lines collide.
 - **mistral's numbered/base ratio is above chance in C3 (1.42).** Not explained.
+  - Cross-reference, added 2026-10-03: post-hoc, descriptive collision rates on misread lines are in `results/MISREAD_COLLISIONS.md`; they do not revise this verdict.
 
 ## Limits
 
