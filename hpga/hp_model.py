@@ -1,8 +1,10 @@
 """3D HP lattice protein folding model (simple cubic lattice): genome ->
 walk -> fitness.
 
-Migrated from Phase 1's 2D square-lattice model (see `../Phase 1/hpga/hp_model.py`,
-byte-identical to this file's pre-migration state) to the 3D simple cubic
+Migrated from Phase 1's 2D square-lattice model (Phase 1's `hpga/hp_model.py`,
+byte-identical to this file's pre-migration state; the Phase 1 folder is not in this
+repository, and the 2D model was never committed to it: the first version here,
+in 9765713, is already 3D) to the 3D simple cubic
 lattice, per advisor requirement. This is the *plain* 3D HP model
 (backbone-only contacts) -- a step closer to the HP side-chain model (HPSC,
 Benitez & Lopes 2009) used by Xue et al. (NoCS 2014, this project's base

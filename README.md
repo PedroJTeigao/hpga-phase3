@@ -19,19 +19,29 @@ LLMs used as the crossover/mutation operators of a genetic algorithm. It began o
   ```
   Each one writes the tables that its results file cites.
 
-*The rest of this README is the original Phase 2 document (lattice operators, 2026-08-30), kept as written.*
+## Requirements outside Python (added 2026-10-05)
+
+Python packages are pinned in [requirements.txt](requirements.txt) (Python ≥ 3.10; runs used 3.12.11). Running anything, not just re-deriving numbers, also needs:
+- **Ollama 0.34.0** with the tags `gemma4:12b`, `qwen2.5:7b`, `mistral:7b`, `llama3.2:3b` pulled.
+  - The host is `HPGA_OLLAMA_HOST` (default `http://localhost:11434`).
+  - Set **`HPGA_OWN_OLLAMA_PREFIX`** to your Ollama install directory. The default, `/scratch/pcanaste/ollama`, is the original machine. With a wrong value the GPU check stops within a minute and names the process it did not recognise.
+- **A CUDA GPU with `nvidia-smi` on the PATH.** Runs used a 15 GB T4: ESMFold fp32 needs about 13.7 GB, and fp16 gives NaN coordinates (`esmfold/RESULTS.md`).
+- **A C++ compiler for TM-align:** `g++ -static -O3 -ffast-math -lm -o TMalign esmfold/tmalign/TMalign.cpp`. Point **`TMALIGN_BIN`** at the binary (default `/scratch/pcanaste/bin/TMalign`).
+- **The ESMFold weights** (`facebook/esmfold_v1`, about 8.4 GB), downloaded from Hugging Face on first use into `HF_HOME`. `experiments/run_fitness_prompt_ga.py` refuses to start unless `HF_HOME` begins with `/scratch/`, an original-machine guard; edit line 546 elsewhere.
+
+*The rest of this README is the original Phase 2 document (lattice operators, 2026-08-30). It is kept as written, except that references to the separate Phase 1 folder and to `.venv/` were corrected on 2026-10-05.*
 
 ---
 
 # Phase 2 — LLM-Based Genetic Operators
 
-Self-contained sibling of `Phase 1/`, structured the same way (`hpga/`,
-`experiments/`, `analysis/`, `results/`). This folder exists so Phase 1 stays
+Originally a sibling of a separate Phase 1 project folder, structured the same way (`hpga/`,
+`experiments/`, `analysis/`, `results/`). That Phase 1 folder is **not in this repository**. This folder exists so Phase 1 stays
 untouched and reproducible while Phase 2 substitutes LLM calls for the
 deterministic crossover/mutation operators.
 
 Identity between the two folders is recorded below as SHA-256 file hashes,
-taken at the moment `Phase 2/` was split out of `Phase 1/` (2026-08-30),
+taken at the moment this folder was split out of the Phase 1 folder (2026-08-30),
 before this folder was put under version control.
 
 ## What changed vs. Phase 1
@@ -74,7 +84,7 @@ Every LLM prompt/response is logged as one JSON line per call to
 `results/raw/llm_operator_calls_<run_id>.jsonl` (`HPGA_RUN_ID` env var, or a
 timestamp+PID default), so operator behaviour can be audited after the fact.
 Two such logs, produced during the initial pilot before this split, were
-moved here from `Phase 1/results/raw/`:
+moved here from the Phase 1 folder's `results/raw/` (that folder is not in this repository; the two logs are, in `results/raw/`):
 `llm_operator_calls_1788052574_11252.jsonl` (an isolated one-crossover /
 one-mutate sanity check) and `llm_operator_calls_1788052620_7788.jsonl` (the
 first paired pilot run, 27 calls, 27/27 valid on first attempt).
@@ -117,16 +127,10 @@ and `analysis/{model,plots,master_overhead}.py` were also verified identical
 to their Phase 1 counterparts at split time and are unaffected by the 3D
 migration (they don't touch `hp_model.py` directly).
 
-Re-verify the *timing-harness* files (still required to match) with:
-
-```bash
-for f in island.py worker.py instrumentation.py __init__.py; do
-  diff -q "../Phase 1/hpga/$f" "hpga/$f"
-done
-```
+The *timing-harness* files are still required to match Phase 1. The command that re-verified this diffed them against the Phase 1 folder, which is not in this repository, so it cannot be run from a clone. It was removed on 2026-10-05. The SHA-256 table above is the record.
 
 `config.py` and `hp_model.py` are now expected to differ from Phase 1 (3D
-migration, flagged below) and are excluded from that loop on purpose.
+migration, flagged below) and were excluded from that check on purpose.
 
 **If any of `island.py`, `worker.py`, or `instrumentation.py` ever needs to
 change in Phase 2, that breaks the comparison's validity and must be flagged
@@ -213,7 +217,7 @@ Best across 5 seeds = 20/22 contacts, gap = 2. **The GA did not reach the
 proven optimum in any seed. The validation did not pass.** This falls short
 of Phase 1's 2D validation (Unger & Moult n=20, E\*=-9: 3/5 seeds reached
 the exact optimum, the other 2 landed 1 contact short, converged by
-generation ~25–50 — `Phase 1/results/PHASE1_RESULTS.md` §2) on the same
+generation ~25–50 — `results/PHASE1_RESULTS.md` §2, a copy of which is in this repository) on the same
 operator/population budget.
 
 A plausible explanation (larger 5-symbol alphabet, a degeneracy=1 target
@@ -295,7 +299,7 @@ would fully settle it.
 
 ## Environment
 
-Own venv (`.venv/`), not shared with Phase 1, pinned via `requirements.txt`
+The runs used the venv at `/scratch/pcanaste/venv` on the original machine; no `.venv/` exists in this repository (corrected 2026-10-05). It is not shared with Phase 1, and is pinned via `requirements.txt`
 (frozen from Phase 1's venv at split time, plus `ollama`/`matplotlib`/`numpy`
 already present there). Requires a local Ollama server
 (`http://localhost:11434` by default) with `gemma4:12b` pulled.

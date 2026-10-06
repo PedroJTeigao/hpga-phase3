@@ -233,6 +233,7 @@ The merge into `main` is done, so step 1 of the previous handoff is complete. Wh
    cd /scratch/pcanaste/projeto/phase2_agent_memory && PYTHONHASHSEED=0 setsid nohup /scratch/pcanaste/venv/bin/python experiments/run_move_class.py run --arms S2 S4 B --seeds 3 4 5 > results/raw/move_class_run_seeds345.log 2>&1 < /dev/null &
    /scratch/pcanaste/venv/bin/python experiments/summarize_move_class.py --seeds 0 1 2 3 4 5
    ```
+   - (Note, 2026-10-05: this command was never run, so `results/raw/move_class_run_seeds345.log` does not exist; it is the log this launch would create.)
    - The summarizer expects all five arms for every listed seed. Either run S1 and S3 on the new seeds as well, or change its `ARMS` tuple first.
    - B seeds 3 and 4 will be checked against `sequence_ga_cmp_B_seed{3,4}.json` automatically.
    - Any new seeds also mean updating `results/MOVE_CLASS.md`, `PROJECT_SUMMARY.md` §3.7 and findings 22–25.

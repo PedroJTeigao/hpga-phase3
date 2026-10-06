@@ -1,7 +1,7 @@
 # Phase 2 Results — LLM-Based Genetic Operators
 
-*Standalone results summary, same structure as `Phase 1/results/PHASE1_RESULTS.md`.
-See `Phase 2/README.md` for the operator implementation, env vars, and the
+*Standalone results summary, same structure as `results/PHASE1_RESULTS.md` (originally in the separate Phase 1 folder, which is not in this repository; a copy is here).
+See this repository's `README.md` for the operator implementation, env vars, and the
 byte-identity record establishing that only `hpga/operators.py` differs from
 Phase 1. Phase 3 (`hpga/circles.py`, `hpga/blackboard.py`) has its own
 document, `results/PHASE3_RESULTS.md` -- §7-8 below (GPU/DIBM diagnostics,

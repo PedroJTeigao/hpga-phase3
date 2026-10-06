@@ -61,7 +61,10 @@ from hpga.config import HPGAConfig  # noqa: E402
 
 log = logging.getLogger("seqcmp")
 RAW = ROOT / "results" / "raw"
-OWN_OLLAMA_PREFIX = "/scratch/pcanaste/ollama"
+# Path prefix of this user's own Ollama install; its GPU runner is "ours", not another user's process. Override with
+# HPGA_OWN_OLLAMA_PREFIX on any other machine (the default is the original ece000 literal, unchanged).
+OWN_OLLAMA_PREFIX = os.environ.get("HPGA_OWN_OLLAMA_PREFIX", "/scratch/pcanaste/ollama")
+OWN_UNMATCHED_CONFIRM_S = 30
 GPU_WAIT_POLL_S, GPU_WAIT_MAX_S = 600, 7200
 MIN_FREE_DISK_GB = 2.0
 SWAP_CHECK_GENS = (1, 6, 11, 16)
@@ -72,6 +75,11 @@ STAT_KEYS = ("n_llm_calls", "n_llm_requests", "n_retries", "n_failures", "n_skip
 
 class GpuBusy(RuntimeError):
     pass
+
+
+class OwnProcessNotRecognised(GpuBusy):
+    """The GPU is held only by processes of this user that do not match OWN_OLLAMA_PREFIX -- almost always this user's
+    own Ollama installed somewhere else. Raised within a minute instead of waiting GPU_WAIT_MAX_S."""
 
 
 class DiskLow(RuntimeError):
@@ -111,13 +119,47 @@ def _is_own(app) -> bool:
     return app[0] == os.getpid() or app[2].startswith(OWN_OLLAMA_PREFIX)
 
 
+def _own_unmatched(others) -> list[dict]:
+    """Of the 'others', those owned by this user whose executable is readable and lies outside OWN_OLLAMA_PREFIX.
+    An unreadable executable (e.g. our own runner while it exits) is not counted: that case keeps the normal wait."""
+    out = []
+    for a in others:
+        try:
+            uid = os.stat(f"/proc/{a[0]}").st_uid
+            exe = os.readlink(f"/proc/{a[0]}/exe")
+        except OSError:
+            continue
+        if uid == os.getuid() and not exe.startswith(OWN_OLLAMA_PREFIX):
+            out.append({"pid": a[0], "uid": uid, "exe": exe})
+    return out
+
+
 def wait_gpu_not_used_by_others() -> None:
     """Block while the GPU is held by something that is neither this process nor this user's own
-    Ollama. Never touches the other process. Raises GpuBusy after GPU_WAIT_MAX_S."""
+    Ollama. Never touches the other process. Raises GpuBusy after GPU_WAIT_MAX_S.
+
+    Fast failure: if every such process belongs to this user, has a readable executable outside OWN_OLLAMA_PREFIX, and
+    is still there OWN_UNMATCHED_CONFIRM_S later, raise OwnProcessNotRecognised naming owner, executable and prefix,
+    instead of waiting the full timeout. Genuinely foreign processes keep the full wait."""
     waited = 0
     while True:
         apps = gpu_apps()
         others = [a for a in apps if not _is_own(a)]
+        if waited == 0 and others:
+            mine = _own_unmatched(others)
+            if mine and len(mine) == len(others):
+                time.sleep(OWN_UNMATCHED_CONFIRM_S)
+                still = {p["pid"] for p in _own_unmatched([a for a in gpu_apps() if not _is_own(a)])}
+                mine = [p for p in mine if p["pid"] in still]
+                if mine:
+                    msg = ("GPU held only by process(es) owned by you (uid %d) that are not recognised as your Ollama: %s. "
+                           "They were compared against the prefix %r (HPGA_OWN_OLLAMA_PREFIX). If this is your Ollama, "
+                           "set HPGA_OWN_OLLAMA_PREFIX to its install directory and relaunch."
+                           % (os.getuid(), ", ".join(f"pid {p['pid']} exe {p['exe']}" for p in mine), OWN_OLLAMA_PREFIX))
+                    log.error(msg)
+                    raise OwnProcessNotRecognised(msg)
+                apps = gpu_apps()
+                others = [a for a in apps if not _is_own(a)]
         own_mib = sum(a[1] for a in apps if _is_own(a))
         if not any(a[0] == os.getpid() for a in apps) and torch.cuda.is_initialized():
             own_mib += torch.cuda.memory_reserved() / 2**20 + 500  # this process, if nvidia-smi doesn't list it

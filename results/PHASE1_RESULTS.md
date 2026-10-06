@@ -1,8 +1,9 @@
 # Phase 1 Results — Classical HPGA Baseline
 
-*Standalone results summary. For full derivations, raw data pointers, and the
-two-round correction history behind every number here, see
-`PHASE1_SUMMARY.md` — not restated in this document.*
+*Standalone results summary. The full derivations, raw data pointers, and the
+two-round correction history behind every number here were in a separate Phase 1
+summary (`PHASE1_SUMMARY.md`), which is not in this repository; this file is the
+only Phase 1 write-up here. (Reference corrected 2026-10-05.)*
 
 ## 1. What was built and measured
 

@@ -22,3 +22,17 @@ python-dateutil==2.9.0.post0
 six==1.17.0
 typing-inspection==0.4.4
 typing_extensions==4.16.0
+
+# --- Sequence mode (ESMFold fitness, sequence GA drivers, probes). Added 2026-10-05: the pins above cover only
+# --- the Phase 2 lattice environment. Versions are those in /scratch/pcanaste/venv, which produced every result.
+# Python >= 3.10 is required (PEP 604 type syntax); all runs used Python 3.12.11.
+# torch below is the CUDA 12.8 build; pip needs the PyTorch index to resolve the +cu128 version:
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+transformers==5.17.0
+huggingface_hub==1.31.0
+tokenizers==0.23.2
+safetensors==0.8.0
+# accelerate is optional: verified 2026-10-05 that ESMFold loads and folds without it (transformers 5.17 ignores
+# low_cpu_mem_usage). Pinned because the published runs had it installed and transformers uses it when present.
+accelerate==1.15.0

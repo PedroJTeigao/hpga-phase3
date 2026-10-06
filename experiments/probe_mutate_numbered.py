@@ -92,7 +92,22 @@ def run_model(out: Path) -> None:
     os.environ.pop("HPGA_LLM_LOG_PATH", None)
 
 
-OWN_RUNNER_PREFIX = "/scratch/pcanaste/ollama/"
+# This user's own Ollama install directory. Override with HPGA_OWN_OLLAMA_PREFIX on any other machine; the default
+# resolves to the original literal "/scratch/pcanaste/ollama/" (one trailing slash, as before).
+OWN_RUNNER_PREFIX = os.environ.get("HPGA_OWN_OLLAMA_PREFIX", "/scratch/pcanaste/ollama").rstrip("/") + "/"
+
+
+def foreign_message(foreign: list[dict]) -> str:
+    """Stop message. Processes owned by this user (uid matches, exe readable but outside OWN_RUNNER_PREFIX) are named
+    as such, with the prefix they were compared against, instead of being reported as another user's."""
+    mine = [p for p in foreign if p["uid"] == os.getuid()]
+    if mine:
+        return (f"GPU held by process(es) owned by you (uid {os.getuid()}) that are not recognised as your Ollama: "
+                + ", ".join(f"pid {p['pid']} exe {p['exe']}" for p in mine)
+                + f". They were compared against the prefix {OWN_RUNNER_PREFIX!r} (HPGA_OWN_OLLAMA_PREFIX). If this is "
+                f"your Ollama, set HPGA_OWN_OLLAMA_PREFIX to its install directory and relaunch."
+                + (f" Also held by other users' processes: {[p for p in foreign if p not in mine]}" if len(mine) < len(foreign) else ""))
+    return f"GPU held by another user's process: {foreign}"
 
 
 def gpu_processes() -> list[dict]:
@@ -157,9 +172,11 @@ def cmd_all(out: Path, models) -> None:
         foreign = foreign_processes()
         procs = gpu_processes()
         if foreign:
-            meta["launches"][-1]["stopped"] = f"GPU held by another user's process before {m}: {foreign}"
+            msg = foreign_message(foreign)
+            meta["launches"][-1]["stopped"] = f"before {m}: {msg}"
             json.dump(meta, open(meta_p, "w"), indent=1)
-            raise SystemExit(f"GPU held by another user's process: {foreign}")
+            print(msg, flush=True)
+            raise SystemExit(msg)
         if any(p["own"] for p in procs):
             print(f"WARNING: our runner still on the GPU after {waited:.0f}s before {m}: {procs}", flush=True)
         warm = gate._http("/api/generate", {"model": m, "prompt": "Reply with OK.", "stream": False, "think": False,

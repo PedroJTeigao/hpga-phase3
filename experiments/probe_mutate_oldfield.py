@@ -40,6 +40,30 @@ _PN = re.compile(r"POSITION\s*:\s*(\d+)\s*,\s*NEW\s*:\s*([A-Za-z])", re.I)
 _PON = re.compile(r"POSITION\s*:\s*(\d+)\s*,\s*OLD\s*:\s*([A-Za-z])\s*,\s*NEW\s*:\s*([A-Za-z])", re.I)
 
 
+# This user's own Ollama install directory; override with HPGA_OWN_OLLAMA_PREFIX on any other machine (the default is
+# the original literal). This driver's check by nvidia-smi process name is otherwise unchanged; see the dated
+# correction in results/PREREGISTERED_OLDFIELD_SCORED.md for its known false alarm on an exiting runner.
+OWN_OLLAMA_PREFIX = os.environ.get("HPGA_OWN_OLLAMA_PREFIX", "/scratch/pcanaste/ollama")
+
+
+def _stop_message(apps: str) -> str:
+    """Name processes owned by this user (with their executable and the prefix compared against) instead of calling
+    every unrecognised process another user's."""
+    mine = []
+    for line in apps.splitlines():
+        pid = line.split(",")[0].strip()
+        try:
+            if pid.isdigit() and os.stat(f"/proc/{pid}").st_uid == os.getuid():
+                mine.append(f"pid {pid} exe {os.readlink(f'/proc/{pid}/exe')}")
+        except OSError:
+            continue
+    if mine:
+        return (f"GPU held by process(es) owned by you (uid {os.getuid()}) that are not recognised as your Ollama: "
+                f"{', '.join(mine)}. Compared against the prefix {OWN_OLLAMA_PREFIX!r} (HPGA_OWN_OLLAMA_PREFIX). If this "
+                f"is your Ollama, set HPGA_OWN_OLLAMA_PREFIX to its install directory and relaunch. nvidia-smi: {apps}")
+    return f"GPU in use by another process: {apps}"
+
+
 def tag(model: str) -> str:
     return model.replace(":", "_")
 
@@ -130,8 +154,8 @@ def cmd_all(out: Path, models) -> None:
     for m in models:
         apps = subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name", "--format=csv,noheader"],
                               capture_output=True, text=True).stdout.strip()
-        if apps and "/scratch/pcanaste/ollama" not in apps:
-            raise SystemExit(f"GPU in use by another process: {apps}")
+        if apps and OWN_OLLAMA_PREFIX not in apps:
+            raise SystemExit(_stop_message(apps))
         for resident in _http("/api/ps").get("models", []):  # unload only what is loaded (unloading by name would load it)
             _http("/api/generate", {"model": resident["name"], "prompt": "", "keep_alive": 0})
         warm = _http("/api/generate", {"model": m, "prompt": "Reply with OK.", "stream": False, "think": False,

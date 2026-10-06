@@ -1,7 +1,7 @@
 # Phase 3 Results — Circles, the Blackboard, and the Diversity Gap
 
-*Standalone results summary, same structure as `Phase 2/results/PHASE2_RESULTS.md`
-(itself modeled on `Phase 1/results/PHASE1_RESULTS.md`). Phase 3 has no
+*Standalone results summary, same structure as `results/PHASE2_RESULTS.md`
+(itself modeled on `results/PHASE1_RESULTS.md`; the separate Phase 1 folder is not in this repository). Phase 3 has no
 separate code folder — `hpga/circles.py` and `hpga/blackboard.py` live
 inside this project's `hpga/` alongside the Phase 2 modules. See
 `hpga/circles.py`'s module docstring for why this is a new architecture,
