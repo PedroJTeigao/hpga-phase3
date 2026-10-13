@@ -1,0 +1,53 @@
+{
+  "started": "2026-10-06T13:50:02-0700",
+  "backend": "openai",
+  "remote": true,
+  "endpoint": "http://100.64.195.14:8000/v1",
+  "llm_settings": {
+    "backend": "openai",
+    "base_url": "http://100.64.195.14:8000/v1",
+    "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+    "remote": true,
+    "temperature": 0.7,
+    "context_tokens": 4096,
+    "timeout_s": 600.0,
+    "max_retries": 2,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "use_proxy": false
+  },
+  "models": {
+    "nvidia/Qwen3.6-35B-A3B-NVFP4": {
+      "start": "2026-10-06T13:50:02-0700",
+      "llm_settings": {
+        "backend": "openai",
+        "base_url": "http://100.64.195.14:8000/v1",
+        "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+        "remote": true,
+        "temperature": 0.7,
+        "context_tokens": 4096,
+        "timeout_s": 600.0,
+        "max_retries": 2,
+        "extra_body": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "use_proxy": false
+      },
+      "warmup_wall_s": 0.20390750000660773,
+      "returncode": 0,
+      "end": "2026-10-06T14:06:51-0700"
+    }
+  },
+  "env": {
+    "HPGA_LLM_TIMEOUT_S": null,
+    "HPGA_LLM_TEMPERATURE": null,
+    "HPGA_LLM_NUM_CTX": null,
+    "PYTHONHASHSEED": "0"
+  },
+  "finished": "2026-10-06T14:06:51-0700"
+}

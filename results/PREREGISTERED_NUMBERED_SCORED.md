@@ -99,6 +99,7 @@ To see why, here is each cell's repeat rate against shuffle chance (`BLIND_CHOIC
 - **qwen with the numbered display repeats more with the OLD slot than without it** (1.3–2.2% vs 0.0–0.3% of lines). Its reading is imperfect (0.83–0.87), and the misread lines collide.
 - **mistral's numbered/base ratio is above chance in C3 (1.42).** Not explained.
   - Cross-reference, added 2026-10-03: post-hoc, descriptive collision rates on misread lines are in `results/MISREAD_COLLISIONS.md`; they do not revise this verdict.
+- Cross-reference, added 2026-10-13: both probes were also run, by Italo on a DGX Spark via vLLM, on `nvidia/Qwen3.6-35B-A3B-NVFP4`. It is not the model requested and not a controlled model-scale comparison; see `results/SPARK_QWEN35_PROBE.md`. It has 5 baseline repeats, below rule 3(a)'s threshold of 10, so it changes no verdict and no number here.
 
 ## Limits
 

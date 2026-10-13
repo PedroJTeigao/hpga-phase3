@@ -1,0 +1,1205 @@
+{
+ "note": "100 first-attempt mutate bases from each arm's call logs, Random(3); the same list for every model",
+ "bases": [
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "DEYLWPGFKQMWCSPHPTGVCTDKEKDHTHIMKDDTNRTVSGLVKWYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LGAGTYLQRGFMYCECRKTVSMFHDKHGGRLNWKEPGIVCHGYMVSTGADCYWSVMYFCNDRFLNDDVRP",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTHGQYLQRGIMKCDCRKTVSMFHDSHRKQWMNHMECIKWYIEMGLRTCNDLMAMLMFQTDLYHRLFKPYGMW",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "WMQCLFHCLDDLLGQWKFAVCWFYDRIPQPGMRFYSHEQYVQELKIPVAHTRWAAYIKHGLFV",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MVALLTWPSTSFMRLGQAVFGKCFGGERITLIISDGDWIYRNKQKMAFCPNGETDIEEKGGEHATQRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LGIVTYLQRGMKYCECRKTVPMFHDSHGNQWMVHMEGGHGCGCMSEHFRSGVSVMNQPCCGFNILINWHYN",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLSGWCANKGLWYRTNGMNYHKWWTKSPEQWFLTIKIMGVTEYMSIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LEGRMALQRGYMVCDSRKTVWMFHDGHNRKNWKEPGIVCHGYMVSMGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LGATMYLQRGFMKCDCRKTVSMFHDKHGWMVHMEGGHCCGGKSEWFRSRVSVMNQPCCGFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LNPESGARDMCVGFISNYLNWYFAYKMGITLCCHKGMNWCYSRQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LAGRMALQRGFMVCDSRKTVGMFHDGHNRKNWKEPGIVCHGYMVSTGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "TTGWDTYDQHMVYQSPYWIAAGLTWKMEFKIRPWQCPWQCFRDKGRTSVYACSMLRCQH",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLTGWCANKGLFYRMNGMNYHKWWTKSPEQWFLTIKIMGQTEYMLIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDGAVPLCMGEWFLMGVYWYDIIAILDHTHLMKDDTNRTVRGEVKSYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTHGSYLQRGIMFCDCRKTVSMFHDSHRKRKNWKEPGIVCHGYMVSTRADCYWSVKYFCNDTALNDDVRP",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDGSVPLCMGEWFIMQVYWYDIIAIKDHTHIMKDDTNRTVFGLVKFYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "DEYMWPGFKQMWCSPGPTGVCTDKEKDHTHIMKDDTNRTVHGLVKWYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLTGWCANKGLFYRTNGMNYHKWWVKSPEQWFLTIKIMGQTEYMLIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTHGQYLQRGIMKCDCRKTVSMFHDSHRKGNQWMVHMEGGHCCGCKSEHFRSYVSVMNQPCCGFNILINWHYN",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LASGMYLQRGIMKCDCRKTVGMFHDGHGNQWMVHMEGGHCCGCKSEHFRSYVSVMNQPCCGFNILINWHYN",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLSVWCANKGLWFRTNGMNYHKWWVKSPEQWFLTIKIMGQTEYMLIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "RMQDCIPCPSAIVEPSHGMYENRLKEMWVTESTNPLWGFGNREEVFMYQVLGRSLGDEGVV",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "MTGEKALQRGLMVIDSRKTVGMFHDGHNRKNWKEPGIVCHGYMVSMGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDSKIPLCMGFWLIMTVYWYDIIAIGDKVDDIAIMYTKNMGELIYSFWVGMCQDPFFMEYWPDWV",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "YFLREGTIAHVVGPTQWNRKVYAPTKDHTHIMKDDTNRTVSGLVKWYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LQGRMALQRGFMVCDSRKTVWMFHDGHNRKNWKEPGIVCHGYMVSMGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDSKIPLCMGFWLIMTVYWYDIIAIGVHQKDHTGIMKDDTNRTVRGLVKNYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "IQLNIGACYMVRWLTRYYRPFKYNMCWMMYNGGHCCGCKSEHFPSYVSVMNQPCCGFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "ACFCECDSCDTTSMGMDNPPWLNKHMQEFVAPEYCLKRLSIVKAMNMDCQDWYAEADAGTCSCHT",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "TGMRDSHLARGRAHLMLVYFREKFDLPLTWKMHSKLQPPCGMILMCCSQFSYDFNQCYR",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LEPTHGARDMCVRFIMNYLNWYFAYHMGITTCHKGMNWCYSGQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "DEYTWPGFKQHWCSPLPTGVCTDKEKDHTHIMKDDTNRTVWGLVKNYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LGAGTYLQRGFMYCECRKTVSMFHDKHGNQWMVHMEGGHGCGCMSEHFRSYVSVMNQPCCGFNILINWHYN",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LNPTHGARDMCVKFIMNYLNWYFAYHMGITVCHKGMNWCYSRQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGRFTWPSTLFMKKGQAVFSKCFGGERITCIISDKDWIYRNKQKMAFCPWGETDIEEAGKEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "DFGPQMAHAATYEHESHLKGESPDAKREKFTNDSKLQPPCWFILMCCSQFSYDFNQCYR",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MELRFTWPSTGFMKKYQAVFSKCFGGERIARLRFRHKMGEIKHNGNFFIKVPPMKYTWMPLVYDNLPSGKNR",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLTGWCANKGLFYRTNGMNYHKWWVKSPEQWFLTIKIMGVTEYMLIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LASAMYLQRGFMGCDCRKTVKMFHDGHRKNWKEPGIVCHGYMVSTGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEARVTWPSTSMLKKGQAVFGKCLVNERITGIISDEDWIYRNKQKGAFCPNGETDIEEKGSEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NFGTVWCANKRLGYMDNGMNYRTWWEKSPEAWFLTIKIMGQTEYMMIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "ACFCECDSCDTTSMGMDNPPWLNKHMQEFVAPDWGCNRYVMSFQSYHRWVASDPCRIIDHKIHKFGYCKGCMGQD",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTSFMALQRGLMGCDSRKTVSMFHDKHNNQWMVHLEGGHCCGCKSEHFRSYVSVMNQPCCGFNILINWHYN",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLTGWCANKGLFYRTNGMNYHKWWGKSPEQWFLTIKIMGQTEYMVIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "WMQCLFHCLDDLLGQWKFAVCWHWRGYTCPHNEHWQWHSEPLTSAMYPLAGHMWF",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGRLTWPSTLFSKKGQAVFQKCFGGERITGIISDGDWIYYNKQKMAFCPSGETFGEEAGREHATMRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LATTHGARDMGVRFVKNYLNWYFAYRMGITVCHKGMNWCYRGQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LNPTHGARDMCVKFIMNYLNWYFAYHMGITCCHKGMNWCYSRQNVTHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "DEYTWPGFKQHWCSPNPTGVCTDKEKDFYDRIPQPGMRFYSHEQYVQELKIPVAHTRWAAYIKHGLFV",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLSGWCANKGLWYRTNGMNYHKWWTKSPEQWFLTIKIMGQTEYMVIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "YFLRGGTIAHVVGPTQWNRKVYAPTKDHTHWMKDDTNRTVHGLVKWYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDGSAGLCMGEWFIMGVYWYDIIAILDHTHLMKDDTNRTVRGEVKSYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLSGWCANKGLWYMQNGMNYHKWWEKSPEAWFLTIKIMGQGEYMMIRGDLHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LEGRMALQRGYMVCDSRKTVWMFHDGHNRKNWKEPGTVCHGYMVSTGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NFGSVWCANKRLGYMQNGMNYRTWWEKSPEAWFLTIKIMGQTEYMMIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLHGWCANKGLFYRLNGMNYHKWWTKSPEQWFLTVKIMGQTEYMSIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEARVTWPSTSMLKKGQAVFGKCLVNERITGIISDGDWIYRNKQKMAFCPQGETDIEEKGMEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LFMGAYLQRGVMKCDGRKTVSMFHDGRQWMVHMEGGHCCGCKSEWFRSRVSVMNQPCCGFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGRLTWPSTYFLKKGQAVFGKCFGKERITGIISDGDWIYKNKQKMAFCPSGETFGEEAGREHATMRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "IWFYMFGYLIQMVNGPVWNKYMVYKEPGIVCHGYMVSTRADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTSFIALQRGLMTCDSRKTVGMFHDKHNNQWMVHMEGGHGCGCMSEHFRSYVSVMNQPCCGFNILINWHYN",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYFSGWCANKRLWYMVNGMNYHWEKSPEAWFLTIKIMGQEEYMMIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LGAGMYLQRGFMKCECRKTVSMFHDKHGGRMNWKEPGIVCHGYMVSTGADCYWSVKYFCNDRFLNDDVRP",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "DEYLWPGFKQMWCSPHPTGVCTDKEKDHTHIMKDWTNRTVHGLVKRYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGLFTWPSTGFMSKGQAVFYKCFRGERITGIISDGDWIYSNKQKMAFCPWGETDIEEKGMEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "DFGVQMAHAATYRHESHLKGESPDDLPLTWKMHSKLQPPCGTILMCMSQFSYDFNQCYR",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEARFTWPSTMFMKKYQAVFCKCFGGERITCIIRDKDWIYYNKQKMAFCPWGETDIEEAGIEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDGAVPLCMGFWLIMQVYWYDIIAIFKDHTHIMKDDTNRTWRGLVKNYIPVPGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGRFTWPSTLFMSKGQAVFYKCFGGERITGIISDFDWIYRNKQKMAFCPWGETDIEEAGMEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LASGQYLQRGSMKCDCRKTVSMFHDGHRKNRKNWKEPGIVCHGYMVSTRADCYWSVKYFCNDTALNDDVRP",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LASTMYLQRGHMKCDGRKTVIMFHDKHGRKNWKEPGIVCHGYMVSTGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LESAMYLQRGIMGCDCRKTVSMFHDTHKNWKEPGIVCHGYKVSTRADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LASRHGARDMGVLFITNYLNWYFAYKMGITVCHKGMNWCYSGQNVTHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "RDGSVPLCMGEWFIMQVYWYDIIAIKDHTHLMKDDTNRTVRGLVKWYIPVRGSKYMIKFIAY",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LQGRMALQRGFMVCDSRKTVWMFHDGHNRKNWKEPGIVCHGYMVSTGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTSFMYLQRGLMGCDCRKTVSMFHDKHNRKNWKEPGIVCHGYMVSTGADCYWSVKYFCNDTFLNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "RCSIDSFVAFTVCCGVATMTARLRFRHKMGEIKHNGNFFIKVPPMKYTWMPLVYDNLPSGKNR",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "WVRSGMGYKSLLTVTKYWQLHCQSRHWTIRDKDWIYYNKQKLKFCPQGETDIEEAGIEHATRRLVPHH",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LASEHGARDMGVKFITNYLNWYFAYKMGITFCHKGMNWCYSGQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LNPEKGARDMCVRFISNYLNWYFAYHMGITKCHKGMNWCYRGQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLSGWCANKGLWYRTNGMNYHKWWTKSPEQWFLTIKIMGQTEYMVIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYLTGWCANKGLFYRTNGMNYHKWWTKSPEQWFLTIKIMGQTEYMLIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LASTHGARDMGVRFIKNYLNWYFAYKMGITVCHKGMNWCYTGQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGSLTWPSTVFLKKGQAVFLKCFGGERITGIISDGDWIYRNKQKMAFCPNGETDIEEKGMEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LAPTHGARDMGVRFIMNYLNWYFAYHMGITVCHKGMNWCYRGQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "HRQLGTPWNVGQWIMLKYGMVWWWEKSPEAWFLTIKIMGQTEYMMIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LNPGFGARDMCVKFIMNYLNWYFAKREKFTNDSKLQPPCWFILMCTSQFSYDFNQCYR",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGRFTWPSTYFMKKGQAVFCKCFGSERITCIIRDKDWIYYNKQKMAFCPQGETDIEEAGKEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NFGSVWCANKRLGYMQNGMNYRTWWEKSPEAWFLTIKIMGQTEYMMIRGDMLWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "LMSEHGARDMRVKFIQNYLNTYFAYGMGITVCHKGMNWCYTGQNVKHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "DFGVQMAHAATYRHESHLKGESPDAYHMGITCCHKGMNWCYSRQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LASAMGLQRGFMGCDGRKTVGMFHDGHGRLNWKEGGHGCGCMSEHFRSGVSVMNQPCCGFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LEGRMALQRGYMVCDSRKTVWMFHDGHNRLNWKEGGHGCGCMSEHFRSGVSVMNQPCCGFMILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed0_1789787770.jsonl",
+   "genome": "DFIRVMAHAAMYTHEGHLKGESPDPWTWVCHKGMNWCYSRQNVGHPWLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEGRLTWPSTKMLKKGQAVFLKCFGVERITGIITDGDWIYGNKQKWAFCPSGETFGEEAGKEHATMRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed4_1789806277.jsonl",
+   "genome": "LTATMYLQRGHMKCDCRKTVSMFHDKHGRKNWKEPGIVCHGYMVSTGADCYWSVKYFCNDTALNDDVRP",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEARFTWPSTLFISKGQAVFYKCFGGERITGIISDGDWIYRNKQKMAFCPWGETDIEEKGMEHATRRLVPHH",
+   "k": 4
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed2_1789796579.jsonl",
+   "genome": "MEARFTWPSTMFMKKYQAVFCKCFGGERIYDALANLDISHEWMVRFNPEKEEDYMPHEAYSCSLNRFNK",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed3_1789802022.jsonl",
+   "genome": "NYMTHWCANKVLMYRLNGMNYHKWWTKSPEQWFLTIKIMGQTEYMVIRGDMHWRKIE",
+   "k": 3
+  },
+  {
+   "source": "gemma4:12b arm C",
+   "log": "results/raw/llm_operator_calls_seqcmp_C_seed1_1789791971.jsonl",
+   "genome": "YFLRSGTIAHRVGPTFWNRKGYAPTKDHTHIMKDDTNRTVSGLVKWYIPVGGSKYMIKYIAY",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCWDTYDQHQVYQSPYWIAKGRLYLLGIIRPWQCPWQCGRDKGRESVYACSMVRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "WVRSIMGYKSCLTVTTYWQLHHGFGNELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "LNPKFVARDMQVKFISNYLPLTWHMDSKLQPPCGFILMCCSQFSYDFTQCYR",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NQQETIDPANFEQDAKHMLILDMLYRLGIIRPWQCEWQCGLDLGRVSVYACSMEECFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NMQETDDPANFEQDAKHMLILDALYRLGIIRPWQCEWQCGLDLGRVSVYACSMEECFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "IWVKCFGYLIFMVNGTVWNKYMKGCDMMYNGGECCGCKSEHFQSYVSVMNQPCCQFRILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHHKCCGLKSEHFPSYVSVMNQPCQGFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCQDTYDQHRVYQSPYWIAAGRELYHLGIIRPWQCPWQCGRDKGRTSVYACSMLKCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDWMICLCMGNWLIMSVYWYDIIAILDKDCSNWVHTLDSQNAVVYYMRYAIGVWGDVKQDDATAKIKEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "HKQCQTPWNVRQWIMAKYGMVWMLKDQEKLPEAWFLTIKIMGQEEYMMIRGDMTWRKLE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTQFMKKYQAVFCKHERIGGENIVKMRDQSALWWFHFGYLDWRKDSSIFWEI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHSEYRGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHRN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEARFTWPSTMFMKKYQAVFCKCFGGERIIERHCYHPMYPTTGTEFHGPHLMQFQFPMLEVESKLTSKIQFV",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "DEYTWPGFKQCWCSPNPTGVCTDKEELKEMYTKNMMELIYSFWREMCQDPFFMEYWPDLV",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCWDTYDQHQVYQSPYWIAKGRLYLLGIIRPWQCPWQCGRDKGRTSVYACSMVRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "WCRSIMGYKSQLTVTTYWQLHHGFGTELIVKMRDQSALWWFHNGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEACFTWPSTHFMKKYQAVFCKCFGHELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEACFTWPSTHFMKKYQAVFCKCFGNELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "YWWPGGTIAHFVIPTNWNRKVYAPTLTVHQCSNWVHTQDNQNAVVYYMRYAIGVWGDVKCDDAQAKIKEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEACFTWPSTHFMKKYQAVFCKCGGHLILKMRDQSALWWFHFGHSDWRKDSSIEWQI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTCFMKKYQAVFCKPGLLIVKMRDQSALWWFHFGHSDWRKDSSIEWNI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "HKQDQTPWNVSQWIMAKYGMVWMLKLQLKLPEAWFLTIKIMGQEESMMIRGDMTWTKLE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "AKALFDGEYAIIVASVGRPMGTWHESYNLQYCHKWWLSMDIMECYMTSNDGCSTVYI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEAKFTWPSTLFMKKYQAVFCKFGGLLILKMRDQSALWWFHFGHSDWRKDSSIEWPI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHSEDYLGGECCGCKSEHFQSYVSVMTQPCCRFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "IWHKCFGYLINMVNGSVWNKYMKGCYPGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAKIYCWMMYNGGHEYLGGECCGCKSEHFQSYVSVMNQPCCRFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NMQETDDPANKEQDAKHMLILDALYLLGIIRPWQCEWQCGLDSGRVSVYACSMEKCLH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "IWVKCFGYLIHMVNGTVWNKYMKGCYPGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NDCFAWCAGKSLWYMDNGMNLRTKKSQEKLPEAWFLTIKIMGHEESMMIRGDMTWQKLE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTLFMKKYQAVFCKCSTNYDMAHECWCKWIETFKIHCQCCNNGIAD",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "HKQCQTPWNVFQWIMAKYGMVWMLLKEMWQTESTNCLWGFGNREEHFMYQVLGHHLGDEHVV",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMKFQETTANIYCWMMLNGGHSEMLYPGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDFKIPLCMGQWLIMFVYPYDIIAITDKVDCSNWVHTLSSSNTVVYYMRYAIGEWGDVKQDDAQAKIQEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTQFMKKYQAVFCKGHELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYFSAWCANKMLWYMLNGMNYRTKNLKEMWQTESTNCLWGFGDREEHFMYQVLGHHLGDEHVV",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDFHKPLCMGCWLIMTVYPYDIIAIQDKVDCSNWVHTLFTQNAVVYYMRYAIGHSGDVKQDDATAKIEEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "NCRGNNLWERHQHECCCGYFYCVSWIMCET",
+   "k": 2
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEACFTWPSTDFMKKYQAVFCKGHGEQIVKMRDQSALWWFHFGMSDWRKDSSIQWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "IWFKCQGYLIRMVNGNVWNKTMMMLLIVCHGYMVSTRADCYESVKYQCNDQALNDDLFP",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MKADFTWPSTLFMKKYQAVFCKCGGNLIVKMRDQSALWWFHFGHSDWRKDSSIEWPI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCWDTYDQHLVYQSPYWIAAGLTWKMDSKLQPPCGFILMCCSQFSYDFNQCYR",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYKSAWCANKMLWYMGNGMNYRTKNRLKEMWVTESTNCLWGFGNREEHFMYQVLGRSLGDEGQH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAKIYCWMMYNGGHSEYLGGECCGCKSEHFQSYVSVMNQPCCRFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MDNQFTWPSTLFMKKYQAVFCKPNGELIVKMRDQSALWWFHFGYSDWRLDSSIEWKI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCWDTYDQHNVYQSPYWIAAGREKLTNEFKACCHKVMNWCYSRQNVGHPMLAFFKMMNDM",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAKIYCWMMYNGGHSEYPGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFQETTAKIYCWMMYNGGHSLWDPLGGECCGCKSEHFQSYVSVMNQPQCQFTILINWHPN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHSEMYNGGECCGCKSEHFQSYVSVMPQPCCQFRILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "KSGRTCKTEWQDNDRAGTGDPKYLHWRGYTCPHNEHWQWHSEPLTSAMYPLAGHMWF",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NSPQTDDPANKEQDAYHMLILDALLLLGIERPWQCQWQCGRDKGRTSVYACSMEFCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAKIYCWMMYNGGHSEYPGGECCGCKSEHFQSYVSVMTQPCCRFNILINWHRN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTANIYCWMMYNGGHSEYQGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHRN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTNFMKKYQAVFCKGGELIVKMRDQSALWWFHFGHSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYCFAWCANKVLWYMDNGMNYRTKKHQEKLPEAWFLTIKIMGQEESMMIRGDMTWSKLE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEACFTWPSTHFMKKYQAVFCKCHGELIVKMRDQSALWWFHFGHSDWRNDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHSEYRGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHRN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "WVRSIMGYKSCLTVTTYWQLHHGGEPIVKMRDQSALWWFHFGYPDWRKDSSIFWNI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYCFAWCAGKVLWYMDNGMNYRTKNSLMEKLPVAWFLTIKIMGQVESVMIRDDMTWRKQE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCWDTYDQHQVYQSPYWIAAGRLYHLGIIRPWQCPWQCGRDKGRTSVYACSMLRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "IWHKCFGYLIFMVNGSVWNKYMKGCLPGGECCGCKSEHFQSYVSVMNQPCLRFNILINWHQN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NSPQTDDPANVEQDAYHMLILDALYLLGIIRPWQCPWQCGRDSGRTSVYACSMLRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "TTCWDTYDQHNVYQSPYWIAAGRELYHLGIIRPWQCPWQCGRDKGRTSVYACSMLRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTQFMKKYQAVFCKFGGPLIVKMRDQSALWWFHFGHSDWRKDSSIEWNI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RCFMKPLCMGDWLIMHVYPYDIIAINDKVDCSNWVHTLTNQNAVVYYMRYAIGSSGDVKQDDAQAKIEEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHSEYPGGECCGCKSEHFQSYVSVMTQPCCLFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYKSAWCANKFLWYMGNGMNYRTKKLQEKLPEAWFLTIKIMGQEESMMIRGDMTWLKLE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTLFMKKYQAVFCKCFGHELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFQETTAKIYCWMMYNGGHSLWMMYNGGECCGCKSEHFQSYVSVMNQPCCQFRILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAQIYCWMMYNGGHSETPLLQVCHGYMVSTRADCYESVKYQCNDTALNSDQFP",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MDAQFTWPSTCFMKKYQAVFCKPGGELIVKMRDQSALWWFHFGHSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDWMIPLCMGCWLIMEVYWYDIIAIFDKVDCSNWVHTQENQNAVVYYMRYAIGSWGDVKCDDAQAKIKEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTNFMKKYQAVFCKGGTLIVKMRDQSALWWFHFGHSDWRKDSSIEWRI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDWMKPLCMGCWLIMTVYWYDIIAIFDKVVDEHHQTNLNAVVYYMRYAIGVWGDVKCSDASQKIKEYLNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTNFMKKYQAVFCKNGELIVKMRDQSALWWFHFGYSDWRLDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "EAYVHHHPWCFAKSVCIFYMCHEFVGDRLHGMKTWDQQCRLEKAHQMKVPWTHQFGRRNPSYKYHWSRHSWM",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEARFTWPSTQFMKKYQAVFCKCFGGHELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTCFMKKYQAVFCKFGNELIVKMRDQSALWWFHFGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NSPQTDDPANREQDAYHMLILDTLYLLGIIRPWQCEWQCGLDLGRVSVYACSMEKCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NSPQTDDPANREQDAYHMLIQDALYHLGIIRPWQCPWQCGRDKGRTSVYACSMLRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "HDMYFLETTAKIYCWMMYNGGHEYYLGGECCGCKSEHFQSYVSVMTQPCCRFNILINWHYN",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDWMIPLCMGMWLIMEVYWYDIIAIPDKVDDMYTKNMMELIYSFWVEMCQDPFFMEYWPDWV",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NDCFAWCAGKQLWYMDNGMNYRTKNSLMEKLPVAWFLTIKIMGQVESVMIRDDMTWRKVE",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDFMIPLCMGCWLIMEVYPYDIIAIFDKVDCSNWVHTLSSQNAVVYYMRYAIGEWGDVKQDDATAKIEEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTLFMKKYQAVFCKCHGGERIVKMRDQSALWWFHFGYPDWRKDSSIFWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "MDFMKPLCMGQWLIMQVYPYDIIAIHDKVDGSQWVHTLTSQNAVVYYMRYAIISWGDVKQDDATAKIEEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTQFMKKYQAVFCKFLGELIVKMRDQSALWWFHFGHSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDWMICLCMGNWNIMSVYWYDIIPITDKCLSNWVHTQDSQNAVVYYMRYAIGVWGDVKQHDAQAKIKEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYKSAWCANKMLWYMGNGMNYRTKSPEMWVTESTNCLVGFGNREEHFMYQQLGRSLGDEHQV",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NSPQTDDPANFEQDAYHMLILDTLYLLGIIRPWQCEWQCGLDSGRVSVYACSMEKCLH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NMQETDDPANFEQDAKHMLILDALYLLGIIRPWQCPWQCGRDSGRTSVYACSMLRCFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed4_1790818090.jsonl",
+   "genome": "IWHKCFGYLINMVNGSVWNKYMKGCCLLLQVCHGYMVSTRADCYESVKYQCNDTALNSDRKP",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MDNQFTWPSTKFMKKYQAVFCKPGGELIVKMRDQSALWWFHFGHSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEADFTWPSTCFMKKYQAVFCKFLGHLIVKMRDQSALWWFHFGYSDWRKDSSIETQI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDFMIPLCMGKWLIMEVYPYDIIAILDKVDSNWVHTLDSQNAVVYYMRYAIGVWGDVKQDDAEMKIKQYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed3_1790815523.jsonl",
+   "genome": "NYKFVWCANKQLWYMLPGMNYRTKLKEMWQTESTNCLWGFLSREEHFMYQVLGDHLGDEHVV",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDWMIKLCMGCWLIMTVYWYDIIAIFDKDCSNWVHTQDSQSAVVYYMRYAIGVWGDVKQDDTQAKIKEYGNLDG",
+   "k": 4
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed0_1790807502.jsonl",
+   "genome": "NQQETIDPANFEQDAKHMLILDMLYLLGIIRPWQCKWQCGRDSGRLSVYACSMLRTFH",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed2_1790813194.jsonl",
+   "genome": "MEACFTWPSTHFMKKYQAVFCKCFGTELIVKMRDQSALWWFHNGYSDWRKDSSIEWLI",
+   "k": 3
+  },
+  {
+   "source": "qwen2.5:7b arm C",
+   "log": "results/raw/armC_qwen2.5_7b/llm_operator_calls_armC_qwen2.5_7b_seed1_1790810046.jsonl",
+   "genome": "RDFMKPLCMGCWLIMQVYPYDIIAIFDKVDCSNWVHTLDSQNAVVYYMRYAIGVWGDVKQDDATAKIEEYGNLDG",
+   "k": 4
+  }
+ ]
+}

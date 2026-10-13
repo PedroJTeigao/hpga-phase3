@@ -1,0 +1,85 @@
+{
+ "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+ "cells": {
+  "C1_drift": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 101,
+    "n_retries": 1,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 26.94668759999331,
+    "total_tokens_in": 28743,
+    "total_tokens_out": 919,
+    "mean_latency_s": 0.26679888712864663,
+    "max_latency_s": 0.30869130000064615,
+    "min_latency_s": 0.24221720000787172
+   },
+   "wall_s": 27.04023051261902
+  },
+  "C2_num": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 200,
+    "n_retries": 0,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 113.64565199993376,
+    "total_tokens_in": 96956,
+    "total_tokens_out": 5773,
+    "mean_latency_s": 0.5682282599996689,
+    "max_latency_s": 0.9555390000023181,
+    "min_latency_s": 0.520833999995375
+   },
+   "wall_s": 114.01198434829712
+  },
+  "C2_numold": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 205,
+    "n_retries": 6,
+    "n_failures": 1,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 154.66285569986212,
+    "total_tokens_in": 101707,
+    "total_tokens_out": 8370,
+    "mean_latency_s": 0.7544529546334737,
+    "max_latency_s": 2.533567199992831,
+    "min_latency_s": 0.676036099990597
+   },
+   "wall_s": 154.84074306488037
+  },
+  "C3_num": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 200,
+    "n_retries": 0,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 117.58215249986097,
+    "total_tokens_in": 97075,
+    "total_tokens_out": 6161,
+    "mean_latency_s": 0.5879107624993049,
+    "max_latency_s": 0.8306041000032565,
+    "min_latency_s": 0.3972265999909723
+   },
+   "wall_s": 117.75176525115967
+  },
+  "C3_numold": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 205,
+    "n_retries": 6,
+    "n_failures": 1,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 156.74792550006532,
+    "total_tokens_in": 101774,
+    "total_tokens_out": 8936,
+    "mean_latency_s": 0.764624026829587,
+    "max_latency_s": 0.9860202999989269,
+    "min_latency_s": 0.5104035000113072
+   },
+   "wall_s": 156.93300223350525
+  }
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+ "cells": {
+  "C1_old": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 102,
+    "n_retries": 2,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 27.167907499868306,
+    "total_tokens_in": 29086,
+    "total_tokens_out": 924,
+    "mean_latency_s": 0.26635203431243437,
+    "max_latency_s": 0.349592800004757,
+    "min_latency_s": 0.20607869999366812
+   },
+   "wall_s": 27.267815351486206
+  },
+  "C1_new": {
+   "stats": {
+    "n_llm_calls": 100,
+    "n_llm_requests": 101,
+    "n_retries": 1,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 33.65407659993798,
+    "total_tokens_in": 29753,
+    "total_tokens_out": 1325,
+    "mean_latency_s": 0.33320867920730673,
+    "max_latency_s": 0.7030649999942398,
+    "min_latency_s": 0.2985207000019727
+   },
+   "wall_s": 33.74332547187805
+  },
+  "C2_old": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 202,
+    "n_retries": 2,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 110.68072010010656,
+    "total_tokens_in": 57486,
+    "total_tokens_out": 5826,
+    "mean_latency_s": 0.5479243569312205,
+    "max_latency_s": 0.8016766999935498,
+    "min_latency_s": 0.48349169999710284
+   },
+   "wall_s": 110.85113406181335
+  },
+  "C2_new": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 495,
+    "n_retries": 399,
+    "n_failures": 104,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 350.4201604001137,
+    "total_tokens_in": 162935,
+    "total_tokens_out": 20207,
+    "mean_latency_s": 0.7079195159598256,
+    "max_latency_s": 2.1840404999966267,
+    "min_latency_s": 0.6619570000038948
+   },
+   "wall_s": 350.9195628166199
+  },
+  "C3_old": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 206,
+    "n_retries": 6,
+    "n_failures": 0,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 116.19686970009934,
+    "total_tokens_in": 58804,
+    "total_tokens_out": 6379,
+    "mean_latency_s": 0.5640624742723269,
+    "max_latency_s": 0.7180170000065118,
+    "min_latency_s": 0.3815405999921495
+   },
+   "wall_s": 116.37219142913818
+  },
+  "C3_new": {
+   "stats": {
+    "n_llm_calls": 200,
+    "n_llm_requests": 487,
+    "n_retries": 388,
+    "n_failures": 101,
+    "n_skipped_no_op": 0,
+    "total_latency_s": 368.118492700145,
+    "total_tokens_in": 160197,
+    "total_tokens_out": 21463,
+    "mean_latency_s": 0.755890128747731,
+    "max_latency_s": 2.4619444999989355,
+    "min_latency_s": 0.5025441000034334
+   },
+   "wall_s": 368.59390902519226
+  }
+ }
+}

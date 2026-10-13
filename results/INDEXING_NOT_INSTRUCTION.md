@@ -9,6 +9,8 @@
 > - So for these two models the failure is not locating but **not consulting** the letter unless the format requires it.
 > - **"When a model has stated the letter correctly, it never repeats it" still holds without exception:** 0 of 4,440 more lines.
 
+*Cross-reference, added 2026-10-13: both probes were also run, by Italo on a DGX Spark via vLLM, on `nvidia/Qwen3.6-35B-A3B-NVFP4`. It is not the model requested and not a controlled model-scale comparison; see `results/SPARK_QWEN35_PROBE.md`. It has 5 baseline repeats, below rule 3(a)'s threshold of 10, so it changes no verdict and no number here.*
+
 The mutate operator's format (`mutate/position`) asks for lines `POSITION: <n>, NEW: <letter>`, with a prose rule that NEW must differ from the letter already at that position. Every invalid mutate attempt in this project's GA runs broke that rule (790 of 790 over three arms). The natural reading was that the model ignores the prose rule.
 
 **The data say otherwise.** Across four model families:
