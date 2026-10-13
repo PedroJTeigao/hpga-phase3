@@ -160,11 +160,14 @@ Observational, single run per cell, one seed, temperature 0.7. Each point is sta
    - C3: 0.18 → 260/261 at 20+; 1.00 / 0.98 / 1.00 across the bands.
    - C2: 0.20 → 0.99 at 20+; 1.00 / 0.99 / 0.99 across the bands.
    - No prediction was registered for this model; the flatness criterion (20+ within 0.05 of 0–9) was registered for gemma4:12b only.
-3. **The conditional result holds again.** 0 repeats among 2,025 correctly read lines (composition above). Counting the three experiments that contribute, **0 of 10,249 over five models and two displays**:
-   - **3,784** from the OLD-slot gate: four models, spaced display, C1–C3, **all attempts** (`INDEXING_NOT_INSTRUCTION.md` Evidence 1);
-   - **4,440** from the numbered probe: four models, numbered display, C2–C3, **first attempts** (`PREREGISTERED_NUMBERED_SCORED.md` rule 3(b));
-   - **2,025** from this run: one model, both displays, spaced C1–C3 and numbered C2–C3, **first attempts**.
-   - The scopes differ, so 10,249 is a count of lines checked, not a single pre-defined measure. With this run counted over all attempts, the total would be 3,784 + 4,440 + 3,163 = 11,387, also with 0 repeats.
+3. **The conditional result holds again.** 0 repeats among 2,025 correctly read lines (composition above). On first attempts, the pre-registered scope, all three experiments that measured this give **0 of 7,844 over five models** (gemma4:12b, qwen2.5:7b, mistral:7b, llama3.2:3b, and this model) **and two displays**:
+   - **1,379** from the OLD-slot gate: four models, spaced display, C1–C3. This is a first-attempt recount; the published 3,784 is the all-attempts figure for the same gate;
+   - **4,440** from the numbered probe: the same four models, numbered display, C2–C3 (`PREREGISTERED_NUMBERED_SCORED.md` rule 3(b));
+   - **2,025** from this run: one model, spaced C1–C3 and numbered C2–C3.
+   - All three use the same line definition, and no line is counted twice. Condition coverage differs by design: the numbered probe has no C1 OLD-slot cell. That makes the total a count of lines checked, not a rate.
+   - On all attempts the same three give 0 of 3,784 + 6,718 + 3,163 = 13,665.
+   - Both totals come from `experiments/recount_conditional_repeats.py`; the table is `results/CONDITIONAL_REPEATS_RECOUNT_TABLES.md`.
+   - *Dated note, 2026-10-13: the first version of this file (`cb19567`) gave "0 of 10,249", summing 3,784 (all attempts) with 4,440 and 2,025 (first attempts). That mixed scopes and is replaced by the two totals above.*
    - It stays observational: correctly read lines are not a random sample (`INDEXING_NOT_INSTRUCTION.md` limit 5).
 
 ## What this run does not answer: whether the positional failure is a scale effect

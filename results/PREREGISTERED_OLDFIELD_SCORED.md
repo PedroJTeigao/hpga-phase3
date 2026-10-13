@@ -79,6 +79,8 @@ The pre-registered metric missed a pattern that runs through every model and is 
 
 *All three conditions, all attempts, new format. "Correct" means OLD equals the letter actually at the stated position.*
 
+*Dated note, 2026-10-13: 3,784 counts all attempts. Recounted on first attempts only, from the same logs and with the same line definition, the gate gives 0 of 1,379 (gemma4:12b 813, qwen2.5:7b 269, mistral:7b 116, llama3.2:3b 181). This is a recount, not a new result, and the 3,784 above is unchanged. Source: `experiments/recount_conditional_repeats.py`, table in `results/CONDITIONAL_REPEATS_RECOUNT_TABLES.md`.*
+
 1. **When a model locates the letter at a position, it never repeats it.** That holds for 0 of 3,784 lines across four model families, three conditions, and the GA's own sequences. The prose rule "the new letter MUST differ" is obeyed without exception whenever the model knows what the letter is.
 2. **Every repeated letter, all 576 of them, came on a line where the model had misread the letter at that position.** Those lines repeat the actual letter at 4.7%, about the chance rate (`BLIND_CHOICE.md` measures chance at roughly 5–10% in these data sets). So the repeated-letter failure is **a failure to locate the position, not a failure to follow the rule.**
 3. **Locating fails often, and gets worse further along the sequence.**

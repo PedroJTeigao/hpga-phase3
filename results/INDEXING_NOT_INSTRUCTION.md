@@ -33,6 +33,7 @@ In the OLD-slot gate each new-format line is `POSITION: <n>, OLD: <the letter cu
 | **all** | **3,784** | **0** | **12,288** | **576 (4.7%)** |
 
 - 0 of 3,784 correctly read lines repeat the letter.
+  - *Dated note, 2026-10-13: 3,784 counts all attempts. Recounted on first attempts only, from the same logs and with the same line definition, the gate gives 0 of 1,379 (gemma4:12b 813, qwen2.5:7b 269, mistral:7b 116, llama3.2:3b 181). This is a recount, not a new result, and the 3,784 above is unchanged. Source: `experiments/recount_conditional_repeats.py`, table in `results/CONDITIONAL_REPEATS_RECOUNT_TABLES.md`.*
 - 576 of 576 repeats are on misread lines.
 - The 4.7% repeat rate on misread lines is about what blind choice gives. The shuffle-chance rate in the gate's cells is 4.2–6.7% (`position_reading_tables.md` §3 and `BLIND_CHOICE.md`'s method).
 
